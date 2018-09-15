@@ -8,7 +8,7 @@
         }
     }
     $games = json_encode($games);
-    if ($games === FALSE) {
+    if !(Array.isArray($games) && $games.lenght > 0) {
         $games = '{}';
     }
 ?>
@@ -16,6 +16,9 @@
 <html lang="en-US">
     <head>
         <link rel="stylesheet" href="css/main.css">
+        <script>
+            const GAMES = <?= $games ?>;
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="js/config.js"></script>
         <script src="js/crossdomainajax.js"></script>
