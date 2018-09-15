@@ -13,7 +13,11 @@ const not_allowed_team_names = [
 ];
 
 function getFullGameList() {
-    return GAMES;
+    var arr = JSON.parse(GAMES);
+    if (Array.isArray(arr)) {
+        return arr;
+    }
+    return [];
 }
 
 
@@ -65,12 +69,8 @@ function getGameListFromFile(dateKey, callback) {
 
 function getGameList(dateKey, callback) {
     var fullList = getFullGameList();
-    if (dateKey in fullList) {
-        var json = fullList[dateKey];
-        var arr = JSON.parse(json);
-        if (Array.isArray(arr)) {
-            callback(makeGameList(arr));
-        }
+    if (fullList.length) {
+        callback(makeGameList(fullList));
     }
 }
 

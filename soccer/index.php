@@ -1,23 +1,25 @@
 <?php
-    const DATA_FILE = __DIR__ . '/data/games.txt';
-    $games = [];
+    const DATA_FILE = __DIR__ . '/data/games.json';
+    $games = '';
     if (file_exists(DATA_FILE)) {
         $fileDate = filemtime(DATA_FILE);
         if ($fileDate > mktime(0, 0, 0) && $fileDate < mktime(23, 59, 59)) {
-            $games = file_get_content(DATA_FILE);
+            $games = file_get_contents(DATA_FILE);
         }
     }
-    $games = json_encode($games);
-    if !(Array.isArray($games) && $games.lenght > 0) {
-        $games = '{}';
+    $games = str_replace("'", '', $games);
+    $games = json_decode($games, true);
+    if ($games === FALSE) {
+        $games = [];
     }
+    $games = json_encode($games);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
         <link rel="stylesheet" href="css/main.css">
         <script>
-            const GAMES = <?= $games ?>;
+            const GAMES = '<?= $games ?>';
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="js/config.js"></script>
