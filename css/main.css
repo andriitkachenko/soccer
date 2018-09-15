@@ -1,0 +1,132 @@
+html {
+    font-size : 16px;
+}
+
+#main_div {
+    width : 100%;
+    font-size : 2rem;
+}
+
+#header {
+   min-height: 4rem;
+   border-bottom-style: double;
+   border-bottom-color: lightgray;
+   margin-bottom: 4px;
+
+}
+
+#header tr:first-child button {
+    height: 3.5rem;
+}
+
+#header  button {
+    font-size: 1.5rem;
+}
+
+#view_body {
+    position:absolute;
+    top: 5rem;
+    right:0px;
+    left:0px;
+    bottom:0px;
+    overflow-y: scroll;
+}
+
+#list_placeholder {
+    height: 16px;
+    background-color: orange;
+    opacity : 0.25;
+}
+
+@media screen and (min-width: 1024px) {
+    #main_div {
+        max-width : 768px;
+        font-size : 1rem;
+    }
+    #view_body {
+        right: auto;
+        width: 768px;
+    }    
+    #header  button {
+        font-size: 1rem;
+    }
+}
+
+
+table {
+    table-layout:fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px;
+    border-color: lightgray;
+}
+
+#matchinfo {
+    background-color: #f2f2f2;
+}
+
+#matchstat {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#matchstat td, #matchevents td {
+    border: 1px solid rgb(221, 221, 221);
+}
+
+#matchstat td{
+    padding: 4px;
+}
+
+#matchevents td {
+    padding: 2px;
+}
+
+.match_part {
+    width : 3%;
+    font-size : 0.6em;
+    padding-top : 0;
+    vertical-align : top;
+}
+
+.ball_posession {
+    width : 5%;
+    font-size : 0.8em;
+    padding-bottom : 0;
+    vertical-align : bottom;
+}
+
+.shots {
+    font-weight : 600;
+}
+div.event {
+    min-height : 8px;
+    font-size : 0.4em;
+    padding : 0; 
+}
+
+td.event {
+    width : 2%;
+    padding : 2px;
+}
+
+input[type="number"] {
+    width: 3em;
+}
+
+input, button {
+    display:block;
+    margin:auto;
+}
+
+button {
+    padding : 6px;
+}
+
+button.close {
+    padding : 4px;
+}
+
+#startButton {
+    background-color: red;
+}
+
