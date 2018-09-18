@@ -20,6 +20,12 @@
         <link rel="stylesheet" href="css/main.css">
         <script>
             const GAMES = '<?= $games ?>';
+
+            window.onbeforeunload = function(e) {
+                var dialogText = 'Data will be lost on page reload';
+                e.returnValue = dialogText;
+                return dialogText;
+            };
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="js/config.js"></script>
@@ -31,6 +37,7 @@
         <script src="js/match.js"></script>
         <script src="js/manager.js"></script>
         <script src="js/livebet.js"></script>
+
     </head>
     <body onload="onLoad()">
         <div id='main_div'>
