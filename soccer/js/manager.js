@@ -187,11 +187,8 @@ function MatchManager() {
     }
 
     function sortByHalfShots(time, a, b) {
-        if (a.isMatchBreak(time)) {
+        if (a.isBreak(time)) {
             return 1;
-        }
-        if (b.isMatchBreak(time)) {
-            return -1;
         }
         var s = getHalfShots(time, b) - getHalfShots(time, a);
         return s == 0 ? a.getMatchId() - b.getMatchId() : s;

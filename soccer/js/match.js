@@ -130,7 +130,7 @@ function Match(game) {
         onUpdate = callback;
     }
 
-    this.isMatchBreak = function(time) {
+    this.isBreak = function(time) {
         return getMatchTime(time) >= BREAK_START && getMatchTime <= BREAK_END;
     }
  }
