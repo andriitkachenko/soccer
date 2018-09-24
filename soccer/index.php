@@ -22,7 +22,7 @@
             const GAMES = '<?= $games ?>';
 
             window.onbeforeunload = function(e) {
-                var dialogText = 'Data will be lost on page reload';
+                var dialogText = 'Game data will be lost on page reload';
                 e.returnValue = dialogText;
                 return dialogText;
             };
