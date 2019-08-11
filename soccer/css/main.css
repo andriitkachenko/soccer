@@ -25,7 +25,7 @@ html {
 
 #view_body {
     position:absolute;
-    top: 5rem;
+    top: 6rem;
     right:0px;
     left:0px;
     bottom:0px;
@@ -61,11 +61,63 @@ table {
     border-color: lightgray;
 }
 
-#matchinfo {
+div.match table.info {
     background-color: #f2f2f2;
 }
 
-#matchstat {
+div.match table.info td.close {
+    width: 4rem;
+}
+
+div.match table.info td.league, 
+div.match table.info td.start_time {
+    font-size:0.5em;
+    width: 7rem;
+}
+
+div.match table.info td.time {
+    font-size: 1.2em;   
+    font-weight: bold;
+    width: 6rem;
+}
+
+div.match table.info td.team {
+    text-align: left;
+}
+
+div.match table.info td.team span.name {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+div.match table.info td.team span.rank {
+    font-size: 0.6em;
+}
+
+div.match table.info td.scores {
+    font-weight:bold;
+    font-size:1.2em; 
+    width:7rem;  
+}
+
+div.match table.info td.star {
+    width: 4rem;
+}
+
+div.match table.info td.star > div {
+    width: 32px;
+    height: 32px;
+    margin:auto;
+    background-image: url("../images/star.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div.match table.info td.star > div.active {
+    background-image: url("../images/star_active.svg");
+}
+
+div.match table.stat {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
@@ -124,9 +176,16 @@ button {
 
 button.close {
     padding : 4px;
+    width : 40px;
+    height : 40px;
 }
 
 #startButton {
     background-color: red;
 }
 
+.ellipsis {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

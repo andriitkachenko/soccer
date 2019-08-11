@@ -187,8 +187,13 @@ function MatchManager() {
     }
 
     function sortByHalfShots(time, a, b) {
-        if (a.isBreak(time)) {
-            return 1;
+        if (a.isBreak(time) || b.isBreak(time)) {
+            if (a.isBreak(time) && !b.isBreak(time)) {
+                return 1;
+            }
+            if (!a.isBreak(time) && b.isBreak(time)) {
+                return -1;
+            }
         }
         var s = getHalfShots(time, b) - getHalfShots(time, a);
         return s == 0 ? a.getMatchId() - b.getMatchId() : s;
@@ -403,21 +408,22 @@ function makeListView(matchList) {
     
     function makeMatchView(stats) {
         var view = 
-        '<div id="%ID%" style="text-align:center">\
-            <table id="matchinfo">\
+        '<div class="match" id="%ID%" style="text-align:center">\
+            <table class="info">\
                 <tr>\
-                    <td rowspan="2"><button class="close" type="button" onclick="removeMatch(%ID%)">X</button></td>\
-                    <td style="font-size:0.7em;">%LEAGUE%</td>\
-                    <td rowspan="2" style="font-size:1.2em;" onclick="setMatchPanel(%ID%, %TIME%)"><b>%TIME%</b></td>\
-                    <td style="text-align:left;" width=40%><b>%hostName%</b>&nbsp;%hostRank%</td>\
-                    <td rowspan="2"><b>%GOALS_MATCH%</b></td> \
+                    <td class="close" rowspan="2"><button class="close" type="button" onclick="removeMatch(%ID%)">X</button></td>\
+                    <td class="league ellipsis">%LEAGUE%</td>\
+                    <td class="time" rowspan="2" onclick="setMatchPanel(%ID%, %TIME%)">%TIME%</td>\
+                    <td class="team elipsis"><span class="name">%hostName%</span>&nbsp;<span class="rank">%hostRank%</span></td>\
+                    <td class="scores" rowspan="2">%GOALS_MATCH%</td> \
+                    <td class="star" rowspan="2"><div></div></td> \
                 </tr>\
                 <tr>\
-                    <td style="font-size:0.7em;">%START_TIME%</td> \
-                    <td style="text-align:left;" width=40%><b>%guestName%</b>&nbsp;%guestRank%</td>\
+                    <td class="start_time">%START_TIME%</td> \
+                    <td class="team elipsis"><span class="name">%guestName%</span>&nbsp;<span class="rank">%guestRank%</span></td>\
                 </tr>\
             </table>\
-            <table id="matchstat" cellspacing="0"\
+            <table class="stat" cellspacing="0"\
                 <tr>\
                     <td class="match_part">M</td>\
                     <td class="shots">%7%</td>\
