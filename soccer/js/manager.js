@@ -412,15 +412,21 @@ function makeListView(matchList) {
             <table class="info">\
                 <tr>\
                     <td class="close" rowspan="2"><button class="close" type="button" onclick="removeMatch(%ID%)">X</button></td>\
-                    <td class="league ellipsis">%LEAGUE%</td>\
+                    <td class="league"><div class="ellipsis">%LEAGUE%</div></td>\
+                    <td class="team">\
+                        <div class="ellipsis">\
+                            <span class="name">%hostName%</span>&nbsp;<span class="rank">%hostRank%</span>\
+                        </div></td>\
                     <td class="time" rowspan="2" onclick="setMatchPanel(%ID%, %TIME%)">%TIME%</td>\
-                    <td class="team elipsis"><span class="name">%hostName%</span>&nbsp;<span class="rank">%hostRank%</span></td>\
                     <td class="scores" rowspan="2">%GOALS_MATCH%</td> \
                     <td class="star" rowspan="2"><div></div></td> \
                 </tr>\
                 <tr>\
                     <td class="start_time">%START_TIME%</td> \
-                    <td class="team elipsis"><span class="name">%guestName%</span>&nbsp;<span class="rank">%guestRank%</span></td>\
+                    <td class="team">\
+                        <div class="ellipsis">\
+                            <span class="name">%guestName%</span>&nbsp;<span class="rank">%guestRank%</span>\
+                        </div></td>\
                 </tr>\
             </table>\
             <table class="stat" cellspacing="0"\
