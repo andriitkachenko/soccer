@@ -142,13 +142,14 @@ div.match table.stat {
 
 .ball_posession {
     width : 5%;
-    font-size : 0.8em;
+    font-size : 0.7em;
     padding-bottom : 0;
     vertical-align : bottom;
 }
 
 .shots {
     font-weight : 600;
+    font-size : 0.9em;
 }
 div.event {
     min-height : 8px;
