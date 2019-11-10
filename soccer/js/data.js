@@ -4,7 +4,10 @@ const not_allowed_leagues = [
     'rus fdh',
     'spa fdn',
     'estonia wt',
-    'afc fc'
+    'afc fc',
+    'bswcp',
+    'labsc'
+    
 ];
 
 const not_allowed_team_names = [
@@ -21,19 +24,12 @@ function getFullGameList() {
 }
 
 
-function parseTeam(str) {
+function makeTeam(name, rank) {
     var team = {};
-    var s = str.trim();
-    var idx1 = s.indexOf('[');
-    var idx2 = s.indexOf(']');
-    if (idx1 != -1 && idx2 != -1) {
-        team['rank'] = s.substr(idx1, idx2 - idx1 + 1);
-        team['name'] = idx1 == 0 ? s.substr(idx2 + 1) : s.substr(0, idx1);
-    } else {
-        team['name'] = s;
-    }
-    if (!teamNameOk(team['name'])) {
-        team = {};
+    if (teamNameOk(name)) {
+        team['name'] = name;
+        if (rank)
+            team['rank'] = rank;
     }
     return team;
 }
@@ -54,19 +50,6 @@ function leagueOK(league) {
     return res;
 }
 
-function getGameListFromFile(dateKey, callback) {
-    var reader = new FileReader();
-    var dataFile = "data/" + dateKey + ".json";
-    reader.onload = function(e) {
-        var arr = JSON.parse(reader.result);
-        if (Array.isArray(arr)) {
-            callback(makeGameList(arr));
-        }
-
-    }
-    reader.readAsText(dataFile);
-}
-
 function getGameList(dateKey, callback) {
     var fullList = getFullGameList();
     if (fullList.length) {
@@ -74,64 +57,58 @@ function getGameList(dateKey, callback) {
     }
 }
 
-function isDigit(c) {
-    typeof c === 'string' && c.length == 1 && c >= '0' && c <= '9';
-}
-
 function makeGameList(arr) {
 /*
 game: id, time, league, host/guest : name, rank
 */    
     var list = [];
-    var key = "data";
-
     if (!Array.isArray(arr)) {
         return list;
     }
-
     arr.forEach(function(data){
-        if (data[key] && data[key + '-id']) {
-            var str = data[key].trim();
-            str = str.replace(/\d+ - \d+$/, ""); //remove first half result at the end 
-            str = str.replace(/\d+ - \d+/, " - "); //remove part of the current result in the middle
-            var id = data[key + '-id'];
-            var game = {};
-            game['id'] = id.replace('tr1_', '');
-            var idx = str.indexOf(":");
-            game['time'] = time2minutes(str.substr(idx - 2, 5));
-            game['league'] = str.substr(0, idx - 2);
-            if (!leagueOK(game['league'])) {
+        if (data['id'] && data['start_time'] && data['host'] && data['guest']) {
+            if (!leagueOK(data['league'])) {
                 return;
             }
-            idx += 3;
-            // maybe current time
-            started = str[idx] != ' ';
-            running = !isNaN(str[idx]) || str.substr(idx, 2) == 'HT';
+            var game = {};
+            game['id'] = data['id'];
+            game['time'] = time2minutes(data['start_time']);
+            game['league'] = data['league'];
+            var time = data['game_time'].replace('+', '').trim();
+            var started =  time != '';
+            var halfTime =  time == 'HT';
+            var overtime = time == 'Ot';
+            var running = !isNaN(time) || halfTime || overtime;
             if (started && !running) {
                 return;
             }
 //ENG U23 D113:3081[18] Huddersfield U232 - 1Hull City U23 [10]1 - 1                    
-//  TUR U1913:0090+ Bucaspor U192 - 2Altay Spor KulubuU19 1 - 2
-            if (started) {
-                idx += 1;
-                if (isDigit(str[idx])) {
-                    idx += 1;
-                    if (str[idx] == "+") {
-                        idx += 1;
-                    }
-               }
+//TUR U1913:0090+ Bucaspor U192 - 2Altay Spor KulubuU19 1 - 2
+//ROMC17:50HT FC Sacele0 - 3ACS Olimpic Cetate Rasnov [ROM D3-40]0 - 3
+//UEFA EL18:59 [GEO D1-3] FC Saburtalo Tbilisi(N)-FC Avan Academy [ARM D1-4]
+//SLOC17:00Ot[SLO D3-22] Bistrica2 - 2Brda [SLO D2-15]1 - 2
+//CZEC18:0045+ Olesnice U Bouzova1 - 1Otrokovice [CZE CFLM-6]
+            var host = data['host'];
+            var matches = host.match(/^(\[[^\]]+\])/);
+            var hostRank = matches ? matches[0] : "";
+            if (hostRank.length) {
+                host = host.substr(hostRank.length).trim();
             }
-            str = str.substr(idx);
-            var teamSeparatorIdx = str.search(/-(?=[^\]\[-]+\[.+$|[^\]\[-]+$)/);
-            var host =  str.substr(0, teamSeparatorIdx).trim();
-            var guest =  str.substr(teamSeparatorIdx + 1).trim();
-            game['host'] = parseTeam(host);
-            game['guest'] = parseTeam(guest);
+            var guest = data['guest'];
+            matches = guest.match(/(\[[^\]]+\])$/);
+            var guestRank = matches ? matches[0] : "";
+            if (guestRank.length) {
+                guest = data['guest'].substr(0, guest.length - guestRank.length).trim();
+            }
+            game['host'] = makeTeam(host, hostRank);
+            game['guest'] = makeTeam(guest, guestRank);
             if (game['host'] && game['guest']) {
                 list.push(game);
+            } else {
+                if (console && console.log) console.log(data[key]);
             }
         }
     });
     return list;
 }
-
+    

@@ -27,14 +27,6 @@ function Team(team) {
         stats.push(data);
     }
 
-    this.addUnchangedStats = function(time) {
-        if (stats.length == 0) {
-            return;
-        }
-        var stat = jQuery.extend(true, {}, stats[stats.length - 1]);
-        this.addStats(time, stat);
-    }
-
     function getLast15(time, startTime) {
         var i15 = -1;
         for (i = 0; i < stats.length - 1 && i15 == -1; i++) {
@@ -92,7 +84,7 @@ function Team(team) {
     }
 
     function getCurrent () {
-        return  stats.length > 0 ? stats[stats.length - 1] : {};
+        return  stats.length > 0 ? stats[stats.length - 1] : zeroStats;
     }
 
     function getEvents30 (time, startTime) {
@@ -131,6 +123,15 @@ function Team(team) {
         }
         return result;
     }
-
-    
+    this.toString = function() {
+        return JSON.stringify(stats);
+    }
+    this.fromString = function(stringified) {
+        try {
+            stats = JSON.parse(stringified);
+        } catch (e) {
+            if (console) console.log(e.toString());
+            stats = [];
+        }
+    }
 }

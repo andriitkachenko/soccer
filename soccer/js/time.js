@@ -15,7 +15,7 @@ function time2minutes(timestring) {
     var d = time.getDate();
     m = (parseInt(m) < 10 ? "0" : "") + m; 
     d = (parseInt(d) < 10 ? "0" : "") + d; 
-    time = Date.parse(y + "-" + m + "-" + d + "T" + timestring);
+    time = Date.parse(y + "-" + m + "-" + d + "T" + timestring + 'Z');
     return getMinutes(time.valueOf());
 }
 

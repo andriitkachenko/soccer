@@ -5,21 +5,23 @@ var getDataFunction = getGameList;
 
 manager = new MatchManager();
 
-var inputTime;
-var inputMatchId;
-var inputTimeCorrection;
+var inputMatchTime;
 var currentMatchList;
 
 function onLoad() {
-    inputTime = $('#startTime');
-    inputTimeCorrection = $('#timeCorrection');
-    inputMatchId = $('#inputMatch');
+    inputMatchTime = $('input#matchTime');
     currentMatchList = $('#matchlist');
-    setStartTime();
     setNotification(false);
-    getDataFunction(date2gameListKey(), manager.setMatches);
-    cleanUp();
+    toggleSort();
+    getDataFunction(date2gameListKey(), function(gameList) {
+        manager.setMatches(gameList);
+        manager.restoreFromStorage();
+        toggleWatching();
+    });
+}
 
+function onUnload() {
+    manager.saveToStorage();
 }
 
 function getMatchId(str) {
@@ -38,37 +40,38 @@ function getMatchId(str) {
     }
 }
 
-function setStartTime() {
-    inputTime.val(makeTimeString(Date.now()));
+var timePanelTimeout;
+
+function hideTimePanel() {
+    clearTimeout(timePanelTimeout);
+    inputMatchTime.css('display', 'none');
 }
 
-function setMatchPanel(id) {
+function setTimePanel(id) {
     var m = manager.getMatch(id);
-    inputTime.val(startTime2s(m.getStartTime()));
-    inputMatchId.val(m.getMatchId())
-    inputTimeCorrection.val(m.getTimeCorrection());
-}
-
-function addNewMatch() {
-    var id = getMatchId(inputMatchId.val());
-    var startTime = time2minutes(inputTime.val());
-    var correction = parseInt(inputTimeCorrection.val());
-    inputMatchId.val("");
-    if (id == -1) {
+    var time = getTimestamp();
+    time = m.getMatchTime(time);
+    if (inputMatchTime.css('display') === 'none') {
+        inputMatchTime.val(time);
+        inputMatchTime.css('display', 'block');
+        clearTimeout(timePanelTimeout);
+        timePanelTimeout = setTimeout(hideTimePanel, 15000);
         return;
     } 
-    if (manager.matchExists(id)) {
-        manager.getMatch(id).setStartTime(startTime);
-        manager.getMatch(id).setTimeCorrection(correction);
-        manager.updateList();
+    var newTime = parseInt(inputMatchTime.val());
+    if (isNaN(newTime)) {
         return;
     }
-    var game = {
-        'id' : id,
-        'time' : time2minutes(inputTime.val())
-    }
-    manager.addMatch(game);
-    manager.updateList();
+    var correction = time - newTime;
+    var breakTime = BREAK_END - BREAK_START;
+    if (newTime < 45 && time > 45)
+        correction += breakTime;
+    if (newTime > 45 && time < 45)
+        correction -= breakTime;
+    m.setTimeCorrection(correction);
+    hideTimePanel();
+    $('div.match#' + id + ' td.time').html(newTime);
+    hideTimePanel();
 }
 
 function removeMatch(id) {
@@ -88,13 +91,11 @@ function updateMatchStartTime(id, matchTimeStr) {
     manager.updateList();
 }
 
-function turnWatching () {
+function toggleWatching() {
     globalWatchBlock = !globalWatchBlock;
     $('#startButton').html((globalWatchBlock ? 'Start' : 'Stop'));
     $('#startButton').css("background-color", globalWatchBlock ? 'red' : 'lightgreen');
-    if (!globalWatchBlock) {
-        manager.updateStatus();
-    }
+    manager.toggleUpdate(globalWatchBlock);
 //    setNotification(!globalWatchBlock);
 }
 
@@ -103,29 +104,40 @@ function allowGlobalUpdate() {
 }
 
 function sortByHalfShots() {
-    manager.sortListByHalfShots();
+    manager.setSortByHalfShots();
     manager.updateList();
 }
 
 function sortByMatchShots() {
-    manager.sortListByMatchShots();
+    manager.setSortByMatchShots();
     manager.updateList();
 }
 
 function sortByTime() {
-    manager.sortListByMatchTime();
+    manager.setSortByMatchTime();
     manager.updateList();
 }
 
 function sortByLast() {
-    manager.sortListByLastShots();
+    manager.setSortByLastShots();
     manager.updateList();
 }
 
-function showNotification (stats) {
-    if (allowNotifications && !globalWatchBlock) {
-        var notification = new Notification("!!! " + stats['host']['name'] + "- " + stats['guest']['name']);
-        notification.onshow = function(){setTimeout(function() {notification.close();}, 5000);}
+var browserNotification;
+
+function closeNotification() {
+    if (browserNotification) {
+        browserNotification.close();
+    }
+}
+function showNotification (notif) {
+    if (notif && allowNotifications && !globalWatchBlock) {
+        var options  = {
+            body : notif
+        }
+        closeNotification();
+        browserNotification = new Notification("Live Update", options);
+        setTimeout(closeNotification, 8000);
     }
 }
 
@@ -141,8 +153,7 @@ function setNotification(allow) {
             }
         });
     }
-
-    allowNotifications = allow2;
+   allowNotifications = allow2;
     $('#notification').css("background-color", allowNotifications ? 'lightgreen' : 'red');
 }
 
@@ -154,8 +165,33 @@ function clearList() {
     manager.clearList();
 }
 
-function cleanUp() {
-    $('body').children('div[id!="main_div"]').remove();
-    var w =  $('body').width();
-    $('#main_div').css('width', w);
+function openDataPage() {
+    window.open('./php/parsehub_run.php', '_blank');
+}
+
+function toggleFilter() {
+    manager.toggleMatchFilter();
+    var filter = manager.getMatchFilter();
+    if (filter) {
+        $('button#filter').addClass('active');
+    } else {
+        $('button#filter').removeClass('active');
+    }
+    manager.updateList();
+}
+
+function toggleSort() {
+    var btn = $('button#sort');
+    var sorted = btn.hasClass('active');
+    if (sorted) {
+        sortByTime();
+        btn.removeClass('active');
+    } else {
+        sortByHalfShots();
+        btn.addClass('active');
+    }
+}
+
+function saveMatchList() {
+    manager.saveMatchListToCache();
 }

@@ -5,28 +5,33 @@ function Match(game) {
     var timeCorrection = 0;
     var matchId = game['id'];
     var league = game['league'] ? game['league'] : '';
-    var lastResponse = '';
+    var handicap = null;
+    var updateCount = 0;
     var onUpdate;
     var updateInProgress = false;;
     var allowWatching = false;
     var updateInterval;
+    var lastNotified = null;
+
+    var isFavorite = false;
 
     var host = new Team(game['host']);
     var guest = new Team(game['guest']);
 
-
     this.getMatchId = function() {
         return matchId;
+    }
+
+    this.isUpdated = function() {
+        return updateCount >= 3;
     }
     
     this.setWatch = function(allowWatch) {
         allowWatching = allowWatch;
+        clearInterval(updateInterval);
         if (allowWatching) {
             updateInterval = setInterval(updateStatus, updateMatchInterval * 1000.);
             updateStatus();
-        } else if (updateInterval) {
-            clearInterval(updateInterval);
-            updateInterval = undefined;
         }
     }
 
@@ -39,7 +44,7 @@ function Match(game) {
     }
 
     this.setTimeCorrection = function (correction) {
-        timeCorrection = correction;
+        timeCorrection += correction;
     }
 
     this.getTimeCorrection = function (correction) {
@@ -56,10 +61,10 @@ function Match(game) {
 
     function getMatchTime(time) {
         var mins = time - getRealStartTime();
-        if (mins > 45 && mins <= 60) {
+        if (mins > BREAK_START && mins <= BREAK_END) {
             mins = 45;
-        } else if (mins > 60) {
-            mins -= 15;
+        } else if (mins > BREAK_END) {
+            mins -= BREAK_END - BREAK_START;
         }
         return mins;        
     }
@@ -72,16 +77,6 @@ function Match(game) {
         return allowWatching;
     }
 
-    function updateTeams(time, data) {
-        host.addStats(time, data ? data['host'] : data);
-        guest.addStats(time, data ? data['guest'] : data);
-    }
-
-    function setUnchangedStatus(time) {
-        host.addUnchangedStats(time);
-        guest.addUnchangedStats(time);
-    }
-
     this.makeMatchStats = function (time) {
         var matchTime = getMatchTime(time);
         return {
@@ -90,23 +85,23 @@ function Match(game) {
             'startTime' : startTime,
             'time' : matchTime,
             'host' : host.makeTeamStats(time, getRealStartTime(), getMatchTime(time)),
-            'guest' : guest.makeTeamStats(time, getRealStartTime(), getMatchTime(time))
+            'guest': guest.makeTeamStats(time, getRealStartTime(), getMatchTime(time)),
+            'isHalf1' : matchTime > 0 && matchTime < BREAK_START,
+            'isBreak' : matchTime == BREAK_START,
+            'isHalf2' : matchTime > BREAK_END && matchTime <= MAX_WATCHING_TIME
         }
     }
 
-    function onGetStatistics(time, response) {
-        if (response == "") {
+    function onGetStatistics(time, stats) {
+        if (!stats) {
             return;
         }
-        if (response == lastResponse) {
-            setUnchangedStatus(time);
-        } else {
-            var data = parseResponse(response);
-            updateTeams(time, data);
-            if (onUpdate) {
-                onUpdate();
-            }
-            lastResponse = response;
+        updateCount++;
+        host.addStats(time, stats['host']);
+        guest.addStats(time, stats['guest']);
+        handicap = stats['handicap'];
+        if (onUpdate) {
+            onUpdate();
         }
     }
 
@@ -116,21 +111,48 @@ function Match(game) {
         }
         var time = getTimestamp();
         updateInProgress = true;
-        getStatistics(matchId, function(response) {
-            onGetStatistics(time, response);
+        getStatistics(matchId, function(stats) {
+            if (stats) {
+                onGetStatistics(time, stats);
+            }
             updateInProgress = false;
         });
-    }
-
-    this.updateStatus = function () {
-        updateStatus();
     }
 
     this.setCallback = function(callback) {
         onUpdate = callback;
     }
-
+    
     this.isBreak = function(time) {
-        return getMatchTime(time) >= BREAK_START && getMatchTime <= BREAK_END;
+        var t = getMatchTime(time); 
+        return  t == 45;
     }
- }
+    this.toggleFavorite = function() {
+        isFavorite = !isFavorite;
+        return this.isFavorite();
+    }
+    this.isFavorite = function() {
+        return isFavorite;
+    }
+    this.setNotified = function(time) {
+        lastNotified = time;
+    }
+    this.isNotified = function(time) {
+        return lastNotified == time;
+    }
+    this.toString = function() {
+        var data = {
+            host  : host.toString(),
+            guest : guest.toString()
+        };
+        return JSON.stringify(data);
+    }
+    this.fromString = function(stringified) {
+        var data;
+        try {
+            data = JSON.parse(stringified);
+            host.fromString(data['host']);
+            guest.fromString(data['guest']);
+        } catch (e) {}
+    }
+}

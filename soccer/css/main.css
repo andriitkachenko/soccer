@@ -3,16 +3,19 @@ html {
 }
 
 #main_div {
+    background-color: #0b80e8;
     width : 100%;
     font-size : 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
 }
 
 #header {
-   min-height: 4rem;
-   border-bottom-style: double;
-   border-bottom-color: lightgray;
-   margin-bottom: 4px;
-
+   height: 5rem;
+   padding: 8px 0;
+   box-sizing: border-box;
 }
 
 #header tr:first-child button {
@@ -21,21 +24,40 @@ html {
 
 #header  button {
     font-size: 1.5rem;
+    min-width: 72px;
+    border-radius: 0.7rem;
+}
+
+button.btn {
+
+}
+
+button.btn#filter.active, button.btn#sort.active {
+    background-color: chartreuse;
 }
 
 #view_body {
     position:absolute;
-    top: 6rem;
+    top: 5rem;
     right:0px;
     left:0px;
-    bottom:0px;
+    bottom:2rem;
     overflow-y: scroll;
 }
 
-#list_placeholder {
-    height: 16px;
-    background-color: orange;
-    opacity : 0.25;
+#footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2rem;
+    color: white;
+}
+
+#footer > #list_info {
+    padding: 4px;
+    text-align: right;
+    font-size: 1.2rem;
 }
 
 @media screen and (min-width: 1024px) {
@@ -46,39 +68,66 @@ html {
     #view_body {
         right: auto;
         width: 768px;
-    }    
+    }
     #header  button {
         font-size: 1rem;
     }
 }
 
-
 table {
     table-layout:fixed;
     width: 100%;
+}
+
+div#matchlist table {
     border-collapse: collapse;
     border: 1px;
     border-color: lightgray;
 }
 
-div.match table.info {
-    background-color: #f2f2f2;
+div#header table {
+    border-collapse: collapse;
+    border-bottom-style: solid;
+    border-bottom-color: lightgray;
+    border-bottom-width: 2px;
+}
+
+div#header table td {
+    padding-bottom: 4px;
+}
+
+div.match {
+    margin: 8px;
+}
+
+div.match div.info {
+    padding : 8px 0;
+    background-color: #cecece;
+    border-radius: 15px 15px 0px 0px;
+}
+
+div.match div.stat, div.match div.events {
+   background-color: white;
 }
 
 div.match table.info td.close {
     width: 4rem;
 }
 
-div.match table.info td.league, 
+div.match table.info td.league,
 div.match table.info td.start_time {
-    font-size:0.5em;
+    font-size:0.6em;
     width: 7rem;
 }
 
 div.match table.info td.time {
-    font-size: 1.2em;   
+    font-size: 1.3em;
     font-weight: bold;
-    width: 6rem;
+    width: 8rem;
+}
+
+div.match table.info td.time.notify {
+    background-color: #ff8f8f;
 }
 
 div.match table.info td.team {
@@ -86,18 +135,17 @@ div.match table.info td.team {
 }
 
 div.match table.info td.team span.name {
-    font-weight: bold;
-    font-size: 1em;
+    font-size: 1.15em;
 }
 
 div.match table.info td.team span.rank {
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 
 div.match table.info td.scores {
     font-weight:bold;
-    font-size:1.2em; 
-    width:7rem;  
+    font-size:1.3em;
+    width:7rem;
 }
 
 div.match table.info td.star {
@@ -121,45 +169,36 @@ div.match table.stat {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
-#matchstat td, #matchevents td {
+table.stat td, table.events td {
     border: 1px solid rgb(221, 221, 221);
 }
 
-#matchstat td{
+table.stat td{
     padding: 4px;
 }
 
-#matchevents td {
+table.events td {
     padding: 2px;
 }
 
+div.event {
+    min-height : 12px;
+    font-size : 0.5em;
+    padding : 0;
+}
 .match_part {
-    width : 3%;
+    width : 5%;
     font-size : 0.6em;
-    padding-top : 0;
-    vertical-align : top;
 }
 
 .ball_posession {
     width : 5%;
     font-size : 0.7em;
-    padding-bottom : 0;
-    vertical-align : bottom;
 }
 
 .shots {
     font-weight : 600;
-    font-size : 0.9em;
-}
-div.event {
-    min-height : 8px;
-    font-size : 0.4em;
-    padding : 0; 
-}
-
-td.event {
-    width : 2%;
-    padding : 2px;
+    font-size : 1em;
 }
 
 input[type="number"] {
@@ -186,7 +225,13 @@ button.close {
 }
 
 .ellipsis {
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+input#matchTime {
+    font-size: 1.8rem;
+    margin:auto;
+    display:none;
 }
