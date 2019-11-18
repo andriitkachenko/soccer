@@ -3,6 +3,10 @@
 require_once __DIR__ . '/db_config.php';
 require_once __DIR__ . '/../config.php';
 
+function saveLastError($conn) {
+    appendError(json_encode($conn->errorInfo()));
+}
+
 function makeConnection() {
     return openDbConnection(DB_SERVER, DB_NAME, DB_USER, DB_PASSWORD);
 }
@@ -22,6 +26,20 @@ function openDbConnection($server, $dbname, $username, $password) {
 }
 function closeDbConnection($conn) {
     $conn = null;
+}
+
+function exec_query($conn, $query) {
+    global $lastError;
+    if (empty($conn)) {
+        $lastError = "DB connection not set for query " . $query;
+        return false;
+    }
+    $res = $conn->exec($query);
+    if ($res == false && $res !== 0) {
+        saveLastError($conn);
+        return false;
+    }
+    return true; 
 }
 
 ?>
