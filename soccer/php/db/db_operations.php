@@ -193,7 +193,7 @@ function loadNotFinishedGames($conn) {
             continue;
         $game['league']     =  $r['league'];
         $game['start_at']   =  $r['start_at'];
-        $game['start_time'] =  getMinuteTimestamp(DateTime::createFromFormat('Y-m-d H:i:00', $r['start_at']));
+        $game['start_time'] =  getMinuteTimestamp(DateTime::createFromFormat('Y-m-d H:i:s', $r['start_at'])->getTimestamp());
         $game['host']       =  $r['host'];
         $game['host_rank']  =  $r['host_rank'];
         $game['guest']      =  $r['guest'];

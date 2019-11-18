@@ -9,7 +9,8 @@ function appendError($error) {
     $lastError = $lastError . "\n\n" . $error;
 }
 
-function getMinuteTimestamp() {
-    return floor(time() / 60.);
+function getMinuteTimestamp($time) {
+    $time = empty($time) ? time() : $time;
+    return floor($time / 60.);
 }
 ?>

@@ -33,12 +33,12 @@ foreach ($response as $line) {
 }
 
 //2019-11-09T17:55:03
-$ahchorTime = DateTime::createFromFormat('Y-m-d\TH:i:s', $run['start_time'])->getTimestamp();
+$anchorTime = DateTime::createFromFormat('Y-m-d\TH:i:s', $run['start_time'])->getTimestamp();
 
 $games = getParseHubData($run['token']);
 
 $result = file_put_contents(DATA_FILE, json_encode($games));
-$dbResult = humanizeBool(saveGamesToDB($games, $ahchorTime));
+$dbResult = humanizeBool(saveGamesToDB($games, $anchorTime));
 
 updateParsehubLog("ParseHub webhook save", "db: $dbResult, file: $result" );
 
