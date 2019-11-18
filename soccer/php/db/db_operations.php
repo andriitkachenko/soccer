@@ -56,58 +56,48 @@ function constGameParams2value($game) {
     return "($id, $league, '$start_time', '$host', $hostRank,  '$guest',  $guestRank, $finished, $descr)";
 }
 
-function varGameParams2value($game, $ahchorTime) {
+function varGameParams2value($game, $anchorTime) {
     $time = @intval($game['game_time']);
     $score = $game['score'];
     if ($time <= 1 || empty($score)) {
         return false;
     }
     $id = $game['id'];
-    $cur_time = date('Y-m-d H:i:s', $ahchorTime);
+    $cur_time = date('Y-m-d H:i:s', $anchorTime);
     $game_time = $time;
     $firstHalf = $time <= 45 ? 1 : 0;
     return "($id, '$cur_time', '$game_time', $firstHalf, '$score')";
 }
 
-function saveGamesToDB($games, $ahchorTime) {
+function saveGamesToDB($games, $anchorTime) {
     $conn = makeConnection();
     if (empty($conn)) {
         return false;
     }    
-    $gameIds = array_map(function($g) {return $g['game_id'];}, $games);
+    $gameIds = array_map(function($g) {return @intval($g['id']);}, $games);
     // get all unfinished
-    $oldNotFinishedGameIds = loadOldNotFinishedGameIds($conn, $ahchorTime);
+    $oldNotFinishedGameIds = loadOldNotFinishedGameIds($conn, $anchorTime);
     // mark as finished all that absent in the game list
-    $oldGamesIds = array_diff($oldNotFinishedGameIds, $gameIds);
-    $res = $res && markGamesAsFinished($conn, $oldGamesIds, $ahchorTime);
+    $oldGamesIds = array_values(array_diff($oldNotFinishedGameIds, $gameIds));
+    $res = markGamesAsFinished($conn, $oldGamesIds);
     // update games in the db
-    $res = $res && insertConstGameParams($conn, $games) && insertVarGameParams($conn, $games, $ahchorTime);
-    // update version
-    $res = $res && updateGameListVersion($ahchorTime);
+    $res = 
+        insertConstGameParams($conn, $games) 
+        && insertVarGameParams($conn, $games, $anchorTime);
     // wrap it up
     closeDbConnection($conn);
     return $res;
 }
 
-function  markGamesAsFinished($conn, $absentGamesIds, $anchorTime) {
-    if (empty($absentGamesIds)) {
+function  markGamesAsFinished($conn, $gamesIds) {
+    if (empty($gamesIds)) {
         return true;
     }
-    $gameIdList = implode(',', $absentGamesIds);
+    $gameIdList = implode(',', $gamesIds);
     $query = 
         "UPDATE `games`
             SET `finished` = 1
             WHERE `finished` = 0 AND `game_id` IN ($gameIdList);
-        ";
-    return exec_query($conn, $query);
-}
-
-function updateGameListVersion($conn, $anchorTime) {
-    $timestamp = date('Y-m-d H:i:s', $ahchorTime);
-    $query = 
-        "UPDATE `games_version`
-            SET `last_update` = $timestamp 
-            LIMIT 1;
         ";
     return exec_query($conn, $query);
 }
@@ -131,13 +121,13 @@ function insertConstGameParams($conn, $games) {
     return exec_query($conn, $query);  
 }
 
-function insertVarGameParams($conn, $games, $ahchorTime) {
+function insertVarGameParams($conn, $games, $anchorTime) {
     if (!count($games)) {
         return true;
     }
     $values = [];
     foreach($games as $g) {
-        $value = varGameParams2value($g, $ahchorTime);
+        $value = varGameParams2value($g, $anchorTime);
         if ($value) {
             $values[] = $value;
         }
@@ -145,13 +135,13 @@ function insertVarGameParams($conn, $games, $ahchorTime) {
     $values = implode($values, ', ');
     $fields = implode(array_map(function($f) {return "`$f`";}, GAME_TIMES_FIELDS), ', ');
     $duplicates = implode(array_map(function($f) {return "`$f`=VALUES(`$f`)";}, GAME_TIMES_FIELDS), ', ');
-    $lastUpdate = date('Y-m-d H:i:s', $ahchorTime);
+    $lastUpdate = date('Y-m-d H:i:s', $anchorTime);
     $query = 
         "INSERT INTO `game_corrections` ($fields) 
             VALUES $values 
             ON DUPLICATE KEY UPDATE $duplicates;
         UPDATE `games_version` 
-            SET `last_update`= $lastUpdate
+            SET `last_update`= '$lastUpdate'
             LIMIT 1;
         ";
     return exec_query($conn, $query);  
@@ -162,7 +152,7 @@ function loadOldNotFinishedGameIds($conn, $anchorTime) {
     $query =
        "SELECT `game_id`
         FROM `games` 
-        WHERE `finished` = 0 AND `start_at` < $time;
+        WHERE `finished` = 0 AND `start_at` < '$time';
     ";
     $rows = $conn->query($query)->fetchAll();
     if ($rows === false) {
@@ -171,7 +161,7 @@ function loadOldNotFinishedGameIds($conn, $anchorTime) {
     $ids = [];
     foreach ($rows as $r) {
         $id =  @intval($r['game_id']);
-        if ($game['id'] <= 1)
+        if ($id <= 1)
             continue;
         $ids[] = $id;
     }
