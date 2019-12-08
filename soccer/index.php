@@ -3,7 +3,7 @@
     require_once __DIR__ . '/php/games.php';
 
     updateAccessLog();
-    $games = isset($_GET['db']) ? getGamesFromDB() : getGamesFromFile();
+    list($games, $timestamp) = isset($_GET['db']) ? getGamesFromDB() : getGamesFromFile();
 
     function makeVersionedFilePath($filePath) {
         if (!file_exists($filePath)) {
