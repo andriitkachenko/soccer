@@ -5,6 +5,13 @@
 
     if (isset($_POST['match_id'])) {
         $id = $_POST['match_id'];
+        $html = loadGameStatistics($id);
+        $statistics = parseGameStatisticsHtml($html);
+        insertStatistics($id, $statistics);
+        echo json_encode($statistics);
+     }
+
+    function loadGameStatistics($id) {
         $httpcode = 0;
         
         for ($i = 0; $i < 3 && $httpcode != 200; $i++) {
@@ -15,14 +22,14 @@
             curl_setopt($ch, CURLOPT_URL, DATA_URL . $id);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            $data = curl_exec($ch);
+            $html = curl_exec($ch);
             $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
         }
-        echo json_encode(parseData($id, $data));
+        return $httpcode == 200 ? $html : "";
     }
 
-    function parseData($gameId, $html) {
+    function parseGameStatisticsHtml($html) {
         $getNumber = function($n) {
             return is_numeric($n) ? intval($n) : false;
         };
@@ -58,13 +65,11 @@
                 $guest[$key] = $getNumber($g);
             }
         }
-        $statistics = [
+        return [
             'host'  => $host,
             'guest' => $guest,
             'handicap' => $handicap
         ];
-        insertStatistics($gameId, $statistics);
-        return $statistics;
     }
 
    // echo json_encode(parseData(file_get_contents(__DIR__ . '/xxx.html')));
