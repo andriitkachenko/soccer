@@ -76,7 +76,7 @@ function Team(team) {
         */ 
         var s = subtractStats(stat, current);
         var event = 1;
-        if (s['rd']) event = 2;
+        if (s['rc']) event = 2;
         if (s['sh']) event = 3;
         if (s['sg']) event = 4;
         if (s['gl']) event = 5;
