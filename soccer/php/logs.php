@@ -52,8 +52,8 @@ function updateCronLog($title, $data) {
     return file_put_contents(CRON_LOG, implode("\n", $items) . "\n\n" .$old);
 }
 
-function updateLastDataLog($data) {
-    return file_put_contents(LAST_DATA_LOG, $data);
+function updateLastParsehubResponseFile($data) {
+    return file_put_contents(LAST_PARSEHUB_RESPONSE_FILE, $data);
 }
 
 ?>

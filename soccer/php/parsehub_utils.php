@@ -75,7 +75,7 @@ function getParseHubData($runToken) {
     if ($data === false) {
         return [];
     }
-    updateLastDataLog($data);
+    updateLastParsehubResponseFile($data);
     $data = json_decode(normalizeParseHubData($data));
     if ($data && isset($data->selection1)) {
         $data = $data->selection1;

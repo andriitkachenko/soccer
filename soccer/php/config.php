@@ -1,6 +1,7 @@
 <?php
 
 const DATA_FILE = __DIR__ . '/../data/games.json';
+const LAST_PARSEHUB_RESPONSE_FILE = __DIR__ . "/../data/last_parsehub_response.txt";
 
 const ACCESS_LOG = __DIR__ . "/../logs/access.log";
 const ACCESS_LOG_ARCHIVE = __DIR__ . "/../logs/access_archive.log";
@@ -8,7 +9,6 @@ const PARSEHUB_LOG = __DIR__ . "/../logs/parsehub.log";
 const PARSEHUB_LOG_ARCHIVE = __DIR__ . "/../logs/parsehub_archive.log";
 const CRON_LOG = __DIR__ . "/../logs/cron.log";
 const CRON_LOG_ARCHIVE = __DIR__ . "/../logs/cron_archive.log";
-const LAST_DATA_LOG = __DIR__ . "/../logs/last_data.txt";
 
 const PARSEHUB_RUN_PROJECT_URL = 'https://www.parsehub.com/api/v2/projects/txg_T0WpxYTc/run';
 const PARSEHUB_RUN_DATA_URL= 'https://www.parsehub.com/api/v2/runs/';
