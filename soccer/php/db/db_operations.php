@@ -23,7 +23,7 @@ const GAME_TIMES_FIELDS = [
     'score'
 ];
 
-const GAME_EVENTS_FILEDS = [
+const GAME_EVENTS_FIELDS = [
     'game_id',
     'timestamp',
     'host',
@@ -238,14 +238,18 @@ function insertGameEvents($conn, $gameId, $statistics) {
     $values = [];
     $timestamp = date('Y-m-d H:i:s');
     foreach(GAME_EVENT_CODES as $code) {
-        if (isset($statistics['host'][$code]))
-            $values[] = [$gameId, $timestamp, 1, $code, $statistics['host'][$code]];
-        if (isset($statistics['guest'][$code]))
-            $values[] = [$gameId, $timestamp, 0, $code, $statistics['guest'][$code]];
+        if (isset($statistics['host'][$code])) {
+            $amount = $statistics['host'][$code];
+            $values[] = "($gameId, '$timestamp', 1, '$code', $amount)";
+        }
+        if (isset($statistics['guest'][$code])) {
+            $amount = $statistics['guest'][$code];
+            $values[] = "($gameId, '$timestamp', 0, '$code', $amount)";
+        }
     }
     $values = implode($values, ', ');
     $fields = implode(array_map(function($f) {return "`$f`";}, GAME_EVENTS_FIELDS), ', ');
-    $duplicates = implode(array_map(function($f) {return "`$f`=VALUES(`$f`)";}, GAMES_FIELDS), ', ');
+    $duplicates = implode(array_map(function($f) {return "`$f`=VALUES(`$f`)";}, GAME_EVENTS_FIELDS), ', ');
     $query = 
         "INSERT INTO `game_events` ($fields) 
             VALUES $values 
@@ -253,5 +257,4 @@ function insertGameEvents($conn, $gameId, $statistics) {
         ";
     return exec_query($conn, $query);  
 }
-
 ?>

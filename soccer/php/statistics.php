@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . '/logs.php';
     require_once __DIR__ . '/events.php';
+    require_once __DIR__ . '/db/db_operations.php';
 
     if (isset($_POST['match_id'])) {
         $id = $_POST['match_id'];
@@ -63,7 +64,7 @@
             'handicap' => $handicap
         ];
         insertStatistics($gameId, $statistics);
-        return statistics;
+        return $statistics;
     }
 
    // echo json_encode(parseData(file_get_contents(__DIR__ . '/xxx.html')));

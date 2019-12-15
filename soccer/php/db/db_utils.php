@@ -35,12 +35,17 @@ function exec_query($conn, $query) {
         updateDbErrorLog("DB connection not set", $query);
         return false;
     }
-    $res = $conn->exec($query);
+    $res = false;
+    try {
+        $res = $conn->exec($query);
+    } catch(PDOException $e) {
+        updateDbErrorLog("SQL query failed: " . $e->getMessage(), $query);
+    }
     if ($res == false && $res !== 0) {
         updateDbErrorLog(getLastError($conn), $query);
         return false;
     }
-    return true; 
+    return true;
 }
 
 ?>
