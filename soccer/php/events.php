@@ -1,5 +1,6 @@
 <?php
 
+const EVENT_GOAL              = "gl";
 const EVENT_SHOT              = "sh";
 const EVENT_SHOT_ON_GOAL      = "sg";
 const EVENT_FOUL              = "fl";
@@ -15,6 +16,7 @@ const EVENT_INTERCEPTION      = "ic";
 const EVENT_ASSIST            = "as";
 
 const GAME_EVENT_CODES = [
+    EVENT_GOAL,
     EVENT_SHOT,
     EVENT_SHOT_ON_GOAL,
     EVENT_FOUL,
@@ -34,6 +36,7 @@ function event2code($event) {
     $event = strtolower($event);
     $code = false;
     switch($event) {
+        // goal do not have name in statistics html
         case "shots":              $code = EVENT_SHOT; break;
         case "shots on goal":      $code = EVENT_SHOT_ON_GOAL; break;
         case "fouls":              $code = EVENT_FOUL; break;

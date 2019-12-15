@@ -7,16 +7,16 @@
         $gameId = $_POST['match_id'];
         $old = loadLastGameStatistics($gameId);
         if (!$old) {
-            $html = loadGameStatistics($id);
+            $html = loadGameStatistics($gameId);
             $statistics = parseGameStatisticsHtml($html);
-            insertStatistics($id, $statistics);
+            insertStatistics($gameId, $statistics);
         } else {
             $statistics = $old;
         }
         echo json_encode($statistics);
      }
 
-    function loadGameStatistics($id) {
+    function loadGameStatistics($gameId) {
         $httpcode = 0;
         
         for ($i = 0; $i < 3 && $httpcode != 200; $i++) {
@@ -24,7 +24,7 @@
                 sleep(2);
             }
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, DATA_URL . $id);
+            curl_setopt($ch, CURLOPT_URL, DATA_URL . $gameId);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
             $html = curl_exec($ch);

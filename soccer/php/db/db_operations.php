@@ -259,6 +259,16 @@ function insertGameEvents($conn, $gameId, $statistics) {
 }
 
 function loadLastGameStatistics($gameId) {
+    $conn = makeConnection();
+    if (empty($conn) || empty($gameId)) {
+        return false;
+    }
+    $statistics = loadLatestGameStatistics($conn, $gameId);
+    closeDbConnection($conn);
+    return $statistics;
+}
+
+function loadLatestGameStatistics($conn, $gameId) {
     $statistics = false;
     $query = 
         "SELECT 
@@ -273,20 +283,24 @@ function loadLastGameStatistics($gameId) {
         ) as t
         INNER JOIN `game_events` as e
         ON e.`game_id` = t.`game_id`
-        AND e.`timestamp` > date_sub(t.maxT, interval 1 minute);        
+            AND e.`timestamp` = t.maxT
+            AND t.maxT > date_sub(NOW(), interval 1 minute);  
     ";
     $rows = $conn->query($query)->fetchAll();
     foreach ($rows as $r) {
         $ok = in_array($r['host'], ['1', '0']) 
-                && in_array(r['event'], GAME_EVENT_CODES) 
+                && in_array($r['event'], GAME_EVENT_CODES) 
                 && ctype_digit($r['amount']);
         if ($ok) {
             if ($r['host'] == '1') {
-                $statistics['host'][r['event']] = @intval($r['amount']);
+                $statistics['host'][$r['event']] = @intval($r['amount']);
             } else {
-                $statistics['guest'][r['event']] = @intval($r['amount']);
+                $statistics['guest'][$r['event']] = @intval($r['amount']);
             }
         }
+    }
+    if ($statistics !== false) {
+        $statistics['cached'] = true;
     }
     return $statistics;
 }
