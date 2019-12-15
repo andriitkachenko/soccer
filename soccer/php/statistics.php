@@ -48,25 +48,9 @@
             if ($tds->length != 3) 
                 continue;
             $h = str_replace("%", "", $tds->item(0)->textContent);
-            $type = strtolower($tds->item(1)->textContent);
+            $event = $tds->item(1)->textContent;
             $g = str_replace("%", "", $tds->item(2)->textContent);
-            
-            switch($type) {
-                case "shots":              $key = "sh"; break;
-                case "shots on goal":      $key = "sg"; break;
-                case "fouls":              $key = "fl"; break;
-                case "corner kicks":       $key = "ck"; break;
-                case "offsides":           $key = "of"; break;
-                case "yellow cards":       $key = "yc"; break;
-                case "red cards":          $key = "rc"; break;
-                case "ball possession":    $key = "bp"; break;
-                case "headers":            $key = "hd"; break;
-                case "saves":              $key = "sv"; break;
-                case "successful tackles": $key = "st"; break;
-                case "interceptions":      $key = "ic"; break;
-                case "assists":            $key = "as"; break;
-                default : $key = false;
-            }
+            $key = event2code($event);
             if ($key) {
                 $host[$key]  = $getNumber($h);
                 $guest[$key] = $getNumber($g);
@@ -79,6 +63,26 @@
             'handicap' => $handicap
         ];
     }
-    
+
+    function event2code($event) {
+        $event = strtolower($event);
+        $key = false;
+        switch($event) {
+            case "shots":              $key = "sh"; break;
+            case "shots on goal":      $key = "sg"; break;
+            case "fouls":              $key = "fl"; break;
+            case "corner kicks":       $key = "ck"; break;
+            case "offsides":           $key = "of"; break;
+            case "yellow cards":       $key = "yc"; break;
+            case "red cards":          $key = "rc"; break;
+            case "ball possession":    $key = "bp"; break;
+            case "headers":            $key = "hd"; break;
+            case "saves":              $key = "sv"; break;
+            case "successful tackles": $key = "st"; break;
+            case "interceptions":      $key = "ic"; break;
+            case "assists":            $key = "as"; break;
+        }
+        return $key;
+    }
    // echo json_encode(parseData(file_get_contents(__DIR__ . '/xxx.html')));
 ?>
