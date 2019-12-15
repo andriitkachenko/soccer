@@ -3,8 +3,12 @@
 require_once __DIR__ . '/db_config.php';
 require_once __DIR__ . '/../config.php';
 
+function getLastError($conn) {
+    return json_encode($conn->errorInfo());
+}
+
 function saveLastError($conn) {
-    appendError(json_encode($conn->errorInfo()));
+    appendError(getLastError($conn));
 }
 
 function makeConnection() {
@@ -12,15 +16,13 @@ function makeConnection() {
 }
 
 function openDbConnection($server, $dbname, $username, $password) {
-    global $lastError;
-
     $conn = null;
     try {
         $conn = new PDO("mysql:host=$server;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
-        $lastError = "DB connection failed: " . $e->getMessage();
+        updateDbErrorLog("DB connection failed: " . $e->getMessage());
     }
     return $conn;
 }
@@ -29,14 +31,13 @@ function closeDbConnection($conn) {
 }
 
 function exec_query($conn, $query) {
-    global $lastError;
     if (empty($conn)) {
-        $lastError = "DB connection not set for query " . $query;
+        updateDbErrorLog("DB connection not set", $query);
         return false;
     }
     $res = $conn->exec($query);
     if ($res == false && $res !== 0) {
-        saveLastError($conn);
+        updateDbErrorLog(getLastError($conn), $query);
         return false;
     }
     return true; 

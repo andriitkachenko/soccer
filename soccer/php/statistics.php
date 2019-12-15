@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__ . '/logs.php';
+    require_once __DIR__ . '/events.php';
 
     if (isset($_POST['match_id'])) {
         $id = $_POST['match_id'];
@@ -17,10 +18,10 @@
             $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
         }
-        echo json_encode(parseData($data));
+        echo json_encode(parseData($id, $data));
     }
 
-    function parseData($html) {
+    function parseData($gameId, $html) {
         $getNumber = function($n) {
             return is_numeric($n) ? intval($n) : false;
         };
@@ -56,33 +57,14 @@
                 $guest[$key] = $getNumber($g);
             }
         }
-
-        return [
+        $statistics = [
             'host'  => $host,
             'guest' => $guest,
             'handicap' => $handicap
         ];
+        insertStatistics($gameId, $statistics);
+        return statistics;
     }
 
-    function event2code($event) {
-        $event = strtolower($event);
-        $key = false;
-        switch($event) {
-            case "shots":              $key = "sh"; break;
-            case "shots on goal":      $key = "sg"; break;
-            case "fouls":              $key = "fl"; break;
-            case "corner kicks":       $key = "ck"; break;
-            case "offsides":           $key = "of"; break;
-            case "yellow cards":       $key = "yc"; break;
-            case "red cards":          $key = "rc"; break;
-            case "ball possession":    $key = "bp"; break;
-            case "headers":            $key = "hd"; break;
-            case "saves":              $key = "sv"; break;
-            case "successful tackles": $key = "st"; break;
-            case "interceptions":      $key = "ic"; break;
-            case "assists":            $key = "as"; break;
-        }
-        return $key;
-    }
    // echo json_encode(parseData(file_get_contents(__DIR__ . '/xxx.html')));
 ?>

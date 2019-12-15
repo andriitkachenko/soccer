@@ -1,7 +1,9 @@
 -- drop table if exists `game_corrections`;
+-- drop table if exists `game_events`;
 -- drop table if exists `games`;
 
 -- truncate table `game_corrections`;
+-- truncate table `game_events`;
 -- truncate table `games`;
 
 create table if not exists `games` (
@@ -40,5 +42,34 @@ create table if not exists `games_version` (
     `last_update` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB, CHARACTER SET=UTF8;
-s
 -- INSERT INTO  `games_version` VALUES ();
+
+create table if not exists `game_events` (
+    `id` int(11) not null AUTO_INCREMENT,
+    `game_id` int(11) not null,
+    `timestamp` TIMESTAMP NOT NULL,
+    `host` tinyint(1) not null,
+    `event` enum('gl', 'sg', 'sh', 'rc', 'yc', 'fl', 'bp', 'ck', 'of', 'hd', 'sv', 'st', 'ic', 'as') NOT NULL 
+        COMMENT "
+            gl = goals, 
+            sg = shots on goal,
+            sh = shots, 
+            rc = red cards,
+            yc = yellow cards,
+            fl = fouls,
+            bp = ball possession,
+            ck = corner kicks,
+            of = offsides,
+            hd = headers,
+            sv = saves,
+            st = successful tackles,
+            ic = interceptions,
+            as = assists
+        ",    
+    `amount` int not null default 1,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`game_id`, `host`, `event`, `amount`),
+    CONSTRAINT FK_game_events_game_id FOREIGN KEY (`game_id`) REFERENCES `games`(`game_id`) 
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+

@@ -9,6 +9,8 @@ const PARSEHUB_LOG = __DIR__ . "/../logs/parsehub.log";
 const PARSEHUB_LOG_ARCHIVE = __DIR__ . "/../logs/parsehub_archive.log";
 const CRON_LOG = __DIR__ . "/../logs/cron.log";
 const CRON_LOG_ARCHIVE = __DIR__ . "/../logs/cron_archive.log";
+const DB_ERROR_LOG = __DIR__ . "/../logs/db_error.log";
+const DB_ERROR_ARCHIVE = __DIR__ . "/../logs/db_error_archive.log";
 
 const PARSEHUB_RUN_PROJECT_URL = 'https://www.parsehub.com/api/v2/projects/txg_T0WpxYTc/run';
 const PARSEHUB_RUN_DATA_URL= 'https://www.parsehub.com/api/v2/runs/';

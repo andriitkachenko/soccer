@@ -23,6 +23,14 @@ const GAME_TIMES_FIELDS = [
     'score'
 ];
 
+const GAME_EVENTS_FILEDS = [
+    'game_id',
+    'timestamp',
+    'host',
+    'event',    
+    'amount'
+];
+
 function getGameMinute($time) {
     $mins = @intval($time);
     $ok = $mins > 1 || $mins == 1 && $time == '1';
@@ -212,4 +220,38 @@ function readNotFinishedGames() {
     closeDbConnection($conn);
     return $games;
 }
+
+function insertStatistics($gameId, $statistics) {
+    $conn = makeConnection();
+    if (empty($conn)) {
+        return false;
+    }
+    if (empty($gameId) || empty($statistics)) {
+        return true;
+    }
+    $ok = insertGameEvents($conn, $gameId, $statistics);
+    closeDbConnection($conn);
+    return $ok;
+}
+
+function insertGameEvents($conn, $gameId, $statistics) {
+    $values = [];
+    $timestamp = date('Y-m-d H:i:s');
+    foreach(GAME_EVENT_CODES as $code) {
+        if (isset($statistics['host'][$code]))
+            $values[] = [$gameId, $timestamp, 1, $code, $statistics['host'][$code]];
+        if (isset($statistics['guest'][$code]))
+            $values[] = [$gameId, $timestamp, 0, $code, $statistics['guest'][$code]];
+    }
+    $values = implode($values, ', ');
+    $fields = implode(array_map(function($f) {return "`$f`";}, GAME_EVENTS_FIELDS), ', ');
+    $duplicates = implode(array_map(function($f) {return "`$f`=VALUES(`$f`)";}, GAMES_FIELDS), ', ');
+    $query = 
+        "INSERT INTO `game_events` ($fields) 
+            VALUES $values 
+            ON DUPLICATE KEY UPDATE $duplicates;
+        ";
+    return exec_query($conn, $query);  
+}
+
 ?>

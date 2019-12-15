@@ -56,4 +56,15 @@ function updateLastParsehubResponseFile($data) {
     return file_put_contents(LAST_PARSEHUB_RESPONSE_FILE, $data);
 }
 
+function updateDbErrorLog($error, $query = null) {
+    $old = getLog(DB_ERROR_LOG, DB_ERROR_ARCHIVE);
+    $items = [
+        date("Y-m-d H:i:s"), 
+        $error
+    ];
+    if (!empty($query)) {
+        $items[] = 'Query: ' . $query;
+    }
+    return file_put_contents(DB_ERROR_LOG, implode("\n", $items) . "\n\n" . $old);
+}
 ?>
