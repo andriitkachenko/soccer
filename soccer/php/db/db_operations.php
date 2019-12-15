@@ -257,4 +257,38 @@ function insertGameEvents($conn, $gameId, $statistics) {
         ";
     return exec_query($conn, $query);  
 }
+
+function loadLastGameStatistics($gameId) {
+    $statistics = false;
+    $query = 
+        "SELECT 
+            e.`game_id`, 
+            e.`host`, 
+            e.`event`, 
+            e.`amount`
+        FROM (
+            SELECT `game_id`, MAX(`timestamp`) as maxT
+            FROM `game_events` 
+            WHERE `game_id` = $gameId
+        ) as t
+        INNER JOIN `game_events` as e
+        ON e.`game_id` = t.`game_id`
+        AND e.`timestamp` > date_sub(t.maxT, interval 1 minute);        
+    ";
+    $rows = $conn->query($query)->fetchAll();
+    foreach ($rows as $r) {
+        $ok = in_array($r['host'], ['1', '0']) 
+                && in_array(r['event'], GAME_EVENT_CODES) 
+                && ctype_digit($r['amount']);
+        if ($ok) {
+            if ($r['host'] == '1') {
+                $statistics['host'][r['event']] = @intval($r['amount']);
+            } else {
+                $statistics['guest'][r['event']] = @intval($r['amount']);
+            }
+        }
+    }
+    return $statistics;
+}
 ?>
+

@@ -4,10 +4,15 @@
     require_once __DIR__ . '/db/db_operations.php';
 
     if (isset($_POST['match_id'])) {
-        $id = $_POST['match_id'];
-        $html = loadGameStatistics($id);
-        $statistics = parseGameStatisticsHtml($html);
-        insertStatistics($id, $statistics);
+        $gameId = $_POST['match_id'];
+        $old = loadLastGameStatistics($gameId);
+        if (!$old) {
+            $html = loadGameStatistics($id);
+            $statistics = parseGameStatisticsHtml($html);
+            insertStatistics($id, $statistics);
+        } else {
+            $statistics = $old;
+        }
         echo json_encode($statistics);
      }
 
