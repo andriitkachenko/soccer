@@ -19,7 +19,7 @@ if (!in_array("data_ready=1", $response) || !in_array("status=complete", $respon
 }
 if (!in_array("is_empty=False", $response)) {
     deleteParseHubRun($runToken);
-    getRunTokenSeries();
+    //getRunTokenSeries();
     die();
 }
 $run = [];
