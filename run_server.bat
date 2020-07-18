@@ -1,2 +1,2 @@
-call php -S localhost:4000 -t soccer/
+call php -S localhost:9000 -t soccer/
 pause

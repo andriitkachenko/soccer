@@ -11,8 +11,10 @@ function saveLastError($conn) {
     appendError(getLastError($conn));
 }
 
-function makeConnection() {
-    return openDbConnection(DB_SERVER, DB_NAME, DB_USER, DB_PASSWORD);
+function makeDbConnection($local) {
+    return $local 
+        ? openDbConnection(DB_SERVER_DEV, DB_NAME_DEV, DB_USER_DEV, DB_PASSWORD_DEV)
+        : openDbConnection(DB_SERVER, DB_NAME, DB_USER, DB_PASSWORD);
 }
 
 function openDbConnection($server, $dbname, $username, $password) {

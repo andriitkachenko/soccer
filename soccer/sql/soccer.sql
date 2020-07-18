@@ -64,7 +64,8 @@ create table if not exists `game_events` (
             sv = saves,
             st = successful tackles,
             ic = interceptions,
-            as = assists
+            as = assists,
+            tm = treatments
         ",    
     `amount` TINYINT NOT NULL DEFAULT 1,
     PRIMARY KEY (`id`),

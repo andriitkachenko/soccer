@@ -7,11 +7,9 @@ require_once __DIR__ . '/../utils.php';
 const GAMES_FIELDS = [
     'game_id', 
     'league', 
-    'start_at', 
+    'start_time', 
     'host', 
-    'host_rank', 
     'guest', 
-    'guest_rank', 
     'finished', 
     'description'
 ];
@@ -78,7 +76,7 @@ function varGameParams2value($game, $anchorTime) {
 }
 
 function saveGamesToDB($games, $anchorTime) {
-    $conn = makeConnection();
+    $conn = makeDbConnection();
     if (empty($conn)) {
         return false;
     }    
@@ -212,7 +210,7 @@ function loadNotFinishedGames($conn) {
 }
 
 function readNotFinishedGames() {
-    $conn = makeConnection();
+    $conn = makeDbConnection();
     if (empty($conn)) {
         return false;
     }    
@@ -222,7 +220,7 @@ function readNotFinishedGames() {
 }
 
 function insertStatistics($gameId, $statistics) {
-    $conn = makeConnection();
+    $conn = makeDbConnection();
     if (empty($conn)) {
         return false;
     }
@@ -259,7 +257,7 @@ function insertGameEvents($conn, $gameId, $statistics) {
 }
 
 function loadLastGameStatistics($gameId) {
-    $conn = makeConnection();
+    $conn = makeDbConnection();
     if (empty($conn) || empty($gameId)) {
         return false;
     }

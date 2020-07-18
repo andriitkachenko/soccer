@@ -1,111 +1,93 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> <html> <head> <title>Soccer Live Scores - powered by LiveScore.com</title> <meta http-equiv="content-type" content="text/html;charset=UTF-8"/> <meta name="description" content="Soccer LiveScore - the 1st live score service on the Internet, powered by LiveScore.com, no.1 ranked Soccer website. Over 1000 live soccer games weekly, from every corner of the World."/> <meta name="keywords" content="livescore, live scores, soccer, football"/> <meta name="google-site-verification" content="ysJmUcQZ1JegVwq2SosByOTKwE8r6CkvSGyrKuygrC0"/> <link rel="shortcut icon" type="image/png" href="//cdn3.livescore.com/web/img/favicon-32.png"> <link rel="stylesheet" media="screen" href="//cdn1.livescore.com/web/css/main_v1.0.60.css"> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MGW6C35');</script> <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script> <script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
 
-<head>
-	<title>Soccer Live Scores - powered by LiveScore.com</title>
-	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<meta name="description"
-		content="Soccer LiveScore - the 1st live score service on the Internet, powered by LiveScore.com, no.1 ranked Soccer website. Over 1000 live soccer games weekly, from every corner of the World." />
-	<meta name="keywords" content="livescore, live scores, soccer, football" />
-	<meta name="google-site-verification" content="ysJmUcQZ1JegVwq2SosByOTKwE8r6CkvSGyrKuygrC0" />
-	<link rel="shortcut icon" type="image/png" href="//cdn3.livescore.com/web/img/favicon-32.png">
-	<link rel="stylesheet" media="screen" href="//cdn1.livescore.com/web/css/main_v1.0.60.css">
-	<script>
-		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MGW6C35');
-	</script>
-	<script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
-	<script>
-		var googletag = googletag || {};
-          googletag.cmd = googletag.cmd || [];
-        
-          
-        
-	</script>
-	<script src="//cdn1.livescore.com/web/js/custom_v2.3.3.min.js" type="text/javascript"></script>
-	<script>
-		$(document).ready(function() {
-            livescore.matchdetails({target: '_blank', width: 496, height: 250, left: 100, top: 100});
-            com.livescore.LeagueTableWidget.init('soccer', '/', '');
-            
-                com.livescore.MatchListWidget.initStars('soccer');
-            
-            com.livescore.global.setTzCookie();
-            com.livescore.global.scheduleRefresh(90);
-        });
-	</script>
-	<style>
-		.wrapper {
-			background-image: url("//cdn3.livescore.com/web/img/bkg_cont.gif")
-		}
+  
 
-		.buttons a,
-		.buttons ul a.cat,
-		.switch,
-		.right-bar .arrow,
-		.inc,
-		.league-wc .inc,
-		.league-wc.comments .inc,
-		.tennis .league-multi .ball,
-		.control-button,
-		.ico {
-			background-image: url("//cdn3.livescore.com/web/img/sprite_v1.0.6.png")
-		}
+</script> <script src="//cdn1.livescore.com/web/js/custom_v2.3.3.min.js" type="text/javascript"></script> <script>
+$(document).ready(function() {
+	livescore.matchdetails({target: '_blank', width: 496, height: 250, left: 100, top: 100});
+	com.livescore.LeagueTableWidget.init('soccer', '/', '');
+	
+		com.livescore.MatchListWidget.initStars('soccer');
+	
+	com.livescore.global.setTzCookie();
+	com.livescore.global.scheduleRefresh(90);
+});
+</script>
+<style>
+	.wrapper {
+		background-image: url("//cdn3.livescore.com/web/img/bkg_cont.gif")
+	}
 
-		@media only screen and (-webkit-min-device-pixel-ratio:2),
-		only screen and (min--moz-device-pixel-ratio:2),
-		only screen and (-o-min-device-pixel-ratio:2/1),
-		only screen and (min-device-pixel-ratio:2),
-		only screen and (min-resolution:192dpi),
-		only screen and (min-resolution:2dppx) {
-			.ico-star {
-				background-image: url("//cdn3.livescore.com/web/img/sprite_v1.0@2x.png")
-			}
-		}
+	.buttons a,
+	.buttons ul a.cat,
+	.switch,
+	.right-bar .arrow,
+	.inc,
+	.league-wc .inc,
+	.league-wc.comments .inc,
+	.tennis .league-multi .ball,
+	.control-button,
+	.ico {
+		background-image: url("//cdn3.livescore.com/web/img/sprite_v1.0.6.png")
+	}
 
-		.frame h4.app {
-			background-image: url("//cdn3.livescore.com/web/img/icon_app.png")
+	@media only screen and (-webkit-min-device-pixel-ratio:2),
+	only screen and (min--moz-device-pixel-ratio:2),
+	only screen and (-o-min-device-pixel-ratio:2/1),
+	only screen and (min-device-pixel-ratio:2),
+	only screen and (min-resolution:192dpi),
+	only screen and (min-resolution:2dppx) {
+		.ico-star {
+			background-image: url("//cdn3.livescore.com/web/img/sprite_v1.0@2x.png")
 		}
+	}
 
-		.frame h4.web {
-			background-image: url("//cdn3.livescore.com/web/img/icon_web.png")
-		}
+	.frame h4.app {
+		background-image: url("//cdn3.livescore.com/web/img/icon_app.png")
+	}
 
-		.frame h4.iphone-championship {
-			background-image: url("//cdn3.livescore.com/web/img/icon_web_championship.png")
-		}
+	.frame h4.web {
+		background-image: url("//cdn3.livescore.com/web/img/icon_web.png")
+	}
 
-		.euro-2012 .frame h4.web {
-			background-image: url("//cdn3.livescore.com/web/img/icon_web_euro2012.png")
-		}
+	.frame h4.iphone-championship {
+		background-image: url("//cdn3.livescore.com/web/img/icon_web_championship.png")
+	}
 
-		.frame p.itunes a.btnStore {
-			background-image: url("//cdn3.livescore.com/web/img/appstore.jpg")
-		}
+	.euro-2012 .frame h4.web {
+		background-image: url("//cdn3.livescore.com/web/img/icon_web_euro2012.png")
+	}
 
-		.frame p.itunes a.btnAndMarket {
-			background-image: url("//cdn3.livescore.com/web/img/androidmarket.jpg")
-		}
+	.frame p.itunes a.btnStore {
+		background-image: url("//cdn3.livescore.com/web/img/appstore.jpg")
+	}
 
-		.narrow .wrapper {
-			background-image: url('//cdn3.livescore.com/web/img/bkg_cont_narrow.gif')
-		}
+	.frame p.itunes a.btnAndMarket {
+		background-image: url("//cdn3.livescore.com/web/img/androidmarket.jpg")
+	}
 
-		.usaf .wrapper {
-			background-image: url("//cdn3.livescore.com/web/img/bkg_cont_africa.gif")
-		}
+	.narrow .wrapper {
+		background-image: url('//cdn3.livescore.com/web/img/bkg_cont_narrow.gif')
+	}
 
-		.banner {
-			right: -164px
-		}
+	.usaf .wrapper {
+		background-image: url("//cdn3.livescore.com/web/img/bkg_cont_africa.gif")
+	}
 
-		.banner300 {
-			display: none
-		}
-	</style>
+	.banner {
+		right: -164px
+	}
+
+	.banner300 {
+		display: none
+	}
+</style>
 </head>
 
 <body class="soccer narrow"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGW6C35" height="0"
@@ -130,9 +112,10 @@
 			</ul>
 			<div class="clear"></div>
 		</div>
-		<div class="header bb"> <a href="/"> <img src="//cdn3.livescore.com/web/img/logo-univ-narrow.jpg" class="left" alt="Soccer Livescore" title="Soccer Livescore" usemap="#image-map" width="465" height="68"/>
-				<map name="image-map"><area target="_blank" alt="" title="" href="https://v42xp.app.goo.gl/qurt" coords="238,18,446,49" shape="rect"></map>
-			</a>
+		<div class="header bb"> <a href="/"> <img src="//cdn3.livescore.com/web/img/logo-univ-narrow.jpg" class="left"
+					alt="Soccer Livescore" title="Soccer Livescore" usemap="#image-map" width="465" height="68" /> <map
+					name="image-map"><area target="_blank" alt="" title="" href="https://v42xp.app.goo.gl/qurt"
+						coords="238,18,446,49" shape="rect"></map> </a>
 			<table class="tagline right">
 				<tr>
 					<td>
@@ -339,6 +322,9 @@
 						<li> <a href="/soccer/qatar/" class="cat">Qatar</a> </li>
 						<li> <a href="/soccer/saudi-arabia/" class="cat">Saudi Arabia</a> </li>
 						<li> <a href="/soccer/syria/" class="cat">Syria</a> </li>
+						<li> <a href="/soccer/taiwan/" class="cat">Taiwan</a> </li>
+						<li> <a href="/soccer/tajikistan/" class="cat">Tajikistan</a> </li>
+						<li> <a href="/soccer/turkmenistan/" class="cat">Turkmenistan</a> </li>
 						<li> <a href="/soccer/uzbekistan/" class="cat">Uzbekistan</a> </li>
 						<li> <a href="/soccer/united-arab-emirates/" class="cat" title="United Arab Emirates">U.A.E.</a>
 						</li>
@@ -346,7 +332,6 @@
 					</ul>
 					<ul class="buttons btn-light" style="display: none">
 						<li> <a href="/soccer/oceania/" class="cat">Oceania</a> </li>
-						<li> <a href="/soccer/taiwan/" class="cat">Taiwan</a> </li>
 						<li> <a href="/soccer/fiji/" class="cat">Fiji</a> </li>
 					</ul>
 					<ul class="buttons btn-light" style="display: none">
@@ -384,1209 +369,613 @@
 			<div class="cal-wrap">
 				<div class="cal">
 					<div class="clear">
-						<div class="col-5"> <a class="col-4 " href="/soccer/2020-03-19/">Mar 19</a> <a class="col-4 "
-								href="/soccer/2020-03-20/">Mar 20</a> <a class="col-4 br "
-								href="/soccer/2020-03-21/">Mar 21</a> </div> <a class="col-2 "
-							href="/soccer/2020-03-22/"> Today </a>
-						<div class="col-5"> <a class="col-4 " href="/soccer/2020-03-23/">Mar 23</a> <a class="col-4 "
-								href="/soccer/2020-03-24/">Mar 24</a> <a class="col-4 " href="/soccer/2020-03-25/">Mar
-								25</a> </div>
+						<div class="col-5"> <a class="col-4 " href="/soccer/2020-05-14/">May 14</a> <a class="col-4 "
+								href="/soccer/2020-05-15/">May 15</a> <a class="col-4 br "
+								href="/soccer/2020-05-16/">May 16</a> </div> <a class="col-2 "
+							href="/soccer/2020-05-17/"> Today </a>
+						<div class="col-5"> <a class="col-4 " href="/soccer/2020-05-18/">May 18</a> <a class="col-4 "
+								href="/soccer/2020-05-19/">May 19</a> <a class="col-4 " href="/soccer/2020-05-20/">May
+								20</a> </div>
 					</div>
 				</div>
 			</div>
 			<div class="row row-tall mt4">
 				<div class="clear">
+					<div class="left"> <a href="/soccer/germany/"><strong>Germany</strong></a> - <a
+							href="/soccer/germany/bundesliga/">Bundesliga</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3081598" data-type="evt" data-esd="20200517133000">
+				<div class="min"><img src="//cdn3.livescore.com/web/img/flash.gif" alt="live" /> HT </div>
+				<div class="ply tright name"> 1. FC Köln </div>
+				<div class="sco"> <a href="/soccer/germany/bundesliga/1-fc-koln-vs-mainz-05/1-3081598/"
+						class="scorelink">1 - 0</a> </div>
+				<div class="ply name"> Mainz 05 </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3081599" data-type="evt" data-esd="20200517160000">
+				<div class="min"> 16:00 </div>
+				<div class="ply tright name"> 1. FC Union Berlin </div>
+				<div class="sco"> <a href="/soccer/germany/bundesliga/1-fc-union-berlin-vs-fc-bayern-munchen/1-3081599/"
+						class="scorelink">? - ?</a> </div>
+				<div class="ply name"> FC Bayern München </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/germany/"><strong>Germany</strong></a> - <a
+							href="/soccer/germany/2-bundesliga/">2nd Bundesliga</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3081905" data-type="evt" data-esd="20200517113000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> DSC Arminia Bielefeld </div>
+				<div class="sco"> <a
+						href="/soccer/germany/2-bundesliga/dsc-arminia-bielefeld-vs-vfl-osnabruck/1-3081905/"
+						class="scorelink">1 - 1</a> </div>
+				<div class="ply name"> VfL Osnabrück </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3081909" data-type="evt" data-esd="20200517113000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> SpVgg Greuther Fürth </div>
+				<div class="sco"> <a href="/soccer/germany/2-bundesliga/spvgg-greuther-furth-vs-hamburger-sv/1-3081909/"
+						class="scorelink">2 - 2</a> </div>
+				<div class="ply name"> Hamburger SV </div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3081907" data-type="evt" data-esd="20200517113000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> FC St. Pauli </div>
+				<div class="sco"> <a href="/soccer/germany/2-bundesliga/fc-st-pauli-vs-1-fc-nurnberg/1-3081907/"
+						class="scorelink">1 - 0</a> </div>
+				<div class="ply name"> 1. FC Nürnberg </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3081912" data-type="evt" data-esd="20200517113000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> SV Wehen Wiesbaden </div>
+				<div class="sco"> <a href="/soccer/germany/2-bundesliga/sv-wehen-wiesbaden-vs-vfb-stuttgart/1-3081912/"
+						class="scorelink">2 - 1</a> </div>
+				<div class="ply name"> VfB Stuttgart </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/intl/"><strong>International</strong></a> - <a
+							href="/soccer/intl/club-friendlies/">Club Friendlies</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3320645" data-type="evt" data-esd="20200517080000">
+				<div class="min"> AP </div>
+				<div class="ply tright name"> FK MAS Taborsko </div>
+				<div class="sco"> <a href="/soccer/intl/club-friendlies/fk-mas-taborsko-vs-slavia-prague-b/1-3320645/"
+						class="scorelink">2 - 2</a> </div>
+				<div class="ply name"> Slavia Prague B * </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3320659" data-type="evt" data-esd="20200517080000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Urartu FC </div>
+				<div class="sco"> <a href="/soccer/intl/club-friendlies/urartu-fc-vs-gandzasar/1-3320659/"
+						class="scorelink">0 - 2</a> </div>
+				<div class="ply name"> Gandzasar </div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3320636" data-type="evt" data-esd="20200517090000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Fehervar FC </div>
+				<div class="sco"> <a href="/soccer/intl/club-friendlies/fehervar-fc-vs-budafok/1-3320636/"
+						class="scorelink">2 - 1</a> </div>
+				<div class="ply name"> Budafok </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3318488" data-type="evt" data-esd="20200517090000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Ferencvaros </div>
+				<div class="sco"> <a href="/soccer/intl/club-friendlies/ferencvaros-vs-mezokovesd-se/1-3318488/"
+						class="scorelink">0 - 1</a> </div>
+				<div class="ply name"> Mezokovesd SE </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
 					<div class="left"> <a href="/soccer/belarus/"><strong>Belarus</strong></a> - <a
 							href="/soccer/belarus/premier/">Premier</a> </div>
-					<div class="right fs11"> March 22 </div>
+					<div class="right fs11"> </div>
 				</div>
 			</div>
-			<div class="row-gray even" data-pid="6" data-eid="21686639" data-type="evt" data-esd="20200322110000">
-				<div class="min"><img src="//cdn3.livescore.com/web/img/flash.gif" alt="live"/> 13&#x27; </div>
-					<div class="ply tright name"> FK Slutsk </div>
-					<div class="sco"> <a href="/soccer/belarus/premier/fk-slutsk-vs-slavia-mozyr/6-21686639/"
-							class="scorelink">0 - 0</a> </div>
-					<div class="ply name"> Slavia Mozyr </div>
-				</div>
-				<div class="row-gray " data-pid="6" data-eid="21686637" data-type="evt" data-esd="20200322130000">
-					<div class="min"> 13:00 </div>
-					<div class="ply tright name"> Belshina Bobruisk </div>
-					<div class="sco"> ? - ? </div>
-					<div class="ply name"> FC Minsk </div>
-				</div>
-				<div class="row row-tall mt4">
-					<div class="clear">
-						<div class="left"> <a href="/soccer/brazil/"><strong>Brazil</strong></a> - <a
-								href="/soccer/brazil/rondoniense-group-a/">Rondoniense:: group A</a> </div>
-						<div class="right fs11"> March 22 </div>
-					</div>
-				</div>
-				<div class="row-gray even" data-pid="6" data-eid="21117559" data-type="evt" data-esd="20200322200000">
-					<div class="min"> Canc. </div>
-					<div class="ply tright name"> Guajara EC RO </div>
-					<div class="sco"> ? - ? </div>
-					<div class="ply name"> Genus RO </div>
-				</div>
-				<div class="row row-tall mt4">
-					<div class="clear">
-						<div class="left"> <a href="/soccer/brazil/"><strong>Brazil</strong></a> - <a
-								href="/soccer/brazil/rondoniense-group-b/">Rondoniense:: group B</a> </div>
-						<div class="right fs11"> March 22 </div>
-					</div>
-				</div>
-				<div class="row-gray even" data-pid="6" data-eid="21118139" data-type="evt" data-esd="20200322140000">
-					<div class="min"> Canc. </div>
-					<div class="ply tright name"> Uniao Cacoalense RO </div>
-					<div class="sco"> ? - ? </div>
-					<div class="ply name"> Pimentense RO </div>
-				</div>
-				<div class="row-gray " data-pid="6" data-eid="21118135" data-type="evt" data-esd="20200322194500">
-					<div class="min"> Canc. </div>
-					<div class="ply tright name"> Ji-Parana RO </div>
-					<div class="sco"> ? - ? </div>
-					<div class="ply name"> Vilhenense ES RO </div>
-				</div>
-				<div class="row-gray even" data-pid="6" data-eid="21118137" data-type="evt" data-esd="20200322203000">
-					<div class="min"> Canc. </div>
-					<div class="ply tright name"> Barcelona RO </div>
-					<div class="sco"> ? - ? </div>
-					<div class="ply name"> Guapore RO </div>
-				</div>
-				<div class="row row-tall mt4">
-					<div class="clear">
-						<div class="left"> <a href="/soccer/australia/"><strong>Australia</strong></a> - <a
-								href="/soccer/australia/a-league/">Hyundai A-League</a> </div>
-						<div class="right fs11"> March 23 </div>
-					</div>
-				</div>
-				<div class="row-gray even" data-pid="6" data-eid="19050304" data-type="evt" data-esd="20200323083000">
-					<div class="min"> 08:30 </div>
-					<div class="ply tright name"> Newcastle United Jets </div>
-					<div class="sco"> <a
-							href="/soccer/australia/a-league/newcastle-united-jets-vs-melbourne-city-fc/6-19050304/"
-							class="scorelink">? - ?</a> </div>
-					<div class="ply name"> Melbourne City FC </div>
+			<div class="row-gray even" data-pid="6" data-eid="21893949" data-type="evt" data-esd="20200517120000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Belshina Bobruisk </div>
+				<div class="sco"> <a href="/soccer/belarus/premier/belshina-bobruisk-vs-fk-vitebsk/6-21893949/"
+						class="scorelink">1 - 1</a> </div>
+				<div class="ply name"> FK Vitebsk </div>
+			</div>
+			<div class="row-gray " data-pid="6" data-eid="21893951" data-type="evt" data-esd="20200517140000">
+				<div class="min"><img src="//cdn3.livescore.com/web/img/flash.gif" alt="live" /> 19&#x27; </div>
+				<div class="ply tright name"> Dinamo Minsk </div>
+				<div class="sco"> <a href="/soccer/belarus/premier/dinamo-minsk-vs-isloch/6-21893951/"
+						class="scorelink">0 - 0</a> </div>
+				<div class="ply name"> Is'loch </div>
+			</div>
+			<div class="row-gray even" data-pid="6" data-eid="21893953" data-type="evt" data-esd="20200517160000">
+				<div class="min"> 16:00 </div>
+				<div class="ply tright name"> FC Ruh Brest </div>
+				<div class="sco"> ? - ? </div>
+				<div class="ply name"> FC Smolevichi </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/belarus/"><strong>Belarus</strong></a> - <a
+							href="/soccer/belarus/1-league/">1st League</a> </div>
+					<div class="right fs11"> </div>
 				</div>
 			</div>
-			<div class="right-bar">
-				<div class="date" data-type="date"><a href="/timezone/">11:16 (UTC)<span>22 Mar 2020 (Sun)</span></a>
-				</div> <iframe id="b100" name="b100" src="http://ads.cc/ads/?site=1&amp;pos=7&amp;sport=1&amp;km=1"
-					width="140" height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no"
-					frameborder="no" style="border-width:0" allowtransparency="true" data-type="bnr"></iframe>
-				<div class="social-box">
-					<div id="fb-root"></div>
-					<div class="facebook hidden">
-						<div class="switch switch-off"></div>
-						<div class="disabled">
-							<img src="//cdn3.livescore.com/web/img/facebook_disabled.png" alt="Facebook Like button" title="Click to enable Facebook Like button" width="48" height="20"/></div>
-							<div class="fb-like" data-href="http://www.facebook.com/livescore" data-send="false"
-								data-layout="button_count" data-width="450" data-show-faces="true"></div>
-						</div>
-						<div class="google hidden">
-							<div class="switch switch-off"></div>
-							<div class="disabled">
-								<img src="//cdn3.livescore.com/web/img/google_disabled.png" alt="Google +1 button" title="Click to enable Google +1 button" width="32" height="20"/></div>
-								<div class="g-plusone" data-size="medium" data-annotation="bubble"
-									data-href="http://www.livescore.com/"></div>
-							</div>
-						</div> <iframe id="b200" name="b200"
-							src="http://ads.cc/ads/?site=1&amp;pos=8&amp;sport=1&amp;km=1" width="140" height="200"
-							marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no" frameborder="no"
-							style="border-width:0" allowtransparency="true" data-type="bnr"></iframe>
-						<div id="leagueTableContainer" style="position: relative; overflow: hidden;">
-							<div>
-								<h2 class="bt bb mt4 tleft">LiveScore Table</h2>
-							</div>
-							<div id="leagueTableBodyContainer">
-								<div class="table" style="display: none; position: absolute;"
-									data-name="england-premier-league-0" data-type="league-table">
-									<div class="top clear">
-										<div class="col-8 tleft">
-											<span class="arrow arrow-left" data-type="left-arrow" title="Previous Table"></span>
-											<a class="league-name" href="/soccer/england/premier-league/"
-												title="England - Premier League" data-type="league-name">Premier
-												League</a>
-											<span class="arrow arrow-right" data-type="right-arrow" title="Next Table"></span>
-										</div>
-										<div class="col-2" title="Played">P</div>
-										<div class="col-2" title="Points">PTS</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">1</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Liverpool">Liverpool</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">82</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">2</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Manchester City">Manchester
-												City</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">57</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">3</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Leicester City">Leicester
-												City</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">53</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">4</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Chelsea">Chelsea</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">48</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-yellow"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">5</span>
-												<span class="tip">Europa League</span> </div>
-											<div class="col-6 name" data-type="name" title="Manchester United">
-												Manchester United</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">45</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">6</span> </div>
-											<div class="col-6 name" data-type="name" title="Wolverhampton Wanderers">
-												Wolverhampton Wanderers</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">43</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">7</span> </div>
-											<div class="col-6 name" data-type="name" title="Sheffield United">Sheffield
-												United</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">43</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">8</span> </div>
-											<div class="col-6 name" data-type="name" title="Tottenham Hotspur">Tottenham
-												Hotspur</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">41</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">9</span> </div>
-											<div class="col-6 name" data-type="name" title="Arsenal">Arsenal</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">40</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">10</span> </div>
-											<div class="col-6 name" data-type="name" title="Burnley">Burnley</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">39</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">11</span> </div>
-											<div class="col-6 name" data-type="name" title="Crystal Palace">Crystal
-												Palace</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">39</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">12</span> </div>
-											<div class="col-6 name" data-type="name" title="Everton">Everton</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">37</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">13</span> </div>
-											<div class="col-6 name" data-type="name" title="Newcastle United">Newcastle
-												United</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">35</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">14</span> </div>
-											<div class="col-6 name" data-type="name" title="Southampton">Southampton
-											</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">34</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">15</span> </div>
-											<div class="col-6 name" data-type="name" title="Brighton &amp; Hove Albion">
-												Brighton &amp; Hove Albion</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">29</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">16</span> </div>
-											<div class="col-6 name" data-type="name" title="West Ham United">West Ham
-												United</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">27</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">17</span> </div>
-											<div class="col-6 name" data-type="name" title="Watford">Watford</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">27</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">18</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="AFC Bournemouth">AFC
-												Bournemouth</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">27</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">19</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Aston Villa">Aston Villa
-											</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">25</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">20</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Norwich City">Norwich City
-											</div>
-											<div class="col-2" data-type="goaldiff">29</div>
-											<div class="col-2" data-type="points">21</div>
-										</div>
-									</div>
-								</div>
-								<div class="table" style="display: none; position: absolute;"
-									data-name="spain-primera-division-0" data-type="league-table">
-									<div class="top clear">
-										<div class="col-8 tleft">
-											<span class="arrow arrow-left" data-type="left-arrow" title="Previous Table"></span>
-											<a class="league-name" href="/soccer/spain/primera-division/"
-												title="Spain - LaLiga Santander" data-type="league-name">LaLiga
-												Santander</a>
-											<span class="arrow arrow-right" data-type="right-arrow" title="Next Table"></span>
-										</div>
-										<div class="col-2" title="Played">P</div>
-										<div class="col-2" title="Points">PTS</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">1</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Barcelona">Barcelona</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">58</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">2</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Real Madrid">Real Madrid
-											</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">56</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">3</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Sevilla">Sevilla</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">47</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">4</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Real Sociedad">Real Sociedad
-											</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">46</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-yellow"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">5</span>
-												<span class="tip">Europa League</span> </div>
-											<div class="col-6 name" data-type="name" title="Getafe">Getafe</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">46</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color light-yellow"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">6</span>
-												<span class="tip">Europa League qualification</span> </div>
-											<div class="col-6 name" data-type="name" title="Atletico Madrid">Atletico
-												Madrid</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">45</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">7</span> </div>
-											<div class="col-6 name" data-type="name" title="Valencia">Valencia</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">42</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">8</span> </div>
-											<div class="col-6 name" data-type="name" title="Villarreal">Villarreal</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">38</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">9</span> </div>
-											<div class="col-6 name" data-type="name" title="Granada">Granada</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">38</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">10</span> </div>
-											<div class="col-6 name" data-type="name" title="Athletic Bilbao">Athletic
-												Bilbao</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">37</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">11</span> </div>
-											<div class="col-6 name" data-type="name" title="Osasuna">Osasuna</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">34</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">12</span> </div>
-											<div class="col-6 name" data-type="name" title="Real Betis">Real Betis</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">33</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">13</span> </div>
-											<div class="col-6 name" data-type="name" title="Levante">Levante</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">33</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">14</span> </div>
-											<div class="col-6 name" data-type="name" title="Deportivo Alaves">Deportivo
-												Alaves</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">32</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">15</span> </div>
-											<div class="col-6 name" data-type="name" title="Real Valladolid">Real
-												Valladolid</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">29</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">16</span> </div>
-											<div class="col-6 name" data-type="name" title="Eibar">Eibar</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">27</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">17</span> </div>
-											<div class="col-6 name" data-type="name" title="Celta Vigo">Celta Vigo</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">26</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">18</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Mallorca">Mallorca</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">25</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">19</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Leganes">Leganes</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">23</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">20</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="RCD Espanyol">RCD Espanyol
-											</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">20</div>
-										</div>
-									</div>
-								</div>
-								<div class="table" style="display: none; position: absolute;"
-									data-name="italy-serie-a-0" data-type="league-table">
-									<div class="top clear">
-										<div class="col-8 tleft">
-											<span class="arrow arrow-left" data-type="left-arrow" title="Previous Table"></span>
-											<a class="league-name" href="/soccer/italy/serie-a/" title="Italy - Serie A"
-												data-type="league-name">Serie A</a>
-											<span class="arrow arrow-right" data-type="right-arrow" title="Next Table"></span>
-										</div>
-										<div class="col-2" title="Played">P</div>
-										<div class="col-2" title="Points">PTS</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">1</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Juventus">Juventus</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">63</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">2</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Lazio">Lazio</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">62</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">3</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Inter">Inter</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">54</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">4</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Atalanta">Atalanta</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">48</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-yellow"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">5</span>
-												<span class="tip">Europa League</span> </div>
-											<div class="col-6 name" data-type="name" title="Roma">Roma</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">45</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color light-yellow"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">6</span>
-												<span class="tip">Europa League qualification</span> </div>
-											<div class="col-6 name" data-type="name" title="Napoli">Napoli</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">39</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">7</span> </div>
-											<div class="col-6 name" data-type="name" title="Milan">Milan</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">36</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">8</span> </div>
-											<div class="col-6 name" data-type="name" title="Verona">Verona</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">35</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">9</span> </div>
-											<div class="col-6 name" data-type="name" title="Parma">Parma</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">35</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">10</span> </div>
-											<div class="col-6 name" data-type="name" title="Bologna">Bologna</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">34</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">11</span> </div>
-											<div class="col-6 name" data-type="name" title="Sassuolo">Sassuolo</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">32</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">12</span> </div>
-											<div class="col-6 name" data-type="name" title="Cagliari">Cagliari</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">32</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">13</span> </div>
-											<div class="col-6 name" data-type="name" title="Fiorentina">Fiorentina</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">30</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">14</span> </div>
-											<div class="col-6 name" data-type="name" title="Udinese">Udinese</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">28</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">15</span> </div>
-											<div class="col-6 name" data-type="name" title="Torino">Torino</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">27</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">16</span> </div>
-											<div class="col-6 name" data-type="name" title="Sampdoria">Sampdoria</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">26</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">17</span> </div>
-											<div class="col-6 name" data-type="name" title="Genoa">Genoa</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">25</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">18</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Lecce">Lecce</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">25</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">19</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="SPAL">SPAL</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">18</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">20</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Brescia">Brescia</div>
-											<div class="col-2" data-type="goaldiff">26</div>
-											<div class="col-2" data-type="points">16</div>
-										</div>
-									</div>
-								</div>
-								<div class="table" style="display: none; position: absolute;"
-									data-name="germany-bundesliga-0" data-type="league-table">
-									<div class="top clear">
-										<div class="col-8 tleft">
-											<span class="arrow arrow-left" data-type="left-arrow" title="Previous Table"></span>
-											<a class="league-name" href="/soccer/germany/bundesliga/"
-												title="Germany - Bundesliga" data-type="league-name">Bundesliga</a>
-											<span class="arrow arrow-right" data-type="right-arrow" title="Next Table"></span>
-										</div>
-										<div class="col-2" title="Played">P</div>
-										<div class="col-2" title="Points">PTS</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">1</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="FC Bayern München">FC Bayern
-												München</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">55</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">2</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Borussia Dortmund">Borussia
-												Dortmund</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">51</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">3</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="RasenBallsport Leipzig">
-												RasenBallsport Leipzig</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">50</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">4</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Borussia Mönchengladbach">
-												Borussia Mönchengladbach</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">49</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-yellow"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">5</span>
-												<span class="tip">Europa League</span> </div>
-											<div class="col-6 name" data-type="name" title="Bayer Leverkusen">Bayer
-												Leverkusen</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">47</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color light-yellow"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">6</span>
-												<span class="tip">Europa League qualification</span> </div>
-											<div class="col-6 name" data-type="name" title="Schalke 04">Schalke 04</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">37</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">7</span> </div>
-											<div class="col-6 name" data-type="name" title="Wolfsburg">Wolfsburg</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">36</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">8</span> </div>
-											<div class="col-6 name" data-type="name" title="Freiburg">Freiburg</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">36</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">9</span> </div>
-											<div class="col-6 name" data-type="name" title="Hoffenheim">Hoffenheim</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">35</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">10</span> </div>
-											<div class="col-6 name" data-type="name" title="1. FC Köln">1. FC Köln</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">32</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">11</span> </div>
-											<div class="col-6 name" data-type="name" title="1. FC Union Berlin">1. FC
-												Union Berlin</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">30</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">12</span> </div>
-											<div class="col-6 name" data-type="name" title="Eintracht Frankfurt">
-												Eintracht Frankfurt</div>
-											<div class="col-2" data-type="goaldiff">24</div>
-											<div class="col-2" data-type="points">28</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">13</span> </div>
-											<div class="col-6 name" data-type="name" title="Hertha BSC">Hertha BSC</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">28</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">14</span> </div>
-											<div class="col-6 name" data-type="name" title="Augsburg">Augsburg</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">27</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">15</span> </div>
-											<div class="col-6 name" data-type="name" title="Mainz 05">Mainz 05</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">26</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color light-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">16</span>
-												<span class="tip">Relegation play-off</span> </div>
-											<div class="col-6 name" data-type="name" title="Fortuna Düsseldorf">Fortuna
-												Düsseldorf</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">22</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">17</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Werder Bremen">Werder Bremen
-											</div>
-											<div class="col-2" data-type="goaldiff">24</div>
-											<div class="col-2" data-type="points">18</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">18</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="SC Paderborn 07">SC
-												Paderborn 07</div>
-											<div class="col-2" data-type="goaldiff">25</div>
-											<div class="col-2" data-type="points">16</div>
-										</div>
-									</div>
-								</div>
-								<div class="table" style="display: none; position: absolute;"
-									data-name="france-ligue-1-0" data-type="league-table">
-									<div class="top clear">
-										<div class="col-8 tleft">
-											<span class="arrow arrow-left" data-type="left-arrow" title="Previous Table"></span>
-											<a class="league-name" href="/soccer/france/ligue-1/"
-												title="France - Ligue 1" data-type="league-name">Ligue 1</a>
-											<span class="arrow arrow-right" data-type="right-arrow" title="Next Table"></span>
-										</div>
-										<div class="col-2" title="Played">P</div>
-										<div class="col-2" title="Points">PTS</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">1</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Paris Saint-Germain">Paris
-												Saint-Germain</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">68</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">2</span>
-												<span class="tip">Champions League</span> </div>
-											<div class="col-6 name" data-type="name" title="Marseille">Marseille</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">56</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color light-blue"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">3</span>
-												<span class="tip">Champions League qualification</span> </div>
-											<div class="col-6 name" data-type="name" title="Rennes">Rennes</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">50</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-yellow"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">4</span>
-												<span class="tip">Europa League</span> </div>
-											<div class="col-6 name" data-type="name" title="Lille">Lille</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">49</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">5</span> </div>
-											<div class="col-6 name" data-type="name" title="Reims">Reims</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">41</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">6</span> </div>
-											<div class="col-6 name" data-type="name" title="Nice">Nice</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">41</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">7</span> </div>
-											<div class="col-6 name" data-type="name" title="Lyon">Lyon</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">40</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">8</span> </div>
-											<div class="col-6 name" data-type="name" title="Montpellier">Montpellier
-											</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">40</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">9</span> </div>
-											<div class="col-6 name" data-type="name" title="Monaco">Monaco</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">40</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">10</span> </div>
-											<div class="col-6 name" data-type="name" title="Angers">Angers</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">39</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">11</span> </div>
-											<div class="col-6 name" data-type="name" title="Strasbourg">Strasbourg</div>
-											<div class="col-2" data-type="goaldiff">27</div>
-											<div class="col-2" data-type="points">38</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">12</span> </div>
-											<div class="col-6 name" data-type="name" title="Bordeaux">Bordeaux</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">37</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">13</span> </div>
-											<div class="col-6 name" data-type="name" title="Nantes">Nantes</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">37</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">14</span> </div>
-											<div class="col-6 name" data-type="name" title="Brest">Brest</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">34</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">15</span> </div>
-											<div class="col-6 name" data-type="name" title="Metz">Metz</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">34</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">16</span> </div>
-											<div class="col-6 name" data-type="name" title="Dijon">Dijon</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">30</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color "> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">17</span> </div>
-											<div class="col-6 name" data-type="name" title="Saint-Etienne">Saint-Etienne
-											</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">30</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color light-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">18</span>
-												<span class="tip">Relegation play-off</span> </div>
-											<div class="col-6 name" data-type="name" title="Nimes">Nimes</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">27</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear ">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">19</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Amiens">Amiens</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">23</div>
-										</div>
-									</div>
-									<div class="rows" data-type="team-data">
-										<div class="item clear even">
-											<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span>
-												<span class="tright" data-type="rank">20</span>
-												<span class="tip">Relegation</span> </div>
-											<div class="col-6 name" data-type="name" title="Toulouse">Toulouse</div>
-											<div class="col-2" data-type="goaldiff">28</div>
-											<div class="col-2" data-type="points">13</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div id="leagueTableBodyTemplate" class="hidden">
-								<div class="table" style="display: none; position: absolute;" data-type="league-table">
-									<div class="top clear">
-										<div class="col-8 tleft">
-											<span class="arrow arrow-left" data-type="left-arrow" title="Previous Table"></span>
-											<a class="league-name" href="#" data-type="league-name"></a>
-											<span class="arrow arrow-right" data-type="right-arrow" title="Next Table"></span>
-										</div>
-										<div class="col-2" title="Played">P</div>
-										<div class="col-2" data-type="points_header"></div>
-									</div>
-									<div class="rows" data-type="team-data"></div>
-									<div class="hidden" data-type="team-data-tpl">
-										<div class="item clear" data-type="item">
-											<div class="col-2 tt color" data-type="primary-color">
-												<span class="live" data-type="live-indicator"><img src="//cdn3.livescore.com/web/img/flash.gif" alt="live"/></span>
-												<span class="tright" data-type="rank"></span>
-												<span class="num" data-type="secondary-color"></span>
-												<span class="num tc" data-type="tertiary-color"></span>
-												<span class="tip" data-type="tooltip"></span> </div>
-											<div class="col-6 name" data-type="name"></div>
-											<div class="col-2" data-type="goaldiff"></div>
-											<div class="col-2" data-type="points"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> <iframe id="b300" name="b300"
-							src="http://ads.cc/ads/?site=1&amp;pos=11&amp;sport=1&amp;km=1" width="140" height="200"
-							marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no" frameborder="no"
-							style="border-width:0" allowtransparency="true" data-type="bnr"></iframe>
+			<div class="row-gray even" data-pid="1" data-eid="3301548" data-type="evt" data-esd="20200517110000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Krumkachy Minsk </div>
+				<div class="sco"> <a href="/soccer/belarus/1-league/krumkachy-minsk-vs-naftan-novopolotsk/1-3301548/"
+						class="scorelink">1 - 0</a> </div>
+				<div class="ply name"> Naftan Novopolotsk </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3301574" data-type="evt" data-esd="20200517130000">
+				<div class="min"><img src="//cdn3.livescore.com/web/img/flash.gif" alt="live" /> 60&#x27; </div>
+				<div class="ply tright name"> FC Slonim-2017 </div>
+				<div class="sco"> <a href="/soccer/belarus/1-league/fc-slonim-2017-vs-fc-smorgon/1-3301574/"
+						class="scorelink">0 - 1</a> </div>
+				<div class="ply name"> FC Smorgon </div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3301563" data-type="evt" data-esd="20200517150000">
+				<div class="min"> 15:00 </div>
+				<div class="ply tright name"> Sputnik Rechitsa </div>
+				<div class="sco"> ? - ? </div>
+				<div class="ply name"> Gomel </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/belarus/"><strong>Belarus</strong></a> - <a
+							href="/soccer/belarus/premier-league-women/">Premier League : Women</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="5" data-eid="1102926" data-type="evt" data-esd="20200517100000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Bobruichanka (w) </div>
+				<div class="sco"> 1 - 1 </div>
+				<div class="ply name"> Dnepr Mogilev (w) </div>
+			</div>
+			<div class="row-gray " data-pid="5" data-eid="1102927" data-type="evt" data-esd="20200517110000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Dinamo BGU (w) </div>
+				<div class="sco"> <a href="/soccer/belarus/premier-league-women/dinamo-bgu-w--vs-botsor-w-/5-1102927/"
+						class="scorelink">10 - 0</a> </div>
+				<div class="ply name"> BOTSOR (w) </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/faroe-islands/"><strong>Faroe Islands</strong></a> - <a
+							href="/soccer/faroe-islands/effodeildin/">Premier League</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3274982" data-type="evt" data-esd="20200517140000">
+				<div class="min"><img src="//cdn3.livescore.com/web/img/flash.gif" alt="live" /> 21&#x27; </div>
+				<div class="ply tright name"> B36 Torshavn </div>
+				<div class="sco"> <a href="/soccer/faroe-islands/effodeildin/b36-torshavn-vs-ab-argir/1-3274982/"
+						class="scorelink">2 - 0</a> </div>
+				<div class="ply name"> AB Argir </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3274977" data-type="evt" data-esd="20200517140000">
+				<div class="min"><img src="//cdn3.livescore.com/web/img/flash.gif" alt="live" /> 18&#x27; </div>
+				<div class="ply tright name"> Fuglafjoerdur </div>
+				<div class="sco"> <a href="/soccer/faroe-islands/effodeildin/fuglafjoerdur-vs-hb-torshavn/1-3274977/"
+						class="scorelink">0 - 2</a> </div>
+				<div class="ply name"> HB Torshavn </div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3274974" data-type="evt" data-esd="20200517140000">
+				<div class="min"><img src="//cdn3.livescore.com/web/img/flash.gif" alt="live" /> 18&#x27; </div>
+				<div class="ply tright name"> Vikingur </div>
+				<div class="sco"> <a href="/soccer/faroe-islands/effodeildin/vikingur-vs-skala/1-3274974/"
+						class="scorelink">0 - 1</a> </div>
+				<div class="ply name"> Skala </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3275006" data-type="evt" data-esd="20200517160000">
+				<div class="min"> 16:00 </div>
+				<div class="ply tright name"> EB/Streymur </div>
+				<div class="sco"> <a href="/soccer/faroe-islands/effodeildin/eb-streymur-vs-nsi-runavik/1-3275006/"
+						class="scorelink">? - ?</a> </div>
+				<div class="ply name"> NSI Runavik </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/korea-republic/"><strong>Republic of Korea</strong></a> - <a
+							href="/soccer/korea-republic/korea-league/">K-League 1</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3256562" data-type="evt" data-esd="20200517073000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Suwon Bluewings </div>
+				<div class="sco"> <a
+						href="/soccer/korea-republic/korea-league/suwon-bluewings-vs-ulsan-hyundai/1-3256562/"
+						class="scorelink">2 - 3</a> </div>
+				<div class="ply name"> Ulsan Hyundai </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3256555" data-type="evt" data-esd="20200517100000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> FC Seoul </div>
+				<div class="sco"> <a href="/soccer/korea-republic/korea-league/fc-seoul-vs-gwangju-fc/1-3256555/"
+						class="scorelink">1 - 0</a> </div>
+				<div class="ply name"> Gwangju FC </div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3256529" data-type="evt" data-esd="20200517100000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Seongnam FC </div>
+				<div class="sco"> <a href="/soccer/korea-republic/korea-league/seongnam-fc-vs-incheon-united/1-3256529/"
+						class="scorelink">0 - 0</a> </div>
+				<div class="ply name"> Incheon United </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/korea-republic/"><strong>Republic of Korea</strong></a> - <a
+							href="/soccer/korea-republic/k-league-2/">K-League 2</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="1" data-eid="3268882" data-type="evt" data-esd="20200517070000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Seoul E-Land FC </div>
+				<div class="sco"> <a href="/soccer/korea-republic/k-league-2/seoul-e-land-fc-vs-gyeongnam-fc/1-3268882/"
+						class="scorelink">2 - 2</a> </div>
+				<div class="ply name"> Gyeongnam FC </div>
+			</div>
+			<div class="row-gray " data-pid="1" data-eid="3268898" data-type="evt" data-esd="20200517093000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Daejeon Citizen </div>
+				<div class="sco"> <a
+						href="/soccer/korea-republic/k-league-2/daejeon-citizen-vs-chungnam-asan-fc/1-3268898/"
+						class="scorelink">2 - 2</a> </div>
+				<div class="ply name"> Chungnam Asan FC </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/taiwan/"><strong>Taiwan</strong></a> - <a
+							href="/soccer/taiwan/division-a/">Premier League</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="5" data-eid="1087299" data-type="evt" data-esd="20200517080000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Ming Chuan University </div>
+				<div class="sco"> <a href="/soccer/taiwan/division-a/ming-chuan-university-vs-taipei-tatung/5-1087299/"
+						class="scorelink">1 - 4</a> </div>
+				<div class="ply name"> Taipei Tatung </div>
+			</div>
+			<div class="row-gray " data-pid="5" data-eid="1087297" data-type="evt" data-esd="20200517080000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> NTUPES </div>
+				<div class="sco"> <a href="/soccer/taiwan/division-a/ntupes-vs-taipower/5-1087297/" class="scorelink">2
+						- 1</a> </div>
+				<div class="ply name"> Taipower </div>
+			</div>
+			<div class="row-gray even" data-pid="5" data-eid="1087296" data-type="evt" data-esd="20200517080000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Taichung Futuro </div>
+				<div class="sco"> 4 - 0 </div>
+				<div class="ply name"> Taipei Red Lions </div>
+			</div>
+			<div class="row-gray " data-pid="5" data-eid="1087298" data-type="evt" data-esd="20200517080000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Tainan City </div>
+				<div class="sco"> 0 - 1 </div>
+				<div class="ply name"> Hang Yuen </div>
+			</div>
+			<div class="row row-tall mt4">
+				<div class="clear">
+					<div class="left"> <a href="/soccer/turkmenistan/"><strong>Turkmenistan</strong></a> - <a
+							href="/soccer/turkmenistan/youth-league/">Youth League</a> </div>
+					<div class="right fs11"> </div>
+				</div>
+			</div>
+			<div class="row-gray even" data-pid="5" data-eid="1125928" data-type="evt" data-esd="20200517100000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> FK Sagadam Youth </div>
+				<div class="sco"> <a
+						href="/soccer/turkmenistan/youth-league/fk-sagadam-youth-vs-nebitci-youth/5-1125928/"
+						class="scorelink">0 - 3</a> </div>
+				<div class="ply name"> Nebitci Youth </div>
+			</div>
+			<div class="row-gray " data-pid="5" data-eid="1125929" data-type="evt" data-esd="20200517110000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Energetik Youth </div>
+				<div class="sco"> 2 - 0 </div>
+				<div class="ply name"> Merw Youth </div>
+			</div>
+			<div class="row-gray even" data-pid="5" data-eid="1125927" data-type="evt" data-esd="20200517110000">
+				<div class="min"> FT </div>
+				<div class="ply tright name"> Fk Kopetdag Asgabat Youth </div>
+				<div class="sco"> <a
+						href="/soccer/turkmenistan/youth-league/fk-kopetdag-asgabat-youth-vs-ashgabat-youth/5-1125927/"
+						class="scorelink">2 - 1</a> </div>
+				<div class="ply name"> Ashgabat Youth </div>
+			</div>
+		</div>
+		<div class="right-bar">
+			<div class="date" data-type="date"><a href="/timezone/">14:18 (UTC)<span>17 May 2020 (Sun)</span></a></div>
+			<iframe id="b100" name="b100" src="http://ads.cc/ads/?site=1&amp;pos=7&amp;sport=1&amp;km=1" width="140"
+				height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no" frameborder="no"
+				style="border-width:0" allowtransparency="true" data-type="bnr"></iframe>
+			<div class="social-box">
+				<div id="fb-root"></div>
+				<div class="facebook hidden">
+					<div class="switch switch-off"></div>
+					<div class="disabled"><img src="//cdn3.livescore.com/web/img/facebook_disabled.png"
+							alt="Facebook Like button" title="Click to enable Facebook Like button" width="48"
+							height="20" /></div>
+					<div class="fb-like" data-href="http://www.facebook.com/livescore" data-send="false"
+						data-layout="button_count" data-width="450" data-show-faces="true"></div>
+				</div>
+				<div class="google hidden">
+					<div class="switch switch-off"></div>
+					<div class="disabled"><img src="//cdn3.livescore.com/web/img/google_disabled.png"
+							alt="Google +1 button" title="Click to enable Google +1 button" width="32" height="20" />
 					</div>
-					<div class="footer-banner" data-type="sticky-bnr">
-						<div class="tcenter footer-banner-container">
-							<div class="hidden" data-type="jbnr"
-								data-url="http://ads.cc/ads/?site=1&amp;pos=60&amp;sport=1&amp;t=1" data-width="524"
-								data-height="40" data-static="1"> <iframe name="b1600" id="b1600" width="524"
-									height="40" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no"
-									frameborder="no" style="border-width:0;" allowtransparency="true"
-									class="hidden"></iframe>
-								<div class="hidden"></div>
+					<div class="g-plusone" data-size="medium" data-annotation="bubble"
+						data-href="http://www.livescore.com/"></div>
+				</div>
+			</div> <iframe id="b200" name="b200" src="http://ads.cc/ads/?site=1&amp;pos=8&amp;sport=1&amp;km=1"
+				width="140" height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no"
+				frameborder="no" style="border-width:0" allowtransparency="true" data-type="bnr"></iframe>
+			<div id="leagueTableContainer" style="position: relative; overflow: hidden;">
+				<div>
+					<h2 class="bt bb mt4 tleft">LiveScore Table</h2>
+				</div>
+				<div id="leagueTableBodyContainer">
+					<div class="table" style="display: none; position: absolute;" data-name="germany-bundesliga-0"
+						data-type="league-table">
+						<div class="top clear">
+							<div class="col-8 tleft"> <span class="arrow arrow-left" data-type="left-arrow"
+									title="Previous Table"></span> <a class="league-name"
+									href="/soccer/germany/bundesliga/" title="Germany - Bundesliga"
+									data-type="league-name">Bundesliga</a> <span class="arrow arrow-right"
+									data-type="right-arrow" title="Next Table"></span> </div>
+							<div class="col-2" title="Played">P</div>
+							<div class="col-2" title="Points">PTS</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">1</span> <span class="tip">Champions
+										League</span> </div>
+								<div class="col-6 name" data-type="name" title="FC Bayern München">FC Bayern München
+								</div>
+								<div class="col-2" data-type="goaldiff">25</div>
+								<div class="col-2" data-type="points">55</div>
 							</div>
 						</div>
-					</div>
-					<div class="clear"></div>
-					<div class="footer bt">
-						<div class="left">Livescore </div>
-						<div class="right"> <a href="https://begambleaware.org" target="_blank">BeGambleAware.org
-								+18</a> | &copy; 1998-2020 <a href="/policy/">LiveScore</a> </div>
-						<div class="clear"></div>
-						<div class="links"> <a href="/policy/">Privacy Notice</a> <a href="/cookies/">Cookie Policy</a>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">2</span> <span class="tip">Champions
+										League</span> </div>
+								<div class="col-6 name" data-type="name" title="Borussia Dortmund">Borussia Dortmund
+								</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">54</div>
+							</div>
 						</div>
-					</div>
-					<div class="banner">
-						<div class="tcenter hidden" data-type="jbnr"
-							data-url="http://ads.cc/ads/?site=1&amp;pos=15&amp;sport=1&amp;km=1" data-width="160"
-							data-height="600" data-static="1"> <iframe id="b1100" name="b1100" width="160" height="600"
-								marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no" frameborder="no"
-								style="border-width:0" allowtransparency="true"></iframe>
-							<div class="hidden"></div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">3</span> <span class="tip">Champions
+										League</span> </div>
+								<div class="col-6 name" data-type="name" title="Borussia Mönchengladbach">Borussia
+									Mönchengladbach</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">52</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color dark-blue"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">4</span> <span class="tip">Champions
+										League</span> </div>
+								<div class="col-6 name" data-type="name" title="RasenBallsport Leipzig">RasenBallsport
+									Leipzig</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">51</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color dark-yellow"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">5</span> <span class="tip">Europa League</span>
+								</div>
+								<div class="col-6 name" data-type="name" title="Bayer Leverkusen">Bayer Leverkusen</div>
+								<div class="col-2" data-type="goaldiff">25</div>
+								<div class="col-2" data-type="points">47</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color light-yellow"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">6</span> <span class="tip">Europa League
+										qualification</span> </div>
+								<div class="col-6 name" data-type="name" title="Wolfsburg">Wolfsburg</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">39</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color "> <span class="live"> &nbsp; </span> <span class="tright"
+										data-type="rank">7</span> </div>
+								<div class="col-6 name" data-type="name" title="Freiburg">Freiburg</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">37</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color "> <span class="live"> &nbsp; </span> <span class="tright"
+										data-type="rank">8</span> </div>
+								<div class="col-6 name" data-type="name" title="Schalke 04">Schalke 04</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">37</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color "> <span class="live"> <img
+											src="//cdn3.livescore.com/web/img/flash.gif" alt="live" /> </span> <span
+										class="tright" data-type="rank">9</span> </div>
+								<div class="col-6 name" data-type="name" title="1. FC Köln">1. FC Köln</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">35</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color "> <span class="live"> &nbsp; </span> <span class="tright"
+										data-type="rank">10</span> </div>
+								<div class="col-6 name" data-type="name" title="Hoffenheim">Hoffenheim</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">35</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color "> <span class="live"> &nbsp; </span> <span class="tright"
+										data-type="rank">11</span> </div>
+								<div class="col-6 name" data-type="name" title="Hertha BSC">Hertha BSC</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">31</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color "> <span class="live"> &nbsp; </span> <span class="tright"
+										data-type="rank">12</span> </div>
+								<div class="col-6 name" data-type="name" title="1. FC Union Berlin">1. FC Union Berlin
+								</div>
+								<div class="col-2" data-type="goaldiff">25</div>
+								<div class="col-2" data-type="points">30</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color "> <span class="live"> &nbsp; </span> <span class="tright"
+										data-type="rank">13</span> </div>
+								<div class="col-6 name" data-type="name" title="Eintracht Frankfurt">Eintracht Frankfurt
+								</div>
+								<div class="col-2" data-type="goaldiff">25</div>
+								<div class="col-2" data-type="points">28</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color "> <span class="live"> &nbsp; </span> <span class="tright"
+										data-type="rank">14</span> </div>
+								<div class="col-6 name" data-type="name" title="Augsburg">Augsburg</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">27</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color "> <span class="live"> <img
+											src="//cdn3.livescore.com/web/img/flash.gif" alt="live" /> </span> <span
+										class="tright" data-type="rank">15</span> </div>
+								<div class="col-6 name" data-type="name" title="Mainz 05">Mainz 05</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">26</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color light-red"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">16</span> <span class="tip">Relegation
+										play-off</span> </div>
+								<div class="col-6 name" data-type="name" title="Fortuna Düsseldorf">Fortuna Düsseldorf
+								</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">23</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear ">
+								<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">17</span> <span class="tip">Relegation</span>
+								</div>
+								<div class="col-6 name" data-type="name" title="Werder Bremen">Werder Bremen</div>
+								<div class="col-2" data-type="goaldiff">24</div>
+								<div class="col-2" data-type="points">18</div>
+							</div>
+						</div>
+						<div class="rows" data-type="team-data">
+							<div class="item clear even">
+								<div class="col-2 tt color dark-red"> <span class="live"> &nbsp; </span> <span
+										class="tright" data-type="rank">18</span> <span class="tip">Relegation</span>
+								</div>
+								<div class="col-6 name" data-type="name" title="SC Paderborn 07">SC Paderborn 07</div>
+								<div class="col-2" data-type="goaldiff">26</div>
+								<div class="col-2" data-type="points">17</div>
+							</div>
 						</div>
 					</div>
 				</div>
+				<div id="leagueTableBodyTemplate" class="hidden">
+					<div class="table" style="display: none; position: absolute;" data-type="league-table">
+						<div class="top clear">
+							<div class="col-8 tleft"> <span class="arrow arrow-left" data-type="left-arrow"
+									title="Previous Table"></span> <a class="league-name" href="#"
+									data-type="league-name"></a> <span class="arrow arrow-right" data-type="right-arrow"
+									title="Next Table"></span> </div>
+							<div class="col-2" title="Played">P</div>
+							<div class="col-2" data-type="points_header"></div>
+						</div>
+						<div class="rows" data-type="team-data"></div>
+						<div class="hidden" data-type="team-data-tpl">
+							<div class="item clear" data-type="item">
+								<div class="col-2 tt color" data-type="primary-color"> <span class="live"
+										data-type="live-indicator"><img src="//cdn3.livescore.com/web/img/flash.gif"
+											alt="live" /></span> <span class="tright" data-type="rank"></span> <span
+										class="num" data-type="secondary-color"></span> <span class="num tc"
+										data-type="tertiary-color"></span> <span class="tip" data-type="tooltip"></span>
+								</div>
+								<div class="col-6 name" data-type="name"></div>
+								<div class="col-2" data-type="goaldiff"></div>
+								<div class="col-2" data-type="points"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> <iframe id="b300" name="b300" src="http://ads.cc/ads/?site=1&amp;pos=11&amp;sport=1&amp;km=1"
+				width="140" height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no"
+				frameborder="no" style="border-width:0" allowtransparency="true" data-type="bnr"></iframe>
+		</div>
+		<div class="footer-banner" data-type="sticky-bnr">
+			<div class="tcenter footer-banner-container">
+				<div class="hidden" data-type="jbnr" data-url="http://ads.cc/ads/?site=1&amp;pos=60&amp;sport=1&amp;t=1"
+					data-width="524" data-height="40" data-static="1"> <iframe name="b1600" id="b1600" width="524"
+						height="40" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no"
+						frameborder="no" style="border-width:0;" allowtransparency="true" class="hidden"></iframe>
+					<div class="hidden"></div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="footer bt">
+			<div class="left">Livescore </div>
+			<div class="right"> <a href="https://begambleaware.org" target="_blank">BeGambleAware.org +18</a> | &copy;
+				1998-2020 <a href="/policy/">LiveScore</a> </div>
+			<div class="clear"></div>
+			<div class="links"> <a href="/policy/">Privacy Notice</a> <a href="/cookies/">Cookie Policy</a> </div>
+		</div>
+		<div class="banner">
+			<div class="tcenter hidden" data-type="jbnr"
+				data-url="http://ads.cc/ads/?site=1&amp;pos=15&amp;sport=1&amp;km=1" data-width="160" data-height="600"
+				data-static="1"> <iframe id="b1100" name="b1100" width="160" height="600" marginwidth="0"
+					marginheight="0" hspace="0" vspace="0" scrolling="no" frameborder="no" style="border-width:0"
+					allowtransparency="true"></iframe>
+				<div class="hidden"></div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
