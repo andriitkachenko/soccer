@@ -79,7 +79,7 @@ function getGamesStats($runningGames) {
         usleep(200000);
         $html = curlGet(GAME_LIST_URL . $g['url']);
         if (empty($html)) {
-            // TODO log error
+            updateCronLog('Stat URL error', GAME_LIST_URL . $g['url']);
             continue;
         }
         $stat = Parser::parseGameStat($html);

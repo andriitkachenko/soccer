@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/logs.php';
-require_once __DIR__ . '/games.php';
+require_once __DIR__ . '/../logs.php';
+require_once __DIR__ . '/../games.php';
 
 
 function isRunTokenOk($token_string) {

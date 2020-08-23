@@ -1,0 +1,464 @@
+Run Project
+2020-08-02 18:53:04
+{"status": "initialized", "start_time": "2020-08-02T18:53:01.520778", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tNHSZP_EFR2p", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:49:46
+{"status": "initialized", "start_time": "2020-08-02T18:49:43.193923", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tbSxeTGSRn7Q", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:48:27
+{"status": "initialized", "start_time": "2020-08-02T18:48:24.249137", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "t6wO6VrLkjEa", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:47:13
+{"status": "initialized", "start_time": "2020-08-02T18:47:10.360206", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tPhSzZ9qiTp1", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:43:12
+{"status": "initialized", "start_time": "2020-08-02T18:43:09.292215", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tH4bb5c4Z0dB", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:42:31
+{"status": "initialized", "start_time": "2020-08-02T18:42:28.667823", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tggNYZLwpkBu", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:40:30
+{"status": "initialized", "start_time": "2020-08-02T18:40:27.493294", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "toXjCUVn8K-Y", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:37:11
+{"status": "initialized", "start_time": "2020-08-02T18:37:08.509911", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tD8zZ221usWp", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:30:25
+{"status": "initialized", "start_time": "2020-08-02T18:30:22.388731", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tmTsLuTOf_Hn", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:18:09
+{"status": "initialized", "start_time": "2020-08-02T18:18:06.515255", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tEFp5dqWUec_", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:14:33
+{"status": "initialized", "start_time": "2020-08-02T18:14:30.709632", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "t5pQ5SRiGyen", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 18:01:39
+{"status": "initialized", "start_time": "2020-08-02T18:01:36.028116", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tF4i0sHRTotC", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+NGP hook
+2020-08-02 17:59:53
+["debug=1"]
+
+NGP hook
+2020-08-02 17:59:53
+Start
+
+NGP hook
+2020-08-02 17:58:17
+["debug=1"]
+
+NGP hook
+2020-08-02 17:58:17
+Start
+
+Run Project
+2020-08-02 10:45:28
+{"status": "initialized", "start_time": "2020-08-02T10:45:28.266845", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tYNyGh2fS3p2", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 10:43:27
+{"status": "initialized", "start_time": "2020-08-02T10:43:26.611021", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tHRT1vTNv-s5", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 10:39:50
+{"status": "initialized", "start_time": "2020-08-02T10:39:50.217820", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tSD9u_txjOZJ", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 10:30:57
+{"status": "initialized", "start_time": "2020-08-02T10:30:57.021268", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "twL6oc6s1jtY", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 10:14:01
+{"status": "initialized", "start_time": "2020-08-02T10:14:00.929131", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "teB4KC7DVobX", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 10:09:29
+{"status": "initialized", "start_time": "2020-08-02T10:09:29.429362", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "taOpACxiLrx8", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+ParseHub webhook newgoalpro
+2020-08-02 10:05:04
+["debug=1"]
+
+ParseHub webhook newgoalpro
+2020-08-02 10:05:04
+Start
+
+ParseHub webhook newgoalpro
+2020-08-02 10:04:49
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 10:04:48
+Start
+
+Run Project
+2020-08-02 09:48:56
+{"status": "initialized", "start_time": "2020-08-02T09:48:55.809826", "webhook": "http://livesoccer.96.lt/api/hooks/ngp", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tqPbbgEGycnz", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+ParseHub webhook newgoalpro
+2020-08-02 09:41:13
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 09:41:13
+Start
+
+Run Project
+2020-08-02 09:41:00
+{"status": "initialized", "start_time": "2020-08-02T09:41:00.579516", "webhook": "http://livesoccer.96.lt/api/hooks/ngp", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tUVg6u-B2NUv", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+ParseHub webhook newgoalpro
+2020-08-02 09:35:07
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 09:35:07
+Start
+
+ParseHub webhook newgoalpro
+2020-08-02 09:34:59
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 09:34:59
+Start
+
+ParseHub webhook newgoalpro
+2020-08-02 09:25:07
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 09:25:07
+Start
+
+Run Project
+2020-08-02 09:22:55
+{"status": "initialized", "start_time": "2020-08-02T09:22:54.775882", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "t12CcBLtU-Tg", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 09:22:07
+{"status": "initialized", "start_time": "2020-08-02T09:22:07.404347", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "t8WSbu9vMjMn", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+Run Project
+2020-08-02 09:17:23
+{"status": "initialized", "start_time": "2020-08-02T09:17:23.029291", "webhook": "http://livesoccer.96.lt/api/hooks/ngp.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/api/hooks/ngp.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "start_template": "newgoalpro", "pages": 0, "run_token": "tsTajhEgqE_X", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "md5sum": null, "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}"}
+
+ParseHub webhook newgoalpro
+2020-08-02 09:10:32
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 09:10:32
+Start
+
+ParseHub webhook newgoalpro
+2020-08-02 09:10:15
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 09:10:15
+Start
+
+ParseHub webhook newgoalpro
+2020-08-02 09:06:06
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 09:06:06
+Start
+
+ParseHub webhook newgoalpro
+2020-08-02 09:05:34
+Empty run data
+
+ParseHub webhook newgoalpro
+2020-08-02 09:05:34
+Start
+
+Run Project
+2020-07-19 19:28:39
+{"run_token": "t3s1TR8Jks5j", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:28:38.333865", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:19:40
+{"run_token": "t8CUT5TUqw8U", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:19:39.266618", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:19:09
+{"run_token": "tbP7f16YLUTK", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:19:08.058635", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:16:25
+{"run_token": "t1RVJdybDWXR", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:16:23.708756", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:15:02
+{"run_token": "tYO8XrbAErjD", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:15:01.358342", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:12:34
+{"run_token": "tYYisCusnimv", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:12:32.893796", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:10:27
+{"run_token": "tOYtt14OEwCV", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:10:26.429881", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:09:16
+{"run_token": "t-TU8P0Y7AZJ", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:09:15.172257", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:08:05
+{"run_token": "tV5buK3-0MTM", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:08:04.532650", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:06:28
+{"run_token": "tZv-EWi5PWFv", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:06:26.699581", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:05:05
+{"run_token": "tYVnBTm9u505", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:05:04.163194", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:02:59
+{"run_token": "tEkzS_Tb8mgX", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:02:58.518327", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 19:00:13
+{"run_token": "tpHTPK1RDPUs", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T19:00:11.674227", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:58:20
+{"run_token": "tUu11HGSU642", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:58:18.866900", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:57:22
+{"run_token": "tD5e8GTURoE-", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:57:21.572501", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:56:19
+{"run_token": "te5swrwv7edy", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:56:17.950914", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:46:46
+{"run_token": "tDMiF0NEgrZ1", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:46:44.863554", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:44:38
+{"run_token": "tRmO_MCGZY_Q", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:44:37.137437", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:42:49
+{"run_token": "tz_rqXRnq1Ke", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:42:47.825856", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:38:01
+{"run_token": "tOy24Tkj7qW_", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:38:00.726955", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:33:36
+{"run_token": "tRDVUKJ6A_OK", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:33:35.311571", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:31:39
+{"run_token": "t16JUTJHw4oC", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:31:38.494481", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 18:30:16
+{"run_token": "t3WGLfMYiJdw", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T18:30:14.942765", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 17:41:46
+{"run_token": "ttof4mF-Xee_", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T17:41:45.211586", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 17:39:53
+{"run_token": "tNwfSbqNxuF4", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T17:39:52.209202", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 14:24:09
+{"run_token": "tbx9R5niEE3A", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T14:24:07.848366", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 14:20:48
+{"run_token": "ti4vZTBT33Sm", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T14:20:46.520623", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 14:19:55
+{"run_token": "tTUTGpyYROXN", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T14:19:53.284972", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 14:16:48
+{"run_token": "tjTfFeAiEKMH", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T14:16:46.759118", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 14:14:59
+{"run_token": "tsVx3ayzUrHV", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T14:14:56.982518", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+ParseHub webhook newgoalpro
+2020-07-19 14:12:12
+Data not ready or Status is not "complete"
+
+ParseHub webhook newgoalpro
+2020-07-19 14:12:12
+["sss=eee"]
+
+ParseHub webhook newgoalpro
+2020-07-19 14:12:12
+Start
+
+Run Project
+2020-07-19 14:11:01
+{"run_token": "tDOT_Bti9Mfk", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T14:10:59.069651", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 14:01:10
+{"run_token": "tAGqe6yqu872", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T14:01:08.533665", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+ParseHub webhook newgoalpro
+2020-07-19 13:59:48
+Data not ready or Status is not "complete"
+
+ParseHub webhook newgoalpro
+2020-07-19 13:59:48
+["sss=eee"]
+
+Run Project
+2020-07-19 11:44:30
+{"run_token": "trEHbhqyHkYV", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T11:44:29.290407", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 11:40:14
+{"run_token": "tXDigsJ-jTrt", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T11:40:13.463522", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 11:28:41
+{"run_token": "tHJOa-OO0Y7O", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T11:28:40.735167", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 11:22:30
+{"run_token": "tQYeaHnjRwDE", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T11:22:29.410063", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+ParseHub webhook newgoalpro
+2020-07-19 11:21:11
+Data not ready or Status is not "complete"
+
+ParseHub webhook newgoalpro
+2020-07-19 11:21:11
+["sss=eee"]
+
+Run Project
+2020-07-19 10:33:50
+{"run_token": "tknVbZ3-X1WQ", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T10:33:49.190907", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 10:24:15
+{"run_token": "t_fwFPEWgPT5", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T10:24:14.800661", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 10:17:40
+{"run_token": "tEKvGXUiKTMW", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T10:17:39.731572", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 10:15:11
+{"run_token": "tJ4fzi75-Wdn", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T10:15:11.008088", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+ParseHub webhook newgoalpro
+2020-07-19 10:14:09
+2
+
+ParseHub webhook newgoalpro
+2020-07-19 10:14:09
+1
+
+ParseHub webhook newgoalpro
+2020-07-19 10:12:58
+1
+
+ParseHub webhook newgoalpro
+2020-07-19 10:12:25
+Data not ready or Status is not "complete"
+
+ParseHub webhook newgoalpro
+2020-07-19 10:12:25
+["sss=eee"]
+
+Run Project
+2020-07-19 10:05:16
+{"run_token": "tgeH796NQxP2", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T10:05:16.166100", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+ParseHub webhook newgoalpro
+2020-07-19 10:00:49
+Data not ready or Status is not "complete"
+
+ParseHub webhook newgoalpro
+2020-07-19 10:00:49
+["sss=eee"]
+
+ParseHub webhook newgoalpro
+2020-07-19 10:00:35
+Empty data
+
+ParseHub webhook newgoalpro
+2020-07-19 09:59:58
+Empty data
+
+Run Project
+2020-07-19 09:58:36
+{"run_token": "tStEVAiuBEPH", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T09:58:35.672541", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-19 09:53:14
+{"run_token": "tXb9YAszpHb1", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-19T09:53:13.373354", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-18 15:52:21
+{"run_token": "tiX1nTEtLu75", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-18T15:52:20.727054", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+ParseHub webhook newgoalpro
+2020-07-18 15:50:37
+Empty data
+
+ParseHub webhook newgoalpro
+2020-07-18 15:50:00
+Empty data
+
+Run Project
+2020-07-18 15:49:01
+{"run_token": "tTmO6d1XFahT", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-18T15:49:00.236441", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-18 15:12:48
+{"run_token": "tHJcPG4sbCqr", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-18T15:12:48.137878", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-18 15:09:31
+{"run_token": "t1bVRT12uvTx", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-18T15:09:30.967163", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/cron/nowgoalpro/ph_hook.php", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-18 14:48:37
+{"run_token": "teVnkZRtuouO", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"newgoalpro\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"http://www.nowgoal.pro/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-18T14:48:37.220641", "owner_email": "aatkachenko23@gmail.com", "webhook": "", "is_empty": false, "project_token": "tW4eVr0vCTQG", "end_time": null, "start_running_time": null, "start_url": "http://www.nowgoal.pro/", "start_value": "{}", "start_template": "newgoalpro", "pages": 0}
+
+Run Project
+2020-07-18 14:42:04
+{"run_token": "ttMK2T2TppU5", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/parsehub_webhook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"unogoal_template\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"https://www.unogoal.life/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-18T14:42:03.961954", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/parsehub_webhook.php", "is_empty": false, "project_token": "txg_T0WpxYTc", "end_time": null, "start_running_time": null, "start_url": "https://www.unogoal.life/", "start_value": "{}", "start_template": "unogoal_template", "pages": 0}
+
+Run Project
+2020-07-18 14:40:14
+{"run_token": "tAnPWaVrqTkN", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/parsehub_webhook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"unogoal_template\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"https://www.unogoal.life/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-18T14:40:13.563586", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/parsehub_webhook.php", "is_empty": false, "project_token": "txg_T0WpxYTc", "end_time": null, "start_running_time": null, "start_url": "https://www.unogoal.life/", "start_value": "{}", "start_template": "unogoal_template", "pages": 0}
+
+Run Project
+2020-07-18 14:39:10
+{"run_token": "th0RqWTK1q4Q", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/parsehub_webhook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"unogoal_template\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"https://www.unogoal.life/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2020-07-18T14:39:09.641194", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/parsehub_webhook.php", "is_empty": false, "project_token": "txg_T0WpxYTc", "end_time": null, "start_running_time": null, "start_url": "https://www.unogoal.life/", "start_value": "{}", "start_template": "unogoal_template", "pages": 0}
+

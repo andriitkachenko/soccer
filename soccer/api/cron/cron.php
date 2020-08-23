@@ -1,40 +1,45 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/nowgoalpro.php';
+chdir(__DIR__ . '/../..');
 
-$ok = $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cron']);
+require_once 'php/logs.php';
+
+$ok = $_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['cron']) && $_POST['cron'] == CRON_KEY;
 if (!$ok) {
     updateCronLog("!!!  UNKNOWN CRON REQUEST !!!", json_encode(array_merge($_REQUEST, $_SERVER)));
     echo 'Unknown request';
     die();
 }
+
+require_once 'sources/nowgoalpro/nowgoalpro.php';
+
 $isCron1 = true;
 $minute = @intval(date("i"));
 $isCron15 = in_array($minute, [10, 25, 40, 55]);
-
 $sources = [ 
     new NowGoalPro()
 ]; 
 
 foreach($sources as $s) {
-    if (isCron15 && $s.isParseHubClient()) {
-        $runData = $s.runParseHubProject();
-        if (empty($runData['ok'])) {
-            echo "Project run failed";
+    if (true || $isCron15) {
+        if ($s->isParseHubClient()) {
+            $runData = $s->runParseHubProject();
+            if (empty($runData['ok'])) {
+                echo "Project run failed";
+            }
+            echo date("d-m-Y H:i:s");
+            echo "<br /><br />";
+            echo $runData['run'];
+            echo "<br /><br />";
+            echo "Attempts: " . $runData['attempts'];
+            echo "<br /><br />";
+            echo $runData['logged'] ? "Log successful" : "Log failed" ;        
         }
-        echo date("d-m-Y H:i:s");
-        echo "<br /><br />";
-        echo $runData['run'];
-        echo "<br /><br />";
-        echo "Attempts: " . $runData['attempts'];
-        echo "<br /><br />";
-        echo $runData['logged'] ? "Log successful" : "Log failed" ;        
     }
-    if (isCron1) {
-        $s.runCron1();
+    if ($isCron1) {
+        $s->runOneMinuteUpdate();
     }
-
 }
 
 die();
