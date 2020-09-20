@@ -1,3 +1,4 @@
 *.sublime-project
 .vscode/
 soccer/data/*.json
+soccer/logs/
