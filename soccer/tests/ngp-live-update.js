@@ -208,7 +208,44 @@ _glModel.SplitColumn = "^";
 _glModel.SplitDomain = "$$";
 _glModel.SplitRecord = "!";
 
+function ToLocalTime(t, type) {
+    //20200809143000
+    var strTime = "";
+    var t1 = new Date(t.substr(0, 4), parseInt(t.substr(4, 2).replace(/0(\d)/, "$1")) - 1, t.substr(6, 2), t.substr(8, 2), t.substr(10, 2));
+    var localT = new Date(t1.getTime() - ((new Date()).getTimezoneOffset() * 60000) - (8 * 3600000));
+
+    if (!type) {//20150101123000
+        strTime = localT;
+    }
+    else if (type == 1) {
+        strTime = ToDateString(localT) + " " + ToTimeString(localT);
+    }
+    else if (type == 2) {
+        strTime = ToDateString(localT);
+    }
+    else if (type == 3) {
+        strTime = ToTimeString(localT);
+    }
+    else if (type == 4) {
+        strTime = ToDateTimeString(localT);
+    }
+    else if (type == 5) {
+        strTime = ToFullDate(localT);
+    }
+    else if (type == 6) {
+        strTime = ToShortDateString(localT);
+    }
+
+    if (strTime) {
+        return strTime;
+    }
+
+    return t;
+}
+
+
 _glModel.chMatch = function (infoStr) {
+    //1840264^3^20200809143000^20200809153632^2^2^1^0^0^0^0^0^^^^^"
     var infoArr = infoStr.split(_glModel.SplitColumn);
     this.mId = infoArr[0];
     this.State = parseInt(infoArr[1]);

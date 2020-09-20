@@ -9,7 +9,7 @@ switch($test) {
     case 'stat' :
         $html = file_get_contents('livescore_game_example.html');
         $stat = Parser::parseGameStat($html);
-        print_r($stat);
+        print_r($stat['stat']);
         break;
     case 'list' :
         $html = file_get_contents('livescore_list_example.html');
