@@ -4,6 +4,7 @@ declare(strict_types=1);
 chdir(__DIR__ . '/../..');
 
 require_once 'php/logs.php';
+require_once 'php/utils/time.php';
 
 $ok = $_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['cron']) && $_POST['cron'] == CRON_KEY;
 if (!$ok) {
@@ -14,32 +15,28 @@ if (!$ok) {
 
 require_once 'sources/nowgoalpro/nowgoalpro.php';
 
-$isCron1 = true;
 $minute = @intval(date("i"));
-$isCron15 = in_array($minute, [10, 25, 40, 55]);
+$isCron5 = boolval($minute % 5);  //in_array($minute, [10, 25, 40, 55]);
 $sources = [ 
     new NowGoalPro()
 ]; 
 
 foreach($sources as $s) {
-    if (true || $isCron15) {
+    if (true || $isCron5) {
         if ($s->isParseHubClient()) {
             $runData = $s->runParseHubProject();
-            if (empty($runData['ok'])) {
-                echo "Project run failed";
-            }
-            echo date("d-m-Y H:i:s");
-            echo "<br /><br />";
-            echo $runData['run'];
-            echo "<br /><br />";
-            echo "Attempts: " . $runData['attempts'];
-            echo "<br /><br />";
-            echo $runData['logged'] ? "Log successful" : "Log failed" ;        
+            updateCronLog("Run ParseHub from cron", json_encode($runData));
+            $info = [
+                time2DateTime(),
+                "Parse Hub project run " . (empty($runData['ok']) ? 'failed' : "OK"),
+                "Attempts: " . $runData['attempts'],
+                $runData['logged'] ? "Log successful" : "Log failed",
+            ];
+            echo implode(" ~~~ ", $info);
         }
     }
-    if ($isCron1) {
-        $s->runOneMinuteUpdate();
-    }
+    // $s->runOneMinuteUpdate();
+    updateCronLog("1-minute update");
 }
 
 die();

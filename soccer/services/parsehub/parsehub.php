@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../php/logs.php';
+require_once __DIR__ . '/../../php/utils/time.php';
 
 const PARSEHUB_RUN_ATTEMPTS_MAX  = 5;
 const PARSEHUB_RUN_PROJECT_URL_TEMPLATE = 'https://www.parsehub.com/api/v2/projects/%project_token%/run';
@@ -56,7 +57,7 @@ class ParseHub implements iParseHub {
         $log_result = updateParsehubLog("Run Project", $run);
         return [ 
             'ok' => $this->isRunTokenOk($run), 
-            'run' => $run, 
+            'time' => time2DateTime(),
             'logged' => $log_result, 
             'attempts' => $i++ 
         ];
