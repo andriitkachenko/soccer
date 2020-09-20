@@ -6,11 +6,10 @@ require_once __DIR__ . '/../../php/utils/time.php';
 require_once __DIR__ . '/nowgoalpro.php';
 require_once __DIR__ . '/ngp_db_manager.php';
 require_once __DIR__ . '/../../services/db/db_connection.php';
+require_once __DIR__ . '/../../services/db/db_settings.php';
 
 
 $runData = file_get_contents('php://input');
-
-updateParsehubLog("NGP hook", "Start");
 
 if (empty($runData)) {
     updateParsehubLog("NGP hook", "Empty run data");
@@ -20,15 +19,13 @@ if (empty($runData)) {
 $runData = urldecode($runData);
 $runData = explode("&", $runData);
 
-updateParsehubLog("NGP hook", json_encode($runData));
-
 $ready = in_array("data_ready=1", $runData) && in_array("status=complete", $runData);
 
 if (!$ready) {
     die();
 }
 
-updateParsehubLog("NGP hook", 'Run data ready');
+updateParsehubLog("NGP hook", json_encode($runData));
 
 $run = [];
 foreach ($runData as $line) {
@@ -55,16 +52,12 @@ if (!in_array("is_empty=False", $runData)) {
     die();
 }
 
-updateParsehubLog("NGP hook", "Start getting game data");
-
 $gameData = $ph->getData($run['token']);
 
 if (empty($gameData)) {
     updateParsehubLog("NGP hook", 'No data from Parse Hub');    
     die();
 }
-
-updateParsehubLog("NGP hook", "Received game data");
 
 $ngp = new NowGoalPro();
 $games = $ngp->getParseHubGames($gameData);
@@ -78,7 +71,10 @@ $result = file_put_contents(DATA_FILE, json_encode($games));
 
 updateParsehubLog("NGP hook", "Received " . count($games) . " games");
 
-$dbConn = new DbConnection();
+$dbConn = new DbConnection(new DbSettings(false));
+if (!$dbConn->connected()) {
+    updateParsehubLog("NGP hook", "DB connection failed");
+}
 $dbManager = new NgpDbManager($dbConn);
 $ok = $ngp->updateNewGames($dbManager, $games);
 

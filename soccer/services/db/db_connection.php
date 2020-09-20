@@ -7,6 +7,7 @@ interface iDbConnection {
     public function get() : PDO;
     public function exec($query);
     public function getLastError() : string;
+    public function connected() : bool;
 }
 
 class DbConnection implements iDbConnection {
@@ -32,6 +33,10 @@ class DbConnection implements iDbConnection {
 
     public function close() : void {
         $this->connection = null;
+    }
+    
+    public function connected() : bool {
+        return !is_null($this->connection);
     }
 
     public function get() : PDO {
