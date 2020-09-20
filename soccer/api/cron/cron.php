@@ -16,18 +16,18 @@ if (!$ok) {
 require_once 'sources/nowgoalpro/nowgoalpro.php';
 
 $minute = @intval(date("i"));
-$isCron5 = boolval($minute % 5);  //in_array($minute, [10, 25, 40, 55]);
+$isCron5 = ($minute % 5) == 0;  //in_array($minute, [10, 25, 40, 55]);
 $sources = [ 
     new NowGoalPro()
 ]; 
 
 foreach($sources as $s) {
-    if (true || $isCron5) {
+    if ($isCron5) {
         if ($s->isParseHubClient()) {
             $runData = $s->runParseHubProject();
             updateCronLog("Run ParseHub from cron", json_encode($runData));
             $info = [
-                time2DateTime(),
+                time2datetime(),
                 "Parse Hub project run " . (empty($runData['ok']) ? 'failed' : "OK"),
                 "Attempts: " . $runData['attempts'],
                 $runData['logged'] ? "Log successful" : "Log failed",

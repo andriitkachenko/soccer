@@ -4,6 +4,9 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../php/logs.php';
 require_once __DIR__ . '/../../php/utils/time.php';
 require_once __DIR__ . '/nowgoalpro.php';
+require_once __DIR__ . '/ngp_db_manager.php';
+require_once __DIR__ . '/../../services/db/db_connection.php';
+
 
 $runData = file_get_contents('php://input');
 
@@ -55,7 +58,6 @@ if (!in_array("is_empty=False", $runData)) {
 updateParsehubLog("NGP hook", "Start getting game data");
 
 $gameData = $ph->getData($run['token']);
-$gameDataTime = string2Timestamp($run['start_time']);
 
 if (empty($gameData)) {
     updateParsehubLog("NGP hook", 'No data from Parse Hub');    
@@ -76,9 +78,11 @@ $result = file_put_contents(DATA_FILE, json_encode($games));
 
 updateParsehubLog("NGP hook", "Received " . count($games) . " games");
 
-$ok = $ngp->updateGames($games, $gameDataTime);
+$dbConn = new DbConnection();
+$dbManager = new NgpDbManager($dbConn);
+$ok = $ngp->updateNewGames($dbManager, $games);
 
-die();
+updateParsehubLog("NGP hook", "New games update - " . humanizeBool($ok));
 
 /*
 
@@ -92,9 +96,6 @@ $dbResult = humanizeBool(saveGamesToDB($games, $anchorTime));
 
 updateParsehubLog("ParseHub webhook save", "db: $dbResult, file: $result" );
 
-*/
-/*
-curl -X POST "https://scoreslive.000webhostapp.com/php/parsehub_webhook.php" -H "Content-Type: application/x-www-form-urlencoded" -d '{"some":"json"}'
 */
 
 ?>

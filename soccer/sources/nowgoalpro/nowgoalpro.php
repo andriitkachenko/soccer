@@ -14,6 +14,26 @@ interface iNowGoalPro {
 }
 
 class NowGoalPro implements iNowGoalPro {
+
+    public function updateNewGames($dbManager, $liveGames) {
+        $liveGameIds = array_map(function($g) { return $g->id;}, $liveGames);
+        // get new game IDs
+        list($ok, $oldGameIds) = $dbManager->getExistingGameIds();
+        if (!$ok) {
+            return false;
+        }
+        $newGameIds = array_diff($liveGameIds, $oldGameIds);
+        $goneGameIds = array_diff($oldGameIds, $liveGameIds);
+
+        $newGames = array_filter($liveGames, function($liveGame) use($newGameIds) {
+            return in_array($liveGame->id, $newGameIds);
+        });
+        $res = $dbManager->deleteNewGames($goneGameIds);
+        if ($res === true) {
+            $res = $dbManager->insertNewGames($newGames);
+        }
+        return $res;
+    }
     
     public function isParseHubClient() : bool {
         return true;
@@ -58,8 +78,37 @@ class NowGoalPro implements iNowGoalPro {
         return $games;
     }
 
-    public function updateGames($games, $timestamp) {
-        // update ngp_games/ ngp_leagues tables
+    public function updateLiveGames($dbManager, $liveGames) {
+        $liveGameIds = array_map(function($g) { return $g->id;}, $games);
+        // get new game IDs
+        list($ok, $existingGameIds) = $dbManager->getExistingGameIds($gamesId);
+        if (!$ok) {
+            return false;
+        }
+        $newGameIds = array_filter($gameIds, function($liveGameId) {return !in_array($liveGameId, $existingGameIds);});
+        // get stat for each new game
+        $data = [];
+        foreach ($newGameIds as $i => $g) {
+            if (!$i) {
+                usleep(100000);
+            }
+            $html = file_get_contents(NGP_BASE_URL . $g['url']);
+            if ($html === false) {
+                continue;
+            }
+            $stat = NGPParser::parseGame($html);
+            if (empty($stat)) {
+                continue;
+            }
+            $data[] = [
+                'game' => $g,
+                'stat' => $stat
+            ];
+        }
+        // save new games to the DB
+        $ok = $dbManager->saveLiveGames($data);
+        //
+        return $ok;
     }
 
 }

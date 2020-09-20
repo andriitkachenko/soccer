@@ -80,18 +80,31 @@ class NGPParser implements iParser {
         $data['id'] = intval($inits[0]);
         
         $data['live'] = $state > 0 ? $state : 0;
-        if ($state == STATE_HALF1 && !empty($inits[2])) {
-            $timeHalf1 = (DateTime::createFromFormat("YmdHis", $inits[2]))->getTimestamp() - (8 * 3600);
-            $data['min'] = floor((time() - $timeHalf1) / 60.);
-        }
-        if ($state == STATE_HALF2 && !empty($inits[3])) {
-            $timeHalf2 = (DateTime::createFromFormat("YmdHis", $inits[3]))->getTimestamp() - (8 * 3600);
-            $data['min'] = floor((time() - $timeHalf2) / 60.) + 45;
-        }
 
-        if (!isset($inits[4]) || !ctype_digit($inits[4]) || !isset($inits[5]) || !ctype_digit($inits[5])) {
+        if (!empty($inits[2])) {
+            $t = (DateTime::createFromFormat("YmdHis", $inits[2]))->getTimestamp() - (8 * 3600);
+            $data['start'] = $t;
+        }
+        if (!empty($inits[3])) {
+            $realStartTime = (DateTime::createFromFormat("YmdHis", $inits[3]))->getTimestamp() - (8 * 3600);
+            $data['start_real'] = $realStartTime;
+            switch ($state) {
+                case STATE_HALF1 :
+                    $data['min'] = floor((time() - $realStartTime) / 60.);
+                break;
+                case STATE_HALF2 :
+                    $data['min'] = floor((time() - $realStartTime) / 60.) + 45;
+                break;
+                case STATE_HT :
+                    $data['min'] = 45;
+                break;
+            }
+        }
+        
+        if (!isset($data['min']) || !isset($inits[4]) || !ctype_digit($inits[4]) || !isset($inits[5]) || !ctype_digit($inits[5])) {
             return false;
         }
+
         $data['h-gl'] = intval($inits[4]);
         $data['g-gl'] = intval($inits[5]);
 
@@ -383,7 +396,7 @@ class NGPParser implements iParser {
             return false;
         }
         $g['league_short'] = trim($nodes->item(0)->textContent);
-        $g['league_href'] = trim($nodes->item(0)->attributes->getNamedItem('href')->textContent);
+        $g['league_url'] = trim($nodes->item(0)->attributes->getNamedItem('href')->textContent);
         //<span id="ht_1831305" class="name">
         //     Suwon Samsung Bluewings
         // <font color=\"#880000\">(N)</font>

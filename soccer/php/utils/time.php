@@ -19,7 +19,7 @@ function string2MinuteStamp($string) : int {
     return time2minuteStamp(string2Timestamp($string));
 }
 
-function time2DateTime($t = null) {
+function time2datetime($t = null) {
     return date("Y-m-d H:i:s", empty($t) ? time() : $t); 
 }
 

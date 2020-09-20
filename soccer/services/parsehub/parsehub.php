@@ -57,7 +57,7 @@ class ParseHub implements iParseHub {
         $log_result = updateParsehubLog("Run Project", $run);
         return [ 
             'ok' => $this->isRunTokenOk($run), 
-            'time' => time2DateTime(),
+            'time' => time2datetime(),
             'logged' => $log_result, 
             'attempts' => $i++ 
         ];

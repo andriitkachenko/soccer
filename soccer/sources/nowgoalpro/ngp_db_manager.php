@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../../db/db_utils.php';
-require_once __DIR__ . '/../../logs.php';
-require_once __DIR__ . '/../../log/log.php';
-require_once __DIR__ . '/../../utils.php';
+//require_once __DIR__ . '/../../db/db_utils.php';
+//require_once __DIR__ . '/../../logs.php';
+//require_once __DIR__ . '/../../log/log.php';
+require_once __DIR__ . '/../../php/utils.php';
 
 
     interface iDbManager {
@@ -12,15 +12,68 @@ require_once __DIR__ . '/../../utils.php';
         public function updateGames($games);
     }
 
-    class NgpDbManager implements iDbManager {
+    interface  iNgpDbManager {
+        public function getExistingGameIds();
+        public function saveLiveGames($liveGames) : bool;
+        public function deleteNewGames($ids);
+        public function insertNewGames($games);
+    }
+
+    class NgpDbManager implements iDbManager,iNgpDbManager {
         private $dbConn = null;
 
-        function __construct(PDO $dbConnection) {
-            $this->dbConn = $dbConnection;
+        function __construct(DbConnection $dbConnection) {
+            $this->dbConn = $dbConnection->get();
         }
 
         function __destruct() {
             $this->dbConn = null;
+        }
+
+        public function deleteNewGames($ids) {
+            if (!is_array($ids)) {
+                return false;
+            }
+            if (empty($ids)) {
+                return true;
+            }
+            $ids = implode(',', $ids);
+            $query = "DELETE FROM `ngp_new_games` WHERE `game_id` in ($ids);";
+            $ok = $this->dbConn->exec($query);
+            return $ok ? true : $this->dbConn->getLastError; 
+        }
+
+        public function insertNewGames($games) {
+            if (!is_array($games)) {
+                return false;
+            }
+            if (empty($games)) {
+                return true;
+            }
+            $values = [];
+            foreach($games as $g) {
+                $v = [
+                    dbInt($g, 'id'), 
+                    dbString($g, 'start_time', true), 
+                    dbInt($g, 'min', true), 
+                    dbString($g, 'url'), 
+                    dbString($g, 'league_short', true), 
+                    dbString($g, 'league_url', true), 
+                    dbString($g, 'host'), 
+                    dbString($g, 'host_rank', true), 
+                    dbString($g, 'guest'), 
+                    dbString($g, 'guest_rank', true)
+                ];
+                $v = implode(',', $v);
+                $values[] =  "($v)";
+            }
+            $values = implode(',', $values); 
+            $query = 
+                "INSERT IGNORE 
+                INTO `ngp_new_games` (`game_id`, `start_time`, `min`, `url`, `league_short`, `league_url`, `host`, `host_rank`, `guest`, `guest_rank`) 
+                VALUES $values;";
+            $ok = $this->dbConn->exec($query);
+            return $ok ? true : $this->dbConn->getLastError;  
         }
         
         public function insertStats($stats) {
@@ -43,7 +96,7 @@ require_once __DIR__ . '/../../utils.php';
                 ) 
                 VALUES $values;
             ";
-            $ok = exec_query($this->dbConn, $query);  
+            $ok = $this->dbConn->exec($query);  
             return $ok ? true : $query;                      
         }
 
@@ -260,36 +313,67 @@ require_once __DIR__ . '/../../utils.php';
         $ok = $this->dbConn->exec($query);  
         return $ok ? true : $query;   
     }    
+
+    public function  getExistingGameIds() {
+        $query = "SELECT `game_id` FROM `ngp_new_games`";
+        $res = $this->dbConn->query($query);  
+        if ($res === false) {
+            return [false, $this->dbConn->getLastError];
+        }
+        $res = $res->fetchAll(PDO::FETCH_COLUMN, 0);
+        return [true, $res];
+    }
+
+    public function saveLiveGames($liveGames) : bool {
+        if (empty($liveGames)) {
+            return true;
+        }
+        // leagues
+        $leagues = [];
+        foreach($liveGames as $g) {
+            $league = $g['stat']['teams']['league'];
+            $league['short'] = $g['game']['league_short'];
+            $leagues[] = $league;
+        }
+        $ok = insertLeagues($leagues);
+        if (!$ok) {
+            return false;
+        }
+        // teams
+        $teams = [];
+        foreach($liveGames as $g) {
+            $teams[] = $g['stat']['teams']['host'];
+            $teams[] = $g['stat']['teams']['guest'];
+        }
+        $ok = insertTeams($teams);
+        if (!$ok) {
+            return false;
+        }
+        //
+        $values = [];
+        foreach($liveGames as $g) {
+            $gameValues = [
+                $g['game']['id'], //`game_id` INT UNSIGNED NOT NULL,
+                $g['game']['url'],//`url` VARCHAR(255) NOT NULL,
+                $g['stat']['teams']['league']['id'],//`league_id` int DEFAULT NULL,
+                date('Y-m-d H:i:s', $g['stat']['status']['start']),//`start_time` DATETIME NOT NULL,
+                date('Y-m-d H:i:s', $g['stat']['status']['start_real']), //`start_real` DATETIME NOT NULL,
+                $g['stat']['teams']['host']['id'], //`host_id` int NOT NULL,
+                $g['game']['host_rank'], //`host_rank` VARCHAR(10),
+                $g['stat']['teams']['guest']['id'], //`guest_id` int NOT NULL,
+                $g['game']['game_rank'],  //`guest_rank` VARCHAR(10),
+                'null', //`trackable` TINYINT(1) DEFAULT NULL,
+                'null',//`description` TEXT DEFAULT NULL,
+                date('Y-m-d H:i:s')//`timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,                
+            ];
+            $values[] = "(" . implode(',', $gameValues) . ")";
+        }
+        $values = implode(',', $values);
+        $query = "INSERT IGNORE INTO `ngp_live_games`() VALUES $values
+        ";
+        $res = $this->dbConn->exec($query);  
+        return $res != false || $res === 0;
+    }
+
 }    
 ?>
-
-/**
-
- create table if not exists `ngp_games` (
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `game_id` INT UNSIGNED NOT NULL,
-    `url` VARCHAR(255) NOT NULL,
-    `league_id` int DEFAULT NULL,
-    `start_time` DATETIME NOT NULL,
-    `host_id` int NOT NULL,
-    `host_rank` VARCHAR(10) NOT NULL,
-    `guest_id` int NOT NULL,
-    `guest_rank` VARCHAR(10) NOT NULL,
-    `live` TINYINT(1) DEFAULT 1 NOT NULL,
-    `trackable` TINYINT(1) DEFAULT 1 NOT NULL,
-    `description` TEXT DEFAULT NULL,
-    `min` int not null,
-    `timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY (`game_id`),
-    KEY (`live`),
-    KEY (`trackable`),
-    CONSTRAINT FK_games_league_id FOREIGN KEY (`league_id`) REFERENCES `ngp_leagues`(`league_id`) 
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_games_host_id FOREIGN KEY (`host_id`) REFERENCES `ngp_teams`(`team_id`) 
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_games_guest_id FOREIGN KEY (`guest_id`) REFERENCES `ngp_teams`(`team_id`) 
-        ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB, CHARACTER SET=UTF8;
-
-*/

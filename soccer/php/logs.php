@@ -9,7 +9,7 @@ function updateLog($logFile, $items) {
     }
     $data = is_array($items) ? implode(SEPARATOR, $items) : $items;
     $log = file_get_contents($logFile);
-    $log = time2DateTime() . SEPARATOR . $data . "\n". $log;     
+    $log = time2datetime() . SEPARATOR . $data . "\n". $log;     
     return file_put_contents($logFile, substr($log, 0, MAX_LOG_SIZE));
 }
 
