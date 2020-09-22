@@ -2,3 +2,4 @@
 .vscode/
 soccer/data/*.json
 soccer/logs/
+soccer/tests
