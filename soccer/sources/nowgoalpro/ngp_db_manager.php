@@ -14,6 +14,7 @@ require_once __DIR__ . '/../../php/utils.php';
 
     interface  iNgpDbManager {
         public function getExistingGameIds();
+        public function getTrackableGames();
         public function saveLiveGames($liveGames) : bool;
         public function deleteNewGames($ids);
         public function insertNewGames($games);
@@ -28,6 +29,23 @@ require_once __DIR__ . '/../../php/utils.php';
 
         function __destruct() {
             $this->dbConn = null;
+        }
+
+        public function getTrackableGames() {
+            return [];
+        }
+
+        public function loadNewGames() {
+            $query = "
+                SELECT `game_id`, `start_time`, `min`, `url`, `league_short`, `league_url`, `host`, `host_rank`, `guest`, `guest_rank` 
+                FROM `ngp_new_games`
+            ";
+            $res = $this->dbConn->query($query);  
+            if ($res === false) {
+                return [false, $this->dbConn->getLastError];
+            }
+            $res = $res->fetchAll(PDO::FETCH_ASSOC);
+            return [true, $res];
         }
 
         public function deleteNewGames($ids) {

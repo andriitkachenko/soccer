@@ -39,4 +39,8 @@ function dbString($arr, $key, $nullable = false) {
         ? 'NULL'
         : ("'" . (!empty($arr[$key]) ? $arr[$key] : "") . "'");
 } 
+
+function isLocalhost() {
+    return !empty($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'], 'localhost') !== false;
+}
 ?>

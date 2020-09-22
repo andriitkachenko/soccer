@@ -14,11 +14,19 @@ interface iNowGoalPro {
 }
 
 class NowGoalPro implements iNowGoalPro {
+    private $dbManager = null;
 
-    public function updateNewGames($dbManager, $liveGames) {
+    public function setDbManager(NgpDbManager $ngpDbManager) {
+        $this->dbManager = $ngpDbManager;
+    }
+
+    public function updateNewGames($liveGames) {
+        if (empty($this->dbManager)) {
+            return false;
+        }
         $liveGameIds = array_map(function($g) { return $g->id;}, $liveGames);
         // get new game IDs
-        list($ok, $oldGameIds) = $dbManager->getExistingGameIds();
+        list($ok, $oldGameIds) = $this->dbManager->getExistingGameIds();
         if (!$ok) {
             return false;
         }
@@ -28,9 +36,9 @@ class NowGoalPro implements iNowGoalPro {
         $newGames = array_filter($liveGames, function($liveGame) use($newGameIds) {
             return in_array($liveGame->id, $newGameIds);
         });
-        $res = $dbManager->deleteNewGames($goneGameIds);
+        $res = $this->dbManager->deleteNewGames($goneGameIds);
         if ($res === true) {
-            $res = $dbManager->insertNewGames($newGames);
+            $res = $this->dbManager->insertNewGames($newGames);
         }
         return $res;
     }
@@ -40,13 +48,40 @@ class NowGoalPro implements iNowGoalPro {
     }
 
     public function runOneMinuteUpdate() {
+        if (empty($this->dbManager)) {
+            return false;
+        }
+        $ok = true;
         // read live games from DB
-        // load stats for each live game
+        $trackableGames = $this->dbManager->getTrackableGames();
+        // load stats for each live game when min >= 10
         // stop games which are not trackable - at min 20 there is no meaningful stat
+        $ok = $this->updateTrackableGames($this->dbManager, $trackableGames);
         // save events
         // save overall game json
+
+        list($ok, $newGames) = $this->dbManager->loadNewGames();
+        $ok = $ok && $this->resolveNewGames($this->dbManager, $newGames);
+
+        return $ok;
     }
-    
+
+    public function updateTrackableGames($games) {
+        if (empty($this->dbManager)) {
+            return false;
+        }
+        $ok = true;
+        return $ok;
+    }
+
+    public function resolveNewGames($newGames) {
+        if (empty($this->dbManager)) {
+            return false;
+        }
+        $ok = true;
+        return $ok;
+    }
+
     public function runParseHubProject() {
         $ph = new ParseHub(PH_PROJECT_TOKEN, PH_API_KEY);
         $res = $ph->runProject();
@@ -78,10 +113,13 @@ class NowGoalPro implements iNowGoalPro {
         return $games;
     }
 
-    public function updateLiveGames($dbManager, $liveGames) {
+    public function updateLiveGames($liveGames) {
+        if (empty($this->dbManager)) {
+            return false;
+        }
         $liveGameIds = array_map(function($g) { return $g->id;}, $games);
         // get new game IDs
-        list($ok, $existingGameIds) = $dbManager->getExistingGameIds($gamesId);
+        list($ok, $existingGameIds) = $this->dbManager->getExistingGameIds($gamesId);
         if (!$ok) {
             return false;
         }
@@ -106,7 +144,7 @@ class NowGoalPro implements iNowGoalPro {
             ];
         }
         // save new games to the DB
-        $ok = $dbManager->saveLiveGames($data);
+        $ok = $this->dbManager->saveLiveGames($data);
         //
         return $ok;
     }

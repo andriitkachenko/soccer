@@ -60,6 +60,7 @@ if (empty($gameData)) {
 }
 
 $ngp = new NowGoalPro();
+
 $games = $ngp->getParseHubGames($gameData);
 
 if (empty($games)) {
@@ -76,7 +77,9 @@ if (!$dbConn->connected()) {
     updateParsehubLog("NGP hook", "DB connection failed");
 }
 $dbManager = new NgpDbManager($dbConn);
-$ok = $ngp->updateNewGames($dbManager, $games);
+$ngp->setDbManager($dbManager);
+
+$ok = $ngp->updateNewGames($games);
 
 updateParsehubLog("NGP hook", "New games update - " . humanizeBool($ok));
 

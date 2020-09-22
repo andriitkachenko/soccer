@@ -17,9 +17,15 @@ require_once 'sources/nowgoalpro/nowgoalpro.php';
 
 $minute = @intval(date("i"));
 $isCron5 = ($minute % 5) == 0;  //in_array($minute, [10, 25, 40, 55]);
-$sources = [ 
-    new NowGoalPro()
-]; 
+$dbConn = new DbConnection(new DbSettings(isLocalhost()));
+$dbOk = $dbConn->connected();
+if (!$dbOk) {
+    updateCronLog("1-minute update", "Could not connect to DB");
+}
+
+$ngp = new NowGoalPro();
+$ngp->setDbManager(new NgpDbManager($dbConn));
+$sources = [ $ngp ]; 
 
 foreach($sources as $s) {
     if ($isCron5) {
@@ -35,8 +41,11 @@ foreach($sources as $s) {
             echo implode(" ~~~ ", $info);
         }
     }
-    // $s->runOneMinuteUpdate();
-    updateCronLog("1-minute update");
+    if (!dbOK) {
+        continue;
+    }
+    $ok = $s->runOneMinuteUpdate();
+    updateCronLog("1-minute update", humanizeBool($ok));
 }
 
 die();
