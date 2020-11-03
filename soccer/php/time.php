@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-function time2minuteStamp($time) : int {
+function time2minuteStamp($time = null) : int {
     $time = empty($time) ? time() : $time;
     return floor($time / 60.);
 }

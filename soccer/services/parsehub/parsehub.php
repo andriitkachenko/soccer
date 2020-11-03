@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../php/logs.php';
-require_once __DIR__ . '/../../php/utils/time.php';
+require_once __DIR__ . '/../../php/time.php';
 
 const PARSEHUB_RUN_ATTEMPTS_MAX  = 5;
 const PARSEHUB_RUN_PROJECT_URL_TEMPLATE = 'https://www.parsehub.com/api/v2/projects/%project_token%/run';
@@ -42,7 +42,7 @@ class ParseHub implements iParseHub {
             return false;
         }
         updateLastParsehubResponseFile($data);
-        return json_decode($this->normalizeData($data));
+        return json_decode($this->normalizeData($data), false);
     }
 
     public function runProject() {
@@ -54,7 +54,7 @@ class ParseHub implements iParseHub {
             }
             $run = $this->getRunToken();
         }
-        $log_result = updateParsehubLog("Run Project", $run);
+        $log_result = parsehubLog("Run Project", $run);
         return [ 
             'ok' => $this->isRunTokenOk($run), 
             'time' => time2datetime(),
@@ -112,70 +112,8 @@ class ParseHub implements iParseHub {
             false,
             stream_context_create($options)
         );
-        updateParsehubLog("Delete Run", $result);
+        parsehubLog("Delete Run", $result);
         return $result;
     }
 }
-
-/*
-
-
-function getParseHubData($runToken) {
-    $params = http_build_query(
-        [
-            "api_key" => PARSEHUB_API_KEY,
-            "format" => "json"
-        ]);
-    $options = [
-        'http' => [ 'method' => 'GET' ]
-    ];
-    $result = file_get_contents(
-        PARSEHUB_RUN_DATA_URL . $runToken . '/data?'. $params,
-        false,
-        stream_context_create($options)
-    );
-    if (empty($result)) {
-        return [];
-    }
-    $data = gzdecode($result);
-    if ($data === false) {
-        return [];
-    }
-    updateLastParsehubResponseFile($data);
-    $data = json_decode(normalizeParseHubData($data));
-    if ($data && isset($data->selection1)) {
-        $data = $data->selection1;
-    } else {
-        $data = [];
-    }
-    $games = [];
-    //{"data":"KWSL09:004 Okzhetpes (w)0 - 0Namys (w)","data-id":"tr1_1783182"}
-    //{"game":[{"id":"mt_1784117","start":"06:00","score":"0 - 0","time":"1","host":"Tri Elang United","guest":"Amesiu United","league":"Indo D3","first_half":""}
-    
-    foreach ($data as $game) {
-        if (!isset($game->game)) {
-            continue;
-        }
-        $game = $game->game;
-        if (!is_array($game) || !count($game)) {
-            continue;
-        }
-        $game = $game[0];
-        $games[] = [
-            'id' => trim(str_replace("mt_", "", $game->id)),
-            'league' =>  trim($game->league),
-            'start_time' =>  trim($game->start),
-            'game_time' => trim($game->time),
-            'host' => trim($game->host),
-            'guest' => trim($game->guest),
-            'score' => trim($game->score)
-        ];
-    }
-    $games = filterAndPrepairGames($games);
-    updateParsehubLog("Get Run Data", count($games) . ' games found');
-    deleteParseHubRun($runToken);
-    return $games;
-}
-
-*/
 ?>

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../php/logs.php';
-require_once __DIR__ . '/../../php/utils/time.php';
+require_once __DIR__ . '/../../php/time.php';
 require_once __DIR__ . '/nowgoalpro.php';
 require_once __DIR__ . '/ngp_db_manager.php';
 require_once __DIR__ . '/../../services/db/db_connection.php';
@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../services/db/db_settings.php';
 $runData = file_get_contents('php://input');
 
 if (empty($runData)) {
-    updateParsehubLog("NGP hook", "Empty run data");
+    parsehubLog("NGP hook", "Empty run data");
     die();
 }
 
@@ -25,7 +25,7 @@ if (!$ready) {
     die();
 }
 
-updateParsehubLog("NGP hook", json_encode($runData));
+parsehubLog("NGP hook", json_encode($runData));
 
 $run = [];
 foreach ($runData as $line) {
@@ -40,14 +40,14 @@ foreach ($runData as $line) {
 $ok = !empty( $run['token']) && !empty( $run['start_time']);
 
 if (!$ok) {
-    updateParsehubLog("NGP hook", 'Could not find run token or start time');
+    parsehubLog("NGP hook", 'Could not find run token or start time');
     die();
 }
 
 $ph = new ParseHub(PH_PROJECT_TOKEN, PH_API_KEY);
 
 if (!in_array("is_empty=False", $runData)) {
-    updateParsehubLog("NGP hook", 'Empty run result - delete run');
+    parsehubLog("NGP hook", 'Empty run result - delete run');
     $res = $ph->deleteParseHubRun($run['token']);
     die();
 }
@@ -55,7 +55,7 @@ if (!in_array("is_empty=False", $runData)) {
 $gameData = $ph->getData($run['token']);
 
 if (empty($gameData)) {
-    updateParsehubLog("NGP hook", 'No data from Parse Hub');    
+    parsehubLog("NGP hook", 'No data from Parse Hub');    
     die();
 }
 
@@ -64,37 +64,23 @@ $ngp = new NowGoalPro();
 $games = $ngp->getParseHubGames($gameData);
 
 if (empty($games)) {
-    updateParsehubLog("NGP hook", 'No game found');    
+    parsehubLog("NGP hook", 'No game found');    
     die();
 }
 
 $result = file_put_contents(DATA_FILE, json_encode($games));
 
-updateParsehubLog("NGP hook", "Received " . count($games) . " games");
+parsehubLog("NGP hook", "Received " . count($games) . " games");
 
 $dbConn = new DbConnection(new DbSettings(false));
 if (!$dbConn->connected()) {
-    updateParsehubLog("NGP hook", "DB connection failed");
+    parsehubLog("NGP hook", "DB connection failed");
 }
 $dbManager = new NgpDbManager($dbConn);
 $ngp->setDbManager($dbManager);
 
 $ok = $ngp->updateNewGames($games);
 
-updateParsehubLog("NGP hook", "New games update - " . humanizeBool($ok));
-
-/*
-
-//2019-11-09T17:55:03
-$anchorTime = DateTime::createFromFormat('Y-m-d\TH:i:s', $run['start_time'])->getTimestamp();
-
-$games = getParseHubData($run['token']);
-
-$result = file_put_contents(DATA_FILE, json_encode($games));
-$dbResult = humanizeBool(saveGamesToDB($games, $anchorTime));
-
-updateParsehubLog("ParseHub webhook save", "db: $dbResult, file: $result" );
-
-*/
+parsehubLog("NGP hook", "New games update - " . humanizeBool($ok));
 
 ?>

@@ -2,18 +2,13 @@
 
 require_once __DIR__ . '/db_connection.php';
 
-
-interface iDbManager {
-    public function insertLog(Log $log);
-    public function insertStats($stats);
-    public function updateGames($games);
-}
-
-abstract class DbManager implements iDbManager {
+class DbManager {
     private $dbConn = null;
-    private $lastError = null;
 
-    function __construct(PDO $dbConnection) {
+    function __construct(DbConnection $dbConnection) {
+        if (!$dbConnection) {
+            errorLog("DB manager constructor", "Empty DB connection");
+        }
         $this->dbConn = $dbConnection;
     }
 }

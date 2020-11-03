@@ -1,19 +1,38 @@
 <?php
 
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/utils.php';
 const SEPARATOR = ' ~~~ ';
 
-function updateLog($logFile, $items) {
-    if (!file_exists($logFile)) {
-        return false;
-    }
-    $data = is_array($items) ? implode(SEPARATOR, $items) : $items;
-    $log = file_get_contents($logFile);
-    $log = time2datetime() . SEPARATOR . $data . "\n". $log;     
-    return file_put_contents($logFile, substr($log, 0, MAX_LOG_SIZE));
+$logs = [];
+
+function addLog($data) {
+    global $logs;
+    $logs[] = $data;
 }
 
-function updateParseHubLog($operation, $data) {
+function logs2s($ok, $lastDbError, $separator = PHP_EOL)  {
+    global $logs;
+    return implode($separator, 
+        array_merge(
+            [humanizeBool($ok)], 
+            $logs,
+            $ok || !$lastDbError ? [] : [$lastDbError]
+        ));
+}
+
+function logPrint($ok, $lastDbError) {
+    print_r(logs2s($ok, $lastDbError));
+}
+
+function updateLog($logFile, $items, $sizeLimit = true) {
+    $log = file_exists($logFile) ? file_get_contents($logFile) : '';
+    $data = is_array($items) ? implode(SEPARATOR, $items) : $items;
+    $log = time2datetime() . SEPARATOR . $data . "\n". $log;     
+    return file_put_contents($logFile, $sizeLimit ? substr($log, 0, MAX_LOG_SIZE) : $log);
+}
+
+function parsehubLog($operation, $data) {
     $items = [
         $operation, 
         $data
@@ -42,13 +61,11 @@ function updateLastParsehubResponseFile($data) {
     return file_put_contents(LAST_PARSEHUB_RESPONSE_FILE, $data);
 }
 
-function updateDbErrorLog($error, $query = null) {
-    $items = [
-        $error
-    ];
-    if (!empty($query)) {
-        $items[] = 'Query: ' . $query;
+function errorLog($title, $error = "") {
+    $items = [ $title ];
+    if (!empty($error)) {
+        $items = array_merge($items, is_array($error) ? $error : [$error]);
     }
-    return updateLog(DB_ERROR_LOG, $items);
+    return updateLog(ERROR_LOG, $items, false);
 }
 ?>

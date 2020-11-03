@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/db_utils.php';
 require_once __DIR__ . '/../logs.php';
+require_once __DIR__ . '/../time.php';
 require_once __DIR__ . '/../utils.php';
 
 const GAMES_FIELDS = [
@@ -199,7 +200,7 @@ function loadNotFinishedGames($conn) {
             continue;
         $game['league']     =  $r['league'];
         $game['start_at']   =  $r['start_at'];
-        $game['start_time'] =  getMinuteTimestamp(DateTime::createFromFormat('Y-m-d H:i:s', $r['start_at'])->getTimestamp());
+        $game['start_time'] =  time2minuteStamp(DateTime::createFromFormat('Y-m-d H:i:s', $r['start_at'])->getTimestamp());
         $game['host']       =  $r['host'];
         $game['host_rank']  =  $r['host_rank'];
         $game['guest']      =  $r['guest'];
