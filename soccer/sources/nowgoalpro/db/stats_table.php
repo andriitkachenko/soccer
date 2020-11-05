@@ -34,6 +34,9 @@ class NgpStatsTable extends NgpTable implements iNgpStatsTable {
             ];
 
         }
+        if (empty($values)) {
+            return true;
+        }        
         $values = makeInsertValues($values); 
         $query = 
 <<<SQL
