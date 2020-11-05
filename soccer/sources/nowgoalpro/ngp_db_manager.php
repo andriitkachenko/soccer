@@ -18,6 +18,9 @@ require_once __DIR__ . '/db/stats_table.php';
         private $newGamesTable = null;
         private $leaguesTable = null;
         private $liveGamesTable = null;
+        private $teamsTable = null;
+        private $gamesTable = null;
+        private $statsTable = null;
 
         function __construct(DbConnection $dbConnection) {
             $this->dbConn = $dbConnection;
