@@ -123,9 +123,11 @@ class NGPParser implements iParser {
             self::$logs[] = "'Could not find 'score' for ID $id. " . $html;
             return false;
         } 
-        $min = trim($nodes->item(0)->textContent);
+        $min = strtolower(trim($nodes->item(0)->textContent));
         $min = str_replace('+', '' , $min);
-        $min = str_replace('HT', '45' , $min);
+        $min = str_replace('ht', '45' , $min);
+        $min = str_replace('ot', '91' , $min);
+        $min = str_replace('pen', '120' , $min);
         if (!ctype_digit($min)) {
             self::$logs[] = 'Could not get game time. '. $nodes->item(0)->textContent;
             return false;
