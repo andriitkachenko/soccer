@@ -26,7 +26,7 @@ function getValue($value) {
         return $value;
     }
     if (count($value) < 2) {
-        return null;
+        return $value[0];
     }
     if (!is_object($value[0]) && !is_array($value[0])) {
         return null;
@@ -130,5 +130,25 @@ function addObjectProperty($obj, $key, $value) {
     $arr = (array)$obj;
     $arr[$key] = $value;
     return (object)$arr;
+}
+
+function getIfSet($arr, $key, $def = null) {
+    if (empty($arr) || !is_array($arr) || !is_object($arr)) 
+        return null;
+
+    $arr = (array)$arr;
+    
+    if (!is_array($key)) {
+        return isset($arr[$key]) ? $arr[$key] : $def;
+    }
+
+    foreach($key as $k) {
+        if (isset($arr[$key])) {
+            $arr = $arr[$key];
+        } else {
+            return $def;
+        }
+    }
+    return $arr;
 }
 ?>

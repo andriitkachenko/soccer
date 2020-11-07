@@ -137,6 +137,16 @@ switch($target) {
                 break;            
         }
         break;
+    case 'data' :
+        $dbConn = new DbConnection(new DbSettings(true));
+        $dbManager = new NgpDbManager($dbConn);
+        switch ($operation) {
+            case 'live-last-stats':
+                $stats = $dbManager->loadLiveLastStats();
+                print_r($stats);
+                break;
+        }
+        break;
 }
 
 ?>
