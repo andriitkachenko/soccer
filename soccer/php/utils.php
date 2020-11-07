@@ -132,19 +132,19 @@ function addObjectProperty($obj, $key, $value) {
     return (object)$arr;
 }
 
-function getIfSet($arr, $key, $def = null) {
-    if (empty($arr) || !is_array($arr) || !is_object($arr)) 
-        return null;
+function getIfSet($arr, $keys, $def = null) {
+    if (empty($arr) || (!is_array($arr) && !is_object($arr))) 
+        return $def;
 
     $arr = (array)$arr;
-    
-    if (!is_array($key)) {
-        return isset($arr[$key]) ? $arr[$key] : $def;
+
+    if (!is_array($keys)) {
+        return is_string($keys) && isset($arr[$keys]) ? $arr[$keys] : $def;
     }
 
-    foreach($key as $k) {
-        if (isset($arr[$key])) {
-            $arr = $arr[$key];
+    foreach($keys as $k) {
+        if (isset($arr[$k])) {
+            $arr = $arr[$k];
         } else {
             return $def;
         }
