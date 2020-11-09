@@ -1,0 +1,29 @@
+.app-games {
+    height:90vh;
+    overflow-y: scroll;
+}
+
+td.league {
+    width: 10%;
+    font-size: small;
+    white-space: nowrap;
+}
+
+td.time {
+    vertical-align: middle;
+}
+
+td.time, td.stat {
+    width: 7%;
+    text-align:center;
+}
+td.stat.long {
+    width: 10%;
+}
+td.teams, td.time.game, td.stat.gl {
+    font-weight: 500;
+}
+
+td.teams span {
+    font-size: small;
+}

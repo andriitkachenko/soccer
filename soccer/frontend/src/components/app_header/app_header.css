@@ -1,0 +1,13 @@
+.app-header {
+    height: 5vh;
+    margin-left: 2%;
+    background-color:rgb(225, 225, 225);
+}
+.app-header .table {
+    width:96%;
+}
+
+.app-header .table td {
+    text-align: center;
+    font-size:small;
+}
