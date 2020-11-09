@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/utils.php';
+require_once __DIR__ . '/time.php';
 const SEPARATOR = ' ~~~ ';
 
 $logs = [];
@@ -40,7 +41,7 @@ function parsehubLog($operation, $data) {
     return updateLog(PARSEHUB_LOG, $items);
 }
 
-function updateAccessLog() {
+function accessLog() {
     $items = [
         'Remote Addr: ' . (isset($_SERVER['REMOTE_ADDR'])  ?  $_SERVER['REMOTE_ADDR'] : "Unknown"), 
         'Remote Host: ' . (isset($_SERVER['REMOTE_HOST'])  ?  $_SERVER['REMOTE_HOST'] : "Unknown"), 

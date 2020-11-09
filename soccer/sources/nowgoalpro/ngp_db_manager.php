@@ -112,7 +112,7 @@ select
     lg.`title_short` as `league`,
     h.`title` as `host`, 
     gs.`host_rank` as `host_rank`,
-    g.`title` as `quest`, 
+    g.`title` as `guest`, 
     gs.`guest_rank` as `guest_rank`, 
     JSON_EXTRACT(l.`last_stat` , '$.min') as `min`,
     JSON_EXTRACT(l.`last_stat` , '$.host') as `host_stat`,
@@ -121,7 +121,8 @@ from `ngp_games` as gs
 inner join `ngp_leagues` as lg on lg.league_id = gs.league_id
 inner join `ngp_live_games` as l on l.game_id = gs.game_id
 inner join `ngp_teams` as h on gs.host_id = h.team_id
-inner join `ngp_teams` as g on gs.guest_id = g.team_id;
+inner join `ngp_teams` as g on gs.guest_id = g.team_id
+order by `min` desc;
 SQL;    
         $res = $this->dbConn->query($query); 
         if ($res === false) return false;
@@ -140,8 +141,10 @@ SQL;
     private function unifyStat($stat) {
         $events = ['sh', 'sg', 'at', 'da', 'bp', 'gl', 'rc', 'yc'];
         $s = json_decode($stat, true);
-        $unified = array_filter($s, function($v, $k) use($events) {return in_array($k, $events);}, ARRAY_FILTER_USE_BOTH);
-        return json_encode($unified);
+        if (!is_array($s)) {
+            return [];
+        }
+        return array_filter($s, function($v, $k) use($events) {return in_array($k, $events);}, ARRAY_FILTER_USE_BOTH);
     }
 
 }    
