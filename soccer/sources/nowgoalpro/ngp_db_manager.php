@@ -109,6 +109,8 @@ SQL;
 select 
 	gs.`game_id` as `id`, 
 	gs.`start_time` as `start_time`, 
+	l.`start_real` as `start_real`, 
+	l.`state` as `state`, 
     lg.`title_short` as `league`,
     h.`title` as `host`, 
     gs.`host_rank` as `host_rank`,
@@ -122,6 +124,7 @@ inner join `ngp_leagues` as lg on lg.league_id = gs.league_id
 inner join `ngp_live_games` as l on l.game_id = gs.game_id
 inner join `ngp_teams` as h on gs.host_id = h.team_id
 inner join `ngp_teams` as g on gs.guest_id = g.team_id
+having `min` > 9
 order by `min` desc;
 SQL;    
         $res = $this->dbConn->query($query); 
