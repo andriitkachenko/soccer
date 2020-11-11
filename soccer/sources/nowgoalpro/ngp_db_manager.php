@@ -110,13 +110,13 @@ select
 	gs.`game_id` as `id`, 
 	gs.`start_time` as `start_time`, 
 	l.`start_real` as `start_real`, 
-	l.`state` as `state`, 
+	cast(l.`state` as unsigned) as `state`, 
     lg.`title_short` as `league`,
     h.`title` as `host`, 
     gs.`host_rank` as `host_rank`,
     g.`title` as `guest`, 
     gs.`guest_rank` as `guest_rank`, 
-    JSON_EXTRACT(l.`last_stat` , '$.min') as `min`,
+    cast(JSON_EXTRACT(l.`last_stat` , '$.min') as unsigned) as `min`,
     JSON_EXTRACT(l.`last_stat` , '$.host') as `host_stat`,
     JSON_EXTRACT(l.`last_stat` , '$.guest') as `guest_stat`
 from `ngp_games` as gs
@@ -134,6 +134,9 @@ SQL;
         
         $stats = [];
         foreach($res as $s) {
+            $s['id'] = intval($s['id']);
+            $s['state'] = intval($s['state']);
+            $s['min'] = intval($s['min']);
             $s['host_stat'] = $this->unifyStat($s['host_stat']);
             $s['guest_stat'] = $this->unifyStat($s['guest_stat']);
             $stats[$s["id"]] = $s;
