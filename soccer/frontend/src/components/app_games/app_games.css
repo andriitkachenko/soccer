@@ -1,12 +1,19 @@
 .app-games {
-    height:90vh;
+    position: absolute; 
+    top: 2rem;
+    bottom: 2rem;
+    right: 0;
+    left: 0;
     overflow-y: scroll;
 }
 
 td.league {
-    width: 10%;
-    font-size: small;
+    width: 3.5rem;
+    max-width: 3.5rem;
+    font-size: xx-small;
     white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;    
 }
 
 td.time {

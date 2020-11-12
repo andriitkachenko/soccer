@@ -136,7 +136,12 @@ SQL;
         foreach($res as $s) {
             $s['id'] = intval($s['id']);
             $s['state'] = intval($s['state']);
-            $s['min'] = intval($s['min']);
+            $min = intval($s['min']);
+            $extra = 0;
+            if ($s['state'] == 1 && $min > 45) $extra = $min - 45;
+            if ($s['state'] == 3 && $min > 90) $extra = $min - 90;
+            $s['min_extra'] = $extra;
+            $s['min'] = $min - $extra;
             $s['host_stat'] = $this->unifyStat($s['host_stat']);
             $s['guest_stat'] = $this->unifyStat($s['guest_stat']);
             $stats[$s["id"]] = $s;

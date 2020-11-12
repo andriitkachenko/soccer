@@ -2,6 +2,12 @@ body {
     height: 100vh;
 }
 
+@media (max-width: 768px) {
+    body {
+        font-size: small;
+    }
+}
+
 .table {
     margin-bottom: 0;
 }

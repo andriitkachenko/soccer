@@ -43,11 +43,15 @@ class AppGames extends React.Component {
                             return s;
                         })
                         .map((g) => {
-                            var m = '' + g.time;
-                            if (g.state === 1 && g.time > 45) m = '45+' + (g.time - 45)
-                            if (g.state === 2) m = 'HT'
-                            if (g.state === 3 && g.time > 90) m = '90+' + (g.time - 90)
+                            var extra = 0;
+                            if (g.state === 1 && g.time > 45) extra = g.time - 45
+                            else if (g.state === 3 && g.time > 90) extra = g.time - 90;
+                            var m = g.time;
+                            if (g.state === 1 && g.time > 45) m = 45
+                            else if (g.state === 2) m = 'HT'
+                            else if (g.state === 3 && g.time > 90) m = 90
                             g.time = m;
+                            g.extra = extra;
                             return g;
                         });
                     this.setState({games : games});
@@ -86,36 +90,39 @@ class AppGames extends React.Component {
        clearInterval(this.timerId);
     }
 
+    makeExtraTime(extra)  {
+        return extra ? <sup>+{extra}</sup> : '';
+    }
     
     render() {
         const { games } = this.state;
         if (!games) {
             return <span>No live games</span>
         }
-        const gameList = games.map((game) => {
+        const gameList = games.map((g) => {
             return (
-                <li className = 'item-list list-group-item' key={game.id}>
+                <li className = 'item-list list-group-item' key={g.id}>
                     <table className="table">
                         <tbody>
                         <tr>
-                            <td className='league'>{game.league} {}</td>
-                            <td className='time game' rowSpan="2">{game.time}</td>
-                            <td className='teams'>{ game.host } <span className="rank"> { game.host_rank ? game.host_rank : ''}</span></td>
-                            <td className='stat gl'>{game.host_stat.gl}</td>
-                            <td className='time' rowSpan="2">{game.min}</td>
-                            <td className='stat long'>{game.host_stat.sh} - {game.host_stat.sg}</td>
-                            <td className='stat long'>{game.host_stat.at} - {game.host_stat.da}</td>
-                            <td className='stat'>{game.host_stat.bp}</td>
-                            <td className='stat'>{game.host_stat.rc}</td>
+                            <td className='league'>{g.league}</td>
+                            <td className='time game' rowSpan="2">{g.time}{this.makeExtraTime(g.extra)}</td>
+                            <td className='teams'>{ g.host } <span className="rank"> { g.host_rank ? g.host_rank : ''}</span></td>
+                            <td className='stat gl'>{g.host_stat.gl}</td>
+                            <td className='time' rowSpan="2">{g.min}{this.makeExtraTime(g.min_extra)}</td>
+                            <td className='stat long'>{g.host_stat.sh} - {g.host_stat.sg}</td>
+                            <td className='stat long'>{g.host_stat.at} - {g.host_stat.da}</td>
+                            <td className='stat'>{g.host_stat.bp}</td>
+                            <td className='stat'>{g.host_stat.rc}</td>
                         </tr>
                         <tr>
-                            <td className='league'>{this.getLocalTimeString(game.start_time)}</td>
-                            <td className='teams'>{game.guest}</td>
-                            <td className='stat gl'>{game.guest_stat.gl}</td>
-                            <td className='stat long'>{game.guest_stat.sh} - {game.guest_stat.sg}</td>
-                            <td className='stat long'>{game.guest_stat.at} - {game.guest_stat.da}</td>
-                            <td className='stat'>{game.guest_stat.bp}</td>
-                            <td className='stat'>{game.guest_stat.rc}</td>
+                            <td className='league'>{this.getLocalTimeString(g.start_time)}</td>
+                            <td className='teams'>{g.guest}</td>
+                            <td className='stat gl'>{g.guest_stat.gl}</td>
+                            <td className='stat long'>{g.guest_stat.sh} - {g.guest_stat.sg}</td>
+                            <td className='stat long'>{g.guest_stat.at} - {g.guest_stat.da}</td>
+                            <td className='stat'>{g.guest_stat.bp}</td>
+                            <td className='stat'>{g.guest_stat.rc}</td>
                         </tr>
                         </tbody>
                     </table>

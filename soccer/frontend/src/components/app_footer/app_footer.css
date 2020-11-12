@@ -1,4 +1,9 @@
 .app-footer {
-    height:5vh;
+    position: absolute; 
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 1.5rem;
     background-color:rgb(225, 225, 225);    
 }
+

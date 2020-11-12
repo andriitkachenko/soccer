@@ -1,6 +1,10 @@
 .app-header {
-    height: 5vh;
-    margin-left: 2%;
+    position: absolute; 
+    right: 0;
+    left: 0;    
+    top : 0;
+    height: 1.5rem;
+    padding-left: 2%;
     background-color:rgb(225, 225, 225);
 }
 .app-header .table {
@@ -9,5 +13,5 @@
 
 .app-header .table td {
     text-align: center;
-    font-size:small;
+    font-size: x-small;
 }
