@@ -150,7 +150,7 @@ class NGPParser implements iParser {
             self::$logs[] = "Could not get league. " . $html;
             return false;
         }
-        $g['league_short'] = trim($nodes->item(0)->textContent);
+        $g['league_short'] = self::normalizeString($nodes->item(0)->textContent);
         $g['league_url'] = trim($nodes->item(0)->attributes->getNamedItem('href')->textContent);
         //<span id="ht_1831305" class="name">
         //     Suwon Samsung Bluewings
@@ -162,7 +162,7 @@ class NGPParser implements iParser {
         $tid = "ht_$id";
         $nodes = $xpath->query("//span[@id='$tid']/i[1]");
         if ($nodes->count() > 0) {
-            $g['host_rank'] = trim($nodes->item(0)->textContent);
+            $g['host_rank'] = self::normalizeString($nodes->item(0)->textContent, '[]');
         }
         $nodes = $xpath->query("//span[@id='$tid']/i");
         foreach($nodes as $ch) {
@@ -173,12 +173,12 @@ class NGPParser implements iParser {
             self::$logs[] = "Could not find host. " . $html;
             return false;
         }
-        $g['host'] = trim($nodes->item(0)->textContent);
+        $g['host'] = self::normalizeString($nodes->item(0)->textContent, '()-');
         
         $tid = "gt_$id";
         $nodes = $xpath->query("//span[@id='$tid']/i[1]");
         if ($nodes->count() > 0) {
-            $g['guest_rank'] = trim($nodes->item(0)->textContent);
+            $g['guest_rank'] = self::normalizeString($nodes->item(0)->textContent, '[]');
         }
         $nodes = $xpath->query("//span[@id='$tid']/i");
         foreach($nodes as $ch) {
@@ -189,7 +189,7 @@ class NGPParser implements iParser {
             self::$logs[] = "Could not find guest. " . $html;
             return false;
         }
-        $g['guest'] = trim($nodes->item(0)->textContent);
+        $g['guest'] = self::normalizeString($nodes->item(0)->textContent, '()-');
         $gameUrlTitle = self::makeGameUrlPath($g['host'], $g['guest']);
         $g['url'] = "/football-match/$gameUrlTitle/live-$id/";
         return (object)$g;
@@ -226,19 +226,17 @@ class NGPParser implements iParser {
             switch ($state) {
                 case STATE_HALF1 :
                     $data['min'] = floor((time() - $realStartTime) / 60.);
-                break;
+                    break;
                 case STATE_HT :
                     $data['min'] = 45;
-                break;
+                    break;
                 case STATE_HALF2 :
-                    $data['min'] = floor((time() - $realStartTime) / 60.) + 45;
-                break;
                 case STATE_OVERTIME :
-                    $data['min'] = floor((time() - $realStartTime) / 60.) + 90;
-                break;
+                    $data['min'] = floor((time() - $realStartTime) / 60.) + 45;
+                    break;
                 case STATE_PENALTY :
                     $data['min'] = 120;
-                break;
+                    break;
             }
         } 
         
@@ -340,10 +338,10 @@ class NGPParser implements iParser {
             $url = trim($href->textContent);
             $id = preg_match('/(\d+)\/$/', $url, $matches);
         }
-        $title = trim($node->textContent);
+        $title = self::normalizeString($node->textContent, '()-');
         return (object)array_merge(
             empty($url)        ? [] : ['url' => $url],
-            empty($title)      ? [] : ['title' => normalizeData($title)],
+            empty($title)      ? [] : ['title' => $title],
             empty($matches[1]) ? [] : ['id' => intval($matches[1])]
         );
     }
@@ -394,8 +392,12 @@ class NGPParser implements iParser {
         $path = strtolower($host) . ' vs ' . strtolower($guest);
         $path = str_replace('(n)', '', $path);
         $path = str_replace(' ', '-', $path);
-        $path = preg_replace('/[^a-z1-9-]/', '', $path);    
+        $path = self::normalizeString($path, '-');
         return $path;
+    }
+
+    private static function normalizeString($str, $chars = '') {
+        return preg_replace('/[^a-z1-9' . $chars .']/', '', trim($str));
     }
 
     private static function event2Code($event) {
