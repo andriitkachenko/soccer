@@ -49,7 +49,6 @@ create table if not exists `ngp_games` (
     `guest_rank` VARCHAR(10) DEFAULT NULL,
     `state` INT DEFAULT NULL,    
     `trackable` TINYINT(1) DEFAULT NULL,
-    `finish_stat` JSON DEFAULT NULL,
     `timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     UNIQUE KEY (`game_id`),
@@ -84,12 +83,13 @@ create table if not exists `ngp_stats` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `game_id` INT UNSIGNED NOT NULL,
     `team_id` INT UNSIGNED NOT NULL,
+    `state` int not null,
     `min` int not null,
     `stat` json NOT NULL,
     `hash` char(10) not null COMMENT 'truncated SHA1 hash of stat',
     `timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
-    UNIQUE KEY (`game_id`, `team_id`, `hash`),
+    UNIQUE KEY (`game_id`, `team_id`, `state`, `hash`),
     CONSTRAINT FK_stats_game_id FOREIGN KEY (`game_id`) REFERENCES `ngp_games`(`game_id`) 
         ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FK_stats_team_id FOREIGN KEY (`team_id`) REFERENCES `ngp_teams`(`team_id`) 
@@ -99,7 +99,7 @@ create table if not exists `ngp_stats` (
 create table if not exists `ngp_version` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `version` INT UNSIGNED NOT NULL,
-    PRIMARY KEY (`id`),
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB, CHARACTER SET=UTF8;
 INSERT INTO `ngp_version` (`version`) VALUES(2);
 

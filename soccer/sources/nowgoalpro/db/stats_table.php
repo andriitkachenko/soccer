@@ -12,13 +12,17 @@ class NgpStatsTable extends NgpTable implements iNgpStatsTable {
 
         $values = [];
         foreach($games as $g) {
-            if (empty($g->status->min) || $g->status->trackable === 0) {
+            if (empty($g->status->min) 
+                || $g->status->trackable === 0 
+                || !in_array($g->status->state, [-1, 1, 2, 3, 4])) 
+            {
                 continue;
             }
             $stat = dbJson([$g, 'stat', 'host']);
             $values[] = [
                 dbInt([$g, 'status', 'game_id']), 
                 dbInt([$g, 'host', 'id']), 
+                dbInt([$g, 'status', 'state']), 
                 dbInt([$g, 'status', 'min']), 
                 $stat,
                 dbHash($stat)
@@ -28,6 +32,7 @@ class NgpStatsTable extends NgpTable implements iNgpStatsTable {
             $values[] = [
                 dbInt([$g, 'status', 'game_id']), 
                 dbInt([$g, 'guest', 'id']), 
+                dbInt([$g, 'status', 'state']), 
                 dbInt([$g, 'status', 'min']), 
                 $stat,
                 dbHash($stat)
@@ -40,7 +45,7 @@ class NgpStatsTable extends NgpTable implements iNgpStatsTable {
         $values = makeInsertValues($values); 
         $query = 
 <<<SQL
-    INSERT IGNORE INTO `ngp_stats` (`game_id`, `team_id`, `min`, `stat`, `hash`) 
+    INSERT IGNORE INTO `ngp_stats` (`game_id`, `team_id`, `state`,  `min`, `stat`, `hash`) 
     VALUES $values;
 SQL;
 

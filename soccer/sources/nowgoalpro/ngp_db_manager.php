@@ -44,7 +44,11 @@ require_once __DIR__ . '/db/stats_table.php';
         public function insertTeams($teams) { return $this->teamsTable->insert($teams); }    
 
         public function insertGames($games) { return $this->gamesTable->insert($games); }
-        public function updateGames($games) { return $this->gamesTable->update($games); }
+        public function updateGames($games) { 
+            return 
+                $this->statsTable->insert($games)
+                && $this->gamesTable->update($games); 
+        }
 
         public function truncateLiveGames() { return $this->liveGamesTable->truncate(); }
         public function loadLiveTrackableGames() { return $this->liveGamesTable->loadTrackable(); }

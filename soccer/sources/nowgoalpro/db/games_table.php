@@ -64,14 +64,6 @@ SQL;
         }
         $trackCase = implode(' ', $trackCases); 
 
-        $finishStat = [];
-        foreach($games as $g) {
-            $id = dbInt([$g, 'id']); 
-            $stat = dbString(makeStatJson($g), true); 
-            $trackCases[] = "WHEN $id THEN $stat";
-        }
-        $trackCase = implode(' ', $trackCases); 
-
         $ids = implode(',', array_keys($games));
         $query = 
 <<<SQL
