@@ -1,5 +1,10 @@
 import React from 'react';
+
 import DataService from '../../services/data-service';
+import Utils from '../../utils';
+
+import League from '../league';
+import StartTime from '../start_time';
 
 import './app_games.css';
 
@@ -24,12 +29,7 @@ class AppGames extends React.Component {
                 if (stats !== false) {
                     const games = Object.values(stats)
                         .map((g) => {
-                            const startUTC = this.getLocalSeconds(g.start_real);
-                            const nowUTC = this.getLocalSeconds();
-                            var m = Math.floor(((nowUTC - startUTC) / 60));
-                            if (g.state === 3) m = 45 + m
-                            else if (g.state === 4) m = 90 + m
-                            g.time = m;
+                            g.time = Utils.getGameMinutes(g);
                             return g;
                         })
                         .sort((a, b) => { 
@@ -60,27 +60,7 @@ class AppGames extends React.Component {
         this.updating = false;
     }
 
-    getLocalSeconds(utcString) {
-        const local = utcString ? this.getDateLocal(utcString) : new Date();
-        return Math.floor(local.getTime() / 1000);
-    }
-
-    getDateLocal(utcString) {
-        var local = new Date(this.makeISOUTCString(utcString)).toString();
-        return new Date(local);
-    }
-
-    getLocalTimeString(utcString) {
-        var local = this.getDateLocal(utcString);
-        const h = local.getHours();        
-        const m = local.getMinutes();        
-        return (h < 10 ? '0' : '') + h + ":" + (m < 10 ? '0' : '') + m;
-    }
-
-    makeISOUTCString(utcString) {
-        return utcString.replace(' ', 'T') + 'Z';
-    }
-    componentDidMount() {
+        componentDidMount() {
         this.updateState();
         if (!this.timerId) 
             this.timerId = setInterval(() => this.updateState(), 60000);
@@ -90,10 +70,6 @@ class AppGames extends React.Component {
        clearInterval(this.timerId);
     }
 
-    makeSuperscript(s, prefix = '')  {
-    return s ? <span className='superscript'>{prefix}{s}</span> : '';
-    }
-    
     render() {
         const { games } = this.state;
         if (!games) {
@@ -105,19 +81,19 @@ class AppGames extends React.Component {
                     <table className="table">
                         <tbody>
                         <tr>
-                            <td className='league'>{g.league}</td>
-                            <td className='time game' rowSpan="2">{g.time}{this.makeSuperscript(g.extra, '+')}</td>
-                            <td className='teams'>{ g.host } {this.makeSuperscript(g.host_rank) }</td>
+                            <td className='col_league'><League title={g.league}/></td>
+                            <td className='time game' rowSpan="2">{g.time}{Utils.makeSuperscript(g.extra, '+')}</td>
+                            <td className='teams'>{ g.host } {Utils.makeSuperscript(g.host_rank) }</td>
                             <td className='stat gl'>{g.host_stat.gl}</td>
-                            <td className='time' rowSpan="2">{g.min}{this.makeSuperscript(g.min_extra, '+')}</td>
+                            <td className='time' rowSpan="2">{g.min}{Utils.makeSuperscript(g.min_extra, '+')}</td>
                             <td className='stat long'>{g.host_stat.sh} - {g.host_stat.sg}</td>
                             <td className='stat long'>{g.host_stat.at} - {g.host_stat.da}</td>
                             <td className='stat'>{g.host_stat.bp}</td>
                             <td className='stat'>{g.host_stat.rc}</td>
                         </tr>
                         <tr>
-                            <td className='league'>{this.getLocalTimeString(g.start_time)}</td>
-                            <td className='teams'>{g.guest} {this.makeSuperscript(g.guest_rank) }</td>
+                            <td className='col_league'><StartTime time={g.start_time}/></td>
+                            <td className='teams'>{g.guest} {Utils.makeSuperscript(g.guest_rank) }</td>
                             <td className='stat gl'>{g.guest_stat.gl}</td>
                             <td className='stat long'>{g.guest_stat.sh} - {g.guest_stat.sg}</td>
                             <td className='stat long'>{g.guest_stat.at} - {g.guest_stat.da}</td>

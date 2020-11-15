@@ -1,11 +1,6 @@
 body {
     height: 100vh;
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: small;
-    }
+    font-size: small;
 }
 
 .table {
