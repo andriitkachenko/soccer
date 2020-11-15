@@ -150,7 +150,7 @@ class NGPParser implements iParser {
             self::$logs[] = "Could not get league. " . $html;
             return false;
         }
-        $g['league_short'] = self::normalizeString($nodes->item(0)->textContent);
+        $g['league_short'] = self::normalizeTitle($nodes->item(0)->textContent);
         $g['league_url'] = trim($nodes->item(0)->attributes->getNamedItem('href')->textContent);
         //<span id="ht_1831305" class="name">
         //     Suwon Samsung Bluewings
@@ -162,7 +162,7 @@ class NGPParser implements iParser {
         $tid = "ht_$id";
         $nodes = $xpath->query("//span[@id='$tid']/i[1]");
         if ($nodes->count() > 0) {
-            $g['host_rank'] = self::normalizeString($nodes->item(0)->textContent, '[]');
+            $g['host_rank'] = self::normalizeTitle($nodes->item(0)->textContent, '[]');
         }
         $nodes = $xpath->query("//span[@id='$tid']/i");
         foreach($nodes as $ch) {
@@ -173,12 +173,12 @@ class NGPParser implements iParser {
             self::$logs[] = "Could not find host. " . $html;
             return false;
         }
-        $g['host'] = self::normalizeString($nodes->item(0)->textContent, '()-');
+        $g['host'] = self::normalizeTitle($nodes->item(0)->textContent, '()-');
         
         $tid = "gt_$id";
         $nodes = $xpath->query("//span[@id='$tid']/i[1]");
         if ($nodes->count() > 0) {
-            $g['guest_rank'] = self::normalizeString($nodes->item(0)->textContent, '[]');
+            $g['guest_rank'] = self::normalizeTitle($nodes->item(0)->textContent, '[]');
         }
         $nodes = $xpath->query("//span[@id='$tid']/i");
         foreach($nodes as $ch) {
@@ -189,7 +189,7 @@ class NGPParser implements iParser {
             self::$logs[] = "Could not find guest. " . $html;
             return false;
         }
-        $g['guest'] = self::normalizeString($nodes->item(0)->textContent, '()-');
+        $g['guest'] = self::normalizeTitle($nodes->item(0)->textContent, '()-');
         $gameUrlTitle = self::makeGameUrlPath($g['host'], $g['guest']);
         $g['url'] = "/football-match/$gameUrlTitle/live-$id/";
         return (object)$g;
@@ -338,7 +338,7 @@ class NGPParser implements iParser {
             $url = trim($href->textContent);
             $id = preg_match('/(\d+)\/$/', $url, $matches);
         }
-        $title = self::normalizeString($node->textContent, '()-');
+        $title = self::normalizeTitle($node->textContent, '()-');
         return (object)array_merge(
             empty($url)        ? [] : ['url' => $url],
             empty($title)      ? [] : ['title' => $title],
@@ -392,12 +392,16 @@ class NGPParser implements iParser {
         $path = strtolower($host) . ' vs ' . strtolower($guest);
         $path = str_replace('(n)', '', $path);
         $path = str_replace(' ', '-', $path);
-        $path = self::normalizeString($path, '-');
+        $path = self::normalizeURL($path);
         return $path;
     }
 
-    private static function normalizeString($str, $chars = '') {
-        return preg_replace('/[^a-z1-9' . $chars .']/', '', trim($str));
+    private static function normalizeTitle($str) {
+        return preg_replace('/[^a-zA-Z1-9- \(\)\[\]]/', '', trim($str));
+    }
+
+    private static function normalizeURL($url) {
+        return preg_replace('/[^a-z1-9-]/', '', trim($url));
     }
 
     private static function event2Code($event) {
