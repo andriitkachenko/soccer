@@ -2,6 +2,16 @@ drop database if exists `ngp`;
 create database `ngp`;
 use `ngp`;
 
+/*
+drop table if exists `ngp_version`;
+drop table if exists `ngp_stats`;
+drop table if exists `ngp_live_games`;
+drop table if exists `ngp_new_games`;
+drop table if exists `ngp_games`;
+drop table if exists `ngp_leagues`;
+drop table if exists `ngp_teams`;
+*/
+
 create table if not exists `ngp_leagues` (
 	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	`league_id` INT UNSIGNED NOT NULL,
