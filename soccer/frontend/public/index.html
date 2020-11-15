@@ -15,4 +15,11 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <script>
+    function onResize(event) {
+      document.body.style.height = document.documentElement.clientHeight + 'px';
+    } 
+    window.addEventListener('resize', onResize);
+    onResize();
+  </script>
 </html>

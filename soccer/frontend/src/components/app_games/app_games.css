@@ -30,7 +30,3 @@ td.stat.long {
 td.teams, td.time.game, td.stat.gl {
     font-weight: 500;
 }
-
-td.teams span {
-    font-size: small;
-}

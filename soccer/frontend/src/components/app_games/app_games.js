@@ -90,8 +90,8 @@ class AppGames extends React.Component {
        clearInterval(this.timerId);
     }
 
-    makeExtraTime(extra)  {
-        return extra ? <sup>+{extra}</sup> : '';
+    makeSuperscript(s, prefix = '')  {
+    return s ? <span className='superscript'>{prefix}{s}</span> : '';
     }
     
     render() {
@@ -106,10 +106,10 @@ class AppGames extends React.Component {
                         <tbody>
                         <tr>
                             <td className='league'>{g.league}</td>
-                            <td className='time game' rowSpan="2">{g.time}{this.makeExtraTime(g.extra)}</td>
-                            <td className='teams'>{ g.host } <span className="rank"> { g.host_rank ? g.host_rank : ''}</span></td>
+                            <td className='time game' rowSpan="2">{g.time}{this.makeSuperscript(g.extra, '+')}</td>
+                            <td className='teams'>{ g.host } {this.makeSuperscript(g.host_rank) }</td>
                             <td className='stat gl'>{g.host_stat.gl}</td>
-                            <td className='time' rowSpan="2">{g.min}{this.makeExtraTime(g.min_extra)}</td>
+                            <td className='time' rowSpan="2">{g.min}{this.makeSuperscript(g.min_extra, '+')}</td>
                             <td className='stat long'>{g.host_stat.sh} - {g.host_stat.sg}</td>
                             <td className='stat long'>{g.host_stat.at} - {g.host_stat.da}</td>
                             <td className='stat'>{g.host_stat.bp}</td>
@@ -117,7 +117,7 @@ class AppGames extends React.Component {
                         </tr>
                         <tr>
                             <td className='league'>{this.getLocalTimeString(g.start_time)}</td>
-                            <td className='teams'>{g.guest}</td>
+                            <td className='teams'>{g.guest} {this.makeSuperscript(g.guest_rank) }</td>
                             <td className='stat gl'>{g.guest_stat.gl}</td>
                             <td className='stat long'>{g.guest_stat.sh} - {g.guest_stat.sg}</td>
                             <td className='stat long'>{g.guest_stat.at} - {g.guest_stat.da}</td>
