@@ -128,7 +128,7 @@ inner join `ngp_leagues` as lg on lg.league_id = gs.league_id
 inner join `ngp_live_games` as l on l.game_id = gs.game_id
 inner join `ngp_teams` as h on gs.host_id = h.team_id
 inner join `ngp_teams` as g on gs.guest_id = g.team_id
-having `min` > 9
+having `min` > 10
 order by `min` desc;
 SQL;    
         $res = $this->dbConn->query($query); 
@@ -151,6 +151,62 @@ SQL;
             $stats[$s["id"]] = $s;
         }
         return $stats;        
+    }
+
+    public function loadHistoryStats($minAgo) {
+
+        $query = 
+<<<SQL
+select hs.`game_id` as `game_id`, hs.stat as `hstat`, gs.stat as `gstat` from
+    (
+        select ns.`game_id` as `game_id`, ns.`stat` as `stat` from `ngp_stats` as ns
+        inner join (
+            select 
+                s.`game_id` as `id`,
+                s.`team_id` as `team_id`,
+                s.`state` as `state`,
+                MAX(s.`timestamp`) as `time`
+            from `ngp_games` as gs
+            inner join `ngp_stats` as s on gs.`game_id` = s.`game_id` and s.`team_id` = gs.`host_id`
+            inner join `ngp_live_games` as l on s.`game_id` = l.`game_id` 
+            where l.`trackable` and l.`state` = s.`state` and s.`timestamp` <= date_add(now(), interval -$minAgo minute)
+            group by s.`game_id`
+            ) as h on ns.`game_id` = h.`id`
+        where ns.`team_id` = h.`team_id` and ns.`timestamp` = h.`time`
+    ) as hs
+left join 
+    (
+        select ns.`game_id`, ns.`stat` as `stat` from `ngp_stats` as ns
+        inner join (
+            select 
+                s.`game_id` as `id`,
+                s.`team_id` as `team_id`,
+                s.`state` as `state`,
+                MAX(s.`timestamp`) as `time`
+            from `ngp_games` as gs
+            inner join `ngp_stats` as s on gs.`game_id` = s.`game_id` and s.`team_id` = gs.`guest_id`
+            inner join `ngp_live_games` as l on s.`game_id` = l.`game_id` 
+            where l.`trackable` and l.`state` = s.`state` and s.`timestamp` <= date_add(now(), interval -$minAgo minute)
+            group by s.`game_id`
+            ) as g on ns.`game_id` = g.`id`
+        where ns.`team_id` = g.`team_id` and ns.`timestamp` = g.`time`
+    ) as gs on hs.`game_id` = gs.`game_id`;
+SQL;   
+ 
+        $res = $this->dbConn->query($query); 
+        if ($res === false) return false;
+
+        $res = $res->fetchAll(PDO::FETCH_ASSOC);
+        
+        $history = [];
+        foreach($res as $s) {
+            $id = intval($s['game_id']);
+            $history[$id] = [
+                'host_stat' => $this->unifyStat($s['hstat']),
+                'guest_stat' => $this->unifyStat($s['gstat'])
+            ];
+        }
+        return $history;        
     }
 
     private function unifyStat($stat) {
