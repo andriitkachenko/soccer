@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../../sources/nowgoalpro/ngp_data.php';
 require_once __DIR__ . '/../../php/logs.php';
+require_once __DIR__ . '/../../php/utils.php';
 
 
 function response($code, $data) {
@@ -23,7 +24,8 @@ $operation = getIfSet($data, ['op']);
 
 switch($operation) {
     case 'last_stat': 
-        $stats = getLiveLastStats();
+        $dbManager = new NgpDbManager(new DbConnection(new DbSettings(isLocalhost())));        
+        $stats = getLiveLastStats($dbManager);
         response(200, $stats);
         break;
     default: 

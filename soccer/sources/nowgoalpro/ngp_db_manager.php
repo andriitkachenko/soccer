@@ -153,13 +153,13 @@ SQL;
         return $stats;        
     }
 
-    public function loadHistoryStats($minAgo) {
+    public function loadLiveHistoryStats($minAgo) {
 
         $query = 
 <<<SQL
-select hs.`game_id` as `game_id`, hs.stat as `hstat`, gs.stat as `gstat` from
+select hs.game_id as `game_id`, hs.`min` as `min`, hs.`stat` as `hstat`, gs.`stat` as `gstat` from
     (
-        select ns.`game_id` as `game_id`, ns.`stat` as `stat` from `ngp_stats` as ns
+        select ns.`game_id` as `game_id`, ns.`stat` as `stat`, ns.`min` as `min` from `ngp_stats` as ns
         inner join (
             select 
                 s.`game_id` as `id`,
@@ -174,7 +174,7 @@ select hs.`game_id` as `game_id`, hs.stat as `hstat`, gs.stat as `gstat` from
             ) as h on ns.`game_id` = h.`id`
         where ns.`team_id` = h.`team_id` and ns.`timestamp` = h.`time`
     ) as hs
-left join 
+inner join 
     (
         select ns.`game_id`, ns.`stat` as `stat` from `ngp_stats` as ns
         inner join (
@@ -202,6 +202,7 @@ SQL;
         foreach($res as $s) {
             $id = intval($s['game_id']);
             $history[$id] = [
+                'min' => $s['min'],
                 'host_stat' => $this->unifyStat($s['hstat']),
                 'guest_stat' => $this->unifyStat($s['gstat'])
             ];

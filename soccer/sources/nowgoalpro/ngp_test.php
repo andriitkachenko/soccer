@@ -138,11 +138,17 @@ switch($target) {
         }
         break;
     case 'data' :
-        $dbConn = new DbConnection(new DbSettings(true));
+        $dbConn = new DbConnection(new DbSettings(isLocalhost()));
         $dbManager = new NgpDbManager($dbConn);
         switch ($operation) {
             case 'live-last-stats':
                 $stats = $dbManager->loadLiveLastStats();
+                print_r($stats);
+                break;
+            case 'live-history-stats':
+                $minAgo = getParameter('min_ago');
+                $minAgo = $minAgo ? intval($minAgo) : 5; 
+                $stats = $dbManager->loadLiveHistoryStats($minAgo);
                 print_r($stats);
                 break;
         }
