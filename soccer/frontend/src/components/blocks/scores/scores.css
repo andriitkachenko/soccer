@@ -1,0 +1,11 @@
+.scores {
+    font-weight : 600;
+}
+.half {
+    font-weight: normal;
+    margin-left: 6px;
+    font-size: 0.9em;
+}
+.half:first-child {
+    margin-left: 12px;
+}

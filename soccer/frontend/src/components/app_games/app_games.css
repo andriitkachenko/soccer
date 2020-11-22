@@ -7,7 +7,27 @@
     overflow-y: scroll;
 }
 
-td.col_league {
+.game-container {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 640px) {
+    .game-container {
+        flex-direction: column;
+    }
+}
+
+.game-container > .data {
+    width:100%;
+}
+
+.game-container > .stats {
+    font-size: .8rem;
+    width:100%;
+}
+
+td.col-league {
     width: 3.5rem;
     max-width: 3.5rem;
     white-space: nowrap;
@@ -15,16 +35,22 @@ td.col_league {
     text-overflow: ellipsis;    
 }
 
-td.time {
+td.col-game-time {
     vertical-align: middle;
+    width: 3.5rem;
+    text-align: center;    
+}
+
+.data .col-game-time {
+    font-weight: 600;
 }
 
 td.time, td.stat {
-    width: 7%;
+    width: auto;
     text-align:center;
 }
 td.stat.long {
-    width: 10%;
+    width: auto;
 }
 td.teams, td.time.game, td.stat.gl {
     font-weight: 500;

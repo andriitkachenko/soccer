@@ -1,5 +1,4 @@
 body {
-    height: 100vh;
     font-size: small;
 }
 
@@ -18,4 +17,8 @@ body {
 .superscript {
     font-size : xx-small;
     vertical-align: top;
+}
+
+.bold {
+    font-weight: 600;
 }

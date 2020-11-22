@@ -80,6 +80,10 @@ switch($target) {
                     }
                 }
                 break;
+            default:
+                echo "Unknown operation: $operation";
+                echo "<br>Allowed for target 'parser' are: 'game-update-file', 'list-parse', 'game-parse'";
+                break;                 
         }
         break;
     case "dbmanager" :
@@ -100,6 +104,10 @@ switch($target) {
                 $ok = $res !== false;
                 logPrint($ok);
                 break;
+            default:
+                echo "Unknown operation: $operation";
+                echo "<br>Allowed for target 'dbmanager' are: 'load-existing-game', 'load-new-games'";
+                break;                
         }
         break;
     case "ngp" :
@@ -123,6 +131,10 @@ switch($target) {
                 $res = $ngp->runOneMinuteUpdate($stopTime, $count);
                 logPrint($res, $dbManager->getLastError());
                 break;
+            default:
+                echo "Unknown operation: $operation";
+                echo "<br>Allowed for target 'ngp' are: 'update-new-games', '1-update'";
+                break;
         }
         break;
     case "loader" :
@@ -134,7 +146,11 @@ switch($target) {
             case "load-games" : 
                 $res = $loader->loadGames($games);
                 print_r($res);
-                break;            
+                break; 
+            default:
+                echo "Unknown operation: $operation";
+                echo "<br>Allowed for target 'loader' are: 'load-games'";
+                break;
         }
         break;
     case 'data' :
@@ -151,7 +167,18 @@ switch($target) {
                 $stats = $dbManager->loadLiveHistoryStats($minAgo);
                 print_r($stats);
                 break;
+            case 'live-halftime-stats':
+                $stats = $dbManager->loadLiveHalfTimeStats();
+                print_r($stats);
+                break;
+            default:
+                echo "Unknown operation: $operation";
+                echo "<br>Allowed for target 'data' are: 'live-last-stats', 'live-history-stats', 'live-halftime-stats'";
+                break;
         }
+        break;
+    default:
+        echo "Unknown target: $target";
         break;
 }
 

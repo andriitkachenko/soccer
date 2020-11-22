@@ -1,0 +1,8 @@
+.shots > span {
+    font-size: 0.9em;
+    margin-left: 6px;
+}
+
+.shots > span:first-child {
+    margin-left: 12px;
+}

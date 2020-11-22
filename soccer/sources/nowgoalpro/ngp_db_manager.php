@@ -210,6 +210,52 @@ SQL;
         return $history;        
     }
 
+    public function loadLiveHalfTimeStats() {
+
+        $query = 
+<<<SQL
+select hs.`game_id` as `game_id`, hs.`state` as `state`, hs.`stat` as `hstat`, gs.`stat` as `gstat` from
+    (
+        select ns.`game_id` as `game_id`, ns.`state` as `state`, ns.`stat` as `stat` from `ngp_stats` as ns
+        inner join (
+            select gs.`game_id` as `id`, gs.`host_id` as `team_id`
+            from `ngp_games` as gs
+            inner join `ngp_live_games` as l on gs.`game_id` = l.`game_id` 
+            where l.`trackable` and (l.`state` = 2 or l.`state` = 3)
+        ) as h on ns.`game_id` = h.`id` and ns.`team_id` = h.`team_id`
+        where ns.state = 2
+    ) as hs
+inner join 
+    (
+        select  ns.`game_id` as `game_id`, ns.`stat` as `stat` from `ngp_stats` as ns
+        inner join (
+            select gs.`game_id` as `id`, gs.`guest_id` as `team_id`
+            from `ngp_games` as gs
+            inner join `ngp_live_games` as l on gs.`game_id` = l.`game_id` 
+            where l.`trackable` and (l.`state` = 2 or l.`state` = 3)
+        ) as h on ns.`game_id` = h.`id` and ns.`team_id` = h.`team_id`
+        where ns.state = 2
+    ) as gs on hs.`game_id` = gs.`game_id`;
+SQL;   
+ 
+        $res = $this->dbConn->query($query); 
+        if ($res === false) return false;
+
+        $res = $res->fetchAll(PDO::FETCH_ASSOC);
+        
+        $halftime = [];
+        foreach($res as $s) {
+            $id = intval($s['game_id']);
+            $halftime[$id] = [
+                'state' => $s['state'],
+                'host_stat' => $this->unifyStat($s['hstat']),
+                'guest_stat' => $this->unifyStat($s['gstat'])
+            ];
+        }
+        return $halftime;        
+    }
+
+
     private function unifyStat($stat) {
         $events = ['sh', 'sg', 'at', 'da', 'bp', 'gl', 'rc', 'yc'];
         $s = json_decode($stat, true);

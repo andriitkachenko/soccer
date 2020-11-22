@@ -3,8 +3,7 @@ import React from 'react';
 import DataService from '../../services/data-service';
 import Utils from '../../utils';
 
-import League from '../league';
-import StartTime from '../start_time';
+import { Shots, League, Team, StartTime, Scores, BallPossession, RedCard } from '../blocks';
 
 import './app_games.css';
 
@@ -78,30 +77,95 @@ class AppGames extends React.Component {
         const gameList = games.map((g) => {
             return (
                 <li className = 'item-list list-group-item' key={g.id}>
-                    <table className="table">
-                        <tbody>
-                        <tr>
-                            <td className='col_league'><League title={g.league}/></td>
-                            <td className='time game' rowSpan="2">{g.time}{Utils.makeSuperscript(g.extra, '+')}</td>
-                            <td className='teams'>{ g.host } {Utils.makeSuperscript(g.host_rank) }</td>
-                            <td className='stat gl'>{g.host_stat.gl}</td>
-                            <td className='time' rowSpan="2">{g.min}{Utils.makeSuperscript(g.min_extra, '+')}</td>
-                            <td className='stat long'>{g.host_stat.sh} - {g.host_stat.sg}</td>
-                            <td className='stat long'>{g.host_stat.at} - {g.host_stat.da}</td>
-                            <td className='stat'>{g.host_stat.bp}</td>
-                            <td className='stat'>{g.host_stat.rc}</td>
-                        </tr>
-                        <tr>
-                            <td className='col_league'><StartTime time={g.start_time}/></td>
-                            <td className='teams'>{g.guest} {Utils.makeSuperscript(g.guest_rank) }</td>
-                            <td className='stat gl'>{g.guest_stat.gl}</td>
-                            <td className='stat long'>{g.guest_stat.sh} - {g.guest_stat.sg}</td>
-                            <td className='stat long'>{g.guest_stat.at} - {g.guest_stat.da}</td>
-                            <td className='stat'>{g.guest_stat.bp}</td>
-                            <td className='stat'>{g.guest_stat.rc}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div className="game-container">
+                        <div className="data">
+                            <table className="table">
+                            <tbody>
+                            <tr>
+                                <td className='col-league'><League title={g.league}/></td>
+                                <td className='col-game-time' rowSpan="2">{g.time}{Utils.makeSuperscript(g.extra, '+')}</td>
+                                <td className='teams'><Team title={g.host} rank={g.host_rank}/></td>
+                                <td className='stat'><RedCard amount={g.host_stat.rc}/></td>
+                                <td className='stat gl'>
+                                    <Scores all ={g.host_stat.gl} half1={g.ht ? g.ht.host_stat.gl : null}/>
+                                </td>
+                                <td rowSpan="2"></td>
+                            </tr>
+                            <tr>
+                                <td className='col-league'>
+                                    <StartTime time={g.start_time}/>
+                                </td>
+                                <td className='teams'>
+                                    <Team title={g.guest} rank={g.guest_rank}/>
+                                </td>
+                                <td className='stat'><RedCard amount={g.guest_stat.rc}/></td>
+                                <td className='stat gl'>
+                                    <Scores all ={g.guest_stat.gl} half1={g.ht ? g.ht.guest_stat.gl : null}/>
+                                </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        <div className="stats">
+                            <table className="table">
+                            <tbody>
+                            <tr>                            
+                                <td className='col-game-time' rowSpan="2">{g.min}{Utils.makeSuperscript(g.min_extra, '+')}</td>
+                                <td className='stat long'> 
+                                    <Shots 
+                                        shAll={g.host_stat.sh} 
+                                        shHalf1={g.ht ? g.ht.host_stat.sh : null} 
+                                        sgAll={g.host_stat.sg} 
+                                        sgHalf1={g.ht ? g.ht.host_stat.sg : null} 
+                                    />
+                                </td>
+                                <td className='stat long'> 
+                                    <Shots 
+                                        shAll={g.host_stat.sh} 
+                                        shHalf1={g.history2 ? g.history2.host_stat.sh : null} 
+                                        sgAll={g.host_stat.sg} 
+                                        sgHalf1={g.history2 ? g.history2.host_stat.sg : null} 
+                                        diff
+                                    />
+                                </td>
+                                <td className='stat'>
+                                    <BallPossession 
+                                        all={g.host_stat.bp} 
+                                        half1={g.ht ? g.ht.host_stat.bp : null}
+                                        min={g.min}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='stat long'>
+                                    <Shots 
+                                        shAll={g.guest_stat.sh} 
+                                        shHalf1={g.ht ? g.ht.guest_stat.sh : null} 
+                                        sgAll={g.guest_stat.sg} 
+                                        sgHalf1={g.ht ? g.ht.guest_stat.sg : null} 
+                                    />                                
+                                </td>
+                                <td className='stat long'> 
+                                    <Shots 
+                                        shAll={g.guest_stat.sh} 
+                                        shHalf1={g.history2 ? g.history2.guest_stat.sh : null} 
+                                        sgAll={g.guest_stat.sg} 
+                                        sgHalf1={g.history2 ? g.history2.guest_stat.sg : null} 
+                                        diff
+                                    />
+                                </td>                                
+                                <td className='stat'>
+                                    <BallPossession 
+                                        all={g.guest_stat.bp} 
+                                        half1={g.ht ? g.ht.guest_stat.bp : null}
+                                        min={g.min}
+                                    />
+                                </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </li>
             );
         });
