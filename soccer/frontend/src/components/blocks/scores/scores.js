@@ -1,17 +1,20 @@
 import './scores.css';
 
-const Scores = ({all, half1}) => {
-    if (half1 || half1 === 0) {
-        return (
-            <div className='scores'>
-                {all}
-                <span className="half">{half1}</span>
-                <span className="half">{all - half1}</span>
-            </div>
-        );
-    }
+const Scores = ({host, guest, all, h1, h2}) => {
+    const isAll = all || all === 0;
+    const isHalf1 = h1 || h1 === 0;
+    const isHalf2 = h2 || h2 === 0;
+
+    const clsName = 'scores'
+        + (host ? ' h' : '' )
+        + (guest ? ' g' : '')
+        + (isAll  ? ' all' : '')
+        + (isHalf1 ? ' half1' : '' )
+        + (isHalf2 ? ' half2' : '');
+
+    const score = isAll ? all : (isHalf1 ? h1 : h2);
     return (
-        <div className='scores'>{all}</div>
+        <div className={ clsName }>{ score }</div>
     );
 }
 

@@ -7,7 +7,6 @@ const BallPossession = ({all, half1, min}) => {
         const p2 = Math.round(t2 * 100. / (min - 45));
         return (
             <div className="ball-possession">
-                {all}
                 <span>{half1}</span>
                 <span className='bold'>{p2}</span>
             </div>

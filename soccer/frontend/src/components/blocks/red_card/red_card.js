@@ -1,9 +1,10 @@
 import './red_card.css';
 
-const RedCard = ({amount}) => {
+const RedCard = ({host, guest, amount}) => {
+    const clsName = 'red-card' + (host ? ' h' : '') + (guest ? ' g' : '');
     if (amount) {
         return(
-            <div className='red-card'>{amount}</div>
+            <div className={clsName}>{amount}</div>
         );
     }
     return null;

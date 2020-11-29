@@ -1,25 +1,18 @@
 import './shots.css';
 
-const Shots = ({sgAll, sgHalf1, shAll, shHalf1, diff}) => {
-    const sg = sgAll ? sgAll : 0;
-    if (shHalf1 || shHalf1 === 0) {
-        const sg1 = sgHalf1 ? sgHalf1 : 0;
-        if (diff) {
-            return (
-                <div className="shots">{shAll - shHalf1}-{sg-sg1}</div>
-            );
-        } else {
-            return (
-                <div className="shots">
-                    {shAll}-{sg}
-                    <span>{shHalf1}-{sg1}</span>
-                    <span  className='bold'>{shAll - shHalf1}-{sg - sg1}</span>
-                </div>
-            );
-        }
-    }
+const Shots = ({host, guest, half1, half2, last10, state, sg, sh}) => {
+    const show = (sg || sg === 0) && (sh || sh === 0);
+    const clsName = 'shots' 
+        + (host ? ' h' : '') 
+        + (guest ? ' g' : '') 
+        + (half1 ? ' half1' : '') 
+        + (half2 ? ' half2' : '') 
+        + (last10 ? ' last10' : '')
+        + (state === 1 && half1 || state == 3 && half2 ? ' bold' : '');
+
     return(
-        <div  className='bold'>{shAll}-{sg}</div>
-    );
+        <div  className= {clsName}>{ show ? `${sh}-${sg}` : '' }</div>
+    )
+
 }
 export default Shots;

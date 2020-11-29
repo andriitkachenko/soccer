@@ -1,0 +1,65 @@
+.game-container {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "data stat"
+}
+
+@media (max-width: 640px) {
+  .game-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "data"
+      "stat"
+  }
+}
+
+.data {
+    display: grid;
+    grid-gap: 0.2rem;
+    grid-template-columns: 2.5rem  2rem  auto 2rem 1rem 0.6rem 0.6rem;
+    grid-template-areas:
+      "league      time  host  h-red-cards h-scores h-scores-h1 h-scores-h2"
+      "start-time  time  guest g-red-cards g-scores g-scores-h1 g-scores-h2";    
+}    
+
+.stat {
+  display: grid;
+  grid-template-columns: 
+        3rem       2rem         2rem    auto  2rem    auto   6rem;
+  grid-template-areas:
+    "stat-time  h-shots-h1  h-shots-h2   a   h-last10   b   h-ball-possession"
+    "stat-time  g-shots-h1  g-shots-h2   a   g-last10   b   g-ball-possession ";    
+}    
+
+.emptyA { grid-area: a; }
+.emptyB { grid-area: b; }
+
+.league { grid-area: league; }
+.start-time { grid-area: start-time; }
+.data .time { grid-area: time; }
+.team.h { grid-area: host; }
+.team.g { grid-area: guest; }
+.red-cards.h { grid-area: h-red-cards; }
+.red-cards.g { grid-area: g-red-cards; }
+.scores.h.all { grid-area: h-scores; }
+.scores.h.half1 { grid-area: h-scores-h1; }
+.scores.h.half2 { grid-area: h-scores-h2; }
+.scores.g.all { grid-area: g-scores; }
+.scores.g.half1 { grid-area: g-scores-h1; }
+.scores.g.half2 { grid-area: g-scores-h2; }
+
+.stat .time { grid-area: stat-time; }
+.shots.h.half1 { grid-area: h-shots-h1; }
+.shots.g.half1 { grid-area: g-shots-h1; }
+.shots.h.half2 { grid-area: h-shots-h2; }
+.shots.g.half2 { grid-area: g-shots-h2; }
+.shots.last10.h { grid-area: h-last10; }
+.shots.last10.g { grid-area: g-last10; }
+.ball-possession.h { grid-area: h-ball-possession; }
+.ball-possession.g { grid-area: g-ball-possession; }
+
+.data .time {
+  font-weight: 600;
+}
