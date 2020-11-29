@@ -429,7 +429,7 @@ class NGPParser implements iParser {
         $isAttacks = isset($h->at) || isset($g->at);
         $isDangerousAttacks = isset($h->da) || isset($g->da);
         $isBallPossession = isset($h->bp) || isset($g->bp);
-        $noShotMinute = empty($min) || $min < MAX_NO_SHOT_MINUTE;
+        $noShotMinute = !empty($min) || $min < MAX_NO_SHOT_MINUTE;
         return 
                $isAttacks 
             && $isDangerousAttacks 
