@@ -148,8 +148,9 @@ SQL;
         $start = $g->status->start_real;
         $state = $g->status->state;
         $time = time();
-        if ($state == 1 && $time - $start < START_TRACKING) {
-            return $start + START_TRACKING;
+        $startTracking = START_TRACKING_MINUTE * 60;
+        if ($state == 1 && ($time - $start) < $startTracking) {
+            return $start + $startTracking;
         }
         if ($state == 2) {
             return $start + BREAK_TIME;

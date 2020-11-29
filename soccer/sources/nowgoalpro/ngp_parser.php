@@ -59,8 +59,9 @@ class NGPParser implements iParser {
         unset($status->hScore);
         unset($status->gScore);
 
-        $isTrackable = self::isTrackable($stat);
-        $isTrackTime = empty($status->min) || $status->min * 60. >= START_TRACKING;
+        $min = empty($status->min) ? null : $status->min;
+        $isTrackable = self::isTrackable($stat, $min);
+        $isTrackTime = empty($min) || $min >= START_TRACKING_MINUTE;
         $status = addObjectProperty($status, 'trackable',!$isTrackable && !$isTrackTime ? null : (int)$isTrackable);
 
         return (object)[
@@ -421,18 +422,19 @@ class NGPParser implements iParser {
         return $c;
     }
     
-    private static function isTrackable($stat) {
+    private static function isTrackable($stat, $min) {
         $h = $stat->host;
         $g = $stat->guest;
         $isShots = isset($h->sh) || isset($g->sh);
         $isAttacks = isset($h->at) || isset($g->at);
         $isDangerousAttacks = isset($h->da) || isset($g->da);
         $isBallPossession = isset($h->bp) || isset($g->bp);
+        $noShotMinute = empty($min) || $min < MAX_NO_SHOT_MINUTE;
         return 
                $isAttacks 
             && $isDangerousAttacks 
             && $isBallPossession
-            && ($isShots || ($h->gl === 0 && $g->gl === 0));
+            && ($isShots || ($h->gl === 0 && $g->gl === 0 && $noShotMinute));
     }    
 }
 
