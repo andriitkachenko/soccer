@@ -1,3 +1,5 @@
 span.league {
     font-size: xx-small;
+    white-space: nowrap;
+    overflow-x: hidden;
 }

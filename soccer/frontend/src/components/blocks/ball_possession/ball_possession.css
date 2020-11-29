@@ -1,4 +1,3 @@
-.ball-possession > span {
-    font-size: 0.9em;
-    margin-left : 6px;
+span:first-child {
+    margin-right : 0.5rem;
 }

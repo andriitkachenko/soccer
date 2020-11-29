@@ -6,9 +6,10 @@ import './game.css';
 
 const Game = ({game}) => {
     const g = game;
+    const extraClass = g.state === 2 ? ' ht' : '';
     return (
-        <div className="game-container">
-            <div className="data">
+        <div className={"game" + extraClass}>
+            <div className={"data" + extraClass}>
                 <League title={g.league}/>
                 <StartTime time={g.start_time}/>
                 <Time time={g.time} extra={g.extra}/>
@@ -23,7 +24,7 @@ const Game = ({game}) => {
                 <Scores guest h1={g.ht ? g.ht.guest_stat.gl : g.guest_stat.gl}/>
                 <Scores guest h2={g.ht ? g.guest_stat.gl - g.ht.guest_stat.gl : null}/>
             </div>
-            <div className="stat">
+            <div className={"stat" + extraClass}>
                 <Time time={g.min} extra={g.min_extra} />
                 <Shots 
                     host
@@ -78,7 +79,6 @@ const Game = ({game}) => {
                     min={g.min}
                 />
                 <div className='emptyA'></div>
-                <div className='emptyB'></div>
             </div>
         </div>
     );

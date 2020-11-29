@@ -6,7 +6,7 @@ class AppHeader extends React.Component {
     render() {
         return (
             <div className='app-header'>
-         
+                <div className='title'>Live Soccer</div>
             </div>
         );
     }

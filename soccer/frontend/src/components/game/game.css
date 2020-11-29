@@ -1,13 +1,13 @@
-.game-container {
+.game {
   display: grid;
-  grid-gap: 0.5rem;
+  grid-gap: 0.2rem;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "data stat"
 }
 
 @media (max-width: 640px) {
-  .game-container {
+  .game {
     grid-template-columns: 1fr;
     grid-template-areas:
       "data"
@@ -17,21 +17,44 @@
 
 .data {
     display: grid;
+    padding : 0.1rem 0.2rem;
+    background-color: rgb(217, 240, 255);
     grid-gap: 0.2rem;
-    grid-template-columns: 2.5rem  2rem  auto 2rem 1rem 0.6rem 0.6rem;
+    grid-template-columns: 
+        2.5rem     2rem  auto    2rem        1rem     0.6rem     0.6rem;
     grid-template-areas:
       "league      time  host  h-red-cards h-scores h-scores-h1 h-scores-h2"
       "start-time  time  guest g-red-cards g-scores g-scores-h1 g-scores-h2";    
+  }    
+  
+  .stat {
+    display: grid;
+    padding : 0.1rem 0.2rem;
+    grid-gap: 0.2rem;
+    grid-template-columns: 
+          2.5rem   auto  2rem         2rem        5rem      3rem;
+    grid-template-areas:
+      "stat-time    a  h-shots-h1  h-shots-h2   h-last10  h-ball-possession"
+      "stat-time    a  g-shots-h1  g-shots-h2   g-last10  g-ball-possession ";    
 }    
 
-.stat {
-  display: grid;
-  grid-template-columns: 
-        3rem       2rem         2rem    auto  2rem    auto   6rem;
-  grid-template-areas:
-    "stat-time  h-shots-h1  h-shots-h2   a   h-last10   b   h-ball-possession"
-    "stat-time  g-shots-h1  g-shots-h2   a   g-last10   b   g-ball-possession ";    
-}    
+@media (min-width: 640px) {
+  .stat {
+    grid-template-columns: 
+          2.5rem    2rem        2rem        5rem         3rem           auto;
+    grid-template-areas:
+      "stat-time  h-shots-h1  h-shots-h2   h-last10  h-ball-possession   a"
+      "stat-time  g-shots-h1  g-shots-h2   g-last10  g-ball-possession   a";    
+  }
+}
+
+.game.ht {
+  background-color: rgba(221, 221, 221, 0.63);
+}
+
+.data.ht {
+  background-color: lightgray;
+}
 
 .emptyA { grid-area: a; }
 .emptyB { grid-area: b; }
@@ -62,4 +85,8 @@
 
 .data .time {
   font-weight: 600;
+}
+
+.shots.last10 {
+  text-align: center;
 }
