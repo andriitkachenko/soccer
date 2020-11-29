@@ -21,13 +21,14 @@
     background-color: rgb(217, 240, 255);
     grid-gap: 0.2rem;
     grid-template-columns: 
-        2.5rem     2rem  auto    2rem        1rem     0.6rem     0.6rem;
+        3rem      2.5rem  auto    1rem     0.6rem     0.6rem;
     grid-template-areas:
-      "league      time  host  h-red-cards h-scores h-scores-h1 h-scores-h2"
-      "start-time  time  guest g-red-cards g-scores g-scores-h1 g-scores-h2";    
+      "league      time   host  h-scores h-scores-h1 h-scores-h2"
+      "start-time  time   guest g-scores g-scores-h1 g-scores-h2";    
   }    
   
   .stat {
+    font-size: x-small;
     display: grid;
     padding : 0.1rem 0.2rem;
     grid-gap: 0.2rem;

@@ -4,7 +4,7 @@ import Team from './team';
 import Scores from './scores';
 import StartTime from './start_time';
 import BallPossession from './ball_possession';
-import RedCard from './red_card';
+import Cards from './cards';
 import Loader from './loader';
 import Time from './time';
 
@@ -15,7 +15,7 @@ export {
     Scores,
     StartTime,
     BallPossession,
-    RedCard,
+    Cards,
     Loader,
     Time
 };

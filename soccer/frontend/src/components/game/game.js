@@ -1,6 +1,6 @@
 import Utils from '../../utils';
 
-import { Shots, League, Team, StartTime, Scores, BallPossession, RedCard, Time } from '../blocks';
+import { Shots, League, Team, StartTime, Scores, BallPossession, Time } from '../blocks';
 
 import './game.css';
 
@@ -13,10 +13,8 @@ const Game = ({game}) => {
                 <League title={g.league}/>
                 <StartTime time={g.start_time}/>
                 <Time time={g.time} extra={g.extra}/>
-                <Team host title={g.host} rank={g.host_rank}/>
-                <Team guest title={g.guest} rank={g.guest_rank}/>
-                <RedCard host amount={g.host_stat.rc}/>
-                <RedCard guest amount={g.guest_stat.rc}/>
+                <Team host title={g.host} rank={g.host_rank} rc={g.host_stat.rc} yc={g.host_stat.yc}/>
+                <Team guest title={g.guest} rank={g.guest_rank} rc={g.guest_stat.rc} yc={g.guest_stat.yc}/>
                 <Scores host all={g.host_stat.gl}/>
                 <Scores host h1={g.ht ? g.ht.host_stat.gl : g.host_stat.gl}/>
                 <Scores host h2={g.ht ? g.host_stat.gl - g.ht.host_stat.gl : null}/>

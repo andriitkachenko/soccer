@@ -1,5 +1,8 @@
 body {
+    max-width: 1200px;
+    margin: 0 auto;
     font-size: small;
+    position: relative;
 }
 
 .list-group-item {
