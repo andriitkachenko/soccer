@@ -262,7 +262,14 @@ SQL;
         if (!is_array($s)) {
             return [];
         }
-        return array_filter($s, function($v, $k) use($events) {return in_array($k, $events);}, ARRAY_FILTER_USE_BOTH);
+        $s = array_filter($s, function($v, $k) use($events) {
+                return in_array($k, $events);
+            }, ARRAY_FILTER_USE_BOTH
+        );
+        if (isset($s['sh']) && !isset($s['sg'])) {
+            $s['sg'] = 0;
+        }
+        return $s;
     }
 
 }    
