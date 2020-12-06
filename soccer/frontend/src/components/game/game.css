@@ -28,7 +28,8 @@
   }    
   
   .stat {
-    font-size: x-small;
+    font-size: smaller;
+    color: #555555;    
     display: grid;
     padding : 0.1rem 0.2rem;
     grid-gap: 0.2rem;
