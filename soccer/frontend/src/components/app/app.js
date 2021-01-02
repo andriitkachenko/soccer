@@ -48,9 +48,9 @@ class App extends React.Component {
      
         return (
             <div className='app'>
-                <AppHeader/>
+                <AppHeader count={games ? games.length : 0}/>
                 <AppGames games={games}/>
-                <AppFooter count={games ? games.length : 0}/>
+{/*                <AppFooter count={games ? games.length : 0}/> */ }
             </div>
         );
     }

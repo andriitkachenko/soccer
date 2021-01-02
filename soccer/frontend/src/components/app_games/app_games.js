@@ -51,8 +51,9 @@ const AppGames = ({games}) => {
 
     return (
         <div className='app-games'>
-                <ul className = 'item-list list-group'>
+            <ul className = 'item-list list-group'>
                 {gameList}
+                <li></li>
             </ul>
         </div>
     );
