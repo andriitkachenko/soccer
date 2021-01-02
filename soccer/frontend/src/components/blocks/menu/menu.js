@@ -1,43 +1,3 @@
-/*
-import React from 'react';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-
-const NavMenu = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <div>
-        <IconButton edge="start" color="inherit" aria-controls="simple-menu" aria-label="menu" onClick={handleClick}>
-            <MenuIcon />
-        </IconButton>
-
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
-    </div>
-  );
-}
-*/
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -47,6 +7,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { DirectionsRun, StarBorder, DoneAll, Lock } from '@material-ui/icons';
 import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
+
+import './menu.css';
 
 const useStyles = makeStyles({
     list: {
@@ -58,10 +20,8 @@ const useStyles = makeStyles({
 });
 
 const makeDateStr = () => {
-    const today = new Date();
-    const d = today.getDate();
-    const m = today.getMonth() + 1;
-    return `${d < 10 ? '0' + d : d}-${m < 10 ? '0' + m : m}-${today.getFullYear()}`;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
+    return (new Date()).toLocaleDateString('en-US', options);
 }
 
 const NavMenu = ({count}) => {
@@ -88,7 +48,7 @@ const NavMenu = ({count}) => {
             <List>{
                 [
                     `${makeDateStr()}`, 
-                    `${count} games`
+                    `${count} games with live stats`
                 ]
                 .map((text, index) => (
                     <ListItem button key={index}>
@@ -100,8 +60,8 @@ const NavMenu = ({count}) => {
             <List>{
                 [
                     {text: 'Live', icon: <DirectionsRun/>, allowed: true },
-                    {text: 'Favourite', icon: <StarBorder/>,  allowed: false },
-                    {text: 'Finished', icon: <DoneAll/>,  allowed: false }
+                    {text: 'Favorite', icon: <StarBorder/>,  allowed: false },
+                    {text: 'History', icon: <DoneAll/>,  allowed: false }
                 ]
                 .map((data, index) => (
                     <ListItem button key={index}>
@@ -116,7 +76,7 @@ const NavMenu = ({count}) => {
     return (
         <div>
             <React.Fragment key='left'>
-                <IconButton onClick={toggleDrawer(true)} edge="start"  color="inherit">
+                <IconButton onClick={toggleDrawer(true)} edge="start"  color="inherit" disableRipple={true}>
                     <MenuIcon />
                 </IconButton>
                 <Drawer 
