@@ -106,6 +106,15 @@ create table if not exists `ngp_stats` (
         ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB, CHARACTER SET=UTF8;
 
+create table if not exists `ngp_access` (
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`ip` VARCHAR(20) NOT NULL,
+	`agent` VARCHAR(255) NOT NULL,
+    `last_access` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY (`ip`, `agent`)
+) ENGINE=InnoDB, CHARACTER SET=UTF8;
+
 create table if not exists `ngp_version` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `version` INT UNSIGNED NOT NULL,

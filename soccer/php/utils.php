@@ -151,4 +151,12 @@ function getIfSet($arr, $keys, $def = null) {
     }
     return $arr;
 }
+
+function getAccessData() {
+    return [
+        'ip' => isset($_SERVER['REMOTE_ADDR'])  ?  $_SERVER['REMOTE_ADDR'] : null, 
+        'host' => isset($_SERVER['REMOTE_HOST'])  ?  $_SERVER['REMOTE_HOST'] : null, 
+        'agent' => isset($_SERVER['HTTP_USER_AGENT'])  ?  $_SERVER['HTTP_USER_AGENT'] : null
+    ];
+}
 ?>

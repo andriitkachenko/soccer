@@ -12,19 +12,26 @@ function response($code, $data) {
     echo json_encode($data);
 }
 
+function logAccessData($dbManager) {
+    $data = getAccessData();
+    $dbManager->insertAccess($data['ip'], $data['agent']);
+    accessLog();
+}
+
 $data = $_POST;
 
 if (empty($data)) {
     $data = json_decode(file_get_contents('php://input'), true);
 }
 
-accessLog();
+$dbManager = new NgpDbManager(new DbConnection(new DbSettings(isLocalhost()))); 
+
+logAccessData($dbManager);
 
 $operation = getIfSet($data, ['op']);
 
 switch($operation) {
     case 'last_stat': 
-        $dbManager = new NgpDbManager(new DbConnection(new DbSettings(isLocalhost())));        
         $stats = getLiveLastStats($dbManager);
         response(200, $stats);
         break;

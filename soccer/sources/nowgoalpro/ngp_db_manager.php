@@ -7,6 +7,7 @@ require_once __DIR__ . '/db/teams_table.php';
 require_once __DIR__ . '/db/live_games_table.php';
 require_once __DIR__ . '/db/games_table.php';
 require_once __DIR__ . '/db/stats_table.php';
+require_once __DIR__ . '/db/access_table.php';
 
 
     interface iDbManager {
@@ -21,6 +22,7 @@ require_once __DIR__ . '/db/stats_table.php';
         private $teamsTable = null;
         private $gamesTable = null;
         private $statsTable = null;
+        private $accessTable = null;
 
         function __construct(DbConnection $dbConnection) {
             $this->dbConn = $dbConnection;
@@ -30,9 +32,12 @@ require_once __DIR__ . '/db/stats_table.php';
             $this->liveGamesTable = new NgpLiveGamesTable($dbConnection);
             $this->gamesTable = new NgpGamesTable($dbConnection);
             $this->statsTable = new NgpStatsTable($dbConnection);
+            $this->accessTable = new NgpAccessTable($dbConnection);
         }
 
         public function getLastError() { return $this->dbConn->getLastError(); }
+
+        public function insertAccess($ip, $agent) { return $this->accessTable->insert($ip, $agent); }    
         
         public function loadNewGames($max) { return $this->newGamesTable->load($max); }
         public function truncateNewGames() { return $this->newGamesTable->truncate(); }
