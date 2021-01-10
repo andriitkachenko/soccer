@@ -27,10 +27,15 @@ function logPrint($ok, $lastDbError) {
 }
 
 function updateLog($logFile, $items, $sizeLimit = true) {
-    $log = file_exists($logFile) ? file_get_contents($logFile) : '';
+    if (empty($logFile)) {
+        return;
+    }
+    $log = file_exists($logFile['name']) ? file_get_contents($logFile['name']) : '';
     $data = is_array($items) ? implode(SEPARATOR, $items) : $items;
     $log = time2datetime() . SEPARATOR . $data . "\n". $log;     
-    return file_put_contents($logFile, $sizeLimit ? substr($log, 0, MAX_LOG_SIZE) : $log);
+    $res = file_put_contents($logFile['name'], $sizeLimit ? substr($log, 0, $logFile['size']) : $log);
+
+    return $res !== false;
 }
 
 function parsehubLog($operation, $data) {
@@ -38,7 +43,7 @@ function parsehubLog($operation, $data) {
         $operation, 
         $data
     ];
-    return updateLog(PARSEHUB_LOG, $items);
+    return updateLog(getLogFile('parsehub'), $items);
 }
 
 function accessLog() {
@@ -47,7 +52,7 @@ function accessLog() {
         'Remote Host: ' . (isset($_SERVER['REMOTE_HOST'])  ?  $_SERVER['REMOTE_HOST'] : "Unknown"), 
         'User Agent:  ' . (isset($_SERVER['HTTP_USER_AGENT'])  ?  $_SERVER['HTTP_USER_AGENT'] : "Unknown")
     ];
-    return updateLog(ACCESS_LOG, $items);
+    return updateLog(getLogFile('access'), $items);
 }
 
 function updateCronLog($title, $data = "") {
@@ -55,7 +60,7 @@ function updateCronLog($title, $data = "") {
     if (!empty($data)) {
         $items[] = $data;
     }
-    return updateLog(CRON_LOG, $items);
+    return updateLog(getLogFile('cron'), $items);
 }
 
 function updateLastParsehubResponseFile($data) {
@@ -67,6 +72,16 @@ function errorLog($title, $error = "") {
     if (!empty($error)) {
         $items = array_merge($items, is_array($error) ? $error : [$error]);
     }
-    return updateLog(ERROR_LOG, $items, false);
+    return updateLog(getLogFile('error'), $items, false);
+}
+
+function getLogFile($name) {
+    if (empty(LOG_FILES[$name])) {
+        return null;
+    }
+    $log = LOG_FILES[$name];
+    $log['name'] = LOG_DIR . $log['name'];
+    $log['size'] = pow(1024, 2) * $log['size'];
+    return $log;
 }
 ?>
