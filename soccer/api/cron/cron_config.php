@@ -7,5 +7,6 @@
 */
 
     const CRON_ENABLED = true;
+    const CRON_PARSEHUB_INTERVAL = 3; // minutes
     const CRON_KEY = '2HmcuJwZ5w';
 ?>

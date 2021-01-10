@@ -20,7 +20,7 @@ require_once 'php/utils.php';
 $stopTime = time() + MAX_PROCESSING_TIME;
 
 $minute = @intval(date("i"));
-$isCron5 = ($minute % 5) == 0;  //in_array($minute, [10, 25, 40, 55]);
+$isParsehubTime = ($minute % CRON_PARSEHUB_INTERVAL) === 0;
 $dbConn = new DbConnection(new DbSettings(isLocalhost()));
 if (!$dbConn->connected()) {
     errorLog("NGP cron ", "Could not connect to DB");
@@ -32,7 +32,7 @@ $ngp->setDbManager($dbManager);
 $sources = [ $ngp ]; 
 
 foreach($sources as $s) {
-    if ($isCron5) {
+    if ($isParsehubTime) {
         if ($s->isParseHubClient()) {
             $runData = $s->runParseHubProject();
             updateCronLog("Run ParseHub from cron", json_encode($runData));

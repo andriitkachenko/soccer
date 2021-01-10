@@ -124,7 +124,16 @@ class NGPParser implements iParser {
             self::$logs[] = "'Could not find 'score' for ID $id. " . $html;
             return false;
         } 
+        
         $min = strtolower(trim($nodes->item(0)->textContent));
+        $state = 0;
+        switch($min) {
+            case 'ht' : $state = 2; break;
+            case 'ot' : $state = 4; break;
+            case 'pen' : $state = 5; break;
+        }
+        $extra = strpos($min, '+') !== false;
+
         $min = str_replace('+', '' , $min);
         $min = str_replace('ht', '45' , $min);
         $min = str_replace('ot', '91' , $min);
@@ -133,7 +142,16 @@ class NGPParser implements iParser {
             self::$logs[] = 'Could not get game time. '. $nodes->item(0)->textContent;
             return false;
         }
+        $min = intval($min);
+        if ($min <= 45 && $state !== 2) {
+            $state = 1;
+        }
+        if ($min > 45 && $min <= 90) {
+            $state = 3;
+        }
         $g['min'] = intval($min);
+        $g['state'] = $state;
+        $g['extra'] = $extra;
         
         /// <span class="time" id="mt_1831305">10:00</span>
         $nodes = $xpath->query("//span[@class='time'][@id='mt_$id']");
