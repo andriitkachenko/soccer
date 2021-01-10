@@ -49,8 +49,9 @@ foreach($sources as $s) {
         continue;
     }
     $ok = $s->runOneMinuteUpdate($stopTime);
-    $log = logs2s($ok, $dbManager->getLastError(), ' ~~~ ');
-    updateCronLog("1-minute update", $ok ? humanizeBool($ok) : $log);
+    $fullLog = CRON_FULL_LOG || !$ok;
+    $log = $fullLog ? logs2s($ok, $dbManager->getLastError(), "\n") : humanizeBool($ok);
+    updateCronLog("1-minute update", $log);
     echo humanizeBool($ok);
 }
 
