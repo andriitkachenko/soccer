@@ -17,7 +17,6 @@ INSERT INTO `ngp_access` (`ip`, `agent`)
     ON DUPLICATE KEY UPDATE
         `last_access` = NOW();
 SQL;
-echo($query);
         return $this->dbConn->exec($query);   
     }    
 }    
