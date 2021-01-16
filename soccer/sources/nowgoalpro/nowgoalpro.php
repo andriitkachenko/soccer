@@ -90,7 +90,7 @@ class NowGoalPro implements iNowGoalPro {
         if ($ok === false) return false;
         
         addLog('Archive non-live games...');
-        $ok = $this->dbManager->updateGames($nonLiveGames);
+        $ok = $this->dbManager->updateGames($nonLiveGames, ARCHIVED_NON_LIVE);
         addLog(humanizeBool($ok));
         if ($ok === false) return false;
         
@@ -104,15 +104,15 @@ class NowGoalPro implements iNowGoalPro {
         addLog('Loading non-trackable live games...');
         // archive finished and non-trackable games - at min 20 there is no meaningful stat
         $games = $this->dbManager->loadFinishedAndNonTrackableGames();
-        addLog(humanizeBool($ok));
-        if ($ok === false) return false;
+        addLog("Loaded non-trackable live games: " . count($games));
+        addLog(json_encode($games));
         
-        addLog("Updating games table...");
-        $ok = $this->dbManager->updateGames($games);
+        addLog("Updating non-trackables in games table...");
+        $ok = $this->dbManager->updateGames($games, ARCHIVED_AS_FINISHED_OR_NON_TRACKABLE);
         addLog(humanizeBool($ok));
         if ($ok === false) return false;
 
-        addLog('Delete non-live games...');
+        addLog('Delete non-trackable live games...');
         $ok = $this->dbManager->deleteLiveGames($games);
         addLog(humanizeBool($ok));
         if ($ok === false) return false;

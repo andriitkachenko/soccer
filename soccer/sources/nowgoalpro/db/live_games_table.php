@@ -127,7 +127,15 @@ SQL;
         $res = $res->fetchAll(PDO::FETCH_ASSOC);
         $nonTrackable = [];
         foreach($res as $g) {
-            $nonTrackable[$g['id']] = (object)$g;
+            $status = [
+                'state' => (int)$g['state'],
+                'trackable' => (int)$g['trackable']
+            ];
+            $r = [
+                'id' => (int)$g['id'],
+                'status' => (object)$status
+            ];
+            $nonTrackable[$g['id']] = (object)$r;
         }
         return $nonTrackable;
     }

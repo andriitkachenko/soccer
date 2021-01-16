@@ -59,6 +59,7 @@ create table if not exists `ngp_games` (
     `guest_rank` VARCHAR(10) DEFAULT NULL,
     `state` INT DEFAULT NULL,    
     `trackable` TINYINT(1) DEFAULT NULL,
+    `description` TINYINT DEFAULT NULL COMMENT 'ADDED_LIVE_GAME = 1, ARCHIVED_AS_FINISHED_OR_NON_TRACKABLE = 2, ARCHIVED_NON_LIVE = 3',
     `timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     UNIQUE KEY (`game_id`),

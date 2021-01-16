@@ -9,6 +9,9 @@ require_once __DIR__ . '/db/games_table.php';
 require_once __DIR__ . '/db/stats_table.php';
 require_once __DIR__ . '/db/access_table.php';
 
+const ADDED_LIVE_GAME = 1;
+const ARCHIVED_AS_FINISHED_OR_NON_TRACKABLE = 2;
+const ARCHIVED_NON_LIVE = 3;
 
     interface iDbManager {
         public function insertLog(Log $log);
@@ -49,10 +52,10 @@ require_once __DIR__ . '/db/access_table.php';
         public function insertTeams($teams) { return $this->teamsTable->insert($teams); }    
 
         public function insertGames($games) { return $this->gamesTable->insert($games); }
-        public function updateGames($games) { 
+        public function updateGames($games, $descr) { 
             return 
                 $this->statsTable->insert($games)
-                && $this->gamesTable->update($games); 
+                && $this->gamesTable->update($games, $descr); 
         }
 
         public function truncateLiveGames() { return $this->liveGamesTable->truncate(); }
@@ -69,7 +72,7 @@ require_once __DIR__ . '/db/access_table.php';
             return $this->liveGamesTable->delete(array_keys($games));
         }
         public function insertLiveGames($games) { 
-            $ok = $this->gamesTable->insert($games)
+            $ok = $this->gamesTable->insert($games, ADDED_LIVE_GAME)
                 && $this->liveGamesTable->insert($games)
                 && $this->statsTable->insert($games);
             return $ok;

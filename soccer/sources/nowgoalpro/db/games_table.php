@@ -1,13 +1,13 @@
 <?php
 
 interface iNgpGamesTable {
-    public function insert($games);
-    public function update($games);
+    public function insert($games, $descrCode = null);
+    public function update($games, $descrCode = null);
 }
 
 class NgpGamesTable extends NgpTable implements iNgpGamesTable {
 
-    public function insert($games) {
+    public function insert($games, $descrCode = null) {
        
         if (!is_array($games)) return false;
         if (empty($games)) return true;
@@ -21,30 +21,32 @@ class NgpGamesTable extends NgpTable implements iNgpGamesTable {
                 dbInt([$g, 'host', 'id']), 
                 dbString([$g, 'host', 'rank'], true), 
                 dbInt([$g, 'guest', 'id']), 
-                dbString([$g, 'guest', 'rank'], true)
+                dbString([$g, 'guest', 'rank'], true),
+                dbInt($descrCode, true)
             ];
         }
         $values = makeInsertValues($values); 
         $query = 
 <<<SQL
 INSERT INTO `ngp_games` (
-    `game_id`, `start_time`, `league_id`, `host_id`, `host_rank`, `guest_id`, `guest_rank`
+    `game_id`, `start_time`, `league_id`, `host_id`, `host_rank`, `guest_id`, `guest_rank`, `description`
 ) 
 VALUES $values
 ON DUPLICATE KEY UPDATE
-    `game_id`=VALUES(`game_id`),
-    `start_time`=VALUES(`start_time`),
-    `league_id`=VALUES(`league_id`), 
-    `host_id`=VALUES(`host_id`), 
-    `host_rank`=VALUES(`host_rank`), 
-    `guest_id`=VALUES(`guest_id`), 
-    `guest_rank`=VALUES(`guest_rank`);
+    `game_id` = VALUES(`game_id`),
+    `start_time` = VALUES(`start_time`),
+    `league_id` = VALUES(`league_id`), 
+    `host_id` = VALUES(`host_id`), 
+    `host_rank` = VALUES(`host_rank`), 
+    `guest_id` = VALUES(`guest_id`), 
+    `guest_rank` = VALUES(`guest_rank`),
+    `description` = VALUES(`description`);
 SQL;
 
         return $this->dbConn->exec($query);          
     }
 
-    public function update($games) {
+    public function update($games, $descrCode = null) {
         if (!is_array($games)) return false;
         if (empty($games)) return true;
 
@@ -65,12 +67,15 @@ SQL;
         $trackCase = implode(' ', $trackCases); 
 
         $ids = implode(',', array_keys($games));
+
+        $description = $descrCode ? ", `description` = $descrCode" : '';
         $query = 
 <<<SQL
 UPDATE `ngp_games` 
 SET 
     `state` = CASE `game_id` $stateCase END,
     `trackable` = CASE `game_id` $trackCase END
+    $description
 WHERE 
     `game_id` IN ($ids);
 SQL;
