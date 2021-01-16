@@ -118,7 +118,7 @@ SQL;
 <<<SQL
 SELECT `game_id` as `id`, `state`, `trackable`
     FROM `ngp_live_games` 
-    WHERE `trackable`= 0 OR `state` < 1;
+    WHERE (`trackable` IS NOT NULL AND `trackable`= 0) OR (`state` IS NOT NULL AND `state` < 1);
 SQL;
         $res = $this->dbConn->query($query);  
         if ($res === false) {
