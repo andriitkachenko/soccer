@@ -81,8 +81,14 @@ class NowGoalPro implements iNowGoalPro {
         $updatedGames = $this->getStatsForTrackableGames($trackableGameData, $stopTime);
         addLog("Loaded " . count($updatedGames));
         
-        $liveGames = array_filter($updatedGames, function($g, $key) { return !empty($g->status->live); }, ARRAY_FILTER_USE_BOTH);
-        $nonLiveGames = array_filter($updatedGames, function($g, $key) { return empty($g->status->live); }, ARRAY_FILTER_USE_BOTH);
+        $liveGames = array_filter($updatedGames, 
+            function($g, $key) { return !empty($g) && !empty($g->status->live); }, 
+            ARRAY_FILTER_USE_BOTH
+        );
+        $nonLiveGames = array_filter($updatedGames, 
+            function($g, $key) { return !empty($g) && empty($g->status->live); }, 
+            ARRAY_FILTER_USE_BOTH
+        );
     
         addLog('Updating live trackable games...');
         $ok = $this->dbManager->updateLiveGames($liveGames);

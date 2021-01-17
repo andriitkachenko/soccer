@@ -38,14 +38,13 @@ class NgpLoader implements iLoader {
                     if (!empty($stat) && !empty($g->url)) {
                         $updatedStat = addObjectProperty($stat, 'url', $g->url);
                         if ($updatedStat) { 
-                            $s = $updatedStat; 
+                            $stats[$id] = $updatedStat; 
                         }
                     }
                 }
-                $stats[$id] = $s;
             }
         }
-        return $stats; // [ id => stat nullable ]
+        return $stats; // [ id => stat ]
     }
 
     private function multiGameLoad($games, $stopTime) {
