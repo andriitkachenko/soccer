@@ -39,30 +39,46 @@ class NowGoalPro implements iNowGoalPro {
         addLog('Live games: ' . count($liveGameIds));
 
         // get new game IDs
-        addLog('Loading existing game IDs...');
         $oldGameIds = $this->dbManager->getExistingGameIds($liveGameIds);
-        if ($oldGameIds === false) {
-            addLog('Could not get existing games.');
-            return false;
-        }
-        addLog('Existing games: ' . count($oldGameIds));
 
-        $newGameIds = array_diff($liveGameIds, $oldGameIds);
+        $ok = $oldGameIds !== false;
+        addLog(($ok ? 'Loaded ' .  count($oldGameIds) : 'Could not load') . ' existing game IDs.');
+        if (!$ok) return false;
+
+        $newLiveGameIds = array_diff($liveGameIds, $oldGameIds);
         $goneGameIds = array_diff($oldGameIds, $liveGameIds);
 
-        $newGames = array_filter($liveGames, function($liveGame, $id) use($newGameIds) {
-            return in_array($liveGame->id, $newGameIds) && $liveGame->min > 1 && $liveGame->min <= 45;
+        $oldLiveGames = $this->dbManager->loadExistingLiveGames($liveGameIds);
+
+        $ok = $oldLiveGames !== false;
+        addLog(($ok ? 'Loaded ' .  count($oldLiveGames) : 'Could not load') . ' existing live games.');
+        if (!$ok) return false;
+
+        $newGames = array_filter($liveGames, function($liveGame, $id) use($newLiveGameIds) {
+            return in_array($liveGame->id, $newLiveGameIds) 
+                    && $liveGame->min > 1 
+                    && $liveGame->min <= 45;
         }, ARRAY_FILTER_USE_BOTH);
 
-        $res = $this->dbManager->deleteNewGames($goneGameIds);
-        addLog($res ? 'Deleted new games: ' . count($goneGameIds) : 'Could not delete new games.');
+        $ok = $this->dbManager->deleteNewGames($goneGameIds);
 
-        if ($res === true) {
-            $res = $this->dbManager->insertNewGames($newGames);
-            addLog($res ? 'Added new games: ' . count($newGames) : 'Could not add new games.');
-        }
+        addLog(($ok ? 'Deleted ' : 'Could not delete') . ' new games: ' . count($goneGameIds));
+        if (!$ok) return false;
 
-        return $res;
+        $goneLiveGames = array_filter($oldLiveGames, function($g, $id) use($goneGameIds) {
+            return in_array($g->id, $goneGameIds);
+        }, ARRAY_FILTER_USE_BOTH);
+
+        $ok = $this->dbManager->untrackLiveGames($goneLiveGames);
+
+        addLog(($ok ? 'Untracked ' : 'Could not untrack') . ' live games: ' . count($goneLiveGames));
+        if (!$ok) return false;
+        
+        $ok = $this->dbManager->insertNewGames($newGames);
+
+        addLog(($ok ? 'Added ' : 'Could not add') . ' new games: ' . count($newGames));
+
+        return $ok;
     }
 
     public function runOneMinuteUpdate($stopTime = null, $maxGames = null) {
@@ -73,13 +89,11 @@ class NowGoalPro implements iNowGoalPro {
         }
 
         // read live games from DB which is trackable and need updating
-        addLog('Loading trackable games...');
         $trackableGameData = $this->dbManager->loadLiveTrackableGames();
-        addLog('Loaded ' . count($trackableGameData));
+        addLog('Loaded trackable games :' . count($trackableGameData));
         
-        addLog('Loading stats for trackable games...');
         $updatedGames = $this->getStatsForTrackableGames($trackableGameData, $stopTime);
-        addLog("Loaded " . count($updatedGames));
+        addLog("Loaded stats for trackable games: " . count($updatedGames));
         
         $liveGames = array_filter($updatedGames, 
             function($g, $key) { return !empty($g) && !empty($g->status->live); }, 
@@ -90,74 +104,60 @@ class NowGoalPro implements iNowGoalPro {
             ARRAY_FILTER_USE_BOTH
         );
     
-        addLog('Updating live trackable games...');
         $ok = $this->dbManager->updateLiveGames($liveGames);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Updated' : 'Could not update') . ' live trackable games.');
         if ($ok === false) return false;
         
-        addLog('Archive non-live games...');
         $ok = $this->dbManager->updateGames($nonLiveGames, ARCHIVED_NON_LIVE);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Archived' : 'Could not archive') . ' non-live games.');
         if ($ok === false) return false;
         
-        addLog('Delete non-live games...');
         $ok = $this->dbManager->deleteLiveGames($nonLiveGames);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Deleted' : 'Could not delete') . ' non-live games.');
         if ($ok === false) return false;
 
         addLog('Clean up live game list...');
 
-        addLog('Loading non-trackable live games...');
         // archive finished and non-trackable games - at min 20 there is no meaningful stat
         $games = $this->dbManager->loadFinishedAndNonTrackableGames();
         addLog("Loaded non-trackable live games: " . count($games));
         addLog(json_encode($games));
         
-        addLog("Updating non-trackables in games table...");
         $ok = $this->dbManager->updateGames($games, ARCHIVED_AS_FINISHED_OR_NON_TRACKABLE);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Updated' : 'Could not update') . ' non-trackables in games table.');
         if ($ok === false) return false;
 
-        addLog('Delete non-trackable live games...');
         $ok = $this->dbManager->deleteLiveGames($games);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Deleted' : 'Could not delete') . ' non-trackable live games.');
         if ($ok === false) return false;
-
-        addLog('Clean up - OK');
-
-        addLog('Loading new  games...');
-        $newGames = $this->dbManager->loadNewGames($maxGames);
-        if ($newGames === false) {
-            addLog('Failed');
-            return false;
-        }
-        addLog('Loaded ' . count($newGames));
         
-        addLog('Resolving new  games...');
+        addLog('Clean up - OK');
+        
+        $newGames = $this->dbManager->loadNewGames($maxGames);
+        addLog(($newGames !== false ? 'Loaded ' : 'Could not load') . ' new  games: ' . count($newGames));
+        if ($ok === false) return false;
+        
         $fullGames = $this->resolveNewGames($newGames, $stopTime);
         addLog('Resolved new games (with stat): ' . count($fullGames));
         
         $liveGames = array_filter($fullGames, function($g) {return $g->status->live;}); 
         addLog('New games to get tracked: ' . count($liveGames));
         
-        addLog('Adding live  games...');
         $ok = $this->addLiveGames($liveGames);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Added' : 'Could not add') . ' live  games:' . count($liveGames));
         if ($ok === false) return false;
         
-        addLog('Deleting resolved new  games...');
         $resolvedGameIds = array_keys($fullGames);
         $ok = $this->dbManager->deleteNewGames($resolvedGameIds);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Deleted' : 'Could not delete') . ' resolved new  games:' . count($resolvedGameIds));
         
         return $ok;
     }
     
     private function addLiveGames($games) {
         $leagues = array_map(function($g) {return $g->league;}, $games);
-        addLog('Inserting ' . count($leagues) . ' leagues...');
         $ok = $this->dbManager->insertLeagues($leagues);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Inserted' : 'Could not insert') . ' leagues:' . count($leagues));
         if (!$ok) return false;
         
         $teams = [];
@@ -165,14 +165,12 @@ class NowGoalPro implements iNowGoalPro {
             $teams[] = $g->host;
             $teams[] = $g->guest;
         }
-        addLog('Inserting ' . count($teams) . ' teams...');
         $ok = $this->dbManager->insertTeams($teams);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Inserted' : 'Could not insert') . ' teams:' . count($teams));
         if (!$ok) return false;
-
-        addLog('Inserting ' . count($games) . ' live games...');
+        
         $ok = $this->dbManager->insertLiveGames($games);
-        addLog(humanizeBool($ok));
+        addLog(($ok ? 'Inserted' : 'Could not insert') . ' live games:' . count($games));
         
         return $ok; 
     }

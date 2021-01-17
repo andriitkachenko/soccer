@@ -15,6 +15,7 @@ const STATE_PENDING =   -11;
 const STATE_ABD =       -12;
 const STATE_PAUSE =     -13;
 const STATE_POSTPONE =  -14;
+const STATE_AUTOFINISH = -15;
 
 class NGPParser implements iParser {
     private static $logs = [];
@@ -151,7 +152,7 @@ class NGPParser implements iParser {
         }
         $g['min'] = intval($min);
         $g['state'] = $state;
-        $g['extra'] = $extra;
+        $g['extra'] = (int)$extra;
         
         /// <span class="time" id="mt_1831305">10:00</span>
         $nodes = $xpath->query("//span[@class='time'][@id='mt_$id']");

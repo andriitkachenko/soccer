@@ -8,12 +8,40 @@ interface iNgpLiveGamesTable {
     public function insert($games);
     public function update($games);
     public function loadTrackable();
+    public function loadByIds($ids);
     public function loadFinishedAndNonTrackable();
     public function delete($ids);
     public function truncate();
 }
 
 class NgpLiveGamesTable extends NgpTable implements iNgpLiveGamesTable {
+
+    public function loadByIds($ids) {
+        if (!is_array($ids)) {
+            return [];
+        }
+        $ids = implode(',', $ids);
+        $query = 
+<<<SQL
+    SELECT `game_id` as 'id', `start_real`, `state`, `trackable`, `last_stat`, `next_update`
+    FROM `ngp_live_games`
+    WHERE `game_id` IN ($ids);
+SQL;        
+        $res = $this->dbConn->query($query);  
+        if ($res === false) return false;
+
+        $res = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        $games = [];
+        foreach($res as $g) {
+            $g['id'] = (int)$g['id'];
+            $g['state'] = (int)$g['state'];
+            $g['trackable'] = (int)$g['trackable'];
+            $games[(string)$g['id']] = (object)$g;
+        }
+
+        return $games;
+    }
 
     public function insert($games) {
         if (!is_array($games)) return false;
@@ -86,6 +114,21 @@ INSERT INTO `ngp_live_games` (
         `trackable`=VALUES(`trackable`), 
         `last_stat`=VALUES(`last_stat`), 
         `next_update`=VALUES(`next_update`);
+SQL;
+      
+        return $this->dbConn->exec($query);  
+    }
+
+    public function untrack($ids) {
+        if (!is_array($ids)) return false;
+        if (empty($ids)) return true;
+
+        $ids = implode(',', $ids);
+        $query = 
+<<<SQL
+UPDATE `ngp_live_games` 
+    SET `state` = -15, `trackable` = 0 
+    WHERE `game_id` IN ($ids);
 SQL;
       
         return $this->dbConn->exec($query);  

@@ -59,6 +59,7 @@ const ARCHIVED_NON_LIVE = 3;
         }
 
         public function truncateLiveGames() { return $this->liveGamesTable->truncate(); }
+        public function loadExistingLiveGames($ids) { return $this->liveGamesTable->loadByIds($ids); }
         public function loadLiveTrackableGames() { return $this->liveGamesTable->loadTrackable(); }
         public function loadFinishedAndNonTrackableGames() { 
             return $this->liveGamesTable->loadFinishedAndNonTrackable(); 
@@ -76,6 +77,9 @@ const ARCHIVED_NON_LIVE = 3;
                 && $this->liveGamesTable->insert($games)
                 && $this->statsTable->insert($games);
             return $ok;
+        }
+        public function untrackLiveGames($games) {
+            return $this->liveGamesTable->untrack(array_keys($games)); 
         }    
 
         public function insertLog(Log $log) {
