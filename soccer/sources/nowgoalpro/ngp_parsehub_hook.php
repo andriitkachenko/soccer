@@ -81,6 +81,6 @@ $ngp->setDbManager($dbManager);
 
 $ok = $ngp->updateNewGames($games);
 
-parsehubLog("NGP hook", "New games update - " . humanizeBool($ok));
+parsehubLog("NGP hook", "New games update - " . logs2s($ok, $dbManager->getLastError(), "\n")); //humanizeBool($ok));
 
 ?>
