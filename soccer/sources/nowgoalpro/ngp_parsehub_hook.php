@@ -7,75 +7,61 @@ require_once __DIR__ . '/nowgoalpro.php';
 require_once __DIR__ . '/ngp_db_manager.php';
 require_once __DIR__ . '/../../services/db/db_connection.php';
 require_once __DIR__ . '/../../services/db/db_settings.php';
+require_once __DIR__ . '/../../services/parsehub/parsehub_utils.php';
 
 
-$runData = file_get_contents('php://input');
-
-if (empty($runData)) {
-    parsehubLog("NGP hook", "Empty run data");
-    die();
+function logAndDieIf($condition, $log) {
+    if ($condition) {
+        parsehubLog("NGP hook - error", $log);
+        die();
+    }
 }
 
-$runData = urldecode($runData);
-$runData = explode("&", $runData);
+$runData = file_get_contents('php://input');
+logAndDieIf(empty($runData), "Empty run data");
 
-$ready = in_array("data_ready=1", $runData) && in_array("status=complete", $runData);
+parse_str($runData, $run);
 
+$ready = isset($run["data_ready"]) && $run["data_ready"] === "1" 
+      && isset($run["status"]) && $run["status"] === "complete";
 if (!$ready) {
     die();
 }
 
-parsehubLog("NGP hook", json_encode($runData));
+parsehubLog("NGP hook - run data", json_encode(reduceRunData($run)));
 
-$run = [];
-foreach ($runData as $line) {
-    $line = trim($line);
-    if (strpos($line, "run_token=") === 0) {
-        $run['token'] = trim(str_replace("run_token=", "", $line));
-    } else if (strpos($line, "start_running_time=") === 0) {
-        $run['start_time'] = trim(str_replace("start_running_time=", "", $line));
-    }
-}
+logAndDieIf(empty($run['run_token']), "Could not find run token");
 
-$ok = !empty( $run['token']) && !empty( $run['start_time']);
-
-if (!$ok) {
-    parsehubLog("NGP hook", 'Could not find run token or start time');
-    die();
-}
+$token = $run['run_token'];
 
 $ph = new ParseHub(PH_PROJECT_TOKEN, PH_API_KEY);
 
-if (!in_array("is_empty=False", $runData)) {
-    parsehubLog("NGP hook", 'Empty run result - delete run');
-    $res = $ph->deleteParseHubRun($run['token']);
-    die();
+$ok = !empty($run['start_running_time']) && strtolower($run['is_empty']) === "false";
+if (!$ok) {
+    $ph->deleteParseHubRun($token);
+    logAndDieIf(true, "Empty run result or start time - delete run");
 }
 
-$gameData = $ph->getData($run['token']);
+$phData = $ph->getData($token);
+$ph->deleteParseHubRun($token);
+logAndDieIf(empty($phData), "No data from Parse Hub");
 
-if (empty($gameData)) {
-    parsehubLog("NGP hook", 'No data from Parse Hub');    
-    die();
-}
+updateLastParsehubResponseFile($phData['raw']);
+
+$gameData = $phData['data'];
 
 $ngp = new NowGoalPro();
 
 $games = $ngp->getParseHubGames($gameData);
-
-if (empty($games)) {
-    parsehubLog("NGP hook", 'No game found');    
-    die();
-}
+logAndDieIf(empty($games), "No game found");
 
 $result = file_put_contents(DATA_FILE, json_encode($games));
 
 parsehubLog("NGP hook", "Received " . count($games) . " games");
 
 $dbConn = new DbConnection(new DbSettings(false));
-if (!$dbConn->connected()) {
-    parsehubLog("NGP hook", "DB connection failed");
-}
+logAndDieIf(!$dbConn->connected(), "DB connection failed");
+
 $dbManager = new NgpDbManager($dbConn);
 $ngp->setDbManager($dbManager);
 

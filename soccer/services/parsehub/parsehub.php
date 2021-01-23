@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../php/logs.php';
 require_once __DIR__ . '/../../php/time.php';
+require_once __DIR__ . '/parsehub_utils.php';
 
 const PARSEHUB_RUN_ATTEMPTS_MAX  = 5;
 const PARSEHUB_RUN_PROJECT_URL_TEMPLATE = 'https://www.parsehub.com/api/v2/projects/%project_token%/run';
@@ -11,6 +12,7 @@ const PARSEHUB_RUN_DATA_URL= 'https://www.parsehub.com/api/v2/runs/';
 interface iParseHub {
     public function runProject();
     public function getData($runToken);
+    public function deleteParseHubRun($runToken);
 }
 
 class ParseHub implements iParseHub {
@@ -41,8 +43,10 @@ class ParseHub implements iParseHub {
         if ($data === false) {
             return false;
         }
-        updateLastParsehubResponseFile($data);
-        return json_decode($this->normalizeData($data), false);
+        return [
+            'raw' => $data, 
+            'data' => json_decode($this->normalizeData($data), false)
+        ];
     }
 
     public function runProject() {
@@ -54,7 +58,7 @@ class ParseHub implements iParseHub {
             }
             $run = $this->getRunToken();
         }
-        $log_result = parsehubLog("Run Project", $run);
+        $log_result = parsehubLog("Run Project", json_encode(reduceRunData(json_decode($run, true))));
         return [ 
             'ok' => $this->isRunTokenOk($run), 
             'time' => time2datetime(),
@@ -100,7 +104,7 @@ class ParseHub implements iParseHub {
         return str_replace("'", '', $data);
     }
 
-    private function deleteParseHubRun($runToken) {
+    public function deleteParseHubRun($runToken) {
         $params = http_build_query([
             "api_key" => $this->apiKey
         ]);
