@@ -76,6 +76,7 @@ switch($target) {
                     foreach($data->game as $game) {
                         if (!empty($game->html)) {
                             print_r(NGPParser::parseGame($game->html));
+                            print_r(NGPParser::getLog());
                         }
                     }
                 }
