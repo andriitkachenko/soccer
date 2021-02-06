@@ -214,8 +214,7 @@ class NGPParser implements iParser {
             return false;
         }
         $g['guest'] = self::normalizeTitle($nodes->item(0)->textContent, '()-');
-        $gameUrlTitle = self::makeGameUrlPath($g['host'], $g['guest']);
-        $g['url'] = "/football-match/$gameUrlTitle/live-$id/";
+        $g['url'] = "/football/match/live-$id";
         return (object)$g;
     }
 
@@ -410,14 +409,6 @@ class NGPParser implements iParser {
             'h' => intval($host),
             'g' => intval($guest),
         ];
-    }
-
-    private static function makeGameUrlPath($host, $guest) {
-        $path = strtolower($host) . ' vs ' . strtolower($guest);
-        $path = str_replace('(n)', '', $path);
-        $path = str_replace(' ', '-', $path);
-        $path = self::normalizeURL($path);
-        return $path;
     }
 
     private static function normalizeTitle($str) {
