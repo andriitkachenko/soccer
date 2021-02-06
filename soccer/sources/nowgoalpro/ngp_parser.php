@@ -84,6 +84,7 @@ class NGPParser implements iParser {
             self::$logs[] = 'Could not load html. ' . $html;
             return false;
         }
+       
         $xpath = new DOMXpath($doc);
         // only item class
         //<div id=\"tb_1831305\" onclick=\"toAnalys(1831305)\" class=\"item \" data-mlid=\"15\">
@@ -106,12 +107,15 @@ class NGPParser implements iParser {
         }
         $g['id'] = @intval($id);
         // <div class="dayrow" data-day="2020_6_19">July 19. Sunday</div>
+        /*
         $nodes = $xpath->query("//div[@data-day]");
         if ($nodes->count() < 1) {
             self::$logs[] = 'Could not find "data-day". '. $html;
             return false;
         }
         $date = trim($nodes->item(0)->attributes->getNamedItem("data-day")->textContent);
+        */
+        $date = date('Y_m_d');
         /*
         <div class="score" id="stat_1888573">
             <i id="state_1888573">80<i class="mit"><img src="/images/com/in.gif"></i></i>
