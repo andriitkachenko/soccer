@@ -5,10 +5,10 @@ require_once __DIR__ . '/ngp_table.php';
 require_once __DIR__ . '/../ngp_config.php';
 
 interface iNgpLiveGamesTable {
+    public function load();
     public function insert($games);
     public function update($games);
     public function loadTrackable();
-    public function loadByIds($ids);
     public function loadFinishedAndNonTrackable();
     public function delete($ids);
     public function truncate();
@@ -16,16 +16,11 @@ interface iNgpLiveGamesTable {
 
 class NgpLiveGamesTable extends NgpTable implements iNgpLiveGamesTable {
 
-    public function loadByIds($ids) {
-        if (!is_array($ids)) {
-            return [];
-        }
-        $ids = implode(',', $ids);
+    public function load() {
         $query = 
 <<<SQL
     SELECT `game_id` as 'id', `start_real`, `state`, `trackable`, `last_stat`, `next_update`
     FROM `ngp_live_games`
-    WHERE `game_id` IN ($ids);
 SQL;        
         $res = $this->dbConn->query($query);  
         if ($res === false) return false;

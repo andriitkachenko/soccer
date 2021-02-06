@@ -12,7 +12,8 @@ class NgpStatsTable extends NgpTable implements iNgpStatsTable {
 
         $values = [];
         foreach($games as $g) {
-            if (empty($g->status->min) 
+            if (empty($g->status->min)
+                || empty($g->stat) 
                 || $g->status->trackable === 0 
                 || !in_array($g->status->state, [-1, 1, 2, 3, 4])) 
             {

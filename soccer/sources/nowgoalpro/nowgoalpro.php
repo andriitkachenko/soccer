@@ -45,10 +45,21 @@ class NowGoalPro implements iNowGoalPro {
         addLog(($ok ? 'Loaded ' .  count($oldGameIds) : 'Could not load') . ' existing game IDs.');
         if (!$ok) return false;
 
-        $newLiveGameIds = array_diff($liveGameIds, $oldGameIds);
-        $goneGameIds = array_diff($oldGameIds, $liveGameIds);
+        $newLiveGameIds = array_values(array_diff($liveGameIds, $oldGameIds));
 
-        $oldLiveGames = $this->dbManager->loadExistingLiveGames($liveGameIds);
+        // get new game IDs
+        $goneGameIds = $this->dbManager->getGoneGameIds($liveGameIds); 
+
+        $ok = $goneGameIds !== false;
+        addLog(($ok ? 'Loaded ' .  count($goneGameIds) : 'Could not load') . ' gone game IDs.');
+        if (!$ok) return false;
+
+        addLog('Live: ' .  json_encode($liveGameIds));
+        addLog('Old:  ' .  json_encode($oldGameIds));
+        addLog('New:  ' .  json_encode($newLiveGameIds));
+        addLog('Gone: ' .  json_encode($goneGameIds));
+
+        $oldLiveGames = $this->dbManager->loadLiveGames();
 
         $ok = $oldLiveGames !== false;
         addLog(($ok ? 'Loaded ' .  count($oldLiveGames) : 'Could not load') . ' existing live games.');
@@ -65,9 +76,9 @@ class NowGoalPro implements iNowGoalPro {
         addLog(($ok ? 'Deleted ' : 'Could not delete') . ' new games: ' . count($goneGameIds));
         if (!$ok) return false;
 
-        $goneLiveGames = array_filter($oldLiveGames, function($g, $id) use($goneGameIds) {
+        $goneLiveGames = array_filter($oldLiveGames, function($g) use($goneGameIds) {
             return in_array($g->id, $goneGameIds);
-        }, ARRAY_FILTER_USE_BOTH);
+        });
 
         $ok = $this->dbManager->untrackLiveGames($goneLiveGames);
 

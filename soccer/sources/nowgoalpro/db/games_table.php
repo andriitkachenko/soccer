@@ -51,8 +51,10 @@ SQL;
         if (empty($games)) return true;
 
         $stateCases = [];
+        $ids = [];
         foreach($games as $g) {
             $id = dbInt([$g, 'id']); 
+            $ids[] = $id;
             $state = dbInt([$g, 'status', 'state']); 
             $stateCases[] = "WHEN $id THEN $state";
         }
@@ -66,7 +68,7 @@ SQL;
         }
         $trackCase = implode(' ', $trackCases); 
 
-        $ids = implode(',', array_keys($games));
+        $ids = implode(',', $ids);
 
         $description = $descrCode ? ", `description` = $descrCode" : '';
         $query = 
@@ -79,7 +81,7 @@ SET
 WHERE 
     `game_id` IN ($ids);
 SQL;
-        
+      
         return $this->dbConn->exec($query);          
     }
 

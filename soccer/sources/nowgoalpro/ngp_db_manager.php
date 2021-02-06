@@ -59,7 +59,7 @@ const ARCHIVED_NON_LIVE = 3;
         }
 
         public function truncateLiveGames() { return $this->liveGamesTable->truncate(); }
-        public function loadExistingLiveGames($ids) { return $this->liveGamesTable->loadByIds($ids); }
+        public function loadLiveGames() { return $this->liveGamesTable->load(); }
         public function loadLiveTrackableGames() { return $this->liveGamesTable->loadTrackable(); }
         public function loadFinishedAndNonTrackableGames() { 
             return $this->liveGamesTable->loadFinishedAndNonTrackable(); 
@@ -107,16 +107,46 @@ SQL;
         $ids = implode(',', $ids);
         $query = 
 <<<SQL
-SELECT `game_id` FROM `ngp_new_games` WHERE `game_id` IN ($ids)
+SELECT `game_id` FROM `ngp_new_games`
 UNION
-SELECT `game_id` FROM `ngp_live_games` WHERE `game_id` IN ($ids)
+SELECT `game_id` FROM `ngp_live_games`
 UNION
 SELECT `game_id` FROM `ngp_games` WHERE `game_id` IN ($ids);
 SQL;
         $res = $this->dbConn->query($query);  
         if ($res === false) return false;
 
-        return $res->fetchAll(PDO::FETCH_COLUMN, 0);
+        $res = array_map(
+            function($id) { return (int)$id; },
+            $res->fetchAll(PDO::FETCH_COLUMN, 0)
+        );
+
+        return $res;
+    }
+
+    public function getGoneGameIds($ids) {
+        if (!is_array($ids)) {
+            errorLog("getGoneGameIds", "IDs is not array");
+            return false;
+        }
+        if (empty($ids)) return [];
+
+        $ids = implode(',', $ids);
+        $query = 
+<<<SQL
+SELECT `game_id` FROM `ngp_new_games` WHERE `game_id` NOT IN ($ids)
+UNION
+SELECT `game_id` FROM `ngp_live_games` WHERE `game_id` NOT IN ($ids)
+SQL;
+        $res = $this->dbConn->query($query);  
+        if ($res === false) return false;
+
+        $res = array_map(
+            function($id) { return (int)$id; },
+            $res->fetchAll(PDO::FETCH_COLUMN, 0)
+        );
+
+        return $res;
     }
 
     public function loadLiveLastStats() {
