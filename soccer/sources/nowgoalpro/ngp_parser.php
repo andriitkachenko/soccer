@@ -339,14 +339,15 @@ class NGPParser implements iParser {
 				</div>
          */
 
-        $league = $xpath->query(".//div[@class='gameName']/a", $node);
-        $league = $league->count() ? self::parseTitleNode($xpath, $league->item(0)) : [];
+        $league = $xpath->query("//div[@class='match']//span[@class='tit']/a");
+      
+        $league = $league->count() ? self::parseTeamNode($xpath, $league->item(0)) : [];
 
         $host = $xpath->query(".//div[@class='gameInfo']/div[@class='home']/span[@class='name']/a", $node);
-        $host = $host->count() ? self::parseTitleNode($xpath, $host->item(0)) : [];
+        $host = $host->count() ? self::parseTeamNode($xpath, $host->item(0)) : [];
 
         $guest = $xpath->query(".//div[@class='gameInfo']/div[@class='guest']/span[@class='name']/a", $node);
-        $guest = $guest->count() ? self::parseTitleNode($xpath, $guest->item(0)) : [];
+        $guest = $guest->count() ? self::parseTeamNode($xpath, $guest->item(0)) : [];
 
         return (object)[
             'league' => $league,
@@ -355,11 +356,11 @@ class NGPParser implements iParser {
         ];
     }
 
-    private static function parseTitleNode($xpath, $node) {
+    private static function parseTeamNode($xpath, $node) {
         $href = $node->attributes->getNamedItem('href');
         if (!empty($href)) {
             $url = trim($href->textContent);
-            $id = preg_match('/(\d+)\/$/', $url, $matches);
+            $id = preg_match('/(\d+)$/', $url, $matches);
         }
         $title = self::normalizeTitle($node->textContent, '()-');
         return (object)array_merge(
