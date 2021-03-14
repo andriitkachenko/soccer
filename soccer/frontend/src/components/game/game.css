@@ -17,14 +17,14 @@
 
 .data {
     display: grid;
-    padding : 0.1rem 0.2rem;
+    padding : 0.1rem 0.1rem;
     background-color: rgb(217, 240, 255);
     grid-gap: 0.2rem;
     grid-template-columns: 
-        3rem      2.5rem  auto    1rem     0.6rem     0.6rem;
+       1.5rem  2.5rem      2rem   auto    1rem     0.6rem      0.6rem;
     grid-template-areas:
-      "league      time   host  h-scores h-scores-h1 h-scores-h2"
-      "start-time  time   guest g-scores g-scores-h1 g-scores-h2";    
+      "fav     league      time   host    h-scores h-scores-h1 h-scores-h2"
+      "fav     start-time  time   guest   g-scores g-scores-h1 g-scores-h2";    
   }    
   
   .stat {
@@ -60,6 +60,8 @@
 
 .emptyA { grid-area: a; }
 .emptyB { grid-area: b; }
+
+.fav { grid-area: fav; }
 
 .league { grid-area: league; }
 .start-time { grid-area: start-time; }

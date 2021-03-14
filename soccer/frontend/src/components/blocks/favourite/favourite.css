@@ -1,0 +1,12 @@
+.fav {
+    display: flex;
+    align-items: center; 
+}
+
+.fav-icon.active {
+    color: rgb(29, 29, 29);
+}
+
+.fav-icon.active {
+    color: green;
+}

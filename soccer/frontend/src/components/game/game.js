@@ -1,6 +1,4 @@
-import Utils from '../../utils';
-
-import { Shots, League, Team, StartTime, Scores, BallPossession, Time } from '../blocks';
+import { Shots, League, Team, StartTime, Scores, BallPossession, Time, Favourite } from '../blocks';
 
 import './game.css';
 
@@ -10,6 +8,7 @@ const Game = ({game}) => {
     return (
         <div className={"game" + extraClass}>
             <div className={"data" + extraClass}>
+                <Favourite />
                 <League title={g.league}/>
                 <StartTime time={g.start_time}/>
                 <Time time={g.time} extra={g.extra}/>

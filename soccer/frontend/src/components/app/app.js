@@ -5,6 +5,9 @@ import AppGames from '../app_games';
 import AppFooter from '../app_footer';
 
 import DataService from '../../services/data-service';
+import {NO_FILTER} from '../filter';
+import Favorites from '../favorites';
+import {SORT_TIME} from '../sort';
 
 import './app.css';
 
@@ -15,6 +18,9 @@ class App extends React.Component {
     updating = false;
     
     state = {
+        favorites : new Favorites(),
+        filter : NO_FILTER,
+        sort : SORT_TIME,
         games : null
     }
 
@@ -27,7 +33,12 @@ class App extends React.Component {
             .getLastStats()
             .then((stats) => {
                 if (stats !== false) {
-                    this.setState({games : Object.values(stats)});
+                    this.setState({
+                        favorites : this.state.favorites,
+                        filter : this.state.filter,
+                        sort : this.state.sort,
+                        games : Object.values(stats)}
+                    );
                 }
             });
         this.updating = false;
@@ -43,13 +54,38 @@ class App extends React.Component {
        clearInterval(this.timerId);
     }
 
+    setFilter(filter) {
+        this.setState({
+            favorites : this.state.favorites,
+            filter : filter, 
+            sort : this.state.sort,
+            games : this.state.games
+        });
+    }
+
+    setSort(sort) {
+        this.setState({
+            favorites : this.state.favorites,
+            filter : this.state.filter, 
+            sort : sort,
+            games : this.state.games
+        });
+    }
+
     render() {
-        const {games} = this.state;
+        const {filter, sort, games} = this.state;
      
         return (
             <div className='app'>
-                <AppHeader count={games ? games.length : 0}/>
-                <AppGames games={games}/>
+                <AppHeader 
+                    count={games ? games.length : 0} 
+                    setFilter={(filter) => this.setFilter(filter) } 
+                    setSort={(sort) => this.setSort(sort)}
+                />
+                <AppGames 
+                    games={games} 
+                    filter={filter} 
+                    sort={sort}/>
 {/*                <AppFooter count={games ? games.length : 0}/> */ }
             </div>
         );

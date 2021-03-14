@@ -1,0 +1,11 @@
+const NO_FILTER = 0;
+const FILTER_FAVORITE = 1;
+const FILTER_15MIN = 2;
+const FILTER_HALFTIME = 3; 
+
+export {
+    NO_FILTER,
+    FILTER_FAVORITE,
+    FILTER_15MIN,
+    FILTER_HALFTIME    
+}

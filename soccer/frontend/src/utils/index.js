@@ -1,2 +1,6 @@
 import Utils from './utils';
-export default Utils;
+import GameUtils from './game_utils';
+export {
+    Utils,
+    GameUtils
+}

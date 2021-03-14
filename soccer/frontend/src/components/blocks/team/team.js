@@ -1,5 +1,5 @@
 import { Cards } from "../../blocks";
-import Utils from "../../../utils";
+import {Utils} from "../../../utils";
 
 import './team.css';
 

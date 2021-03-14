@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import NavMenu from '../blocks/menu';
+import { FilterMenu, SortMenu} from '../blocks';
 
 import './app_header.css';
 
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppHeader = function({count}) {
+const AppHeader = function({count, setFilter, setSort}) {
   const classes = useStyles();
 
   return (
@@ -43,6 +44,8 @@ const AppHeader = function({count}) {
           <Typography variant="h6" className={classes.title}>
             Live Soccer Stats
           </Typography>
+          <FilterMenu setFilter={setFilter}/>
+          <SortMenu setSort={setSort}/>
         </Toolbar>
       </AppBar>
     </div>
