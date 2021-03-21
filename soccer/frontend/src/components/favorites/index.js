@@ -12,6 +12,9 @@ class Favorites {
             this.favorites.filter((id) => id !== gameId);
         }
     }
+    contains(gameId) {
+        return this.favorites.contains(gameId);
+    }
 }
 
 export default Favorites;

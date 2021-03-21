@@ -1,6 +1,6 @@
 import BallPossession from './ball_possession';
 import Cards from './cards';
-import Favourite from './favourite';
+import Favorite from './favorite';
 import FilterMenu from './filter_menu';
 import League from './league';
 import Loader from './loader';
@@ -14,7 +14,7 @@ import Time from './time';
 export {
     BallPossession,
     Cards,
-    Favourite,
+    Favorite,
     FilterMenu,
     League,
     Loader,

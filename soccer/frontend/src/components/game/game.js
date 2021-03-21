@@ -1,14 +1,14 @@
-import { Shots, League, Team, StartTime, Scores, BallPossession, Time, Favourite } from '../blocks';
+import { Shots, League, Team, StartTime, Scores, BallPossession, Time, Favorite } from '../blocks';
 
 import './game.css';
 
-const Game = ({game}) => {
+const Game = ({game, starred, setFavorites}) => {
     const g = game;
     const extraClass = g.state === 2 ? ' ht' : '';
     return (
         <div className={"game" + extraClass}>
             <div className={"data" + extraClass}>
-                <Favourite />
+                <Favorite starred={starred} setFavorite={() => setFavorites(g.id)}/>
                 <League title={g.league}/>
                 <StartTime time={g.start_time}/>
                 <Time time={g.time} extra={g.extra}/>

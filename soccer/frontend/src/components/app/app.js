@@ -2,11 +2,10 @@ import React from 'react';
 
 import AppHeader from '../app_header';
 import AppGames from '../app_games';
-import AppFooter from '../app_footer';
+//import AppFooter from '../app_footer';
 
 import DataService from '../../services/data-service';
 import {NO_FILTER} from '../filter';
-import Favorites from '../favorites';
 import {SORT_TIME} from '../sort';
 
 import './app.css';
@@ -18,7 +17,7 @@ class App extends React.Component {
     updating = false;
     
     state = {
-        favorites : new Favorites(),
+        favorites : [],
         filter : NO_FILTER,
         sort : SORT_TIME,
         games : null
@@ -72,20 +71,46 @@ class App extends React.Component {
         });
     }
 
+    updateFavorites(gameId) {
+        let favorites = this.state.favorites;
+        if (!gameId) {
+            return favorites;
+        }
+        if (favorites.includes(gameId)) {
+            return favorites.filter((id) => id !== gameId);
+        }
+        favorites.push(gameId);
+        return favorites;
+    }
+
+    setFavorites(gameId) {
+        this.setState({
+            favorites : this.updateFavorites(gameId),
+            filter : this.state.filter, 
+            sort : this.state.sort,
+            games : this.state.games
+        });
+    }
+
     render() {
-        const {filter, sort, games} = this.state;
-     
+        const {favorites, filter, sort, games} = this.state;
+
         return (
             <div className='app'>
                 <AppHeader 
                     count={games ? games.length : 0} 
+                    filter = {filter}
+                    sort = {sort}
                     setFilter={(filter) => this.setFilter(filter) } 
                     setSort={(sort) => this.setSort(sort)}
                 />
                 <AppGames 
                     games={games} 
                     filter={filter} 
-                    sort={sort}/>
+                    sort={sort}
+                    favorites={favorites}
+                    setFavorites={(gameId) => this.setFavorites(gameId)}
+                />
 {/*                <AppFooter count={games ? games.length : 0}/> */ }
             </div>
         );

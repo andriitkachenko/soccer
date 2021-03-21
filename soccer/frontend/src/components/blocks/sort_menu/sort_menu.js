@@ -1,36 +1,36 @@
 import React from 'react';
-import {List, ListItem, ListItemText} from '@material-ui/core'; 
-import {Sort as SortIcon} from '@material-ui/icons'; 
+import {List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core'; 
+import {Sort as SortIcon, Check} from '@material-ui/icons'; 
 import PopupMenu from '../popup_menu';
 
 import {SORT_TIME, SORT_SHOTS, SORT_LEAGUE} from '../../sort';
 
-function SortMenu({setSort}) {
-    const setSortTime = (onSelect) => () => {
-        setSort(SORT_TIME);
-        onSelect();
-        
-    }
-    const setSortShots = (onSelect) => () => {
-        setSort(SORT_SHOTS);
-        onSelect();
-    }
-    const setSortLeague = (onSelect) => () => {
-        setSort(SORT_LEAGUE);
-        onSelect();
-    }
+const SortMenu = ({curSort, setSort}) => {
+
     const makeBody = (onSelect) => {
+
+        const changeSort = (sort) => () => {
+            setSort(sort);
+            onSelect();
+        }    
+
+        const makeListItem = (sort, title) => {
+            const icon = sort !== curSort
+                ? <ListItemIcon className='invisible'><Check/></ListItemIcon>
+                : <ListItemIcon><Check/></ListItemIcon>
+            return (
+                <ListItem button onClick={changeSort(sort)}>
+                    {icon}
+                    <ListItemText primary={title} />
+                </ListItem>
+            );
+        }
+
         return (
             <List component="nav">
-                <ListItem button onClick={setSortTime(onSelect)}>
-                    <ListItemText primary="Time" />
-                </ListItem>
-                <ListItem button onClick={setSortShots(onSelect)}>
-                    <ListItemText primary="Shots" />
-                </ListItem>
-                <ListItem button onClick={setSortLeague(onSelect)}>
-                    <ListItemText primary="League" />
-                </ListItem>
+                {makeListItem(SORT_TIME, 'Time')}
+                {makeListItem(SORT_SHOTS, 'Shots')}
+                {makeListItem(SORT_LEAGUE, 'League')}
             </List>
         );
     }

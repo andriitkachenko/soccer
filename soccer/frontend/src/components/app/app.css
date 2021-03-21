@@ -17,3 +17,11 @@ body {
 .bold {
     font-weight: bold;
 }
+
+.hidden {
+    display: none;
+}
+
+.invisible {
+    visibility : none;
+}

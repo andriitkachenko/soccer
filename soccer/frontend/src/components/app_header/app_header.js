@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppHeader = function({count, setFilter, setSort}) {
+const AppHeader = function({count, filter, sort, setFilter, setSort}) {
   const classes = useStyles();
 
   return (
@@ -44,8 +44,8 @@ const AppHeader = function({count, setFilter, setSort}) {
           <Typography variant="h6" className={classes.title}>
             Live Soccer Stats
           </Typography>
-          <FilterMenu setFilter={setFilter}/>
-          <SortMenu setSort={setSort}/>
+          <FilterMenu curFilter={filter} setFilter={setFilter}/>
+          <SortMenu curSort={sort} setSort={setSort}/>
         </Toolbar>
       </AppBar>
     </div>
