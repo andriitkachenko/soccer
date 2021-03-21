@@ -3,7 +3,7 @@ import {List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core';
 import {FilterList, Check} from '@material-ui/icons'; 
 import PopupMenu from '../popup_menu';
 
-import { NO_FILTER, FILTER_FAVORITE, FILTER_15MIN, FILTER_HALFTIME, FILTER_ACTIVE, getFilterTitle } from '../../filter';
+import { NO_FILTER, FILTER_FAVORITE, FILTER_15MIN, FILTER_HALFTIME, FILTER_PREDICTABLE, getFilterTitle } from '../../filter';
 
 
 const FilterMenu = ({curFilter, setFilter}) => {
@@ -27,18 +27,17 @@ const FilterMenu = ({curFilter, setFilter}) => {
             <List component="nav">
                 {makeListItem(NO_FILTER)}
                 {makeListItem(FILTER_FAVORITE)}
-                {makeListItem(FILTER_ACTIVE)}
+                {makeListItem(FILTER_PREDICTABLE)}
                 {makeListItem(FILTER_15MIN)}
                 {makeListItem(FILTER_HALFTIME)}
             </List>
         );
     }
+    const icon = curFilter !== NO_FILTER 
+        ? <FilterList style={{ color: 'red' }}/>
+        : <FilterList/>;
     return (
-        <PopupMenu 
-            id='filter_menu' 
-            icon={<FilterList/>} 
-            makeBody={makeBody}
-        />
+        <PopupMenu id='filter_menu' icon={icon} makeBody={makeBody}/>
     )
 }
 

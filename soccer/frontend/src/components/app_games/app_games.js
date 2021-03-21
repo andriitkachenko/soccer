@@ -4,7 +4,7 @@ import Game from '../game';
 import { Loader } from '../blocks';
 
 import './app_games.css';
-import { NO_FILTER, FILTER_15MIN, FILTER_FAVORITE, FILTER_HALFTIME, FILTER_ACTIVE, getEmptyFilteredListText } from '../filter';
+import { NO_FILTER, FILTER_15MIN, FILTER_FAVORITE, FILTER_HALFTIME, FILTER_PREDICTABLE, getEmptyFilteredListText } from '../filter';
 import { SORT_TIME, SORT_SHOTS, SORT_LEAGUE } from '../sort';
 
 const AppGames = ({ games, filter, sort, favorites, setFavorites }) => {
@@ -41,9 +41,9 @@ const AppGames = ({ games, filter, sort, favorites, setFavorites }) => {
         .map((g) => {
             let ok;
             switch(filter) {
-                case FILTER_15MIN : ok = GameUtils.isLast15(g); break;
+                case FILTER_15MIN : ok = GameUtils.isHalfEnding(g); break;
                 case FILTER_HALFTIME : ok = g.state === 2; break;
-                case FILTER_ACTIVE : ok = GameUtils.isActive(g); break;
+                case FILTER_PREDICTABLE : ok = GameUtils.isPredictable(g); break;
                 case FILTER_FAVORITE : ok = false; break;
                 default : ok = true;
             }

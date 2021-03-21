@@ -2,7 +2,7 @@ const NO_FILTER = 0;
 const FILTER_FAVORITE = 1;
 const FILTER_15MIN = 2;
 const FILTER_HALFTIME = 3; 
-const FILTER_ACTIVE = 4; 
+const FILTER_PREDICTABLE = 4; 
 
 const getFilterTitle = (filter) => {
     let title = '';
@@ -14,13 +14,13 @@ const getFilterTitle = (filter) => {
             title = 'Favorite';
             break;
         case FILTER_15MIN : 
-            title = 'Last 15 min';
+            title = 'Half Ending';
             break;
         case FILTER_HALFTIME : 
             title = 'Halftime';
             break;
-        case FILTER_ACTIVE : 
-            title = 'Active';
+        case FILTER_PREDICTABLE : 
+            title = 'Predictable';
             break;
         default : break;
     }
@@ -33,8 +33,8 @@ const getEmptyFilteredListText = (filter) => {
         case NO_FILTER : 
             text = "No live game with statistics at the moment";
             break;
-        case FILTER_ACTIVE : 
-            text = "No game is active enough (any team has 7 shots or 4 shots on goal) in current half"; 
+        case FILTER_PREDICTABLE : 
+            text = "No game is predictable enough (any team has 7 shots or 4 shots on goal) in current half"; 
             break;
         case FILTER_15MIN : 
             text = "No game is within last 15 minutes of current half"; 
@@ -57,7 +57,7 @@ export {
     FILTER_FAVORITE,
     FILTER_15MIN,
     FILTER_HALFTIME,
-    FILTER_ACTIVE,
+    FILTER_PREDICTABLE,
     getFilterTitle,
     getEmptyFilteredListText
 }
