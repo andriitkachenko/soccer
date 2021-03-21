@@ -26,8 +26,8 @@ class GameUtils {
             : g.guest_stat.sg
     }
     static isLast15(g) {
-        return (g.time >= 30 && g.time <= 45 && g.extra == 0 && g.state === 1) 
-            || (g.time >= 75 && g.time <= 90 && g.extra == 0 && g.state === 3);
+        return (g.time >= 30 && g.time <= 45 && g.extra === 0 && g.state === 1) 
+            || (g.time >= 75 && g.time <= 90 && g.extra === 0 && g.state === 3);
     }
     static isHalfEnding(g) {
         return (g.time >= 30 && g.state === 1) 
