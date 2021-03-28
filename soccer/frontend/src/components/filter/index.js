@@ -4,6 +4,8 @@ const FILTER_15MIN = 2;
 const FILTER_HALFTIME = 3; 
 const FILTER_PREDICTABLE = 4; 
 
+const DEFAULT_FILTER = NO_FILTER;
+
 const getFilterTitle = (filter) => {
     let title = '';
     switch(filter) {
@@ -53,6 +55,7 @@ const getEmptyFilteredListText = (filter) => {
 }
 
 export {
+    DEFAULT_FILTER,
     NO_FILTER,
     FILTER_FAVORITE,
     FILTER_15MIN,

@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppHeader = function({count, filter, sort, setFilter, setSort}) {
+const AppHeader = function({count, filter, sort, setFilter, setSort, resetState}) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <NavMenu count={count} />
+          <NavMenu count={count} resetState={resetState}/>
           <Typography variant="h6" className={classes.title}>
             Live Soccer Stats
           </Typography>

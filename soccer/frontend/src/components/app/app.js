@@ -5,25 +5,54 @@ import AppGames from '../app_games';
 //import AppFooter from '../app_footer';
 
 import DataService from '../../services/data-service';
-import {NO_FILTER} from '../filter';
-import {SORT_TIME} from '../sort';
+import {DEFAULT_FILTER} from '../filter';
+import {DEFAULT_SORT} from '../sort';
+import Storage from '../storage';
 
 import './app.css';
 
 const dataService = new DataService();
+const appStorage = new Storage();
 
 class App extends React.Component {
     timerId = null;
     updating = false;
-    
-    state = {
+
+    defState = {
         favorites : [],
-        filter : NO_FILTER,
-        sort : SORT_TIME,
+        filter : DEFAULT_FILTER,
+        sort : DEFAULT_SORT,
         games : null
     }
 
-    updateState() {
+    state = this.getStateFromStorage(this.defState);
+
+    getStateFromStorage(defState) {
+        const { filter, sort, favorites, games} = defState;
+        const { filter : oldFilter, sort : oldSort, favorites : oldFavorites} = appStorage.get();
+        return {
+            favorites : oldSort ? JSON.parse(oldFavorites) : favorites,
+            filter : oldFilter ? oldFilter : filter,
+            sort : oldSort ? oldSort : sort,
+            games : games
+        }
+    }
+
+    resetState() {
+        const {games} = this.state;
+        let newState = this.defState;
+        newState['games'] = games;
+        
+        appStorage.reset();
+        this.setState(newState);
+    }
+
+    updateState(state) {
+        appStorage.set(state);    
+        this.setState(state);
+    }
+
+    updateGames() {
         if (this.updating)
             return;
 
@@ -32,7 +61,7 @@ class App extends React.Component {
             .getLastStats()
             .then((stats) => {
                 if (stats !== false) {
-                    this.setState({
+                    this.updateState({
                         favorites : this.state.favorites,
                         filter : this.state.filter,
                         sort : this.state.sort,
@@ -44,9 +73,9 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.updateState();
+        this.updateGames();
         if (!this.timerId) 
-            this.timerId = setInterval(() => this.updateState(), 60000);
+            this.timerId = setInterval(() => this.updateGames(), 60000);
     }
 
     componentWillUnmount() {
@@ -54,7 +83,7 @@ class App extends React.Component {
     }
 
     setFilter(filter) {
-        this.setState({
+        this.updateState({
             favorites : this.state.favorites,
             filter : filter, 
             sort : this.state.sort,
@@ -63,7 +92,7 @@ class App extends React.Component {
     }
 
     setSort(sort) {
-        this.setState({
+        this.updateState({
             favorites : this.state.favorites,
             filter : this.state.filter, 
             sort : sort,
@@ -84,7 +113,7 @@ class App extends React.Component {
     }
 
     setFavorites(gameId) {
-        this.setState({
+        this.updateState({
             favorites : this.updateFavorites(gameId),
             filter : this.state.filter, 
             sort : this.state.sort,
@@ -103,6 +132,7 @@ class App extends React.Component {
                     sort = {sort}
                     setFilter={(filter) => this.setFilter(filter) } 
                     setSort={(sort) => this.setSort(sort)}
+                    resetState={() => this.resetState()}
                 />
                 <AppGames 
                     games={games} 

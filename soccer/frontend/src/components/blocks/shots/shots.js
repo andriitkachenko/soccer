@@ -18,7 +18,7 @@ const Shots = ({host, guest, half1, half2, last10, state, sg, sh}) => {
         + (half1 ? ' half1' : '') 
         + (half2 ? ' half2' : '') 
         + (last10 ? ' last10' : '')
-        + ((half1 || half2) && changed ? ' inc' : '')
+        + ((half1 || half2) && changed ? ' highlight' : '')
         + ((state === 1 && half1) || (state === 3 && half2) ? ' bold' : '');
 
     return (

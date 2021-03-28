@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { DirectionsRun, StarBorder, DoneAll, Lock } from '@material-ui/icons';
+import { DirectionsRun, StarBorder, DoneAll, Lock, SettingsBackupRestore } from '@material-ui/icons';
 import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 
@@ -24,7 +24,7 @@ const makeDateStr = () => {
     return (new Date()).toLocaleDateString('en-US', options);
 }
 
-const NavMenu = ({count}) => {
+const NavMenu = ({count, resetState}) => {
     const classes = useStyles();
     const [state, setState] = React.useState({
         open : false
@@ -38,6 +38,7 @@ const NavMenu = ({count}) => {
         setState({open});
     };
 
+    const nop = () => {};
     const list = () => (
         <div
             className={clsx(classes.list)}
@@ -59,12 +60,13 @@ const NavMenu = ({count}) => {
             <Divider />
             <List>{
                 [
-                    {text: 'Live', icon: <DirectionsRun/>, allowed: true },
-                    {text: 'Favorite', icon: <StarBorder/>,  allowed: false },
-                    {text: 'History', icon: <DoneAll/>,  allowed: false }
+                    {text: 'Live', icon: <DirectionsRun/>, allowed: true, onClick : nop },
+                    {text: 'Favorite', icon: <StarBorder/>,  allowed: false, onClick : nop },
+                    {text: 'History', icon: <DoneAll/>,  allowed: false, onClick : nop },
+                    {text: 'Reset', icon: <SettingsBackupRestore/>,  allowed: true, onClick : resetState }
                 ]
                 .map((data, index) => (
-                    <ListItem button key={index}>
+                    <ListItem button key={index} onClick={data.onClick}>
                         {data.icon ? <ListItemIcon>{ data.allowed ? data.icon : <Lock/>}</ListItemIcon> : null}
                         <ListItemText primary={data.text} />
                     </ListItem>
