@@ -12,7 +12,7 @@ const Scores = ({host, guest, all, h1, h2}) => {
 
     const score = isAll ? all : (isHalf1 ? h1 : h2);
 
-    const changed = (prevScore.current < score);
+    const isChanged = prevScore.current !== null && prevScore.current < score;
     prevScore.current = score;
     
     const clsName = classNames('scores', {
