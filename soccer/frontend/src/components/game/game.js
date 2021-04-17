@@ -1,13 +1,14 @@
 import { Shots, League, Team, StartTime, Scores, BallPossession, Time, Favorite } from '../blocks';
+import classNames from 'classnames';
 
 import './game.css';
 
 const Game = ({game, starred, setFavorites}) => {
     const g = game;
-    const extraClass = g.state === 2 ? ' ht' : '';
+    const extraClass = {ht : g.state === 2};
     return (
-        <div className={"game" + extraClass}>
-            <div className={"data" + extraClass}>
+        <div className={classNames("game", extraClass)}>
+            <div className={classNames("data", extraClass)}>
                 <Favorite starred={starred} setFavorite={() => setFavorites(g.id)}/>
                 <League title={g.league}/>
                 <StartTime time={g.start_time}/>
@@ -21,8 +22,8 @@ const Game = ({game, starred, setFavorites}) => {
                 <Scores guest h1={g.ht ? g.ht.guest_stat.gl : g.guest_stat.gl}/>
                 <Scores guest h2={g.ht ? g.guest_stat.gl - g.ht.guest_stat.gl : null}/>
             </div>
-            <div className={"stat" + extraClass}>
-                <Time time={g.min} extra={g.min_extra} />
+            <div className={classNames("stat", extraClass)}>
+                <Time time={g.min} extra={g.min_extra} track/>
                 <Shots 
                     host
                     half1

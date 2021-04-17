@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import classNames from 'classnames';
 
 import './scores.css';
 
@@ -13,14 +14,15 @@ const Scores = ({host, guest, all, h1, h2}) => {
 
     const changed = (prevScore.current < score);
     prevScore.current = score;
-
-    const clsName = 'scores'
-        + (host ? ' h' : '' )
-        + (guest ? ' g' : '')
-        + (isAll  ? ' all' : '')
-        + (isHalf1 ? ' half1' : '' )
-        + (isHalf2 ? ' half2' : '')
-        + (changed ? ' inc' : '');
+    
+    const clsName = classNames('scores', {
+        h : host,
+        g : guest,
+        all : isAll,
+        half1 : isHalf1,
+        half2 : isHalf2,
+        highlight : (isHalf1 || isHalf2) && isChanged
+    });
 
     return (
         <div className={ clsName }>{ score }</div>
