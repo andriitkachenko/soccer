@@ -31,7 +31,7 @@ class App extends React.Component {
         const { filter, sort, favorites, games} = defState;
         const { filter : oldFilter, sort : oldSort, favorites : oldFavorites} = appStorage.get();
         return {
-            favorites : oldSort ? JSON.parse(oldFavorites) : favorites,
+            favorites : oldFavorites ? oldFavorites : favorites,
             filter : oldFilter ? oldFilter : filter,
             sort : oldSort ? oldSort : sort,
             games : games
@@ -141,7 +141,9 @@ class App extends React.Component {
                     favorites={favorites}
                     setFavorites={(gameId) => this.setFavorites(gameId)}
                 />
-{/*                <AppFooter count={games ? games.length : 0}/> */ }
+ {/*
+                <AppFooter count={games ? games.length : 0}/> 
+ */}
             </div>
         );
     }

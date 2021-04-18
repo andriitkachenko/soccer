@@ -1,7 +1,8 @@
+import classNames from 'classnames';
 import './cards.css';
 
 const Cards = ({red, yellow, amount}) => {
-    const clsName = 'cards' + (yellow ? ' yellow' : '') + (red ? ' red' : '');
+    const clsName = classNames('cards', {yellow : yellow, red : red});
     return(
         amount 
             ?   <div className={clsName}>

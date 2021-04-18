@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { DirectionsRun, DoneAll, Lock, SettingsBackupRestore } from '@material-ui/icons';
+import { DirectionsRun, DoneAll, Lock, SettingsBackupRestore, HelpOutline } from '@material-ui/icons';
 import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 
@@ -62,6 +62,7 @@ const NavMenu = ({count, resetState}) => {
                 [
                     {text: 'Live', icon: <DirectionsRun/>, allowed: true, onClick : nop },
                     {text: 'History', icon: <DoneAll/>,  allowed: false, onClick : nop },
+                    {text: 'Help', icon: <HelpOutline/>,  allowed: false, onClick : nop },
                     {text: 'Reset', icon: <SettingsBackupRestore/>,  allowed: true, onClick : resetState }
                 ]
                 .map((data, index) => (
