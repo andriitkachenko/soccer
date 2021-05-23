@@ -31,7 +31,7 @@ class NGPParser implements iParser {
         if (!$ok) {
             return false;
         }
-        $status = self::extractInitData($html);
+        $status = self::extractStatusData($html);
         if (!$status) {
             return false;
         }
@@ -218,7 +218,7 @@ class NGPParser implements iParser {
         return (object)$g;
     }
 
-    private static function extractInitData($html) {
+    private static function extractStatusData($html) {
         //mslive.init("1887298^3^20200808190000^20200808200335^2^2^1^2^0^0^0^0^^^^^");
         $ok = preg_match('/mslive.init\("(.+)"\);/', $html, $matches);
         if (!$ok || empty($matches[1])) {
@@ -293,53 +293,54 @@ class NGPParser implements iParser {
         return $s;
     }
 
-    private static function parseGameNode($xpath, $node) {
-        /*
-        <div class="gameBox">
+     private static function parseGameNode($xpath, $node) {
+/*
+    <div class="gameBox"
+        <div class="header">
+        
+            <a onclick="closeBack(0)" class='back'></a>
+            <div class="gameName">
+                <a target="_self" href="/football/database/league-5">Belgian Pro League</a>
+                <span class="date" id="liveMt">
+                    <script>document.write(timeToText(ToLocalTime('20210524003000'), 9))</script>
+                </span>
+            </div>
+            <span class="icon iconfont icon-font-class"></span>
+            <div id="miniPop" class="selectPopup minipopup" style="display:none;">
+                <div class="item">
+                    <span class="icon iconfont icon-font-share"></span>Share
+                </div>
+                <div class="item">
+                    <span class="icon iconfont icon-font-collect-off"></span>Favorite
+                </div>
+            </div>
+            
+        </div>
 
-					<a onclick="closeBack(0)" class='back'></a>
-					<div class="match-tools">
-						<i class="setTop" id="btnOnTop" onclick="toggleFav()"></i>
-						<i class="shareTop" onclick="toggleShare()"></i>
-					</div>
-					<div class="gameName">
-						<a target="_blank" href="/football/australia-a-league/league-273/">Australia A-League</a>
-					</div>
-					<div class="date" id="liveMt">
-						<script>
-							document.write(timeToText(ToLocalTime('20200802173000'), 9))
-						</script>
-					</div>
-					<div class="gameInfo">
-						<div class="home">
-							<div class="icon">
-								<a href="/football/newcastle-jets/team-2915/"
-									target="_self"><img src="//info.nowgoal.group/Image/team/images/20130923112423.png" alt="Newcastle Jets logo" /></a>
-							</div>
-							<span class="name"><a href="/football/newcastle-jets/team-2915/" target="_self">Newcastle Jets</a></span>
-						</div>
-						<div class="vs">
-							<div id="liveFt" class="FT">VS</div>
-							<div id="liveHt" class="HT">(1 - 0)</div>
-							<div id="liveSt" class="status"></div>
-						</div>
-						<div class="guest">
-							<div class="icon">
-								<a href="/football/western-united-fc/team-24502/"
-									target="_self"><img src="//info.nowgoal.group/Image/team/images/20191012082708.jpg" alt="Western United FC logo" /></a>
-							</div>
-							<span class="name"><a href="/football/western-united-fc/team-24502/" target="_self">Western United FC</a></span>
-						</div>
+        <div class="gameInfo">
+            <div class="home">
+                <div class="icon">
+                    <a href="/football/team/1686" target="_self"><img src="//info.nowgoal3.com/Image/team/images/20130403145720.jpg" alt="Royal Antwerp logo" /></a>
+                </div>
+                <span class="name"><a href="/football/team/1686" target="_self">Royal Antwerp</a></span>
+            </div>
+            <div class="vs">
+            
+                <span id="liveSt" class="status">HT</span>
+                <div id="liveFt" class="FT">VS</div>
+                <div id="liveHt" class="HT">-</div>
+            </div>
+            <div class="guest">
+                <div class="icon">
+                    <a href="/football/team/153" target="_self"><img src="//info.nowgoal3.com/Image/team/images/20170223155709.jpg" alt="Anderlecht logo" /></a>
+                </div>
+                <span class="name"><a href="/football/team/153" target="_self">Anderlecht</a></span>
+            </div>
+        </div>
+    </div>
+*/
 
-
-
-					</div>
-
-
-				</div>
-         */
-
-        $league = $xpath->query("//div[@class='match']//span[@class='tit']/a");
+        $league = $xpath->query("//div[@class='match']//div[@class='gameName']/a");
       
         $league = $league->count() ? self::parseTeamNode($xpath, $league->item(0)) : [];
 
