@@ -42,7 +42,7 @@ const AppHeader = function({count, filter, sort, setFilter, setSort, resetState}
         <Toolbar>
           <NavMenu count={count} resetState={resetState}/>
           <Typography variant="h6" className={classes.title}>
-            Live Soccer Stats
+            Soccer Tracker
           </Typography>
           <FilterMenu curFilter={filter} setFilter={setFilter}/>
           <SortMenu curSort={sort} setSort={setSort}/>
