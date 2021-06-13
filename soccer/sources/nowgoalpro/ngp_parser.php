@@ -75,6 +75,9 @@ class NGPParser implements iParser {
         ];
     }
 
+    //<div id=\"tb_2025050\" onclick=\"toAnalys(2025050)\" class=\"item \" data-mlid=\"2245\">
+    // <div class=\"dayrow\" data-day=\"2021_5_11\" data-mid=\"2025050\">2021/06/11(Friday)</div>\n        <div class=\"team \">\n            <div class=\"status\">\n                \n                <span class=\"time\" id=\"mt_2025050\">17:45</span>\n                <span onclick=\"goTo('/football/database/league-2245')\" class=\"gameName leaRow\" style=\"color:#53ac98\">PCB</span>\n            </div>\n            <div id=\"rht_2025050\" class=\"homeTeam\">\n                <span id=\"ht_2025050\" class=\"name\">Union Huaral</span>\n                <i></i>\n                <i id=\"hR_2025050\" class=\"redCard\"></i>\n                <i id=\"hY_2025050\" class=\"yellowCard\"><i>2</i></i>\n            </div>\n            <div class=\"guestTeam\">\n                <span id=\"gt_2025050\" class=\"name\">Univ.Cesar Vallejo</span>\n                <i></i>\n                <i id=\"gR_2025050\" class=\"redCard\"></i>\n                <i id=\"gY_2025050\" class=\"yellowCard\"><i>4</i></i>\n            </div>\n        </div>\n        <div class=\"timeScore\">\n            <i id=\"htit_2025050\">HT</i>\n            <div class=\"home\"><span class=\"odd \" id=\"hht_2025050\">0</span></div>\n            <div class=\"guest\"><span class=\"odd \" id=\"ght_2025050\">1</span></div>\n        </div>\n        <div class=\"score\" id=\"stat_2025050\">\n            <i id=\"state_2025050\">\n                90<i class=\"mit\"><img src=\"/images/com/in_red.gif\"></i>\n            </i>\n            <span class=\"homeS\" id=\"hsc_2025050\">1</span>\n            <span class=\"guestS\" id=\"gsc_2025050\">2</span>\n        </div>\n        <div class=\"odds\">\n            <i>\n                <div class=\"corner\">\n                    <i id=\"cn_2025050\" class=\"\"></i>\n                    <span id=\"corner_2025050\">6-6</span>\n                </div>\n                \n                \n                <div id=\"tImg_2025050\" class=\"icon iconfont icon-font-collect-off \" onclick=\"MarkTop(2025050,event,1)\"></div>\n            </i>\n            <div class=\"hOdds lOdd\">\n                <span id=\"o1_2025050\">1.00</span>\n                <span id=\"o2_2025050\">0/-0.5</span>\n                <span id=\"o3_2025050\">0.84</span>\n            </div>\n            <div class=\"hOdds oOdd\">\n                <span id=\"o4_2025050\">1.04</span>\n                <span id=\"o5_2025050\">2</span>\n                <span id=\"o6_2025050\">0.78</span>\n            </div>\n        </div>\n        <br style=\"clear:both;\">\n        <div id=\"exList_2025050\" class=\"exbar\" style=\"display:none\">\n            \n        </div>\n    </div>
+
     public static function parseGame($html) {
         self::$logs = [];
         $g = [];
@@ -138,7 +141,7 @@ class NGPParser implements iParser {
             case 'pen' : $state = 5; break;
         }
         $extra = strpos($min, '+') !== false;
-
+        
         $min = str_replace('+', '' , $min);
         $min = str_replace('ht', '45' , $min);
         $min = str_replace('ot', '91' , $min);
@@ -174,8 +177,10 @@ class NGPParser implements iParser {
             self::$logs[] = "Could not get league. " . $html;
             return false;
         }
+//<span onclick=\"goTo('/football/database/league-2245')\" class=\"gameName leaRow\" style=\"color:#53ac98\">PCB</span>        
         $g['league_short'] = self::normalizeTitle($nodes->item(0)->textContent);
-        $g['league_url'] = trim($nodes->item(0)->attributes->getNamedItem('href')->textContent);
+        $onclick = trim($nodes->item(0)->attributes->getNamedItem('onclick')->textContent);
+        $g['league_url'] = str_replace(["goTo('", "')"], "", $onclick);
         //<span id="ht_1831305" class="name">
         //     Suwon Samsung Bluewings
         // <font color=\"#880000\">(N)</font>
@@ -215,6 +220,7 @@ class NGPParser implements iParser {
         }
         $g['guest'] = self::normalizeTitle($nodes->item(0)->textContent, '()-');
         $g['url'] = "/football/match/live-$id";
+
         return (object)$g;
     }
 
@@ -295,14 +301,14 @@ class NGPParser implements iParser {
 
      private static function parseGameNode($xpath, $node) {
 /*
-    <div class="gameBox"
+    <div class="gameBox">
         <div class="header">
-        
-            <a onclick="closeBack(0)" class='back'></a>
+            
+<a onclick="closeBack(0)" class='back'></a>
             <div class="gameName">
-                <a target="_self" href="/football/database/league-5">Belgian Pro League</a>
-                <span class="date" id="liveMt">
-                    <script>document.write(timeToText(ToLocalTime('20210524003000'), 9))</script>
+                <span target="_self" onclick="goTo('/football/database/league-1')">Ireland Premier Division</span>
+                 <span class="date" id="liveMt">
+                    <script>document.write(timeToText(ToLocalTime('20210612024500'), 9))</script>
                 </span>
             </div>
             <span class="icon iconfont icon-font-class"></span>
@@ -320,34 +326,42 @@ class NGPParser implements iParser {
         <div class="gameInfo">
             <div class="home">
                 <div class="icon">
-                    <a href="/football/team/1686" target="_self"><img src="//info.nowgoal3.com/Image/team/images/20130403145720.jpg" alt="Royal Antwerp logo" /></a>
+                    <span onclick="goTo('/football/team/1345')" target="_self">
+                        <img src="//info.nowgoal3.com/Image/team/images/20130408191151.png" alt="Dundalk logo" />
+                    </span>
                 </div>
-                <span class="name"><a href="/football/team/1686" target="_self">Royal Antwerp</a></span>
+                <span class="name">
+                    <span onclick="goTo('/football/team/1345')" target="_self">Dundalk</span>
+                </span>
             </div>
             <div class="vs">
-            
-                <span id="liveSt" class="status">HT</span>
+               
+                <span id="liveSt" class="status">Part2</span>
                 <div id="liveFt" class="FT">VS</div>
-                <div id="liveHt" class="HT">-</div>
+                <div id="liveHt" class="HT">(1 - 1)</div>
             </div>
             <div class="guest">
                 <div class="icon">
-                    <a href="/football/team/153" target="_self"><img src="//info.nowgoal3.com/Image/team/images/20170223155709.jpg" alt="Anderlecht logo" /></a>
+                    <span onclick="goTo('/football/team/317')" target="_self">
+                        <img src="//info.nowgoal3.com/Image/team/images/20130408193035.png" alt="Waterford United logo" />
+                    </span>
                 </div>
-                <span class="name"><a href="/football/team/153" target="_self">Anderlecht</a></span>
+                <span class="name">
+                    <span onclick="goTo('/football/team/317')" target="_self">Waterford United</span>
+                </span>
             </div>
         </div>
     </div>
 */
 
-        $league = $xpath->query("//div[@class='match']//div[@class='gameName']/a");
+$league = $xpath->query("//div[@class='match']//div[@class='gameName']/span");
       
         $league = $league->count() ? self::parseTeamNode($xpath, $league->item(0)) : [];
 
-        $host = $xpath->query(".//div[@class='gameInfo']/div[@class='home']/span[@class='name']/a", $node);
+        $host = $xpath->query(".//div[@class='gameInfo']/div[@class='home']/span[@class='name']/span", $node);
         $host = $host->count() ? self::parseTeamNode($xpath, $host->item(0)) : [];
 
-        $guest = $xpath->query(".//div[@class='gameInfo']/div[@class='guest']/span[@class='name']/a", $node);
+        $guest = $xpath->query(".//div[@class='gameInfo']/div[@class='guest']/span[@class='name']/span", $node);
         $guest = $guest->count() ? self::parseTeamNode($xpath, $guest->item(0)) : [];
 
         return (object)[
@@ -358,9 +372,18 @@ class NGPParser implements iParser {
     }
 
     private static function parseTeamNode($xpath, $node) {
-        $href = $node->attributes->getNamedItem('href');
-        if (!empty($href)) {
-            $url = trim($href->textContent);
+/*
+<span onclick="goTo('/football/team/1345')" target="_self">Dundalk</span>
+<span target="_self" onclick="goTo('/football/database/league-1')">Ireland Premier Division</span>
+<span onclick="goTo('/football/team/317')" target="_self">Waterford United</span>
+*/
+
+        if (!$node) {
+            return (object)[];
+        }
+        $onclick = trim($node->attributes->getNamedItem('onclick')->textContent);
+        if (!empty($onclick)) {
+            $url = str_replace(["goTo('", "')"], '', $onclick);
             $id = preg_match('/(\d+)$/', $url, $matches);
         }
         $title = self::normalizeTitle($node->textContent, '()-');
