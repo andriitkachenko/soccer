@@ -3,13 +3,13 @@ import classNames from 'classnames';
 
 import './game.css';
 
-const Game = ({game, starred, setFavorites}) => {
+const Game = ({game}) => {
     const g = game;
     const extraClass = {ht : g.state === 2};
     return (
         <div className={classNames("game", extraClass)}>
             <div className={classNames("data", extraClass)}>
-                <Favorite starred={starred} setFavorite={() => setFavorites(g.id)}/>
+                <Favorite gameId={game.id}/>
                 <League title={g.league}/>
                 <StartTime time={g.start_time}/>
                 <Time time={g.time} extra={g.extra}/>

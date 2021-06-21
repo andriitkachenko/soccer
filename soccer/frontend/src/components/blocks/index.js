@@ -10,6 +10,7 @@ import SortMenu from './sort_menu';
 import StartTime from './start_time';
 import Team from './team';
 import Time from './time';
+import WaitIndicator from './wait_indicator';
 
 export {
     BallPossession,
@@ -23,5 +24,6 @@ export {
     SortMenu,
     StartTime,
     Team,
-    Time
+    Time,
+    WaitIndicator
 };

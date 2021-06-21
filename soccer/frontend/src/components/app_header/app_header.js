@@ -4,7 +4,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import NavMenu from '../blocks/menu';
-import { FilterMenu, SortMenu} from '../blocks';
+import { FilterMenu, SortMenu } from '../blocks';
+import { connect } from 'react-redux';
+import { setSortAction, setFilterAction, resetStateAction } from '../../actions';
 
 import './app_header.css';
 
@@ -52,4 +54,17 @@ const AppHeader = function({count, filter, sort, setFilter, setSort, resetState}
   );
 }
 
-export default AppHeader;
+const state2props = ({ games, filter, sort }) => {
+  const count = games ? games.length : 0;
+  return { count, filter, sort }
+}
+
+const dispatch2props = (dispatch) => {
+  return {
+    setFilter: (filter) => dispatch(setFilterAction(filter)),
+    setSort : (sort) =>  dispatch(setSortAction(sort)),
+    resetState: () => dispatch(resetStateAction()),
+  }
+}
+
+export default connect(state2props, dispatch2props)(AppHeader);

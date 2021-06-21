@@ -33,19 +33,19 @@ const getEmptyFilteredListText = (filter) => {
     let text;
     switch(filter) {
         case NO_FILTER : 
-            text = "No live game with statistics at the moment";
+            text = "Sorry, no game with live stats is available at the moment.";
             break;
         case FILTER_PREDICTABLE : 
-            text = "No game is predictable enough (any team has 7 shots or 4 shots on goal) in current half"; 
+            text = "No game we can consider predictable in current half. Please try to change filter or reset"; 
             break;
         case FILTER_15MIN : 
-            text = "No game is within last 15 minutes of current half"; 
+            text = "No game is within the last 15 minutes of current half. Please try to change filter or reset"; 
             break;
         case FILTER_HALFTIME : 
-            text = "No game is at halftime";
+            text = "No game is at halftime. Please try to change filter or reset";
             break;
         case FILTER_FAVORITE : 
-            text = "No game selected as favorite";
+            text = "No game selected as favorite. Please try to change filter or reset";
             break;
         default : 
             text = "";

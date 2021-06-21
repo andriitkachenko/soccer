@@ -1,0 +1,11 @@
+.wait-indicator {
+    width : 100%;
+    height: 1px;
+    background-color: gray;
+    animation: progress 60s linear;
+}
+
+@keyframes progress {
+    0% { width: 8px; }
+    100% { width: 100% ; }
+}

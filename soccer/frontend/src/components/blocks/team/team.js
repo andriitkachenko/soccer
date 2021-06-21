@@ -10,7 +10,7 @@ const Team = ( {host, guest, title, rank, rc, yc} ) => {
         <div className={clsName }>
             {title} {Utils.makeSuperscript(rank)} 
             <Cards red amount={rc ? rc : 0}/> 
-            {/*<Cards yellow amount={yc ? yc : 0}/> */}
+            <Cards yellow amount={yc ? yc : 0}/>
         </div>
     );
 }

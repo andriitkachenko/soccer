@@ -2,7 +2,7 @@ import {DEFAULT_FILTER} from '../filter';
 import {DEFAULT_SORT} from '../sort';
 
 class Storage {
-    storage = window.localStorage;//this.activate();
+    storage = window.localStorage;
 
     activate() {
         try {
