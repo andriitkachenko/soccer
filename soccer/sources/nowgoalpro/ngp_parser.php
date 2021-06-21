@@ -354,7 +354,7 @@ class NGPParser implements iParser {
     </div>
 */
 
-$league = $xpath->query("//div[@class='match']//div[@class='gameName']/span");
+$league = $xpath->query("//div[@class='match']//div[@class='gameName']/a");
       
         $league = $league->count() ? self::parseTeamNode($xpath, $league->item(0)) : [];
 
