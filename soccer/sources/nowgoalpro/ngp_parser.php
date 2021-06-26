@@ -10,7 +10,7 @@ const STATE_HT =        2;
 const STATE_HALF1 =     1;
 const STATE_UNDEFINED = 0;
 const STATE_FINISHED =  -1;
-const STATE_CANCELLED =  -10;
+const STATE_CANCELLED = -10;
 const STATE_PENDING =   -11;
 const STATE_ABD =       -12;
 const STATE_PAUSE =     -13;
@@ -136,14 +136,16 @@ class NGPParser implements iParser {
         $min = strtolower(trim($nodes->item(0)->textContent));
         $state = 0;
         switch($min) {
-            case 'ht' : $state = 2; break;
-            case 'ot' : $state = 4; break;
-            case 'pen' : $state = 5; break;
+            case 'ft' : $state = STATE_FINISHED; break;
+            case 'ht' : $state = STATE_HT; break;
+            case 'ot' : $state = STATE_OVERTIME; break;
+            case 'pen' : $state = STATE_PENALTY; break;
         }
         $extra = strpos($min, '+') !== false;
         
         $min = str_replace('+', '' , $min);
         $min = str_replace('ht', '45' , $min);
+        $min = str_replace('ft', '90' , $min);
         $min = str_replace('ot', '91' , $min);
         $min = str_replace('pen', '120' , $min);
         if (!ctype_digit($min)) {
@@ -152,10 +154,10 @@ class NGPParser implements iParser {
         }
         $min = intval($min);
         if ($min <= 45 && $state !== 2) {
-            $state = 1;
+            $state = STATE_HALF1;
         }
         if ($min > 45 && $min <= 90) {
-            $state = 3;
+            $state = STATE_HALF2;
         }
         $g['min'] = intval($min);
         $g['state'] = $state;
@@ -190,6 +192,7 @@ class NGPParser implements iParser {
         // </span>
         $tid = "ht_$id";
         $nodes = $xpath->query("//span[@id='$tid']/i[1]");
+        $g['host_rank'] = null;
         if ($nodes->count() > 0) {
             $g['host_rank'] = self::normalizeTitle($nodes->item(0)->textContent, '[]');
         }
@@ -206,6 +209,7 @@ class NGPParser implements iParser {
         
         $tid = "gt_$id";
         $nodes = $xpath->query("//span[@id='$tid']/i[1]");
+        $g['guest_rank'] = null;
         if ($nodes->count() > 0) {
             $g['guest_rank'] = self::normalizeTitle($nodes->item(0)->textContent, '[]');
         }
