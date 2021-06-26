@@ -139,6 +139,10 @@ const filterGames = (games, filter) => {
     return games.map(applyFilter(filter)) 
 }
 
+const getStorageData = ({sort, filter, favorites}) => {
+    return { sort, filter, favorites };
+}
+
 const reducer = (state, action) => {
     if (state === undefined) {
         return getStateFromStorageOrDefault();
@@ -152,6 +156,7 @@ const reducer = (state, action) => {
             if (state.sort === action.payload) {
                 return state;
             }
+            appStorage.set({...getStorageData(state), sort : action.payload });
             return { 
                 ...state, 
                 sort : action.payload,
@@ -160,6 +165,7 @@ const reducer = (state, action) => {
         }
         case 'SET_FILTER' : {
             devtrace(action.payload);  
+            appStorage.set({...getStorageData(state), filter : action.payload })
             return { 
                 ...state, 
                 filter : action.payload,
@@ -170,6 +176,7 @@ const reducer = (state, action) => {
             devtrace(action.payload);  
             const { sort, filter, favorites, games } = state;
             const newFavorites = updateFavorites(favorites, action.payload);
+            appStorage.set({...getStorageData(state), favorites : newFavorites })
             return { 
                 ...state, 
                 favorites : newFavorites,
