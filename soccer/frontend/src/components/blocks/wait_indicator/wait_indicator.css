@@ -25,7 +25,7 @@ svg#wait {
 }
 
 svg#wait circle {
-    stroke:rgb(217, 240, 255);
+    stroke: #8bffa6;
     fill: none;
     stroke-width: 1px;
     stroke-linecap: round;
