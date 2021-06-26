@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import AppHeader from '../app_header';
 import AppGames from '../app_games';
-import AppFooter from '../app_footer';
 
 import DataService from '../../services/data-service';
 import { updateGamesAction } from '../../actions';
@@ -35,7 +34,6 @@ class App extends React.Component {
             <div className='app'>
                 <AppHeader />
                 <AppGames />
-                <AppFooter />
             </div>
         );
     }

@@ -1,7 +1,7 @@
 .app-games {
     position: absolute; 
     top: 56px;
-    bottom: 2px;
+    bottom: 0;
     right: 0;
     left: 0;
     overflow-y: auto;

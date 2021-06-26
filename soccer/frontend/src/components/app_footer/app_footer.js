@@ -1,4 +1,4 @@
-import { FilterMenu, SortMenu, WaitIndicator} from '../blocks';
+import { WaitIndicator} from '../blocks';
 
 import './app_footer.css';
 

@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import NavMenu from '../blocks/menu';
-import { FilterMenu, SortMenu } from '../blocks';
+import { FilterMenu, SortMenu, WaitIndicator } from '../blocks';
 import { connect } from 'react-redux';
 import { setSortAction, setFilterAction, resetStateAction } from '../../actions';
 
@@ -48,6 +48,7 @@ const AppHeader = function({count, filter, sort, setFilter, setSort, resetState}
           </Typography>
           <FilterMenu curFilter={filter} setFilter={setFilter}/>
           <SortMenu curSort={sort} setSort={setSort}/>
+          <WaitIndicator />
         </Toolbar>
       </AppBar>
     </div>

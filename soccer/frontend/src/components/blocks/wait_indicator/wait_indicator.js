@@ -11,7 +11,12 @@ const WaitIndicator = ({ waiting }) => {
         return null;
     }
     return (
-        <div className='wait-indicator'></div>
+//        <div className='wait-indicator'></div>
+        <div className='wait-indicator-circle'>
+            <svg id='wait'>
+                <circle r="3" cx="4" cy="4"></circle>
+            </svg>
+        </div>
     );
 }
 
