@@ -75,8 +75,19 @@ class NGPParser implements iParser {
         ];
     }
 
-    //<div id=\"tb_2025050\" onclick=\"toAnalys(2025050)\" class=\"item \" data-mlid=\"2245\">
-    // <div class=\"dayrow\" data-day=\"2021_5_11\" data-mid=\"2025050\">2021/06/11(Friday)</div>\n        <div class=\"team \">\n            <div class=\"status\">\n                \n                <span class=\"time\" id=\"mt_2025050\">17:45</span>\n                <span onclick=\"goTo('/football/database/league-2245')\" class=\"gameName leaRow\" style=\"color:#53ac98\">PCB</span>\n            </div>\n            <div id=\"rht_2025050\" class=\"homeTeam\">\n                <span id=\"ht_2025050\" class=\"name\">Union Huaral</span>\n                <i></i>\n                <i id=\"hR_2025050\" class=\"redCard\"></i>\n                <i id=\"hY_2025050\" class=\"yellowCard\"><i>2</i></i>\n            </div>\n            <div class=\"guestTeam\">\n                <span id=\"gt_2025050\" class=\"name\">Univ.Cesar Vallejo</span>\n                <i></i>\n                <i id=\"gR_2025050\" class=\"redCard\"></i>\n                <i id=\"gY_2025050\" class=\"yellowCard\"><i>4</i></i>\n            </div>\n        </div>\n        <div class=\"timeScore\">\n            <i id=\"htit_2025050\">HT</i>\n            <div class=\"home\"><span class=\"odd \" id=\"hht_2025050\">0</span></div>\n            <div class=\"guest\"><span class=\"odd \" id=\"ght_2025050\">1</span></div>\n        </div>\n        <div class=\"score\" id=\"stat_2025050\">\n            <i id=\"state_2025050\">\n                90<i class=\"mit\"><img src=\"/images/com/in_red.gif\"></i>\n            </i>\n            <span class=\"homeS\" id=\"hsc_2025050\">1</span>\n            <span class=\"guestS\" id=\"gsc_2025050\">2</span>\n        </div>\n        <div class=\"odds\">\n            <i>\n                <div class=\"corner\">\n                    <i id=\"cn_2025050\" class=\"\"></i>\n                    <span id=\"corner_2025050\">6-6</span>\n                </div>\n                \n                \n                <div id=\"tImg_2025050\" class=\"icon iconfont icon-font-collect-off \" onclick=\"MarkTop(2025050,event,1)\"></div>\n            </i>\n            <div class=\"hOdds lOdd\">\n                <span id=\"o1_2025050\">1.00</span>\n                <span id=\"o2_2025050\">0/-0.5</span>\n                <span id=\"o3_2025050\">0.84</span>\n            </div>\n            <div class=\"hOdds oOdd\">\n                <span id=\"o4_2025050\">1.04</span>\n                <span id=\"o5_2025050\">2</span>\n                <span id=\"o6_2025050\">0.78</span>\n            </div>\n        </div>\n        <br style=\"clear:both;\">\n        <div id=\"exList_2025050\" class=\"exbar\" style=\"display:none\">\n            \n        </div>\n    </div>
+/*
+    <div id=\"tb_1971772\" onclick=\"toAnalys(1971772)\" class=\"item \" data-mlid=\"284\">
+    <div class=\"dayrow\" data-day=\"2021_5_26\" data-mid=\"1971772\">2021/06/26(Saturday)</div>
+    <div class=\"team \"><div class=\"status\">
+    <span class=\"time\" id=\"mt_1971772\">05:00</span><span onclick=\"goTo('/football/database/league-284')\" class=\"gameName leaRow\" style=\"color:#ff6633\">JPN D2</span>\n            </div>
+    <div id=\"rht_1971772\" class=\"homeTeam\">\<span id=\"ht_1971772\" class=\"name\">V-Varen Nagasaki</span><i>[5]</i>\<i id=\"hR_1971772\" class=\"redCard\"></i>\<i id=\"hY_1971772\" class=\"yellowCard\"><i>1</i></i>\n            </div>
+    <div class=\"guestTeam\">\n                <span id=\"gt_1971772\" class=\"name\">Jubilo Iwata</span>\n                <i>[2]</i>\n                <i id=\"gR_1971772\" class=\"redCard\"></i>\n                <i id=\"gY_1971772\" class=\"yellowCard\"><i>1</i></i>\n            </div></div>
+    <div class=\"timeScore\">\n            <i id=\"htit_1971772\">HT</i>\n            <div class=\"home\"><span class=\"odd \" id=\"hht_1971772\">0</span></div>
+    <div class=\"guest\"><span class=\"odd \" id=\"ght_1971772\">0</span></div>\n        </div>\n        <div class=\"score\" id=\"stat_1971772\">\n            <i id=\"state_1971772\">\n                68<i class=\"mit\"><img src=\"/images/com/in_red.gif\"></i>\n            </i>\n            <span class=\"homeS\" id=\"hsc_1971772\">0</span>\n            <span class=\"guestS\" id=\"gsc_1971772\">0</span>\n        </div>
+    <div class=\"odds\">\n            <i>\n                <div class=\"corner\">\n                    <i id=\"cn_1971772\" class=\"\"></i>\n                    <span id=\"corner_1971772\">3-4</span>\n                </div>\n                <div class=\"icon icon iconfont icon-font-lineup lineup\"></div>\n                \n                <div id=\"tImg_1971772\" class=\"icon iconfont icon-font-collect-off \" onclick=\"MarkTop(1971772,event,1)\"></div>
+    </i><div class=\"hOdds lOdd\">\n                <span id=\"o1_1971772\">0.63</span>\n                <span id=\"o2_1971772\">0/-0.5</span>\n                <span id=\"o3_1971772\">1.40</span>\n            </div>\n            <div class=\"hOdds oOdd\">\n                <span id=\"o4_1971772\">0.91</span>\n                <span id=\"o5_1971772\">0.5</span>\n                <span id=\"o6_1971772\">0.99</span>\n            </div>\n        </div>
+    <br style=\"clear:both;\">\n        <div id=\"exList_1971772\" class=\"exbar\" style=\"display:none\">\n            \n        </div>\n    </div>
+*/
 
     public static function parseGame($html) {
         self::$logs = [];
@@ -183,49 +194,83 @@ class NGPParser implements iParser {
         $g['league_short'] = self::normalizeTitle($nodes->item(0)->textContent);
         $onclick = trim($nodes->item(0)->attributes->getNamedItem('onclick')->textContent);
         $g['league_url'] = str_replace(["goTo('", "')"], "", $onclick);
-        //<span id="ht_1831305" class="name">
-        //     Suwon Samsung Bluewings
-        // <font color=\"#880000\">(N)</font>
-        //     <i>[9]</i>
-        //     <i id="hR_1831305" class="redCard"></i>
-        //     <i id="hY_1831305" class="yellowCard"><i>1</i></i>
-        // </span>
-        $tid = "ht_$id";
-        $nodes = $xpath->query("//span[@id='$tid']/i[1]");
-        $g['host_rank'] = null;
-        if ($nodes->count() > 0) {
-            $g['host_rank'] = self::normalizeTitle($nodes->item(0)->textContent, '[]');
-        }
-        $nodes = $xpath->query("//span[@id='$tid']/i");
-        foreach($nodes as $ch) {
-            $ch->parentNode->removeChild($ch);
-        }
-        $nodes = $xpath->query("//span[@id='$tid']");
-        if ($nodes->count() < 1) {
-            self::$logs[] = "Could not find host. " . $html;
+        /*
+            <div id=\"rht_1971772\" class=\"homeTeam\">
+                <span id=\"ht_1971772\" class=\"name\">V-Varen Nagasaki</span>
+                <i>[5]</i>
+                <i id=\"hR_1971772\" class=\"redCard\"></i>
+                <i id=\"hY_1971772\" class=\"yellowCard\"><i>1</i></i>
+            </div>        
+        */
+        $tmp = self::get_host_name($xpath, $id);
+        if (!$tmp) {
             return false;
         }
-        $g['host'] = self::normalizeTitle($nodes->item(0)->textContent, '()-');
-        
-        $tid = "gt_$id";
-        $nodes = $xpath->query("//span[@id='$tid']/i[1]");
-        $g['guest_rank'] = null;
-        if ($nodes->count() > 0) {
-            $g['guest_rank'] = self::normalizeTitle($nodes->item(0)->textContent, '[]');
-        }
-        $nodes = $xpath->query("//span[@id='$tid']/i");
-        foreach($nodes as $ch) {
-            $ch->parentNode->removeChild($ch);
-        }
-        $nodes = $xpath->query("//span[@id='$tid']");
-        if ($nodes->count() < 1) {
-            self::$logs[] = "Could not find guest. " . $html;
+        $g['host'] = $tmp;
+        $g['host_rank'] = self::get_host_rank($xpath, $id);
+
+        $tmp = self::get_guest_name($xpath, $id);
+        if (!$tmp) {
             return false;
         }
-        $g['guest'] = self::normalizeTitle($nodes->item(0)->textContent, '()-');
+        $g['guest'] = $tmp;
+        $g['guest_rank'] = self::get_guest_rank($xpath, $id);
+
         $g['url'] = "/football/match/live-$id";
 
         return (object)$g;
+    }
+
+    private static function get_host_name($xpath, $id) {
+        return self::get_team_name($xpath, $id, true);
+    }
+
+    private static function get_guest_name($xpath, $id) {
+        return self::get_team_name($xpath, $id, false);
+    }
+
+    private static function get_team_name($xpath, $id, $host) {
+        /*
+            <div id=\"rht_1971772\" class=\"homeTeam\">
+                <span id=\"ht_1971772\" class=\"name\">V-Varen Nagasaki</span>
+                <i>[5]</i>
+                <i id=\"hR_1971772\" class=\"redCard\"></i>
+                <i id=\"hY_1971772\" class=\"yellowCard\"><i>1</i></i>
+            </div>        
+        */        
+        $i = $host ? 'h' : 'g';
+        $t = $host ? 'host' : 'guest';
+        $nodes = $xpath->query("//span[@id='${i}t_$id'][@class='name']");
+        if ($nodes->count() < 1) {
+            self::$logs[] = "Could not find $t. " . $html;
+            return null;        
+        }
+        return self::normalizeTitle($nodes->item(0)->textContent, '()-');
+    }
+
+    private static function get_host_rank($xpath, $id) {
+        return self::get_team_rank($xpath, $id, true);
+    }
+
+    private static function get_guest_rank($xpath, $id) {
+        return self::get_team_rank($xpath, $id, false);
+    }
+
+    private static function get_team_rank($xpath, $id, $host) {
+        /*
+            <div id=\"rht_1971772\" class=\"homeTeam\">
+                <span id=\"ht_1971772\" class=\"name\">V-Varen Nagasaki</span>
+                <i>[5]</i>
+                <i id=\"hR_1971772\" class=\"redCard\"></i>
+                <i id=\"hY_1971772\" class=\"yellowCard\"><i>1</i></i>
+            </div>        
+        */
+        $class = $host ? 'homeTeam' : 'guestTeam';
+        $nodes = $xpath->query("//div[@class='$class']/i[1]");
+        if ($nodes->count() > 0) {
+            return self::normalizeTitle($nodes->item(0)->textContent, '[]');
+        }
+        return null;
     }
 
     private static function extractStatusData($html) {
