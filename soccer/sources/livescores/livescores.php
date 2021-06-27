@@ -79,7 +79,7 @@ function getGamesStats($runningGames) {
         usleep(200000);
         $html = curlGet(GAME_LIST_URL . $g['url']);
         if (empty($html)) {
-            updateCronLog('Stat URL error', GAME_LIST_URL . $g['url']);
+            cron_log('Stat URL error', GAME_LIST_URL . $g['url']);
             continue;
         }
         $stat = Parser::parseGameStat($html);
@@ -87,7 +87,7 @@ function getGamesStats($runningGames) {
             continue;
         }
         if (!empty($stat['errors'])) {
-            updateCronLog('Event parsing errors', implode('; ', $stat['errors']));
+            cron_log('Event parsing errors', implode('; ', $stat['errors']));
         }
         $stats[] = array_merge(
             [

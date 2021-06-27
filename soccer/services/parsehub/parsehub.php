@@ -58,7 +58,7 @@ class ParseHub implements iParseHub {
             }
             $run = $this->getRunToken();
         }
-        $log_result = parsehubLog("Run Project", json_encode(reduceRunData(json_decode($run, true))));
+        $log_result = parsehub_run_log("Run Project", json_encode(reduceRunData(json_decode($run, true))));
         return [ 
             'ok' => $this->isRunTokenOk($run), 
             'time' => time2datetime(),
@@ -97,9 +97,6 @@ class ParseHub implements iParseHub {
             && $token['status'] == 'initialized';
     }
  
-    private function logRunProjectResult($res) {
-    }
-
     private function normalizeData($data) {
         return str_replace("'", '', $data);
     }
@@ -116,7 +113,7 @@ class ParseHub implements iParseHub {
             false,
             stream_context_create($options)
         );
-        parsehubLog("Delete Run", $result);
+        parsehub_run_log("Delete Run", $result);
         return $result;
     }
 }

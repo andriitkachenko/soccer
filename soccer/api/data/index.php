@@ -15,7 +15,7 @@ function response($code, $data) {
 function logAccessData($dbManager) {
     $data = getAccessData();
     $dbManager->insertAccess($data['ip'], $data['agent']);
-    accessLog();
+    access_log();
 }
 
 $data = $_POST;

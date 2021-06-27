@@ -10,29 +10,30 @@ require_once __DIR__ . '/../../services/db/db_settings.php';
 require_once __DIR__ . '/../../services/parsehub/parsehub_utils.php';
 
 
-function logAndDieIf($condition, $log) {
+function log_and_die_if($condition, $log) {
     if ($condition) {
-        parsehubLog("NGP hook - error", $log);
+        parsehub_hook_log("error", $log);
         die();
     }
 }
 
-parsehubLog("NGP hook", "started");
+parsehub_hook_log("started");
 
 $runData = file_get_contents('php://input');
-logAndDieIf(empty($runData), "Empty run data");
+log_and_die_if(empty($runData), "Empty run data");
 
 parse_str($runData, $run);
 
 $ready = isset($run["data_ready"]) && $run["data_ready"] === "1" 
       && isset($run["status"]) && $run["status"] === "complete";
 if (!$ready) {
+    parsehub_hook_log("not ready", reduceRunData($run));    
     die();
 }
 
-parsehubLog("NGP hook - run data", json_encode(reduceRunData($run)));
+parsehub_hook_log("ready", json_encode(reduceRunData($run)));
 
-logAndDieIf(empty($run['run_token']), "Could not find run token");
+log_and_die_if(empty($run['run_token']), "Could not find run token: " . json_encode($run));
 
 $token = $run['run_token'];
 
@@ -41,34 +42,34 @@ $ph = new ParseHub(PH_PROJECT_TOKEN, PH_API_KEY);
 $ok = !empty($run['start_running_time']) && strtolower($run['is_empty']) === "false";
 if (!$ok) {
     $ph->deleteParseHubRun($token);
-    logAndDieIf(true, "Empty run result or start time - delete run");
+    log_and_die_if(true, "Empty run result or start time - delete run");
 }
 
 $phData = $ph->getData($token);
 $ph->deleteParseHubRun($token);
-logAndDieIf(empty($phData), "No data from Parse Hub");
+log_and_die_if(empty($phData), "No data from Parse Hub");
 
-updateLastParsehubResponseFile($phData['raw']);
+update_parsehub_response_file($phData['raw']);
 
 $gameData = $phData['data'];
 
 $ngp = new NowGoalPro();
 
 $games = $ngp->getParseHubGames($gameData);
-logAndDieIf(empty($games), "No game found");
+log_and_die_if(empty($games), "No game found");
 
 $result = file_put_contents(DATA_FILE, json_encode($games));
 
-parsehubLog("NGP hook", "Received " . count($games) . " games");
+parsehub_hook_log("Received " . count($games) . " games");
 
 $dbConn = new DbConnection(new DbSettings(false));
-logAndDieIf(!$dbConn->connected(), "DB connection failed");
+log_and_die_if(!$dbConn->connected(), "DB connection failed");
 
 $dbManager = new NgpDbManager($dbConn);
 $ngp->setDbManager($dbManager);
 
 $ok = $ngp->updateNewGames($games);
 
-parsehubLog("NGP hook", "New games update - " . logs2s($ok, $dbManager->getLastError(), "\n")); //humanizeBool($ok));
+parsehub_hook_log("New games update - " . logs2s($ok, $dbManager->getLastError(), "\n")); //humanizeBool($ok));
 
 ?>

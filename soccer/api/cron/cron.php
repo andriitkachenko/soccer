@@ -35,7 +35,7 @@ foreach($sources as $s) {
     if ($isParsehubTime) {
         if ($s->isParseHubClient()) {
             $runData = $s->runParseHubProject();
-            updateCronLog("Run ParseHub from cron", json_encode($runData));
+            cron_log("Run ParseHub from cron", json_encode($runData));
             $info = [
                 time2datetime(),
                 "Parse Hub project run " . (empty($runData['ok']) ? 'failed' : "OK"),
@@ -51,7 +51,7 @@ foreach($sources as $s) {
     $ok = $s->runOneMinuteUpdate($stopTime);
     $fullLog = CRON_FULL_LOG || !$ok;
     $log = $fullLog ? logs2s($ok, $dbManager->getLastError(), "\n") : humanizeBool($ok);
-    updateCronLog("1-minute update", $log);
+    cron_log("1-minute update", $log);
     echo humanizeBool($ok);
 }
 

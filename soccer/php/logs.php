@@ -26,7 +26,7 @@ function logPrint($ok, $lastDbError) {
     print_r(logs2s($ok, $lastDbError));
 }
 
-function updateLog($logFile, $items, $sizeLimit = true) {
+function update_log_file($logFile, $items, $sizeLimit = true) {
     if (empty($logFile)) {
         return;
     }
@@ -38,50 +38,47 @@ function updateLog($logFile, $items, $sizeLimit = true) {
     return $res !== false;
 }
 
-function parsehubLog($operation, $data) {
-    $items = [
-        $operation, 
-        $data
-    ];
-    return updateLog(getLogFile('parsehub'), $items);
+function update_log($log_info, $title, $data, $sizeLimit = true) {
+    $items = $title !== "" ? [ $title ] : [];
+    if (!empty($data)) {
+        $items = array_merge($items, is_array($data) ? $data : [$data]);
+    }
+    return update_log_file(get_log_file_info($log_info), $items, $sizeLimit);
 }
 
-function accessLog() {
+function parsehub_run_log($operation, $data = "") {
+    return update_log(PARSEHUB_RUN_LOG, $operation, $data);
+}
+
+function parsehub_hook_log($operation, $data = "") {
+    return update_log(PARSEHUB_HOOK_LOG, $operation, $data);
+}
+
+function access_log() {
     $items = [
         'Remote Addr: ' . (isset($_SERVER['REMOTE_ADDR'])  ?  $_SERVER['REMOTE_ADDR'] : "Unknown"), 
         'Remote Host: ' . (isset($_SERVER['REMOTE_HOST'])  ?  $_SERVER['REMOTE_HOST'] : "Unknown"), 
         'User Agent:  ' . (isset($_SERVER['HTTP_USER_AGENT'])  ?  $_SERVER['HTTP_USER_AGENT'] : "Unknown")
     ];
-    return updateLog(getLogFile('access'), $items);
-}
-
-function updateCronLog($title, $data = "") {
-    $items = [ $title ];
-    if (!empty($data)) {
-        $items[] = $data;
-    }
-    return updateLog(getLogFile('cron'), $items);
-}
-
-function updateLastParsehubResponseFile($data) {
-    return file_put_contents(LAST_PARSEHUB_RESPONSE_FILE, $data);
+    return update_log(ACCESS_LOG, "", $items);
 }
 
 function errorLog($title, $error = "") {
-    $items = [ $title ];
-    if (!empty($error)) {
-        $items = array_merge($items, is_array($error) ? $error : [$error]);
-    }
-    return updateLog(getLogFile('error'), $items, false);
+    return update_log(ERROR_LOG, $title, $error, false);
 }
 
-function getLogFile($name) {
-    if (empty(LOG_FILES[$name])) {
-        return null;
-    }
-    $log = LOG_FILES[$name];
-    $log['name'] = LOG_DIR . $log['name'];
-    $log['size'] = pow(1024, 2) * $log['size'];
-    return $log;
+function cron_log($title, $data = "") {
+    return update_log(CRON_LOG, $title, $data);
 }
+
+function update_parsehub_response_file($data) {
+    return file_put_contents(LAST_PARSEHUB_RESPONSE_FILE, $data);
+}
+
+function get_log_file_info($logInfo) {
+    $log_file_info['name'] = LOG_DIR . $logInfo['name'];
+    $log_file_info['size'] = pow(1024, 2) * $logInfo['size'];
+    return $log_file_info;
+}
+
 ?>

@@ -7,7 +7,7 @@ function getLiveLastStats($dbManager) {
     $stats = $dbManager->loadLiveLastStats();
     $history2 = $dbManager->loadLiveHistoryStats(10);
     $halftime = $dbManager->loadLiveHalfTimeStats();
-    foreach($stats  as $id => $s) {
+    foreach($stats as $id => $s) {
         if (isset($history2[$id])) {
             $stats[$id]['history2'] = $history2[$id];
         }
