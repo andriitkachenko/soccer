@@ -245,7 +245,10 @@ class NowGoalPro implements iNowGoalPro {
             $id = str_replace('tb_', '', $g->id);
             $game = NGPParser::parseGame($g->html);            
             if (empty($game)) {
-                errorLog("getParseHubGames", NGPParser::getLog());
+                $log = NGPParser::getLog();
+                if (!empty($log)) {
+                    errorLog("getParseHubGames", NGPParser::getLog());
+                }
             } else if (is_allowed_game($game)) {
                 $games[$game->id] = $game;
             }

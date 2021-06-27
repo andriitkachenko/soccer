@@ -43,7 +43,7 @@ function update_log($log_info, $title, $data, $sizeLimit = true) {
     if (!empty($data)) {
         $items = array_merge($items, is_array($data) ? $data : [$data]);
     }
-    return update_log_file(get_log_file_info($log_info), $items, $sizeLimit);
+    return empty($items) || update_log_file(get_log_file_info($log_info), $items, $sizeLimit);
 }
 
 function parsehub_run_log($operation, $data = "") {
