@@ -109,8 +109,12 @@ class NGPParser implements iParser {
         }
         $class = $nodes->item(0)->attributes->getNamedItem("class")->textContent;
         $class = str_replace(' ', '', trim($class));
-        if (!in_array($class, ['item', 'hitem', 'itemh'])) {
-            self::$logs[] = 'Not single "item" class. ' . $class;
+        $is_running_game = in_array($class, ['item', 'hitem', 'itemh']);
+        $is_finished_game = in_array($class, ['itemf', 'fitem']);
+        if (!$is_running_game) {
+            if (!$is_finished_game) {
+                self::$logs[] = 'Not supported class: ' . $class;
+            }
             return false;
         }
         $id = $nodes->item(0)->attributes->getNamedItem("id")->textContent;
