@@ -17,6 +17,8 @@ function logAndDieIf($condition, $log) {
     }
 }
 
+parsehubLog("NGP hook", "started");
+
 $runData = file_get_contents('php://input');
 logAndDieIf(empty($runData), "Empty run data");
 
