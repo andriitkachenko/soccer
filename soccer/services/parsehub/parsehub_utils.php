@@ -1,6 +1,6 @@
 <?php
 
-function reduceRunData($run) {
+function reduce_run_data($run) {
     $params = ['status', 'run_token', 'data_ready', 'is_empty'];//, 'start_time', 'start_running_time'];
     $log = [];
     foreach($params as $p) {

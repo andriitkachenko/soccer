@@ -27,11 +27,11 @@ parse_str($runData, $run);
 $ready = isset($run["data_ready"]) && $run["data_ready"] === "1" 
       && isset($run["status"]) && $run["status"] === "complete";
 if (!$ready) {
-    parsehub_hook_log("not ready", reduceRunData($run));    
+    parsehub_hook_log("not ready", reduce_run_data($run));    
     die();
 }
 
-parsehub_hook_log("ready", json_encode(reduceRunData($run)));
+parsehub_hook_log("ready", json_encode(reduce_run_data($run)));
 
 log_and_die_if(empty($run['run_token']), "Could not find run token: " . json_encode($run));
 
