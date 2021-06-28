@@ -13,7 +13,7 @@ require_once __DIR__ . '/ngp_utils.php';
 interface iNowGoalPro {
     public function isParseHubClient() : bool;
     public function getParseHubGames($phData);
-    public function runParseHubProject();
+    public function get_parsehub();
     public function runOneMinuteUpdate($stopTime);
 }
 
@@ -228,9 +228,8 @@ class NowGoalPro implements iNowGoalPro {
         return (object)$g;
     }
 
-    public function runParseHubProject() {
-        $ph = new ParseHub(PH_PROJECT_TOKEN, PH_API_KEY);
-        return $ph->runProject();
+    public function get_parsehub() {
+        return new ParseHub('ngp', PH_PROJECT_TOKEN, PH_API_KEY);
     }
 
     public function getParseHubGames($phData) {

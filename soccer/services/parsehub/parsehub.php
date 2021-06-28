@@ -5,35 +5,39 @@ require_once __DIR__ . '/../../php/logs.php';
 require_once __DIR__ . '/../../php/time.php';
 require_once __DIR__ . '/parsehub_utils.php';
 
-const PARSEHUB_RUN_ATTEMPTS_MAX  = 5;
-const PARSEHUB_RUN_PROJECT_URL_TEMPLATE = 'https://www.parsehub.com/api/v2/projects/%project_token%/run';
-const PARSEHUB_RUN_DATA_URL= 'https://www.parsehub.com/api/v2/runs/';
+const PH_RUN_ATTEMPTS_MAX  = 5;
+const PH_GET_PROJECT_URL_TEMPLATE = 'https://www.parsehub.com/api/v2/projects/%project_token%?api_key=%api_key%&offset=0';
+const PH_RUN_PROJECT_URL_TEMPLATE = 'https://www.parsehub.com/api/v2/projects/%project_token%/run';
+const PH_RUN_DATA_URL= 'https://www.parsehub.com/api/v2/runs/';
 
 interface iParseHub {
-    public function runProject();
-    public function getData($runToken);
-    public function deleteParseHubRun($runToken);
+    public function run_project();
+    public function get_data($runToken);
+    public function delete_run($runToken);
+    public function clean_up_project();
 }
 
 class ParseHub implements iParseHub {
-    private $projectToken = "";
-    private $apiKey = "";
+    private $project_token = "";
+    private $api_key = "";
+    private $id = "";
 
-    public function __construct(string $projectToken, string $apiKey) {
-        $this->projectToken = $projectToken;
-        $this->apiKey = $apiKey;
+    public function __construct(string $id, string $project_token, string $api_key) {
+        $this->id = $id;
+        $this->project_token = $project_token;
+        $this->api_key = $api_key;
     }
 
-    public function getData($runToken) {
+    public function get_data($runToken) {
         $params = http_build_query(
             [
-                "api_key" => $this->apiKey,
+                "api_key" => $this->api_key,
                 "format" => "json"
             ]);
         $options = [
             'http' => [ 'method' => 'GET' ]
         ];
-        $url = PARSEHUB_RUN_DATA_URL . $runToken . '/data?'. $params;
+        $url = PH_RUN_DATA_URL . $runToken . '/data?'. $params;
         $result = file_get_contents($url, false, stream_context_create($options));
 
         if (empty($result)) {
@@ -49,10 +53,10 @@ class ParseHub implements iParseHub {
         ];
     }
 
-    public function runProject() {
+    public function run_project() {
         $run = [];
         $i = 0;
-        for (; $i < PARSEHUB_RUN_ATTEMPTS_MAX && !$this->isRunTokenOk($run); $i++) {
+        for (; $i < PH_RUN_ATTEMPTS_MAX && !$this->isRunTokenOk($run); $i++) {
             if ($i > 0) {
                 sleep(5);
             }
@@ -69,7 +73,7 @@ class ParseHub implements iParseHub {
 
        private function getRunToken() {
         $params = array(
-            "api_key" => $this->apiKey
+            "api_key" => $this->api_key
         );
         $options = [
           'http' => [
@@ -79,7 +83,7 @@ class ParseHub implements iParseHub {
           ]
         ];
         $context = stream_context_create($options);
-        $url = str_replace('%project_token%', $this->projectToken, PARSEHUB_RUN_PROJECT_URL_TEMPLATE);
+        $url = str_replace('%project_token%', $this->project_token, PH_RUN_PROJECT_URL_TEMPLATE);
         return file_get_contents($url, false, $context);
     }
 
@@ -97,20 +101,43 @@ class ParseHub implements iParseHub {
         return str_replace("'", '', $data);
     }
 
-    public function deleteParseHubRun($runToken) {
+    public function delete_run($runToken) {
         $params = http_build_query([
-            "api_key" => $this->apiKey
+            "api_key" => $this->api_key
         ]);
         $options = [
             'http' => [ 'method' => 'DELETE' ]
         ];
         $result = file_get_contents(
-            PARSEHUB_RUN_DATA_URL . $runToken . '?'. $params,
+            PH_RUN_DATA_URL . $runToken . '?'. $params,
             false,
             stream_context_create($options)
         );
         parsehub_run_log("Delete Run", $result);
         return $result;
+    }
+
+    public function clean_up_project() {
+        parsehub_run_log("Clean-up project", "started");
+        $url = str_replace('%api_key%', $this->api_key, 
+                str_replace('%project_token%', $this->project_token, PH_GET_PROJECT_URL_TEMPLATE)
+            );
+        $options = [
+            'http' => [ 'method' => 'GET' ]
+        ];
+        $result = file_get_contents($url, false, stream_context_create($options));
+        $result = json_decode($result, true);
+        if (!$result || !isset($result['run_list']) || !is_array($result['run_list'])) {
+            return false;
+        }
+        $deleted = [];
+        foreach ($result['run_list'] as $r) {
+            if (!empty($r['run_token'])) {
+                $deleted[] = $this->delete_run($r['run_token']);
+            }
+        }
+        parsehub_run_log("Clean-up project: ", empty($deleted) ? 'nothing to clean-up' : implode('; ', $deleted));
+        return true;
     }
 }
 ?>

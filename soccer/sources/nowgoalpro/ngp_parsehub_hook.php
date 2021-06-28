@@ -37,16 +37,16 @@ log_and_die_if(empty($run['run_token']), "Could not find run token: " . json_enc
 
 $token = $run['run_token'];
 
-$ph = new ParseHub(PH_PROJECT_TOKEN, PH_API_KEY);
+$ph = new ParseHub('ngp', PH_PROJECT_TOKEN, PH_API_KEY);
 
 $ok = !empty($run['start_running_time']) && strtolower($run['is_empty']) === "false";
 if (!$ok) {
-    $ph->deleteParseHubRun($token);
+    $ph->delete_run($token);
     log_and_die_if(true, "Empty run result or start time - delete run");
 }
 
-$phData = $ph->getData($token);
-$ph->deleteParseHubRun($token);
+$phData = $ph->get_data($token);
+$ph->delete_run($token);
 log_and_die_if(empty($phData), "No data from Parse Hub");
 
 update_parsehub_response_file($phData['raw']);

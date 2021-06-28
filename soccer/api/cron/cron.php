@@ -19,13 +19,16 @@ require_once 'services/db/db_connection.php';
 require_once 'php/utils.php';
 
 $dryrun = isset($_POST['dryrun']) && $_POST['dryrun'] == '1';
+$debug = isset($_POST['debug']) && $_POST['debug'] == '1';
 
-cron_log("============================  started  ============================");
+$info = ($debug ? 'debug ' : '') . ($dryrun ? 'dryrun' : '');
+
+cron_log("============================  started  ============================ $info");
 
 $stopTime = time() + MAX_PROCESSING_TIME;
 
 $minute = @intval(date("i"));
-$isParsehubTime = ($minute % CRON_PARSEHUB_INTERVAL) === 0;
+$isParsehubTime = $debug || ($minute % CRON_PARSEHUB_INTERVAL) === 0;
 $dbConn = new DbConnection(new DbSettings(isLocalhost()));
 if (!$dbConn->connected()) {
     errorLog("NGP cron ", "Could not connect to DB");
@@ -37,11 +40,14 @@ $ngp->setDbManager($dbManager);
 $sources = [ $ngp ]; 
 
 foreach($sources as $s) {
-    if ($dryrun) {
-        continue;
-    }
+
     if ($isParsehubTime && $s->isParseHubClient()) {
-        $runData = $s->runParseHubProject();
+        $ph = $s->get_parsehub();
+        $ph->clean_up_project();
+        if ($dryrun) {
+            continue;
+        }        
+        $runData = $ph->run_project();
         cron_log("Run ParseHub from cron", json_encode($runData));
         $info = [
             time2datetime(),
@@ -51,7 +57,7 @@ foreach($sources as $s) {
         ];
         echo implode(" ~~~ ", $info);
     }
-    if (!$dbConn->connected()) {
+    if ($dryrun || !$dbConn->connected()) {
         continue;
     }
     cron_log("1-minute update started");
