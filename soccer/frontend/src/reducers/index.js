@@ -112,6 +112,8 @@ const setTime = (games) => {
             if (g.state === 1 && m > 45) m = 45
             else if (g.state === 2) m = 'HT'
             else if (g.state === 3 && m > 90) m = 90
+            else if (g.state === 4 ) m = 'OT'
+            else if (g.state === 5 ) m = 'Pen'
 
             g.time = m;
             g.extra = extra;
