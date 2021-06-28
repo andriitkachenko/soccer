@@ -19,9 +19,14 @@ const STATE_AUTOFINISH = -15;
 
 class NGPParser implements iParser {
     private static $logs = [];
+    private static $html = "";
 
     public static function getLog() {
-        return implode(" - ", self::$logs);
+        $logs = self::$logs;
+        if (!empty($logs) && !empty(self::$html)) {
+            $logs[] = self::$html;
+        }
+        return implode(" - ", $logs);
     }
     
     public static function parseStat($html) {
@@ -91,49 +96,112 @@ class NGPParser implements iParser {
 
     public static function parseGame($html) {
         self::$logs = [];
+        self::$html = $html;
         $g = [];
         $doc = new DOMDocument();
         $ok = @$doc->loadHTML($html);
         if (!$ok) {
-            self::$logs[] = 'Could not load html. ' . $html;
+            self::$logs[] = 'Could not load html';
             return false;
         }
-       
         $xpath = new DOMXpath($doc);
-        // only item class
-        //<div id=\"tb_1831305\" onclick=\"toAnalys(1831305)\" class=\"item \" data-mlid=\"15\">
-        $nodes = $xpath->query("//div[contains(@class, 'item')]");
-        if ($nodes->count() < 1) {
-            self::$logs[] = 'No div with "item" class. ' . $html;
+        $game_node = self::get_game_node($xpath);
+        if (!$game_node || !self::is_allowed_game_node($game_node)) {
             return false;
         }
-        $class = $nodes->item(0)->attributes->getNamedItem("class")->textContent;
+        $id = self::get_game_id($game_node);
+        if (!$id) {
+            return false;
+        }
+        $time_node = self::get_time_node($xpath, $id);
+        if (!$time_node) {
+            return false;
+        } 
+        list($state, $min, $extra) = self::get_game_state_min_extra($time_node);
+        if (!$min) {
+            return false;
+        }
+        $start_time_node = self::get_start_time_node($xpath, $id);
+        if (!$start_time_node) {
+            return false;
+        }
+        $time = trim($start_time_node->textContent);
+        $date = date('Y_m_d');        
+        $start_time = (DateTime::createFromFormat('Y_n_j-H:i', "$date-$time"))->format('Y-m-d H:i:s');
+        $league_node = self::get_league_node($xpath);
+        if (!$league_node) {
+            return false;
+        }
+        list($l_short, $l_url) = self::get_league_info($league_node);
+        if (empty($l_short)) {
+            return false;
+        }
+        $host_name = self::get_host_name($xpath, $id);
+        if (!$host_name) {
+            return false;
+        }
+        $host_rank = self::get_host_rank($xpath, $id);
+        $guest_name = self::get_guest_name($xpath, $id);
+        if (!$guest_name) {
+            return false;
+        }
+        $guest_rank = self::get_guest_rank($xpath, $id);
+        
+        return (object)[
+            'id' => $id,
+            'min' => $min,
+            'state' => $state,
+            'extra' => $extra,
+            'start_time' => $start_time,
+            'league_short' => $l_short,
+            'league_url' => $l_url,
+            'host' => $host_name,
+            'host_rank' => $host_rank,
+            'guest' => $guest_name,
+            'guest_rank' => $guest_rank,
+            'url' => "/football/match/live-$id"
+        ];
+    }
+
+    private static function get_game_id($game_node) {
+        $id = $game_node->attributes->getNamedItem("id")->textContent;
+        $id = str_replace('tb_', '', trim($id));
+        if (empty($id) || !ctype_digit($id)) {
+            self::$logs[] = 'Could not find ID. ' . $game_node->textContent;
+            return null;
+        }
+        return @intval($id);
+    }
+
+    private static function is_allowed_game_node($game_node) {
+        $running_game_classes = ['item', 'hitem', 'itemh'];
+        $finished_game_classes = ['itemf', 'fitem'];
+        if (!$game_node) {
+            return false;
+        }
+        $class = $game_node->attributes->getNamedItem("class")->textContent;
         $class = str_replace(' ', '', trim($class));
-        $is_running_game = in_array($class, ['item', 'hitem', 'itemh']);
-        $is_finished_game = in_array($class, ['itemf', 'fitem']);
+        $is_running_game = in_array($class, $running_game_classes );
+        $is_finished_game = in_array($class, $finished_game_classes);
         if (!$is_running_game) {
             if (!$is_finished_game) {
                 self::$logs[] = 'Not supported class: ' . $class;
             }
             return false;
-        }
-        $id = $nodes->item(0)->attributes->getNamedItem("id")->textContent;
-        $id = str_replace('tb_', '', trim($id));
-        if (empty($id) || !ctype_digit($id)) {
-            self::$logs[] = 'Could not find ID. ' . $nodes->item(0)->textContent;
-            return false;
-        }
-        $g['id'] = @intval($id);
-        // <div class="dayrow" data-day="2020_6_19">July 19. Sunday</div>
-        /*
-        $nodes = $xpath->query("//div[@data-day]");
-        if ($nodes->count() < 1) {
-            self::$logs[] = 'Could not find "data-day". '. $html;
-            return false;
-        }
-        $date = trim($nodes->item(0)->attributes->getNamedItem("data-day")->textContent);
-        */
-        $date = date('Y_m_d');
+        }     
+        return true;   
+    }
+
+    private static function get_game_node($xpath) {
+        // only item class
+        //<div id=\"tb_1831305\" onclick=\"toAnalys(1831305)\" class=\"item \" data-mlid=\"15\">
+        return self::get_node($xpath, 
+            "//div[contains(@class, 'item')]",
+            "No div with 'item' class"
+        );
+    }
+
+    private static function get_time_node($xpath, $id) {
         /*
         <div class="score" id="stat_1888573">
             <i id="state_1888573">80<i class="mit"><img src="/images/com/in.gif"></i></i>
@@ -141,14 +209,41 @@ class NGPParser implements iParser {
             <span class="guestS" id="gsc_1888573">0</span>
         </div>
         */
-        
-        $nodes = $xpath->query("//div[@class='score'][@id='stat_$id']/i[@id='state_$id']");
-        if (!$nodes->count()) {
-            self::$logs[] = "'Could not find 'score' for ID $id. " . $html;
-            return false;
-        } 
-        
-        $min = strtolower(trim($nodes->item(0)->textContent));
+        return self::get_node($xpath, 
+            "//div[@class='score'][@id='stat_$id']/i[@id='state_$id']",
+            "'Could not find time node for ID $id"
+        );
+    }
+
+    private static function get_league_node($xpath) {
+        //<span href="/football/korea-league/league-15/" class="gameName leaRow" style="color:#990099">KOR D1</span>
+        return self::get_node($xpath, 
+            "//span[contains(@class, 'gameName')][contains(@class, 'leaRow')]",
+            "Could not get league"
+        );
+    }
+    private static function get_league_info($league_node) {
+        //<span onclick=\"goTo('/football/database/league-2245')\" class=\"gameName leaRow\" style=\"color:#53ac98\">PCB</span>        
+        $short = self::normalizeTitle($league_node->textContent);
+        $onclick = trim($league_node->attributes->getNamedItem('onclick')->textContent);
+        $url = str_replace(["goTo('", "')"], '', $onclick);
+        if (empty($short)) {
+            self::$logs[] = "Could not get league info";
+            $short = null;
+        }
+        return [$short, $url];
+    }
+
+    private static function get_start_time_node($xpath, $id) {
+        /// <span class="time" id="mt_1831305">10:00</span>
+        return self::get_node($xpath, 
+            "//span[@class='time'][@id='mt_$id']",
+            "Could not get start time for ID $id"
+        );
+    }
+
+    private static function get_game_state_min_extra($time_node) {
+        $min = strtolower(trim($time_node->textContent));
         $state = 0;
         switch($min) {
             case 'ft' : $state = STATE_FINISHED; break;
@@ -163,66 +258,26 @@ class NGPParser implements iParser {
         $min = str_replace('ft', '90' , $min);
         $min = str_replace('ot', '91' , $min);
         $min = str_replace('pen', '120' , $min);
-        if (!ctype_digit($min)) {
-            self::$logs[] = 'Could not get game time. '. $nodes->item(0)->textContent;
-            return false;
-        }
-        $min = intval($min);
-        if ($min <= 45 && $state !== 2) {
+        $min = ctype_digit($min) ? intval($min) : null;
+
+        if (!$min) {
+            self::$logs[] = 'Could not get game time. '. $time_node->textContent;
+        } else if ($min && $min <= 45 && $state !== STATE_HT) {
             $state = STATE_HALF1;
-        }
-        if ($min > 45 && $min <= 90) {
+        } else if ($min && $min > 45 && $min <= 90 && $state !== STATE_FINISHED) {
             $state = STATE_HALF2;
         }
-        $g['min'] = intval($min);
-        $g['state'] = $state;
-        $g['extra'] = (int)$extra;
-        
-        /// <span class="time" id="mt_1831305">10:00</span>
-        $nodes = $xpath->query("//span[@class='time'][@id='mt_$id']");
-        if ($nodes->count() < 1) {
-            self::$logs[] = "Could not get start time for ID $id. " . $html;
-            return false;
-        }
-        $time = trim($nodes->item(0)->textContent);
-        $time = "$date-$time";
-        $time = (DateTime::createFromFormat('Y_n_j-H:i', $time))->format('Y-m-d H:i:s');
-        $g['start_time'] = $time;
-        //<span href="/football/korea-league/league-15/" class="gameName leaRow" style="color:#990099">KOR D1</span>
-        $nodes = $xpath->query("//span[contains(@class, 'gameName')][contains(@class, 'leaRow')]");
-        if ($nodes->count() < 1) {
-            self::$logs[] = "Could not get league. " . $html;
-            return false;
-        }
-//<span onclick=\"goTo('/football/database/league-2245')\" class=\"gameName leaRow\" style=\"color:#53ac98\">PCB</span>        
-        $g['league_short'] = self::normalizeTitle($nodes->item(0)->textContent);
-        $onclick = trim($nodes->item(0)->attributes->getNamedItem('onclick')->textContent);
-        $g['league_url'] = str_replace(["goTo('", "')"], "", $onclick);
-        /*
-            <div id=\"rht_1971772\" class=\"homeTeam\">
-                <span id=\"ht_1971772\" class=\"name\">V-Varen Nagasaki</span>
-                <i>[5]</i>
-                <i id=\"hR_1971772\" class=\"redCard\"></i>
-                <i id=\"hY_1971772\" class=\"yellowCard\"><i>1</i></i>
-            </div>        
-        */
-        $tmp = self::get_host_name($xpath, $id);
-        if (!$tmp) {
-            return false;
-        }
-        $g['host'] = $tmp;
-        $g['host_rank'] = self::get_host_rank($xpath, $id);
 
-        $tmp = self::get_guest_name($xpath, $id);
-        if (!$tmp) {
-            return false;
+        return [$state, $min, (int)$extra];
+    }
+
+    private static function get_node($xpath, $query, $error_message) {
+        $nodes = $xpath->query($query);
+        if (!($nodes->count())) {
+            self::$logs[] = $error_message;
+            return null;
         }
-        $g['guest'] = $tmp;
-        $g['guest_rank'] = self::get_guest_rank($xpath, $id);
-
-        $g['url'] = "/football/match/live-$id";
-
-        return (object)$g;
+        return $nodes->item(0);
     }
 
     private static function get_host_name($xpath, $id) {
@@ -244,12 +299,14 @@ class NGPParser implements iParser {
         */        
         $i = $host ? 'h' : 'g';
         $t = $host ? 'host' : 'guest';
-        $nodes = $xpath->query("//span[@id='${i}t_$id'][@class='name']");
-        if ($nodes->count() < 1) {
-            self::$logs[] = "Could not find $t. " . $html;
+        $team_node = self::get_node($xpath, 
+            "//span[@id='${i}t_$id'][@class='name']",
+            "Could not find $t"
+        );
+        if (!$team_node) {
             return null;        
         }
-        return self::normalizeTitle($nodes->item(0)->textContent, '()-');
+        return self::normalizeTitle($team_node->textContent, '()-');
     }
 
     private static function get_host_rank($xpath, $id) {
