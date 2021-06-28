@@ -50,20 +50,20 @@ class ParseHub implements iParseHub {
     }
 
     public function runProject() {
-        $run = "";
+        $run = [];
         $i = 0;
         for (; $i < PARSEHUB_RUN_ATTEMPTS_MAX && !$this->isRunTokenOk($run); $i++) {
             if ($i > 0) {
                 sleep(5);
             }
-            $run = $this->getRunToken();
+            $run = json_decode($this->getRunToken(), true);
         }
-        $log_result = parsehub_run_log("Run Project", json_encode(reduceRunData(json_decode($run, true))));
+        $log_result = parsehub_run_log("Run Project", json_encode(reduceRunData($run)));
         return [ 
+            'token' => $run['run_token'], 
+            'attempts' => $i++,
             'ok' => $this->isRunTokenOk($run), 
-            'time' => time2datetime(),
-            'logged' => $log_result, 
-            'attempts' => $i++ 
+            'logged' => $log_result
         ];
     }
 
@@ -83,18 +83,14 @@ class ParseHub implements iParseHub {
         return file_get_contents($url, false, $context);
     }
 
-    private function isRunTokenOk($token_string) {
+    private function isRunTokenOk($run) {
         /*
         {"run_token": "twhP5qKXX0Dt", "status": "initialized", "md5sum": null, "options_json": "{\"recoveryRules\": \"{}\", \"rotateIPs\": false, \"sendEmail\": false, \"allowPerfectSimulation\": false, \"ignoreDisabledElements\": true, \"webhook\": \"http://livesoccer.96.lt/php/parsehub_webhook.php\", \"outputType\": \"csv\", \"customProxies\": \"\", \"preserveOrder\": false, \"startTemplate\": \"unogoal_template\", \"allowReselection\": false, \"proxyDisableAdblock\": false, \"proxyCustomRotationHybrid\": false, \"maxWorkers\": \"0\", \"loadJs\": true, \"startUrl\": \"https://www.unogoal.life/\", \"startValue\": \"{}\", \"maxPages\": \"0\", \"proxyAllowInsecure\": false}", "custom_proxies": "", "data_ready": 0, "template_pages": {}, "start_time": "2019-10-20T12:51:06.811471", "owner_email": "aatkachenko23@gmail.com", "webhook": "http://livesoccer.96.lt/php/parsehub_webhook.php", "is_empty": false, "project_token": "txg_T0WpxYTc", "end_time": null, "start_running_time": null, "start_url": "https://www.unogoal.life/", "start_value": "{}", "start_template": "unogoal_template", "pages": 0}
             */    
-        if (empty($token_string)) {
-            return false;
-        }
-        $token = json_decode($token_string, true);
-        return !empty($token)
-        && isset($token['run_token']) 
-            && isset($token['status']) 
-            && $token['status'] == 'initialized';
+        return !empty($run)
+            && !empty($run['run_token']) 
+            && !empty($run['status']) 
+            && $run['status'] == 'initialized';
     }
  
     private function normalizeData($data) {

@@ -13,9 +13,14 @@ if (!$ok) {
     die();
 }
 
+
 require_once 'sources/nowgoalpro/nowgoalpro.php';
 require_once 'services/db/db_connection.php';
 require_once 'php/utils.php';
+
+$dryrun = isset($_POST['dryrun']) && $_POST['dryrun'] == '1';
+
+cron_log("============================  started  ============================");
 
 $stopTime = time() + MAX_PROCESSING_TIME;
 
@@ -32,26 +37,28 @@ $ngp->setDbManager($dbManager);
 $sources = [ $ngp ]; 
 
 foreach($sources as $s) {
-    if ($isParsehubTime) {
-        if ($s->isParseHubClient()) {
-            $runData = $s->runParseHubProject();
-            cron_log("Run ParseHub from cron", json_encode($runData));
-            $info = [
-                time2datetime(),
-                "Parse Hub project run " . (empty($runData['ok']) ? 'failed' : "OK"),
-                "Attempts: " . $runData['attempts'],
-                $runData['logged'] ? "Log successful" : "Log failed",
-            ];
-            echo implode(" ~~~ ", $info);
-        }
+    if ($dryrun) {
+        continue;
+    }
+    if ($isParsehubTime && $s->isParseHubClient()) {
+        $runData = $s->runParseHubProject();
+        cron_log("Run ParseHub from cron", json_encode($runData));
+        $info = [
+            time2datetime(),
+            "Parse Hub project run " . (empty($runData['ok']) ? 'failed' : "OK"),
+            "Attempts: " . $runData['attempts'],
+            $runData['logged'] ? "Log successful" : "Log failed",
+        ];
+        echo implode(" ~~~ ", $info);
     }
     if (!$dbConn->connected()) {
         continue;
     }
+    cron_log("1-minute update started");
     $ok = $s->runOneMinuteUpdate($stopTime);
     $fullLog = CRON_FULL_LOG || !$ok;
     $log = $fullLog ? logs2s($ok, $dbManager->getLastError(), "\n") : humanizeBool($ok);
-    cron_log("1-minute update", $log);
+    cron_log("1-minute update finished", $log);
     echo humanizeBool($ok);
 }
 
