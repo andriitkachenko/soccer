@@ -300,7 +300,7 @@ class NGPParser implements iParser {
         $i = $host ? 'h' : 'g';
         $t = $host ? 'host' : 'guest';
         $team_node = self::get_node($xpath, 
-            "//span[@id='${i}t_$id'][@class='name']",
+            "//span[@id='${i}t_$id'][contains(@class, 'name')]",
             "Could not find $t"
         );
         if (!$team_node) {
