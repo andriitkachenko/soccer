@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import FlipMove from 'react-flip-move';
 
 
 import Game from '../game';
@@ -39,7 +40,9 @@ const AppGames = ({ games, filter }) => {
     return (
         <div className='app-games'>
             <ul className = 'item-list list-group'>
-                {gameList}
+                <FlipMove duration={1000} easing="ease">
+                    {gameList}
+                </FlipMove>
             </ul>
         </div>
     );
